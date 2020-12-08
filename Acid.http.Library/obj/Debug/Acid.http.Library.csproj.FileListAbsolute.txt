@@ -1,0 +1,5 @@
+D:\HiK\HSJC\Acid.http.Library\bin\Debug\Acid.http.Library.dll
+D:\HiK\HSJC\Acid.http.Library\bin\Debug\Acid.http.Library.pdb
+D:\HiK\HSJC\Acid.http.Library\obj\Debug\Acid.http.Library.csproj.CoreCompileInputs.cache
+D:\HiK\HSJC\Acid.http.Library\obj\Debug\Acid.http.Library.dll
+D:\HiK\HSJC\Acid.http.Library\obj\Debug\Acid.http.Library.pdb

@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="Nucleic_Acid.View.ReadCardOffline"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Nucleic_Acid.View"
+             mc:Ignorable="d" 
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             Background="{DynamicResource MaterialDesignPaper}"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.FontWeight="Medium"
+             TextElement.FontSize="14"
+             FontFamily="{materialDesign:MaterialDesignFont}"
+             DataContext="{Binding Source={StaticResource Locator}, Path=V_ReadCard}"
+             d:DesignHeight="720" d:DesignWidth="1000">
+    <Grid Background="#FFD3D1D1">
+        <Grid Margin="25" Background="White">
+            <Image Source="https://hlso.oss-cn-hangzhou.aliyuncs.com/hlso/static/img/login_background.f0d56f55.png" x:Name="image" Margin="30,10,0,125" HorizontalAlignment="Left" Width="710"/>
+            <DataGrid x:Name="datagrid" ItemsSource="{Binding Items2}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit="FullRow" SelectionMode="Single" Margin="30,0,30,20" BorderBrush="#1F060000" BorderThickness="2" VerticalAlignment="Bottom" CanUserResizeColumns="False" CanUserResizeRows="False" Height="76" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" AreRowDetailsFrozen="True" CanUserReorderColumns="False" GridLinesVisibility="Horizontal" IsTabStop="False" IsReadOnly="False" VerticalGridLinesBrush="Black" FontFamily="NSimSun">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="序号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontWeight="Bold" FontFamily="NSimSun">
+                        <DataGridTextColumn.Binding>
+                            <Binding Path="gIndex"/>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="姓名" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontWeight="Bold" FontFamily="NSimSun">
+                        <DataGridTextColumn.Binding>
+                            <Binding Path="SName"/>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="身份证号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontWeight="Bold" FontFamily="NSimSun">
+                        <DataGridTextColumn.Binding>
+                            <Binding Path="temp"/>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="性别" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontWeight="Bold" FontFamily="NSimSun">
+                        <DataGridTextColumn.Binding>
+                            <Binding Path="Sex"/>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="身份证地址" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" MaxWidth="400" FontWeight="Bold" FontFamily="NSimSun">
+                        <DataGridTextColumn.Binding>
+                            <Binding Path="home"/>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="时间" IsReadOnly="True" FontWeight="Bold" FontFamily="NSimSun">
+                        <DataGridTextColumn.Binding>
+                            <Binding Path="Sbirthdate"/>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+                    <DataGridTemplateColumn Header="操作">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="删除" Foreground="White" Height="30" Margin="0,-6,0,-6"/>
+                                    <Button Content="打印" Foreground="White" Height="30" Margin="10,-6,0,-6" Click="Print_Click"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Image x:Name="image1" HorizontalAlignment="Left" Height="100" Margin="745,310,0,0" VerticalAlignment="Top" Width="205"/>
+        </Grid>
+    </Grid>
+</UserControl>
