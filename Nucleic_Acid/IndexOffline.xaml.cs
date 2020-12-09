@@ -49,7 +49,6 @@ namespace Nucleic_Acid
 
         private void RadioButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageTips("ggod", sender, e);
             if (V_readCard == null)
             {
                 V_readCard = new ReadCardOffline();
@@ -59,21 +58,115 @@ namespace Nucleic_Acid
 
         private void RadioButton_Click_1(object sender, RoutedEventArgs e)
         {
-            MessageTips("ggod", sender, e);
             if (V_infoList == null)
             {
                 V_infoList = new InfoListOffline();
             }
             DataContext = V_infoList;
         }
-
-        public async void MessageTips(string message, object sender = null, RoutedEventArgs e = null)
+        /// <summary>
+        /// 消息弹窗
+        /// </summary>
+        /// <param name="message"></param>
+        public async void MessageTips(string message)
         {
-            var sampleMessageDialog = new ReadDialog()
+            var sampleMessageDialog = new MessageDialog()
             {
                 Message = { Text = message }
             };
             await DialogHost.Show(sampleMessageDialog, "ReadDialog");
+        }
+        /// <summary>
+        /// 确定取消弹窗
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="action"></param>
+        /// <param name="e"></param>
+        public async void CancelTips(string message, Action<bool> action, DialogClosingEventHandler e = null)
+        {
+            if (e == null)
+                e = closingEventHandler;
+            var sampleMessageDialog = new CanCancel()
+            {
+                Message = { Text = message }
+            };
+            await DialogHost.Show(sampleMessageDialog, "ReadDialog", e);
+            action(sampleMessageDialog.IsTrue);
+        }
+        private void closingEventHandler(object sender, DialogClosingEventArgs eventArgs)
+        {
+            if (eventArgs.Parameter is bool parameter &&
+                parameter == false) return;
+
+            //OK, lets cancel the close...
+            eventArgs.Cancel();
+
+            //...now, lets update the "session" with some new content!
+            eventArgs.Session.UpdateContent(new SampleProgressDialog());
+            //note, you can also grab the session when the dialog opens via the DialogOpenedEventHandler
+
+            //lets run a fake operation for 3 seconds then close this baby.
+            Task.Delay(TimeSpan.FromMilliseconds(500))
+                .ContinueWith((t, _) => eventArgs.Session.Close(false), null,
+                    TaskScheduler.FromCurrentSynchronizationContext());
+        }
+        /// <summary>
+        /// 重新加载
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void reload_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            CancelTips("确定要重新登录吗？", new Action<bool>(arg =>
+            {
+                if (arg)
+                {
+                    MainWindow main = new MainWindow();
+                    main.Show();
+                    this.Close();
+                }
+            }));
+
+        }
+        /// <summary>
+        /// 退出程序
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void close_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            CancelTips("确定要关闭程序吗?", new Action<bool>(arg =>
+            {
+                if (arg)
+                {
+                    Application.Current.Shutdown();
+                }
+            }));
+
+        }
+        /// <summary>
+        /// 最小化
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Click_Min(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+        /// <summary>
+        /// 关闭
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Click_Close(object sender, RoutedEventArgs e)
+        {
+            CancelTips("确定要关闭程序吗?", new Action<bool>(arg =>
+            {
+                if (arg)
+                {
+                    Application.Current.Shutdown();
+                }
+            }));
         }
     }
 }

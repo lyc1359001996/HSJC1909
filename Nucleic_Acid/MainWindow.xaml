@@ -22,7 +22,7 @@
             <Grid>
                 <Rectangle Height="493" Margin="80,163,80,0" VerticalAlignment="Top" RadiusY="27.051" RadiusX="27.051">
                     <Rectangle.Fill>
-                        <ImageBrush ImageSource="image/组 15.png"/>
+                        <ImageBrush ImageSource="image/组 15.png" Stretch="UniformToFill"/>
                     </Rectangle.Fill>
                 </Rectangle>
                 <Grid Margin="566,330,195,394">

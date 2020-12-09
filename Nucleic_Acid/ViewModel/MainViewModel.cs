@@ -43,8 +43,8 @@ namespace Nucleic_Acid.ViewModel
             {
                 obj.Hide();
             }
-            MainWindow.index = new Index();
-            MainWindow.index.Show();
+            MainWindow.indexoffline = new IndexOffline();
+            MainWindow.indexoffline.Show();
         }
 
         private void exit(Window window) 

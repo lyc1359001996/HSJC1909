@@ -26,7 +26,6 @@ namespace Nucleic_Acid
         public Index()
         {
             InitializeComponent();
-            
             if (V_readCard == null)
             {
                 V_readCard = new ReadCard();
@@ -65,6 +64,10 @@ namespace Nucleic_Acid
             }
             DataContext = V_infoList;
         }
+        /// <summary>
+        /// 消息弹窗
+        /// </summary>
+        /// <param name="message"></param>
         public async void MessageTips(string message)
         {
             var sampleMessageDialog = new MessageDialog()
@@ -73,6 +76,12 @@ namespace Nucleic_Acid
             };
             await DialogHost.Show(sampleMessageDialog, "ReadDialog");
         }
+        /// <summary>
+        /// 确定取消弹窗
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="action"></param>
+        /// <param name="e"></param>
         public async void CancelTips(string message,Action<bool> action,DialogClosingEventHandler e=null)
         {
             if(e==null)
@@ -84,7 +93,6 @@ namespace Nucleic_Acid
            await DialogHost.Show(sampleMessageDialog, "ReadDialog", e);
            action(sampleMessageDialog.IsTrue);
         }
-
         private void closingEventHandler(object sender, DialogClosingEventArgs eventArgs)
         {
             if (eventArgs.Parameter is bool parameter &&
@@ -102,7 +110,11 @@ namespace Nucleic_Acid
                 .ContinueWith((t, _) => eventArgs.Session.Close(false), null,
                     TaskScheduler.FromCurrentSynchronizationContext());
         }
-
+        /// <summary>
+        /// 重新加载
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void reload_MouseUp(object sender, MouseButtonEventArgs e)
         {
             CancelTips("确定要重新登录吗？",new Action<bool>(arg => 
@@ -116,6 +128,11 @@ namespace Nucleic_Acid
             }));
             
         }
+        /// <summary>
+        /// 退出程序
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void close_MouseUp(object sender, MouseButtonEventArgs e)
         {
             CancelTips("确定要关闭程序吗?", new Action<bool>(arg =>

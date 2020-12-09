@@ -13,3 +13,11 @@ D:\HSJC\HSJC\Acid.http.Library\bin\Debug\Acid.http.Library.pdb
 D:\HSJC\HSJC\Acid.http.Library\obj\Debug\Acid.http.Library.csproj.CoreCompileInputs.cache
 D:\HSJC\HSJC\Acid.http.Library\obj\Debug\Acid.http.Library.dll
 D:\HSJC\HSJC\Acid.http.Library\obj\Debug\Acid.http.Library.pdb
+D:\HSJC\HSJC\Acid.http.Library\bin\Debug\Acid.common.Library.dll
+D:\HSJC\HSJC\Acid.http.Library\bin\Debug\Newtonsoft.Json.dll
+D:\HSJC\HSJC\Acid.http.Library\bin\Debug\RestSharp.dll
+D:\HSJC\HSJC\Acid.http.Library\bin\Debug\Acid.common.Library.pdb
+D:\HSJC\HSJC\Acid.http.Library\bin\Debug\Newtonsoft.Json.xml
+D:\HSJC\HSJC\Acid.http.Library\bin\Debug\RestSharp.xml
+D:\HSJC\HSJC\Acid.http.Library\obj\Debug\Acid.http.Library.csprojAssemblyReference.cache
+D:\HSJC\HSJC\Acid.http.Library\obj\Debug\Acid.http.Library.csproj.CopyComplete

@@ -11,32 +11,39 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="{materialDesign:MaterialDesignFont}"
-        Title="核酸检测" Height="800" Width="1200" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="核酸检测" Height="818" Width="1200" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <materialDesign:DialogHost Identifier="ReadDialog">
         <Grid x:Name="backGrid">
-            <Grid Background="#FF171212" Height="80" VerticalAlignment="Top">
-                <StackPanel Orientation="Horizontal" Margin="4,4,537,4">
-                    <Image Source="https://profile.csdnimg.cn/9/B/3/2_weixin_43652338" Margin="30,0,0,0" Width="86" />
+            <Grid Background="#FF44B2F6" Height="60" VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal" Margin="191,4,569,4" HorizontalAlignment="Center">
+                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="True" Content="读卡" FontFamily="Microsoft YaHei" FontSize="18" FontWeight="Bold" Foreground="#DDFFFFFF" Click="RadioButton_Click" />
+                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="40,4,4,4" IsChecked="False" Content="用户信息" FontFamily="Microsoft YaHei" FontSize="18" FontWeight="Bold" Foreground="#DDFFFFFF" Click="RadioButton_Click_1" />
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="260,4,247,4" HorizontalAlignment="Center">
-                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="True" Content="读卡" FontFamily="Microsoft YaHei" FontSize="16" FontWeight="Bold" Foreground="#DDFFFFFF" Click="RadioButton_Click" />
-                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="False" Content="用户信息" FontFamily="Microsoft YaHei" FontSize="16" FontWeight="Bold" Foreground="#DDFFFFFF" Click="RadioButton_Click_1" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0,4" HorizontalAlignment="Right" Width="60">
+                <StackPanel Orientation="Horizontal" Margin="0,4" HorizontalAlignment="Right" Width="106">
                     <materialDesign:PopupBox  DockPanel.Dock="Right"   PlacementMode="BottomAndAlignRightEdges" Foreground="#DDFFFFFF">
                         <ListBox>
-                            <ListBoxItem FontFamily="Microsoft YaHei" FontSize="12" FontWeight="Bold">
-                                转到登录
+                            <ListBoxItem FontFamily="Microsoft YaHei" FontSize="12" FontWeight="Bold" MouseUp="reload_MouseUp">
+                                重新登录
                             </ListBoxItem>
-                            <ListBoxItem FontFamily="Microsoft YaHei" FontSize="12" FontWeight="Bold">
+                            <ListBoxItem FontFamily="Microsoft YaHei" FontSize="12" FontWeight="Bold" MouseUp="close_MouseUp">
                                 退出程序
                             </ListBoxItem>
                         </ListBox>
                     </materialDesign:PopupBox>
+                    <Button ToolTip="最小化" VerticalAlignment="Center" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0,10" Width="21" Click="Click_Min" >
+                        <Button.Background>
+                            <ImageBrush ImageSource="image/最小化.png" Stretch="Uniform"/>
+                        </Button.Background>
+                    </Button>
+                    <Button ToolTip="退出程序" VerticalAlignment="Center" Margin="10,0,0,0" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="22" Height="23" Click="Click_Close" >
+                        <Button.Background>
+                            <ImageBrush ImageSource="image/退出.png"/>
+                        </Button.Background>
+                    </Button>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0,4,60,4" HorizontalAlignment="Right" Width="255">
-                    <Label x:Name="Labelp" Content="自动打印" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,24,0,0" Foreground="#DDFFFFFF"/>
-                    <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="MaterialDesignSwitchToggleButton with Custom Track Background">
+                <StackPanel Orientation="Horizontal" Margin="0,3,98,5" HorizontalAlignment="Right" Width="270">
+                    <Label x:Name="Labelp" Content="自动打印" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#DDFFFFFF" FontFamily="Microsoft YaHei" FontSize="16" FontWeight="Bold"/>
+                    <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" VerticalAlignment="Center" ToolTip="自动打印" BorderBrush="White">
                         <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
                             <SolidColorBrush Color="Green" />
                         </materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
@@ -44,16 +51,16 @@
                             <SolidColorBrush Color="Red" />
                         </materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
                     </ToggleButton>
-                    <materialDesign:Chip Margin="40,0,0,0" Width="33" IconBackground="{x:Null}" Background="#12FFFFFF">
-                        <materialDesign:Chip.Icon>
-                            <materialDesign:PackIcon Kind="Account" Foreground="White" />
-                        </materialDesign:Chip.Icon>
+                    <materialDesign:Chip Margin="30,0,0,0"  Width="33" IconBackground="{x:Null}" Foreground="{x:Null}" IconForeground="{x:Null}">
+                        <materialDesign:Chip.Background>
+                            <ImageBrush ImageSource="image/矢量智能对象.png"/>
+                        </materialDesign:Chip.Background>
                     </materialDesign:Chip>
-                    <Label x:Name="Label_Name" Content="离线模式" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,24,0,0" Foreground="#DDFFFFFF"/>
+                    <Label x:Name="Label_Name" Content="离线模式" HorizontalAlignment="Left" Foreground="#DDFFFFFF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei" FontWeight="Bold"/>
                 </StackPanel>
             </Grid>
-            <Grid  x:Name="pageGrid" Margin="0,80,0,0" Background="#FFD3D1D1" />
-            <ContentControl Grid.Row="0" Content="{Binding}" Margin="0,80,0,0"/>
+            <Grid  x:Name="pageGrid" Margin="0,60,0,0" Background="#FFD3D1D1" />
+            <ContentControl Grid.Row="0" Content="{Binding}" Margin="0,60,0,0"/>
         </Grid>
     </materialDesign:DialogHost>
 </Window>

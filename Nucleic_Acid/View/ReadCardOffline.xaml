@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Nucleic_Acid.View"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
              mc:Ignorable="d" 
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              Background="{DynamicResource MaterialDesignPaper}"
@@ -12,13 +13,13 @@
              TextElement.FontSize="14"
              FontFamily="{materialDesign:MaterialDesignFont}"
              DataContext="{Binding Source={StaticResource Locator}, Path=V_ReadCard}"
-             d:DesignHeight="720" d:DesignWidth="1000">
+             d:DesignHeight="758" d:DesignWidth="1200" >
     <Grid Background="#FFD3D1D1">
         <Grid Margin="25" Background="White">
-            <Image Source="https://hlso.oss-cn-hangzhou.aliyuncs.com/hlso/static/img/login_background.f0d56f55.png" x:Name="image" Margin="30,10,0,125" HorizontalAlignment="Left" Width="710"/>
-            <DataGrid x:Name="datagrid" ItemsSource="{Binding Items2}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit="FullRow" SelectionMode="Single" Margin="30,0,30,20" BorderBrush="#1F060000" BorderThickness="2" VerticalAlignment="Bottom" CanUserResizeColumns="False" CanUserResizeRows="False" Height="76" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" AreRowDetailsFrozen="True" CanUserReorderColumns="False" GridLinesVisibility="Horizontal" IsTabStop="False" IsReadOnly="False" VerticalGridLinesBrush="Black" FontFamily="NSimSun">
+            <Image gif:ImageBehavior.AnimatedSource="/Nucleic_Acid;component/image/read.gif" x:Name="image" Margin="0,10,0,125" Width="618" Height="391" Stretch="None"/>
+            <DataGrid x:Name="datagrid" ItemsSource="{Binding Items2}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit="FullRow" SelectionMode="Single" Margin="30,0,30,20" BorderBrush="#1F060000" BorderThickness="2" VerticalAlignment="Bottom" CanUserResizeColumns="False" CanUserResizeRows="False" Height="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" AreRowDetailsFrozen="True" CanUserReorderColumns="False" GridLinesVisibility="Horizontal" IsTabStop="False" IsReadOnly="False" VerticalGridLinesBrush="Black" FontFamily="NSimSun" FontSize="14">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="序号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontWeight="Bold" FontFamily="NSimSun">
+                    <DataGridTextColumn Header="序号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontWeight="Bold" FontFamily="NSimSun" >
                         <DataGridTextColumn.Binding>
                             <Binding Path="gIndex"/>
                         </DataGridTextColumn.Binding>
@@ -52,15 +53,18 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button Content="删除" Foreground="White" Height="30" Margin="0,-6,0,-6"/>
-                                    <Button Content="打印" Foreground="White" Height="30" Margin="10,-6,0,-6" Click="Print_Click"/>
+                                    <Button Style="{StaticResource MaterialDesignRaisedLightButton}" materialDesign:ButtonAssist.CornerRadius="5" Click="Print_Click" ToolTip="删除" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="55" Height="22">
+                                        <TextBlock Text="删除" />
+                                    </Button>
+                                    <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" Click="Delete_Click" ToolTip="打印" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="55" Margin="20,0,0,0" Height="22">
+                                        <TextBlock Text="打印" />
+                                    </Button>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <Image x:Name="image1" HorizontalAlignment="Left" Height="100" Margin="745,310,0,0" VerticalAlignment="Top" Width="205"/>
         </Grid>
     </Grid>
 </UserControl>

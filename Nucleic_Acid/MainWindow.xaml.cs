@@ -1,6 +1,7 @@
 ﻿using Acid.common.Library.config;
 using Acid.http.Library.RequestModel;
 using Acid.http.Library.ResponseModel;
+using Acid.http.Library.Service;
 using MaterialDesignThemes.Wpf;
 using Nucleic_Acid.View;
 using System;
@@ -17,6 +18,7 @@ namespace Nucleic_Acid
     {
         SettingModel settingModel = new SettingModel();
         public static Index index;
+        public static IndexOffline indexoffline;
         public MainWindow()
         {
             InitializeComponent();
@@ -64,7 +66,7 @@ namespace Nucleic_Acid
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            ResultJson<LoginModel> dictionaries = Login_Ex(userNameBox.Text, passWordBox.Password, CheckBox_isRember.IsChecked, CheckBox_isAuto.IsChecked);
+            ResultJson<LoginModel> dictionaries = LoginService.Login_Ex(userNameBox.Text, passWordBox.Password, CheckBox_isRember.IsChecked, CheckBox_isAuto.IsChecked);
             if (dictionaries.code == "20000")
             {
                 this.Hide();
@@ -77,56 +79,6 @@ namespace Nucleic_Acid
             }
         }
 
-        private ResultJson<LoginModel> Login(string username, string password)
-        {
-            try
-            {
-                string url = UrlModel.ip + UrlModel.login;
-                RequestLoginModel requestLoginModel = new RequestLoginModel(username, password);
-                string result = HttpUrlConfig.PostBody(url, requestLoginModel);
-                ResultJson<LoginModel> retStu = Newtonsoft.Json.JsonConvert.DeserializeObject<ResultJson<LoginModel>>(result);
-                Console.WriteLine(result);
-                return retStu;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
-        }
-        private ResultJson<LoginModel> Login_Ex(string username, string password, bool? rem = false, bool? auto = false)
-        {
-            ResultJson<LoginModel> resultJson = Login(username, password);
-            if (resultJson == null)
-            {
-                return new ResultJson<LoginModel>() { code = "1", message = "网络连接异常" };
-            }
-            else if (resultJson.code == "20000")
-            {
-                SettingModel json = SettingJsonConfig.readJson();
-                if ((bool)rem)//保存
-                {
-                    json.userName = username;
-                    json.passWord = password;
-                    json.isRember = (bool)rem;
-                    json.isAuto = (bool)auto;
-                    SettingJsonConfig.saveJson(json);
-                }
-                else
-                {
-                    json.userName = "";
-                    json.passWord = "";
-                    json.isRember = false;
-                    json.isAuto = false;
-                    SettingJsonConfig.saveJson(json);
-                }
-                return resultJson;
-            }
-            else
-            {
-                return resultJson;
-            }
-        }
 
         public async void MessageTips(string message, object sender = null, RoutedEventArgs e = null)
         {
