@@ -76,7 +76,7 @@
                         <DataGridTemplateColumn Header="检测结果">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <ComboBox x:Name="dataResult" IsReadOnly="True" Height="24" materialDesign:HintAssist.Hint="请选择状态" FontFamily="Roboto" FontSize="12" SelectedIndex="{Binding result}">
+                                    <ComboBox x:Name="dataResult" IsEnabled="False" Height="24" materialDesign:HintAssist.Hint="请选择状态" FontFamily="Roboto" FontSize="12" SelectedIndex="{Binding result}">
                                         <ComboBoxItem FontFamily="NSimSun">
                                             阴性
                                         </ComboBoxItem>
