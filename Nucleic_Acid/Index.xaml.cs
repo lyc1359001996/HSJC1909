@@ -65,8 +65,15 @@ namespace Nucleic_Acid
             }
             DataContext = V_infoList;
         }
-
-        public async void MessageTips(string message,Action<bool> action,DialogClosingEventHandler e=null)
+        public async void MessageTips(string message)
+        {
+            var sampleMessageDialog = new MessageDialog()
+            {
+                Message = { Text = message }
+            };
+            await DialogHost.Show(sampleMessageDialog, "ReadDialog");
+        }
+        public async void CancelTips(string message,Action<bool> action,DialogClosingEventHandler e=null)
         {
             if(e==null)
                 e = closingEventHandler;
@@ -91,14 +98,14 @@ namespace Nucleic_Acid
             //note, you can also grab the session when the dialog opens via the DialogOpenedEventHandler
 
             //lets run a fake operation for 3 seconds then close this baby.
-            Task.Delay(TimeSpan.FromSeconds(1))
+            Task.Delay(TimeSpan.FromMilliseconds(500))
                 .ContinueWith((t, _) => eventArgs.Session.Close(false), null,
                     TaskScheduler.FromCurrentSynchronizationContext());
         }
 
         private void reload_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            MessageTips("确定要重新登录吗？",new Action<bool>(arg => 
+            CancelTips("确定要重新登录吗？",new Action<bool>(arg => 
             {
                 if (arg)
                 {
@@ -111,7 +118,7 @@ namespace Nucleic_Acid
         }
         private void close_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            MessageTips("确定要关闭程序吗?", new Action<bool>(arg =>
+            CancelTips("确定要关闭程序吗?", new Action<bool>(arg =>
             {
                 if (arg)
                 {

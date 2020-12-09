@@ -51,7 +51,8 @@ namespace Nucleic_Acid.View
                     idCard = "33041119981190011",
                     address = "浙江省金华市义乌市稠江街道总部经济园",
                     date = "2020-12-05 12:00:00",
-                    sex = "男"
+                    sex = "男",
+                    result = 1
                 };
                 readInfoModels.Add(Items2);
             }

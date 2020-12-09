@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "..\Test\Test.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acid.SDK.Library", "..\Acid.SDK.Library\Acid.SDK.Library.csproj", "{F9361345-C782-4E00-896F-DC4CF51378A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acid.print.Library", "..\Acid.print.Library\Acid.print.Library.csproj", "{D2DA941F-0EB9-4766-859D-C106AFF13243}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F9361345-C782-4E00-896F-DC4CF51378A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9361345-C782-4E00-896F-DC4CF51378A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9361345-C782-4E00-896F-DC4CF51378A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2DA941F-0EB9-4766-859D-C106AFF13243}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2DA941F-0EB9-4766-859D-C106AFF13243}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2DA941F-0EB9-4766-859D-C106AFF13243}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2DA941F-0EB9-4766-859D-C106AFF13243}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
