@@ -1,4 +1,5 @@
-﻿using Acid.SDK.Library;
+﻿using Acid.print.Library;
+using Acid.SDK.Library;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -229,7 +230,7 @@ namespace Nucleic_Acid.View
                     Items2.Add(dataModel);
                     datagrid.ItemsSource = Items2;
                     datagrid.Visibility = Visibility.Visible;
-                    image1.Source = MemoryStreamToBitmapImage(ZXingHelper.BitmapToMemoryStream(ZXingHelper.Generate2DBarcode(dataModel.temp, 120, 50)));
+                    //打印......//image1.Source = MemoryStreamToBitmapImage(ZXingHelper.BitmapToMemoryStream(ZXingHelper.Generate2DBarcode(dataModel.temp, 130, 40)));
                 }
                 Console.WriteLine(Items2[0].SName);
             }));
@@ -339,19 +340,47 @@ namespace Nucleic_Acid.View
         /// 弹窗
         /// </summary>
         /// <param name="message"></param>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void MessageTips(string message, object sender = null, RoutedEventArgs e = null)
+        public void MessageTips(string message)
         {
-           MainWindow.index.MessageTips(message,null,null);
+           MainWindow.index.MessageTips(message);
+        }
+
+        public void CancelTips(string message,Action<bool> action, DialogClosingEventHandler e=null)
+        {
+            MainWindow.index.CancelTips(message, action,e);
         }
 
         private void Print_Click(object sender, RoutedEventArgs e)
         {
-            if (dialog.ShowDialog() == true)
+            CancelTips("确定要打印吗？", new Action<bool>(isTrue =>
+             {
+                 if (isTrue)
+                 {
+                     Console.WriteLine("打印ing......................");
+                     //PrintHelper.print("330411199811190011");
+                 }
+                 else
+                 {
+                     Console.WriteLine("取消打印....................");
+                 }
+             }));
+           
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            CancelTips("确定要删除吗？", new Action<bool>(isTrue =>
             {
-                dialog.PrintVisual(printArea, "Print Test");
-            }
+                if (isTrue)
+                {
+                    Console.WriteLine("删除ing......................");
+                    //PrintHelper.print("330411199811190011");
+                }
+                else
+                {
+                    Console.WriteLine("取消删除....................");
+                }
+            }));
         }
     }
 }

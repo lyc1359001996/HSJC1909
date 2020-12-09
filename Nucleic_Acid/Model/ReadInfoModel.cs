@@ -15,5 +15,6 @@ namespace Nucleic_Acid.Model
         public string sex { get; set; }
         public string address { get; set; }
         public string date { get; set; }
+        public int result { get; set; }
     }
 }

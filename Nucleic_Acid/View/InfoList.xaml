@@ -12,81 +12,87 @@
              TextElement.FontSize="14"
              FontFamily="{materialDesign:MaterialDesignFont}"
              DataContext="{Binding Source={StaticResource Locator}, Path=V_ReadCard}"
-             mc:Ignorable="d" d:DesignHeight="720" d:DesignWidth="1000" Loaded="UserControl_Loaded">
+             mc:Ignorable="d" d:DesignHeight="758" d:DesignWidth="1200" Loaded="UserControl_Loaded">
     <Grid Background="#FFD3D1D1">
         <Grid Margin="25,10" Background="White">
-            <StackPanel Margin="35,0,0,630" Height="55" VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" Width="565" >
-                <TextBox Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="请输入姓名" Margin="0,8" FontFamily="NSimSun" Height="38" FontSize="12" Width="170"/>
-                <TextBox Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="请输入身份证号码" Margin="30,8,0,8" Height="38" FontFamily="NSimSun" FontSize="12"  Width="170"/>
-                <ComboBox materialDesign:HintAssist.Hint="请选择状态" Margin="30,10,0,10" Width="95" FontFamily="NSimSun" FontSize="12">
-                    <ComboBoxItem>
+            <StackPanel Margin="35,0,0,645" Height="55" VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" Width="565" >
+                <TextBox x:Name="TextBox_Name" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="请输入姓名" Margin="0,8" FontFamily="NSimSun" Height="38" FontSize="12" Width="170"/>
+                <TextBox x:Name="TextBox_IdCard" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="请输入身份证号码" Margin="30,8,0,8" Height="38" FontFamily="NSimSun" FontSize="12"  Width="170"/>
+                <ComboBox materialDesign:HintAssist.Hint="请选择状态" Margin="30,14,0,15" Width="80" FontFamily="NSimSun" FontSize="12">
+                    <ComboBoxItem FontFamily="NSimSun">
                         阴性
                     </ComboBoxItem>
-                    <ComboBoxItem>
+                    <ComboBoxItem FontFamily="NSimSun">
                         阳性
                     </ComboBoxItem>
                 </ComboBox>
             </StackPanel>
-            <StackPanel Margin="0,15,30,635" Orientation="Horizontal" HorizontalAlignment="Right" Width="145">
-                <Button Style="{StaticResource MaterialDesignRaisedLightButton}" Height="Auto" materialDesign:ButtonAssist.CornerRadius="5" ToolTip="重置查询" Background="#FF439CD6" Foreground="White" Margin="0,12" FontFamily="NSimSun" FontSize="12" Width="60">
+            <StackPanel Margin="975,0,0,648" Orientation="Horizontal" HorizontalAlignment="Left" Width="145" Height="50" VerticalAlignment="Bottom">
+                <Button Style="{StaticResource MaterialDesignRaisedLightButton}" materialDesign:ButtonAssist.CornerRadius="5" ToolTip="重置查询" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60">
                     <TextBlock Text="重置" />
                 </Button>
-                <Button Style="{StaticResource MaterialDesignRaisedLightButton}" Height="Auto" materialDesign:ButtonAssist.CornerRadius="5" ToolTip="查询" Background="#FF439CD6" Foreground="White" Margin="20,12" FontFamily="NSimSun" FontSize="12" Width="60">
+                <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="查询" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Margin="20,0,0,0">
                     <TextBlock Text="查询" />
                 </Button>
             </StackPanel>
-            <DataGrid  x:Name="dataGrid" ItemsSource="{Binding Items2}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit="FullRow" SelectionMode="Single" Margin="30,0,30,92" BorderBrush="#1F060000" BorderThickness="2" VerticalAlignment="Bottom" CanUserResizeColumns="False" CanUserResizeRows="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" AreRowDetailsFrozen="True" Height="538">
+            <DataGrid  x:Name="dataGrid" ItemsSource="{Binding Items2}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit="FullRow" SelectionMode="Single" Margin="30,0,30,92" BorderBrush="#1F060000" BorderThickness="2" VerticalAlignment="Bottom" CanUserResizeColumns="False" CanUserResizeRows="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" AreRowDetailsFrozen="True" Height="538" FontFamily="NSimSun" FontWeight="Normal" FontSize="14">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="序号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontWeight="Bold">
+                    <DataGridTextColumn Header="序号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
                         <DataGridTextColumn.Binding>
                             <Binding Path="index"/>
                         </DataGridTextColumn.Binding>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="编号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontWeight="Bold">
+                    <DataGridTextColumn Header="编号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
                         <DataGridTextColumn.Binding>
                             <Binding Path="code"/>
                         </DataGridTextColumn.Binding>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="姓名" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontWeight="Bold">
+                    <DataGridTextColumn Header="姓名" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
                         <DataGridTextColumn.Binding>
                             <Binding Path="name"/>
                         </DataGridTextColumn.Binding>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="身份证号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontWeight="Bold">
+                    <DataGridTextColumn Header="身份证号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
                         <DataGridTextColumn.Binding>
                             <Binding Path="idCard"/>
                         </DataGridTextColumn.Binding>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="性别" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontWeight="Bold">
+                    <DataGridTextColumn Header="性别" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
                         <DataGridTextColumn.Binding>
                             <Binding Path="sex"/>
                         </DataGridTextColumn.Binding>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="身份证地址" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" MaxWidth="200" FontWeight="Bold">
+                    <DataGridTextColumn Header="身份证地址" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" MaxWidth="200" FontFamily="NSimSun">
                         <DataGridTextColumn.Binding>
                             <Binding Path="address"/>
                         </DataGridTextColumn.Binding>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="时间" IsReadOnly="True" FontWeight="Bold">
+                    <DataGridTextColumn Header="时间" IsReadOnly="True" FontFamily="NSimSun">
                         <DataGridTextColumn.Binding>
                             <Binding Path="date"/>
                         </DataGridTextColumn.Binding>
                     </DataGridTextColumn>
+                    <DataGridTemplateColumn Header="检测结果">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox materialDesign:HintAssist.Hint="请选择状态" FontFamily="NSimSun" FontSize="12" SelectedIndex="{Binding result}">
+                                    <ComboBoxItem FontFamily="NSimSun">
+                                        阴性
+                                    </ComboBoxItem>
+                                    <ComboBoxItem FontFamily="NSimSun">
+                                        阳性
+                                    </ComboBoxItem>
+                                </ComboBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                     <DataGridTemplateColumn Header="操作">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <!--<ListBox Grid.Column="1" Style="{StaticResource MaterialDesignToolToggleFlatListBox}" SelectedIndex="0" Margin="0,-6,0,-6">
-                                        <ListBoxItem>
-                                            <TextBlock Text="删除" />
-                                        </ListBoxItem>
-                                        <ListBoxItem>
-                                            <TextBlock Text="打印" Margin="10,0,0,0"/>
-                                        </ListBoxItem>
-                                    </ListBox>-->
-                                    <Button Content="删除" Foreground="White" Height="30" Margin="0,-6,0,-6"/>
-                                    <Button Content="打印" Foreground="White" Height="30" Margin="10,-6,0,-6" />
-                                    <Button Content="修改" Foreground="White" Height="30" Margin="10,-6,0,-6" />
+                                    <Button Content="删除" Foreground="White" Height="30" Margin="0,-6,0,-6" FontFamily="NSimSun"/>
+                                    <Button Content="打印" Foreground="White" Height="30" Margin="10,-6,0,-6"  FontFamily="NSimSun"/>
+                                    <Button Content="修改" Foreground="White" Height="30" Margin="10,-6,0,-6"  FontFamily="NSimSun"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
