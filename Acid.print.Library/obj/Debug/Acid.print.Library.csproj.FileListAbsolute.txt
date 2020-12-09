@@ -9,3 +9,9 @@ D:\HSJC\HSJC\Acid.print.Library\obj\Debug\Acid.print.Library.csprojAssemblyRefer
 D:\HSJC\HSJC\Acid.print.Library\obj\Debug\Acid.print.Library.csproj.CoreCompileInputs.cache
 D:\HSJC\HSJC\Acid.print.Library\obj\Debug\Acid.print.Library.dll
 D:\HSJC\HSJC\Acid.print.Library\obj\Debug\Acid.print.Library.pdb
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.print.Library\bin\Debug\Acid.print.Library.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.print.Library\bin\Debug\Acid.print.Library.pdb
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.print.Library\obj\Debug\Acid.print.Library.csprojAssemblyReference.cache
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.print.Library\obj\Debug\Acid.print.Library.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.print.Library\obj\Debug\Acid.print.Library.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.print.Library\obj\Debug\Acid.print.Library.pdb

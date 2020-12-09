@@ -41,7 +41,7 @@ namespace Acid.http.Library.Service
             {
                 //存Token
                 UrlModel.Token = resultJson.data.token;
-                SettingModel json = SettingJsonConfig.readJson();
+                SettingModel json = SettingJsonConfig.readJson()??new SettingModel();
                 if ((bool)rem)//保存
                 {
                     json.userName = username;
