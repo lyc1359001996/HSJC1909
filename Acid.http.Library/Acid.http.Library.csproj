@@ -45,9 +45,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestModel\RequestInfoListModel.cs" />
     <Compile Include="RequestModel\RequestLoginModel.cs" />
+    <Compile Include="ResponseModel\InfoListModel.cs" />
     <Compile Include="ResponseModel\LoginModel.cs" />
+    <Compile Include="ResponseModel\ResponseInfoListModel.cs" />
     <Compile Include="ResponseModel\ResultJson.cs" />
+    <Compile Include="Service\InfoListService.cs" />
     <Compile Include="Service\LoginService.cs" />
   </ItemGroup>
   <ItemGroup>

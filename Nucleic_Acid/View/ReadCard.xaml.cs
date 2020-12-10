@@ -47,7 +47,6 @@ namespace Nucleic_Acid.View
             login_device();//登录设备
             autoRead_Timer.Tick += AutoRead_Timer_Tick;
             autoRead_Timer.Interval = TimeSpan.FromMilliseconds(1000);
-            autoRead_Timer.Start();
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -57,6 +56,7 @@ namespace Nucleic_Acid.View
         private void Init()
         {
             datagrid.Visibility = Visibility.Hidden;
+            autoRead_Timer.Start();
         }
 
 
@@ -381,6 +381,16 @@ namespace Nucleic_Acid.View
                     Console.WriteLine("取消删除....................");
                 }
             }));
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Grid_Unloaded(object sender, RoutedEventArgs e)
+        {
+            //index关闭停止定时器
+            autoRead_Timer.Stop();
         }
     }
 }

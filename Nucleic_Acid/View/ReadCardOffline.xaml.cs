@@ -389,5 +389,11 @@ namespace Nucleic_Acid.View
         private void savedata() 
         {
         }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            //停止定时器
+            autoRead_Timer.Stop();
+        }
     }
 }

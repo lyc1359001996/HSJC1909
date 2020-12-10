@@ -30,12 +30,12 @@
                             </ListBoxItem>
                         </ListBox>
                     </materialDesign:PopupBox>
-                    <Button VerticalAlignment="Center" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0,10" Width="21">
+                    <Button ToolTip="最小化" VerticalAlignment="Center" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0,10" Width="21" Click="Click_Min" >
                         <Button.Background>
                             <ImageBrush ImageSource="image/最小化.png" Stretch="Uniform"/>
                         </Button.Background>
                     </Button>
-                    <Button VerticalAlignment="Center" Margin="10,0,0,0" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="22" Height="23">
+                    <Button ToolTip="退出程序" VerticalAlignment="Center" Margin="10,0,0,0" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="22" Height="23" Click="Click_Close" >
                         <Button.Background>
                             <ImageBrush ImageSource="image/退出.png"/>
                         </Button.Background>

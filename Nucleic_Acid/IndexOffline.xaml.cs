@@ -1,4 +1,5 @@
-﻿using MaterialDesignThemes.Wpf;
+﻿using Acid.common.Library.config;
+using MaterialDesignThemes.Wpf;
 using Nucleic_Acid.View;
 using System;
 using System.Collections.Generic;
@@ -121,9 +122,12 @@ namespace Nucleic_Acid
             {
                 if (arg)
                 {
+                    SettingModel json = SettingJsonConfig.readJson() ?? new SettingModel();
+                    json.isAuto = false;
+                    SettingJsonConfig.saveJson(json);
                     MainWindow main = new MainWindow();
                     main.Show();
-                    this.Close();
+                    MainWindow.indexoffline.Close();
                 }
             }));
 

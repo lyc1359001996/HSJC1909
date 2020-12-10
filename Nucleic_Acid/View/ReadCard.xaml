@@ -11,11 +11,12 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              TextElement.FontWeight="Medium"
              TextElement.FontSize="14"
+             x:Name="user1"
              FontFamily="{materialDesign:MaterialDesignFont}"
              DataContext="{Binding Source={StaticResource Locator}, Path=V_ReadCard}"
              d:DesignHeight="758" d:DesignWidth="1200" Loaded="UserControl_Loaded">
     <Grid Background="#FFD3D1D1">
-        <Grid Margin="25" Background="White">
+        <Grid Margin="25" Background="White" Unloaded="Grid_Unloaded">
             <Image gif:ImageBehavior.AnimatedSource="/Nucleic_Acid;component/image/read.gif" x:Name="image" Margin="0,10,0,125" Width="618" Height="391" Stretch="None"/>
             <DataGrid x:Name="datagrid" ItemsSource="{Binding Items2}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit="FullRow" SelectionMode="Single" Margin="30,0,30,20" BorderBrush="#1F060000" BorderThickness="2" VerticalAlignment="Bottom" CanUserResizeColumns="False" CanUserResizeRows="False" Height="auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" AreRowDetailsFrozen="True" CanUserReorderColumns="False" GridLinesVisibility="Horizontal" IsTabStop="False" IsReadOnly="False" VerticalGridLinesBrush="Black" FontFamily="NSimSun" FontSize="14">
                 <DataGrid.Columns>
