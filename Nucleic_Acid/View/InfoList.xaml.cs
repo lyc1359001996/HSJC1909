@@ -167,11 +167,19 @@ namespace Nucleic_Acid.View
                  if (arg)
                  {
                      InfoListModel obj = (InfoListModel)dataGrid.SelectedItem;
-                     obj.Editor = false;
-                     List<InfoListModel> source = (List<InfoListModel>)dataGrid.ItemsSource;
-                     obj.updateText = "修改";
-                     dataGrid.ItemsSource = null;
-                     dataGrid.ItemsSource = source;
+                     ResultJson<InfoListModel> resultJson = InfoListService.updateNucleic(obj);
+                     if (resultJson.code=="20000")
+                     {
+                         obj.Editor = false;
+                         List<InfoListModel> source = (List<InfoListModel>)dataGrid.ItemsSource;
+                         obj.updateText = "修改";
+                         dataGrid.ItemsSource = null;
+                         dataGrid.ItemsSource = source;
+                     }
+                     else
+                     {
+                         MessageTips(resultJson.message);
+                     }
                  }
              }));
         }

@@ -32,8 +32,6 @@ namespace Acid.common.Library.config
             request.AddJsonBody(obj);
             var response = client.Execute<dynamic>(request);
             return response.Content;
-            //ResultJson<data> retStu = Newtonsoft.Json.JsonConvert.DeserializeObject<ResultJson<data>>(response.Content);
-            //Console.WriteLine(retStu.data.token);
         }
         private static void call(IRestResponse<dynamic> res, RestRequestAsyncHandle e)
         {

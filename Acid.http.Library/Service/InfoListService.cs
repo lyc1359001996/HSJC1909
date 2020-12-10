@@ -58,5 +58,22 @@ namespace Acid.http.Library.Service
             }
         }
 
+        public static ResultJson<InfoListModel> updateNucleic(InfoListModel requestNucleic) 
+        {
+            try
+            {
+                string url = UrlModel.ip + UrlModel.nucleic_update;
+                string result = HttpUrlConfig.PostBody(url, requestNucleic);
+                ResultJson<InfoListModel> retStu = JsonConvert.DeserializeObject<ResultJson<InfoListModel>>(result);
+                Console.WriteLine(result);
+                return retStu;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return new ResultJson<InfoListModel>() {  code="1",message="修改失败，请稍后重试"};
+            }
+        }
+
     }
 }

@@ -12,6 +12,8 @@ namespace Acid.common.Library.config
         public static readonly string ip = "http://192.168.16.111:8092";
         public static readonly string login = "/user/login";
         public static readonly string nucleic = "/staff-nucleic/page";
+        public static readonly string nucleic_add = "/staff-nucleic/add";
+        public static readonly string nucleic_update = "/staff-nucleic/update";
         public static string Token = "";
     }
 }

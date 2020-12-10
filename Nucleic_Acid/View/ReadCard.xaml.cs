@@ -382,12 +382,8 @@ namespace Nucleic_Acid.View
                 }
             }));
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Grid_Unloaded(object sender, RoutedEventArgs e)
+
+        private void user1_Unloaded(object sender, RoutedEventArgs e)
         {
             //index关闭停止定时器
             autoRead_Timer.Stop();

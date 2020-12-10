@@ -6,6 +6,7 @@ using MaterialDesignThemes.Wpf;
 using Nucleic_Acid.View;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -74,6 +75,7 @@ namespace Nucleic_Acid
             bool? isAuto = CheckBox_isAuto.IsChecked;
             Task.Run(() =>
             {
+                Thread.Sleep(500);//看效果
                 ResultJson<LoginModel> dictionaries = LoginService.Login_Ex(username, password, isRember, isAuto);
                 this.Dispatcher.Invoke(() =>
                 {

@@ -49,7 +49,7 @@ namespace Nucleic_Acid.View
             login_device();//登录设备
             autoRead_Timer.Tick += AutoRead_Timer_Tick;
             autoRead_Timer.Interval = TimeSpan.FromMilliseconds(1000);
-            autoRead_Timer.Start();
+            
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -59,11 +59,12 @@ namespace Nucleic_Acid.View
         private void Init()
         {
             datagrid.Visibility = Visibility.Hidden;
+            autoRead_Timer.Start();
         }
 
 
         #region 遍历设备
-        private void TraverseDevice()
+        private bool TraverseDevice()
         {
             m_aHidDevInfo = new CHCUsbSDK.USB_SDK_DEVICE_INFO[CHCUsbSDK.MAX_USB_DEV_LEN];
             g_nEnumDevIndex = 1;
@@ -72,10 +73,12 @@ namespace Nucleic_Acid.View
             if (CHCUsbSDK.USB_SDK_EnumDevice(m_OnEnumDeviceCallBack, IntPtr.Zero))//枚举设备
             {
                 Console.WriteLine(CHCUsbSDK.INF_LEVEL + "SUCCESS USB_SDK_EnumDevice()");
+                return true;
             }
             else
             {
                 Console.WriteLine(CHCUsbSDK.ERR_LEVEL + "FAILED USB _SDK_EnumDevice()");
+                return false;
             }
         }
 
@@ -388,6 +391,7 @@ namespace Nucleic_Acid.View
 
         private void savedata() 
         {
+
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
