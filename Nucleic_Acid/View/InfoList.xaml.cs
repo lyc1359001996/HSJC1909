@@ -74,7 +74,7 @@ namespace Nucleic_Acid.View
             RequestInfoListModel requestInfoListModel = new RequestInfoListModel()
             {
                 pageNo = page,
-                pageSize = 10,
+                pageSize = pageControl.PageSize,
                 cardNo = staticCardNo == "" ? null : staticCardNo,
                 name = staticName == "" ? null : staticName,
                 testValue = staticTestValue == "-1" ? null : staticTestValue
@@ -87,7 +87,7 @@ namespace Nucleic_Acid.View
             RequestInfoListModel requestInfoListModel = new RequestInfoListModel()
             {
                 pageNo = page,
-                pageSize = 10,
+                pageSize = pageControl.PageSize,
                 cardNo = TextBox_CardNo.Text == "" ? null : TextBox_CardNo.Text,
                 name = TextBox_Name.Text == "" ? null : TextBox_Name.Text,
                 testValue = ComboBox_TestValue.SelectedIndex == -1 ? null : ComboBox_TestValue.SelectedIndex.ToString()

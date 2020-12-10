@@ -36,6 +36,7 @@ namespace Nucleic_Acid.View
         private CHCUsbSDK.USB_SDK_USER_LOGIN_INFO StruCurUsbLoginInfo = new CHCUsbSDK.USB_SDK_USER_LOGIN_INFO();
         private int UserID = -1;
         private List<DeviceModel> deviceModels = new List<DeviceModel>();//存储遍历的设备列表
+        private string deviceSerialNumber = "";//设备编号
         public ReadCardOffline()
         {
             InitializeComponent();
@@ -49,9 +50,13 @@ namespace Nucleic_Acid.View
             login_device();//登录设备
             autoRead_Timer.Tick += AutoRead_Timer_Tick;
             autoRead_Timer.Interval = TimeSpan.FromMilliseconds(1000);
-            
-        }
 
+        }
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             Init();
@@ -125,7 +130,7 @@ namespace Nucleic_Acid.View
             StruCurUsbLoginInfo.szSerialNumber = m_aHidDevInfo[SelectedItemsIndex].szSerialNumber;
             StruCurUsbLoginInfo.szUserName = "admin";
             StruCurUsbLoginInfo.szPassword = "12345";
-
+            deviceSerialNumber = StruCurUsbLoginInfo.szSerialNumber;
             CHCUsbSDK.USB_SDK_DEVICE_REG_RES StruDeviceRegRes = new CHCUsbSDK.USB_SDK_DEVICE_REG_RES();
             StruDeviceRegRes.dwSize = (uint)Marshal.SizeOf(StruDeviceRegRes);
             int UserIDTemp = UserID;
@@ -325,7 +330,16 @@ namespace Nucleic_Acid.View
         /// <param name="e"></param>
         private void AutoRead_Timer_Tick(object sender, EventArgs e)
         {
-            Task.Factory.StartNew(Read_Card);
+            if (UserID != -1)
+            {
+                Task.Factory.StartNew(Read_Card);
+            }
+            else
+            {
+                TraverseDevice();//遍历设备
+                login_device();//登录设备
+            }
+
         }
         /// <summary>
         /// ms转bi
@@ -362,7 +376,10 @@ namespace Nucleic_Acid.View
                 if (isTrue)
                 {
                     Console.WriteLine("打印ing......................");
-                    savedata();
+                    //保存本地
+                    savedata((DataModel)datagrid.SelectedItem);
+                    //同步线上
+
                     //PrintHelper.print("330411199811190011");
                 }
                 else
@@ -389,11 +406,25 @@ namespace Nucleic_Acid.View
             }));
         }
 
-        private void savedata() 
+        private void savedata(DataModel dataModel)
         {
-
+            List<InfoListModel> json = SettingJsonConfig.readData() ?? new List<InfoListModel>();
+            InfoListModel infoListModel = new InfoListModel()
+            {
+                versions = 0,
+                address = dataModel.home,
+                cardNo = dataModel.temp,
+                createTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                testingValue = 0,
+                sex = dataModel.Sex == "男" ? 1 : 0,
+                userName = dataModel.SName,
+                serialNumber = deviceSerialNumber,
+                updateText = "修改",
+                acidNo = new SnowConfig(1).nextId().ToString()
+            };
+            json.Add(infoListModel);
+            SettingJsonConfig.saveData(json);
         }
-
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
             //停止定时器

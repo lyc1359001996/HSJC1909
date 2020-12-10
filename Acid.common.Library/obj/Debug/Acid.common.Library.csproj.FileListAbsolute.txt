@@ -24,7 +24,6 @@ D:\HSJC\HSJC\Acid.common.Library\bin\Debug\Newtonsoft.Json.dll
 D:\HSJC\HSJC\Acid.common.Library\bin\Debug\RestSharp.dll
 D:\HSJC\HSJC\Acid.common.Library\bin\Debug\Newtonsoft.Json.xml
 D:\HSJC\HSJC\Acid.common.Library\bin\Debug\RestSharp.xml
-D:\HSJC\HSJC\Acid.common.Library\obj\Debug\Acid.common.Library.csprojAssemblyReference.cache
 D:\HSJC\HSJC\Acid.common.Library\obj\Debug\Acid.common.Library.csproj.CoreCompileInputs.cache
 D:\HSJC\HSJC\Acid.common.Library\obj\Debug\Acid.common.Library.csproj.CopyComplete
 D:\HSJC\HSJC\Acid.common.Library\obj\Debug\Acid.common.Library.dll
@@ -40,3 +39,4 @@ C:\Users\Administrator\Source\Repos\HSJC19092\Acid.common.Library\obj\Debug\Acid
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.common.Library\obj\Debug\Acid.common.Library.csproj.CopyComplete
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.common.Library\obj\Debug\Acid.common.Library.dll
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.common.Library\obj\Debug\Acid.common.Library.pdb
+D:\HSJC\HSJC\Acid.common.Library\obj\Debug\Acid.common.Library.csprojAssemblyReference.cache

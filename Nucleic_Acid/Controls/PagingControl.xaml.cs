@@ -594,27 +594,29 @@ namespace WpfPaging
         {
             if (e.Key == System.Windows.Input.Key.Enter)
             {
+
                 TextBox that = sender as TextBox;
+                that.Text = that.Text == "" ? "1" : that.Text;
                 Regex re = new Regex("[^0-9.\\-]+");
                 int thispage = int.Parse(re.IsMatch(that.Text) ? "1" : that.Text);
-                if (thispage>this._pageTote)
+                if (thispage > this._pageTote)
                 {
                     thispage = this._pageTote;
                 }
-                else if (thispage<1)
+                else if (thispage < 1)
                 {
                     thispage = 1;
                 }
                 int startpage = 1;
                 //初始化各个分页按钮的状态（最大可选的只有10个页码）
                 int showPageButtonCount = this._pageTote > 10 ? 10 : this._pageTote;
-                if (thispage<=1)
+                if (thispage <= 1)
                 {
                     startpage = 1;
                 }
-                else if(thispage>= this._pageTote)
+                else if (thispage >= this._pageTote)
                 {
-                    if (this._pageTote>9)
+                    if (this._pageTote > 9)
                     {
                         startpage = this._pageTote - 8;
                         showPageButtonCount = _pageTote;
@@ -626,9 +628,9 @@ namespace WpfPaging
                 }
                 else
                 {
-                    if (thispage - 5>0)
+                    if (thispage - 5 > 0)
                     {
-                        if (thispage+4<= this._pageTote)
+                        if (thispage + 4 <= this._pageTote)
                         {
                             startpage = thispage - 5;
                             showPageButtonCount = thispage + 4;
@@ -636,15 +638,15 @@ namespace WpfPaging
                         else
                         {
                             int current = 1;
-                            while (thispage+ current<=this._pageTote)
+                            while (thispage + current <= this._pageTote)
                             {
                                 current++;
                             }
                             current = current - 1;
-                            startpage = _pageTote - 9+ current;
+                            startpage = _pageTote - 9 + current;
                             showPageButtonCount = _pageTote;
                         }
-                        
+
                     }
                     else
                     {
@@ -671,6 +673,25 @@ namespace WpfPaging
         {
             Regex re = new Regex("[^0-9.\\-]+");
             e.Handled = re.IsMatch(e.Text);
+        }
+        /// <summary>
+        /// 页数修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cb = (sender as ComboBox);
+            switch (cb.SelectedIndex)
+            {
+                case 0: this.PageSize = 10; break;
+                case 1: this.PageSize = 20; break;
+                case 2: this.PageSize = 30; break;
+                case 3: this.PageSize = 50; break;
+                default:
+                    this.PageSize = 10;
+                    break;
+            }
         }
     }
 
