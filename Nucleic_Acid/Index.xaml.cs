@@ -1,4 +1,5 @@
-﻿using MaterialDesignThemes.Wpf;
+﻿using Acid.common.Library.config;
+using MaterialDesignThemes.Wpf;
 using Nucleic_Acid.View;
 using System;
 using System.Collections.Generic;
@@ -82,16 +83,16 @@ namespace Nucleic_Acid
         /// <param name="message"></param>
         /// <param name="action"></param>
         /// <param name="e"></param>
-        public async void CancelTips(string message,Action<bool> action,DialogClosingEventHandler e=null)
+        public async void CancelTips(string message, Action<bool> action, DialogClosingEventHandler e = null)
         {
-            if(e==null)
+            if (e == null)
                 e = closingEventHandler;
             var sampleMessageDialog = new CanCancel()
             {
                 Message = { Text = message }
             };
-           await DialogHost.Show(sampleMessageDialog, "ReadDialog", e);
-           action(sampleMessageDialog.IsTrue);
+            await DialogHost.Show(sampleMessageDialog, "ReadDialog", e);
+            action(sampleMessageDialog.IsTrue);
         }
         private void closingEventHandler(object sender, DialogClosingEventArgs eventArgs)
         {
@@ -117,16 +118,20 @@ namespace Nucleic_Acid
         /// <param name="e"></param>
         private void reload_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            CancelTips("确定要重新登录吗？",new Action<bool>(arg => 
-            {
-                if (arg)
-                {
-                    MainWindow main = new MainWindow();
-                    main.Show();
-                    this.Close();
-                }
-            }));
-            
+            CancelTips("确定要重新登录吗？", new Action<bool>(arg =>
+             {
+                 if (arg)
+                 {
+                     SettingModel json = SettingJsonConfig.readJson() ?? new SettingModel();
+                     json.isAuto = false;
+                     SettingJsonConfig.saveJson(json);
+                     MainWindow main = new MainWindow();
+                     main.Show();
+                     this.Close();
+                     
+                 }
+             }));
+
         }
         /// <summary>
         /// 退出程序
@@ -144,6 +149,30 @@ namespace Nucleic_Acid
             }));
 
         }
-        
+        /// <summary>
+        /// 最小化
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Click_Min(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+        /// <summary>
+        /// 关闭
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Click_Close(object sender, RoutedEventArgs e)
+        {
+            CancelTips("确定要关闭程序吗?", new Action<bool>(arg =>
+            {
+                if (arg)
+                {
+                    Application.Current.Shutdown();
+                }
+            }));
+        }
+
     }
 }

@@ -17,8 +17,8 @@
         <Grid Margin="25,10" Background="White">
             <StackPanel Margin="35,0,0,645" Height="55" VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" Width="565" >
                 <TextBox x:Name="TextBox_Name" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="请输入姓名" Margin="0,8" FontFamily="NSimSun" Height="38" FontSize="12" Width="170"/>
-                <TextBox x:Name="TextBox_IdCard" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="请输入身份证号码" Margin="30,8,0,8" Height="38" FontFamily="NSimSun" FontSize="12"  Width="170"/>
-                <ComboBox materialDesign:HintAssist.Hint="请选择状态" Margin="30,14,0,15" Width="80" FontFamily="NSimSun" FontSize="12">
+                <TextBox x:Name="TextBox_CardNo" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="请输入身份证号码" Margin="30,8,0,8" Height="38" FontFamily="NSimSun" FontSize="12"  Width="170"/>
+                <ComboBox x:Name="ComboBox_TestValue" materialDesign:HintAssist.Hint="请选择状态" Margin="30,14,0,15" Width="80" FontFamily="NSimSun" FontSize="12">
                     <ComboBoxItem FontFamily="NSimSun">
                         阴性
                     </ComboBoxItem>
@@ -28,10 +28,10 @@
                 </ComboBox>
             </StackPanel>
             <StackPanel Margin="975,0,0,648" Orientation="Horizontal" HorizontalAlignment="Left" Width="145" Height="50" VerticalAlignment="Bottom">
-                <Button Style="{StaticResource MaterialDesignRaisedLightButton}" materialDesign:ButtonAssist.CornerRadius="5" ToolTip="重置查询" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60">
+                <Button Style="{StaticResource MaterialDesignRaisedLightButton}" materialDesign:ButtonAssist.CornerRadius="5" ToolTip="重置查询" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Click="Button_Click">
                     <TextBlock Text="重置" />
                 </Button>
-                <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="查询" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Margin="20,0,0,0">
+                <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="查询" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Margin="20,0,0,0" Click="Button_Click_1">
                     <TextBlock Text="查询" />
                 </Button>
             </StackPanel>
@@ -45,17 +45,17 @@
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="编号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
                             <DataGridTextColumn.Binding>
-                                <Binding Path="code"/>
+                                <Binding Path="acidNo"/>
                             </DataGridTextColumn.Binding>
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="姓名" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
                             <DataGridTextColumn.Binding>
-                                <Binding Path="name"/>
+                                <Binding Path="userName"/>
                             </DataGridTextColumn.Binding>
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="身份证号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
                             <DataGridTextColumn.Binding>
-                                <Binding Path="idCard"/>
+                                <Binding Path="cardNo"/>
                             </DataGridTextColumn.Binding>
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="性别" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
@@ -70,13 +70,13 @@
                         </DataGridTextColumn>
                         <DataGridTextColumn Header="检测时间" IsReadOnly="True" FontFamily="NSimSun">
                             <DataGridTextColumn.Binding>
-                                <Binding Path="date"/>
+                                <Binding Path="createTime"/>
                             </DataGridTextColumn.Binding>
                         </DataGridTextColumn>
                         <DataGridTemplateColumn Header="检测结果">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <ComboBox x:Name="dataResult" IsEnabled="False" Height="24" materialDesign:HintAssist.Hint="请选择状态" FontFamily="Roboto" FontSize="12" SelectedIndex="{Binding result}">
+                                    <ComboBox x:Name="dataResult" IsEnabled="{Binding Editor}" Height="24" FontFamily="Roboto" FontSize="12" SelectedIndex="{Binding testingValue}" SelectionChanged="dataResult_SelectionChanged">
                                         <ComboBoxItem FontFamily="NSimSun">
                                             阴性
                                         </ComboBoxItem>
@@ -97,8 +97,8 @@
                                         <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="打印" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="55" Margin="20,0,0,0" Height="22">
                                             <TextBlock Text="打印" />
                                         </Button>
-                                        <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="修改" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="55" Margin="20,0,0,0" Height="22">
-                                            <TextBlock x:Name="button_update" Tag="update" Text="修改" />
+                                        <Button x:Name="Button_update" Content="{Binding updateText}" Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="修改" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="55" Margin="20,0,0,0" Height="22" Click="Button_update_Click">
+                                            <!--<TextBlock x:Name="TextBlock_update" Tag="update" Text="修改" />-->
                                         </Button>
                                     </StackPanel>
                                 </DataTemplate>
@@ -106,7 +106,7 @@
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-                <WpfPaging:PagingControl x:Name="pageControl" Height="44" Margin="30,20,0,0" PageSize="19" DataTote="200" Width="890" HorizontalAlignment="Left"/>
+                <WpfPaging:PagingControl x:Name="pageControl" Height="44" Margin="30,20,0,0" PageSize="10" DataTote="0" Width="890" HorizontalAlignment="Left"/>
             </StackPanel>
         </Grid>
     </Grid>

@@ -40,7 +40,7 @@ namespace Acid.http.Library.Service
             else if (resultJson.code == "20000")
             {
                 //存Token
-                UrlModel.Token = resultJson.data.token;
+                UrlModel.Token ="Bearer "+ resultJson.data.token;
                 SettingModel json = SettingJsonConfig.readJson()??new SettingModel();
                 if ((bool)rem)//保存
                 {

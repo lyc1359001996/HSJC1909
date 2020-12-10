@@ -1,4 +1,8 @@
-﻿using Nucleic_Acid.Model;
+﻿using Acid.http.Library.RequestModel;
+using Acid.http.Library.ResponseModel;
+using Acid.http.Library.Service;
+using MaterialDesignThemes.Wpf;
+using Nucleic_Acid.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,15 +26,19 @@ namespace Nucleic_Acid.View
     /// </summary>
     public partial class InfoList : UserControl
     {
+        private string staticName = "";
+        private string staticCardNo = "";
+        private string staticTestValue = "-1";
         public InfoList()
         {
             InitializeComponent();
             pageControl.OnPagesChanged += PageControl_OnPagesChanged;
+            InitDataGrid();
         }
 
         private void PageControl_OnPagesChanged(object sender, WpfPaging.PagesChangedArgs e)
         {
-            Console.WriteLine(((PagingControl)sender).CurrentPage);
+            QuerySelect_page(((PagingControl)sender).CurrentPage);
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -39,24 +47,147 @@ namespace Nucleic_Acid.View
         }
         private void Init()
         {
-            List<ReadInfoModel> readInfoModels = new List<ReadInfoModel>();
-            ReadInfoModel Items2;
-            for (int i = 0; i < 100; i++)
+
+        }
+        private void SetInfoList(RequestInfoListModel requestInfoListModel)
+        {
+            ResultJson<ResponseInfoListModel> resultJson = InfoListService.getQuery(requestInfoListModel);
+            if (resultJson.code == "20000")
             {
-                Items2 = new ReadInfoModel()
-                {
-                    index = i,
-                    code = "123",
-                    name = "爸爸",
-                    idCard = "33041119981190011",
-                    address = "浙江省金华市义乌市稠江街道总部经济园",
-                    date = "2020-12-05 12:00:00",
-                    sex = "男",
-                    result = 1
-                };
-                readInfoModels.Add(Items2);
+                pageControl.DataTote = resultJson.data.total;
+                dataGrid.ItemsSource = resultJson.data.addIndex(resultJson.data.data) ?? new List<InfoListModel>();
             }
-            dataGrid.ItemsSource = readInfoModels;
+            else
+            {
+                dataGrid.ItemsSource = new List<InfoListModel>();
+
+            }
+        }
+
+        private void InitDataGrid()
+        {
+            SetInfoList(new RequestInfoListModel(1, 10));
+        }
+
+        private void QuerySelect_page(int page)
+        {
+            RequestInfoListModel requestInfoListModel = new RequestInfoListModel()
+            {
+                pageNo = page,
+                pageSize = 10,
+                cardNo = staticCardNo == "" ? null : staticCardNo,
+                name = staticName == "" ? null : staticName,
+                testValue = staticTestValue == "-1" ? null : staticTestValue
+            };
+            SetInfoList(requestInfoListModel);
+        }
+
+        private void QuerySelect_click(int page)
+        {
+            RequestInfoListModel requestInfoListModel = new RequestInfoListModel()
+            {
+                pageNo = page,
+                pageSize = 10,
+                cardNo = TextBox_CardNo.Text == "" ? null : TextBox_CardNo.Text,
+                name = TextBox_Name.Text == "" ? null : TextBox_Name.Text,
+                testValue = ComboBox_TestValue.SelectedIndex == -1 ? null : ComboBox_TestValue.SelectedIndex.ToString()
+            };
+            SetInfoList(requestInfoListModel);
+            //绑定静态值
+            staticName = TextBox_Name.Text;
+            staticCardNo = TextBox_CardNo.Text;
+            staticTestValue = ComboBox_TestValue.SelectedIndex.ToString();
+        }
+
+        public void MessageTips(string message)
+        {
+            MainWindow.index.MessageTips(message);
+        }
+
+        public void CancelTips(string message, Action<bool> action, DialogClosingEventHandler e = null)
+        {
+            MainWindow.index.CancelTips(message, action, e);
+        }
+
+        /// <summary>
+        /// 重置查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            staticName = "";
+            staticCardNo = "";
+            staticTestValue = "-1";
+            TextBox_CardNo.Clear();
+            TextBox_Name.Clear();
+            ComboBox_TestValue.SelectedIndex = -1;
+            InitDataGrid();
+        }
+
+        /// <summary>
+        /// 条件查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            QuerySelect_click(1);
+        }
+        /// <summary>
+        /// 点击修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_update_Click(object sender, RoutedEventArgs e)
+        {
+            Button tag = (sender as Button);
+            if (tag.Content.ToString()=="修改")
+            {
+                InfoListModel obj = (InfoListModel)dataGrid.SelectedItem;
+                obj.Editor = true;
+                List<InfoListModel> source = (List<InfoListModel>)dataGrid.ItemsSource;
+                obj.updateText = "保存";
+                dataGrid.ItemsSource = null;
+                dataGrid.ItemsSource = source;
+            }
+            else
+            {
+                //确认保存
+                CancelSave();
+            }
+        }
+        /// <summary>
+        /// 确认保存
+        /// </summary>
+        private void CancelSave() 
+        {
+            CancelTips("确认要修改?", new Action<bool>(arg =>
+             {
+                 if (arg)
+                 {
+                     InfoListModel obj = (InfoListModel)dataGrid.SelectedItem;
+                     obj.Editor = false;
+                     List<InfoListModel> source = (List<InfoListModel>)dataGrid.ItemsSource;
+                     obj.updateText = "修改";
+                     dataGrid.ItemsSource = null;
+                     dataGrid.ItemsSource = source;
+                 }
+             }));
+        }
+        /// <summary>
+        /// 修改检测结果
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataResult_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox comboBox = (sender as ComboBox);
+            InfoListModel obj = (InfoListModel)dataGrid.SelectedItem;
+            if (obj!=null)
+            {
+                obj.testingValue = comboBox.SelectedIndex;
+            }
         }
     }
 }
