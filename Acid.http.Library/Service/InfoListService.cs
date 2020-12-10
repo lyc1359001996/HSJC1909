@@ -57,7 +57,11 @@ namespace Acid.http.Library.Service
                 return null;
             }
         }
-
+        /// <summary>
+        /// 更新检测
+        /// </summary>
+        /// <param name="requestNucleic"></param>
+        /// <returns></returns>
         public static ResultJson<ResponseModel.InfoListModel> updateNucleic(ResponseModel.InfoListModel requestNucleic) 
         {
             try
@@ -72,6 +76,28 @@ namespace Acid.http.Library.Service
             {
                 Console.WriteLine(ex.Message);
                 return new ResultJson<ResponseModel.InfoListModel>() {  code="1",message="修改失败，请稍后重试"};
+            }
+        }
+
+        /// <summary>
+        /// 新增检测
+        /// </summary>
+        /// <param name="requestNucleic"></param>
+        /// <returns></returns>
+        public static ResultJson<string> addNucleic(List<ResponseModel.InfoListModel> requestNucleic)
+        {
+            try
+            {
+                string url = UrlModel.ip + UrlModel.nucleic_add;
+                string result = HttpUrlConfig.PostBody(url, requestNucleic);
+                ResultJson<string> retStu = JsonConvert.DeserializeObject<ResultJson<string>>(result);
+                Console.WriteLine(result);
+                return retStu;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return new ResultJson<string>() { code = "1", message = "新增失败，请稍后重试" };
             }
         }
 

@@ -1,4 +1,6 @@
-﻿using Acid.print.Library;
+﻿using Acid.common.Library.config;
+using Acid.http.Library.Service;
+using Acid.print.Library;
 using Acid.SDK.Library;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -34,6 +36,7 @@ namespace Nucleic_Acid.View
         private CHCUsbSDK.USB_SDK_USER_LOGIN_INFO StruCurUsbLoginInfo = new CHCUsbSDK.USB_SDK_USER_LOGIN_INFO();
         private int UserID = -1;
         private List<DeviceModel> deviceModels = new List<DeviceModel>();//存储遍历的设备列表
+        private string deviceSerialNumber = "";//设备编号
         public ReadCard()
         {
             InitializeComponent();
@@ -120,7 +123,7 @@ namespace Nucleic_Acid.View
             StruCurUsbLoginInfo.szSerialNumber = m_aHidDevInfo[SelectedItemsIndex].szSerialNumber;
             StruCurUsbLoginInfo.szUserName = "admin";
             StruCurUsbLoginInfo.szPassword = "12345";
-
+            deviceSerialNumber = StruCurUsbLoginInfo.szSerialNumber;
             CHCUsbSDK.USB_SDK_DEVICE_REG_RES StruDeviceRegRes = new CHCUsbSDK.USB_SDK_DEVICE_REG_RES();
             StruDeviceRegRes.dwSize = (uint)Marshal.SizeOf(StruDeviceRegRes);
             int UserIDTemp = UserID;
@@ -342,12 +345,12 @@ namespace Nucleic_Acid.View
         /// <param name="message"></param>
         public void MessageTips(string message)
         {
-           MainWindow.index.MessageTips(message);
+            MainWindow.index.MessageTips(message);
         }
 
-        public void CancelTips(string message,Action<bool> action, DialogClosingEventHandler e=null)
+        public void CancelTips(string message, Action<bool> action, DialogClosingEventHandler e = null)
         {
-            MainWindow.index.CancelTips(message, action,e);
+            MainWindow.index.CancelTips(message, action, e);
         }
 
         private void Print_Click(object sender, RoutedEventArgs e)
@@ -357,6 +360,11 @@ namespace Nucleic_Acid.View
                  if (isTrue)
                  {
                      Console.WriteLine("打印ing......................");
+                     string snowid = new SnowConfig(1).nextId().ToString();
+                     //保存本地
+                     savedata((DataModel)datagrid.SelectedItem, snowid);
+                     //同步线上
+                     saveonline((DataModel)datagrid.SelectedItem, snowid);
                      //PrintHelper.print("330411199811190011");
                  }
                  else
@@ -364,9 +372,58 @@ namespace Nucleic_Acid.View
                      Console.WriteLine("取消打印....................");
                  }
              }));
-           
-        }
 
+        }
+        /// <summary>
+        /// 保存本地数据
+        /// </summary>
+        /// <param name="dataModel"></param>
+        /// <param name="snowID"></param>
+        private void savedata(DataModel dataModel,string snowID)
+        {
+            List<InfoListModel> json = SettingJsonConfig.readData() ?? new List<InfoListModel>();
+            InfoListModel infoListModel = new InfoListModel()
+            {
+                versions = 0,
+                address = dataModel.home,
+                cardNo = dataModel.temp,
+                createTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                testingValue = 0,
+                sex = dataModel.Sex == "男" ? 1 : 0,
+                userName = dataModel.SName,
+                serialNumber = deviceSerialNumber,
+                updateText = "修改",
+                acidNo = snowID
+            };
+            json.Add(infoListModel);
+            SettingJsonConfig.saveData(json);
+        }
+        /// <summary>
+        /// 上传数据到线上
+        /// </summary>
+        /// <param name="dataModel"></param>
+        /// <param name="snowID"></param>
+        /// <returns></returns>
+        private Acid.http.Library.ResponseModel.ResultJson<string> saveonline(DataModel dataModel, string snowID)
+        {
+            List<Acid.http.Library.ResponseModel.InfoListModel> infoListModels = new List<Acid.http.Library.ResponseModel.InfoListModel>();
+            Acid.http.Library.ResponseModel.InfoListModel infoListModel = new Acid.http.Library.ResponseModel.InfoListModel()
+            {
+                versions = 0,
+                address = dataModel.home,
+                cardNo = dataModel.temp,
+                createTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                testingValue = 0,
+                sex = dataModel.Sex == "男" ? 1 : 0,
+                userName = dataModel.SName,
+                serialNumber = deviceSerialNumber,
+                updateText = "修改",
+                acidNo = snowID
+            };
+            infoListModels.Add(infoListModel);
+            Acid.http.Library.ResponseModel.ResultJson<string> resultJson = InfoListService.addNucleic(infoListModels);
+            return resultJson;
+        }
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             CancelTips("确定要删除吗？", new Action<bool>(isTrue =>
