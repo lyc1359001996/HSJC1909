@@ -594,7 +594,9 @@ namespace WpfPaging
         {
             if (e.Key == System.Windows.Input.Key.Enter)
             {
+
                 TextBox that = sender as TextBox;
+                that.Text = that.Text == "" ? "1" : that.Text;
                 Regex re = new Regex("[^0-9.\\-]+");
                 int thispage = int.Parse(re.IsMatch(that.Text) ? "1" : that.Text);
                 if (thispage > this._pageTote)

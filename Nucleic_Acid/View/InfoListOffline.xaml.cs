@@ -155,7 +155,12 @@ namespace Nucleic_Acid.View
         /// <param name="e"></param>
         private void dataResult_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            ComboBox comboBox = (sender as ComboBox);
+            InfoListModel obj = (InfoListModel)dataGrid.SelectedItem;
+            if (obj != null)
+            {
+                obj.testingValue = comboBox.SelectedIndex;
+            }
         }
         /// <summary>
         /// 修改
@@ -164,7 +169,58 @@ namespace Nucleic_Acid.View
         /// <param name="e"></param>
         private void Button_update_Click(object sender, RoutedEventArgs e)
         {
+            Button tag = (sender as Button);
+            if (tag.Content.ToString() == "修改")
+            {
+                InfoListModel obj = (InfoListModel)dataGrid.SelectedItem;
+                obj.Editor = true;
+                List<InfoListModel> source = (List<InfoListModel>)dataGrid.ItemsSource;
+                obj.updateText = "保存";
+                dataGrid.ItemsSource = null;
+                dataGrid.ItemsSource = source;
+            }
+            else
+            {
+                //确认保存
+                CancelSave();
+            }
+        }
+        /// <summary>
+        /// 确认保存
+        /// </summary>
+        private void CancelSave()
+        {
+            CancelTips("确认要修改?", new Action<bool>(arg =>
+            {
+                if (arg)
+                {
+                    try
+                    {
+                        InfoListModel obj = (InfoListModel)dataGrid.SelectedItem;
+                        List<InfoListModel> lists = SettingJsonConfig.readData();
+                        lists.Where(u => u.acidNo == obj.acidNo).SingleOrDefault().testingValue = obj.testingValue;
+                        SettingJsonConfig.saveData(lists);
+                        obj.Editor = false;
+                        List<InfoListModel> source = (List<InfoListModel>)dataGrid.ItemsSource;
+                        obj.updateText = "修改";
+                        dataGrid.ItemsSource = null;
+                        dataGrid.ItemsSource = source;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageTips(ex.Message);
+                    }
+                }
+            }));
+        }
+        public void MessageTips(string message)
+        {
+            MainWindow.indexoffline.MessageTips(message);
+        }
 
+        public void CancelTips(string message, Action<bool> action)
+        {
+            MainWindow.indexoffline.CancelTips(message, action, null);
         }
     }
-    }
+}
