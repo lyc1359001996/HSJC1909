@@ -174,5 +174,9 @@ namespace Nucleic_Acid
             }));
         }
 
+        private void Click_Max(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = this.WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+        }
     }
 }
