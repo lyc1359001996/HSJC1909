@@ -6,6 +6,7 @@ using MaterialDesignThemes.Wpf;
 using Nucleic_Acid.View;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -66,17 +67,30 @@ namespace Nucleic_Acid
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            ResultJson<LoginModel> dictionaries = LoginService.Login_Ex(userNameBox.Text, passWordBox.Password, CheckBox_isRember.IsChecked, CheckBox_isAuto.IsChecked);
-            if (dictionaries.code == "20000")
+            LogindTips();
+            string username = userNameBox.Text;
+            string password = passWordBox.Password;
+            bool? isRember = CheckBox_isRember.IsChecked;
+            bool? isAuto = CheckBox_isAuto.IsChecked;
+            Task.Run(() =>
             {
-                this.Hide();
-                index = new Index();
-                index.Show();
-            }
-            else
-            {
-                MessageTips(dictionaries.message, sender, e);
-            }
+                ResultJson<LoginModel> dictionaries = LoginService.Login_Ex(username, password, isRember, isAuto);
+                this.Dispatcher.Invoke(() =>
+                {
+                    DialogHost.Close("LoginDialog");
+                    if (dictionaries.code == "20000")
+                    {
+                        this.Hide();
+                        index = new Index();
+                        index.Show();
+                    }
+                    else
+                    {
+                        MessageTips(dictionaries.message, sender, e);
+                    }
+                });
+            });
+            
         }
 
 
@@ -86,6 +100,12 @@ namespace Nucleic_Acid
             {
                 Message = { Text = message }
             };
+            await DialogHost.Show(sampleMessageDialog, "LoginDialog");
+        }
+
+        public async void LogindTips()
+        {
+            var sampleMessageDialog = new SampleProgressDialog();
             await DialogHost.Show(sampleMessageDialog, "LoginDialog");
         }
     }

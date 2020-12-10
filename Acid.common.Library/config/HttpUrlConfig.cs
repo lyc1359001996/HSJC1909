@@ -19,16 +19,26 @@ namespace Acid.common.Library.config
         /// <param name="obj"></param>
         /// <param name="Token"></param>
         /// <returns></returns>
-        public static string PostBody(string url, object obj, string Token="")
+        public static string PostBody(string url, object obj)
         {
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             request.AddHeader("Content-Type", "application/json");
+            request.Timeout = 10000;
+            if (UrlModel.Token != "")
+            {
+                request.AddHeader("authorization", UrlModel.Token);
+            }
             request.AddJsonBody(obj);
             var response = client.Execute<dynamic>(request);
             return response.Content;
             //ResultJson<data> retStu = Newtonsoft.Json.JsonConvert.DeserializeObject<ResultJson<data>>(response.Content);
             //Console.WriteLine(retStu.data.token);
+        }
+        private static void call(IRestResponse<dynamic> res, RestRequestAsyncHandle e)
+        {
+            Console.WriteLine(res.Content);
+            Console.WriteLine(e);
         }
         /// <summary>
         /// 表单
@@ -37,7 +47,7 @@ namespace Acid.common.Library.config
         /// <param name="obj"></param>
         /// <param name="Token"></param>
         /// <returns></returns>
-        public static string PostForm(string url, object obj, string Token="")
+        public static string PostForm(string url, object obj, string Token = "")
         {
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
@@ -84,7 +94,7 @@ namespace Acid.common.Library.config
             url = url.Substring(0, url.Length - 1);
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
-            
+
             request.AddHeader("Content-Type", "application/json");
             request.AddHeader("authorization", UrlModel.Token);
             var response = client.Execute<dynamic>(request);
@@ -97,11 +107,11 @@ namespace Acid.common.Library.config
         /// <param name="obj"></param>
         /// <param name="Token"></param>
         /// <returns></returns>
-        public static string GetForm(string url, object obj, string Token="")
+        public static string GetForm(string url, object obj, string Token = "")
         {
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
-            request.AddHeader("authorization",Token);
+            request.AddHeader("authorization", Token);
             var response = client.Execute<dynamic>(request);
             return response.Content;
         }
@@ -112,7 +122,7 @@ namespace Acid.common.Library.config
             foreach (PropertyInfo item in propertyInfos)
             {
                 object v = item.GetValue(obj);
-                if (v!=null)
+                if (v != null)
                 {
                     Parameter parameter1 = new Parameter();
                     parameter1.Name = item.Name;

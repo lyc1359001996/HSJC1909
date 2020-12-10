@@ -35,7 +35,7 @@ namespace Acid.http.Library.Service
             ResultJson<LoginModel> resultJson = Login(username, password);
             if (resultJson == null)
             {
-                return new ResultJson<LoginModel>() { code = "1", message = "网络连接异常" };
+                return new ResultJson<LoginModel>() { code = "1", message = "无法连接远程服务器" };
             }
             else if (resultJson.code == "20000")
             {
