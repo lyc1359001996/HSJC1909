@@ -15,7 +15,7 @@
              mc:Ignorable="d" d:DesignHeight="758" d:DesignWidth="1200" Loaded="UserControl_Loaded">
     <Grid Background="#FFD3D1D1">
         <Grid Margin="25,10" Background="White">
-            <StackPanel Margin="35,0,0,645" Height="55" VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" Width="565" >
+            <StackPanel Margin="35,38,0,0" Orientation="Horizontal" HorizontalAlignment="Left" Width="565" Height="55" VerticalAlignment="Top" >
                 <TextBox x:Name="TextBox_Name" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="请输入姓名" Margin="0,8" FontFamily="NSimSun" Height="38" FontSize="12" Width="170"/>
                 <TextBox x:Name="TextBox_CardNo" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="请输入身份证号码" Margin="30,8,0,8" Height="38" FontFamily="NSimSun" FontSize="12"  Width="170"/>
                 <ComboBox x:Name="ComboBox_TestValue" materialDesign:HintAssist.Hint="请选择状态" Margin="30,14,0,15" Width="80" FontFamily="NSimSun" FontSize="12">
@@ -27,7 +27,7 @@
                     </ComboBoxItem>
                 </ComboBox>
             </StackPanel>
-            <StackPanel Margin="975,0,0,648" Orientation="Horizontal" HorizontalAlignment="Left" Width="145" Height="50" VerticalAlignment="Bottom">
+            <StackPanel Margin="0,40,30,0" Orientation="Horizontal" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right" Width="145">
                 <Button Style="{StaticResource MaterialDesignRaisedLightButton}" materialDesign:ButtonAssist.CornerRadius="5" ToolTip="重置查询" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Click="Button_Click">
                     <TextBlock Text="重置" />
                 </Button>

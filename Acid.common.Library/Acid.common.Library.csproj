@@ -50,8 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="config\HttpUrlConfig.cs" />
+    <Compile Include="config\InfoListModel.cs" />
     <Compile Include="config\SettingJsonConfig.cs" />
     <Compile Include="config\SettingModel.cs" />
+    <Compile Include="config\SnowConfig.cs" />
     <Compile Include="config\UrlModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

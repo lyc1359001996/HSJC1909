@@ -43,7 +43,7 @@ namespace Acid.common.Library.config
             File.WriteAllText(fp, JsonConvert.SerializeObject(obj));
         }
 
-        public static SettingModel readData()
+        public static List<InfoListModel> readData()
         {
             string fp = "C:\\data.json";
             if (!File.Exists(fp))  // 判断是否存在文件 
@@ -51,7 +51,7 @@ namespace Acid.common.Library.config
                 FileStream fs1 = new FileStream(fp, FileMode.Create, FileAccess.ReadWrite);
                 fs1.Close();
             }
-            return JsonConvert.DeserializeObject<SettingModel>(File.ReadAllText(fp));  // 尖括号<>中填入对象的类名 
+            return JsonConvert.DeserializeObject<List<InfoListModel>>(File.ReadAllText(fp));  // 尖括号<>中填入对象的类名 
         }
     }
 }

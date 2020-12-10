@@ -33,6 +33,20 @@
             <Label Content="跳至" VerticalAlignment="Center"/>
             <TextBox Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" VerticalAlignment="Top" AcceptsReturn="False" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" materialDesign:HintAssist.Hint="页数" KeyDown="TextBox_KeyDown" PreviewTextInput="TextBox_PreviewTextInput" />
             <Label Content="页" VerticalAlignment="Center"/>
+            <ComboBox Margin="10,0,0,0" SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBoxItem IsSelected="True">
+                    10条/页
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    20条/页
+                </ComboBoxItem>
+                <ComboBoxItem>
+                   30条/页
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    50条/页
+                </ComboBoxItem>
+            </ComboBox>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Acid.http.Library.ResponseModel
+namespace Acid.common.Library.config
 {
     public class InfoListModel
     {
