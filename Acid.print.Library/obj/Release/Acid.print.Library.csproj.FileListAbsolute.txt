@@ -3,3 +3,4 @@ D:\HSJC\HSJC\Acid.print.Library\bin\Release\Acid.print.Library.pdb
 D:\HSJC\HSJC\Acid.print.Library\obj\Release\Acid.print.Library.csproj.CoreCompileInputs.cache
 D:\HSJC\HSJC\Acid.print.Library\obj\Release\Acid.print.Library.dll
 D:\HSJC\HSJC\Acid.print.Library\obj\Release\Acid.print.Library.pdb
+D:\HSJC\HSJC\Acid.print.Library\obj\Release\Acid.print.Library.csprojAssemblyReference.cache
