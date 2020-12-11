@@ -10,16 +10,11 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              TextElement.FontWeight="Medium"
              TextElement.FontSize="14"
-             FontFamily="{materialDesign:MaterialDesignFont}"
-             d:DesignWidth="300" MaxWidth="400" Height="166">
-    <Grid Margin="16">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="77*" />
-            <RowDefinition Height="57*" />
-        </Grid.RowDefinitions>
-        <TextBlock x:Name="Message" Margin="134,28,134,21" FontSize="14" Grid.Row="0" HorizontalAlignment="Center" FontFamily="Microsoft YaHei" TextWrapping="Wrap" Width="0" />
-        <Button Grid.Row="1" IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Center" Margin="104,17,104,16" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Foreground="#FF008EFF" FontFamily="NSimSun" Height="Auto" Width="60">
-            确认
-        </Button>
+             FontFamily="{materialDesign:MaterialDesignFont}" MaxWidth="400" Height="97.31" Width="auto">
+    <Grid>
+        <StackPanel>
+            <TextBlock Margin="28,20,27,0"  x:Name="Message" Text="sadaasdsadasdsadas"   FontFamily="Microsoft YaHei" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </StackPanel>
+        <Button IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Center" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Foreground="#FF008EFF" FontFamily="NSimSun" Height="33" Width="60" Content="确认" Margin="66,0,67,6" VerticalAlignment="Bottom"/>
     </Grid>
 </UserControl>
