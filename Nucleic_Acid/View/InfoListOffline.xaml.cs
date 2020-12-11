@@ -46,7 +46,7 @@ namespace Nucleic_Acid.View
         }
         private void Init()
         {
-            
+
         }
 
         private void SetInfoList(RequestInfoListModel requestInfoListModel)
