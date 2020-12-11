@@ -1,0 +1,11 @@
+D:\HSJC\HSJC\Acid.SDK.Library\bin\Release\Acid.SDK.Library.dll
+D:\HSJC\HSJC\Acid.SDK.Library\bin\Release\Acid.SDK.Library.pdb
+D:\HSJC\HSJC\Acid.SDK.Library\bin\Release\zxing.dll
+D:\HSJC\HSJC\Acid.SDK.Library\bin\Release\zxing.presentation.dll
+D:\HSJC\HSJC\Acid.SDK.Library\bin\Release\zxing.xml
+D:\HSJC\HSJC\Acid.SDK.Library\bin\Release\zxing.presentation.xml
+D:\HSJC\HSJC\Acid.SDK.Library\obj\Release\Acid.SDK.Library.csprojAssemblyReference.cache
+D:\HSJC\HSJC\Acid.SDK.Library\obj\Release\Acid.SDK.Library.csproj.CoreCompileInputs.cache
+D:\HSJC\HSJC\Acid.SDK.Library\obj\Release\Acid.SDK.Library.csproj.CopyComplete
+D:\HSJC\HSJC\Acid.SDK.Library\obj\Release\Acid.SDK.Library.dll
+D:\HSJC\HSJC\Acid.SDK.Library\obj\Release\Acid.SDK.Library.pdb

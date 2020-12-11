@@ -303,3 +303,5 @@ C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Debug\Nucleic_Aci
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Debug\Nucleic_Acid.pdb
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Debug\View\LodingText.g.cs
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Debug\View\LodingText.baml
+D:\HSJC\HSJC\Nucleic_Acid\obj\Debug\View\LodingText.g.cs
+D:\HSJC\HSJC\Nucleic_Acid\obj\Debug\View\LodingText.baml
