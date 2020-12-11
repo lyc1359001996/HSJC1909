@@ -51,7 +51,7 @@ namespace Nucleic_Acid.View
 
         private void SetInfoList(RequestInfoListModel requestInfoListModel)
         {
-            List<InfoListModel> lists = SettingJsonConfig.readData();
+            List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
             if (lists!=null)
             {
                 if (requestInfoListModel.testValue!=null)
@@ -198,10 +198,10 @@ namespace Nucleic_Acid.View
                     try
                     {
                         InfoListModel obj = (InfoListModel)dataGrid.SelectedItem;
-                        List<InfoListModel> lists = SettingJsonConfig.readData();
+                        List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
                         InfoListModel infoListModel = lists.Where(u => u.acidNo == obj.acidNo).SingleOrDefault();
                         infoListModel.testingValue = obj.testingValue;
-                        infoListModel.versions = 0;
+                        infoListModel.versions = obj.versions==0?0:3;
                         SettingJsonConfig.saveData(lists);
                         obj.Editor = false;
                         List<InfoListModel> source = (List<InfoListModel>)dataGrid.ItemsSource;
@@ -263,7 +263,7 @@ namespace Nucleic_Acid.View
                 if (arg)
                 {
                     InfoListModel obj = (InfoListModel)dataGrid.SelectedItem;
-                    List<InfoListModel> lists = SettingJsonConfig.readData();
+                    List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
                     InfoListModel infoListModel = lists.Where(u => u.acidNo == obj.acidNo).SingleOrDefault();
                     lists.Remove(infoListModel);//移除
                     SettingJsonConfig.saveData(lists);//保存

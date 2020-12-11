@@ -1,10 +1,13 @@
 ﻿using Acid.common.Library.config;
+using Acid.http.Library.Service;
 using MaterialDesignThemes.Wpf;
+using Newtonsoft.Json;
 using Nucleic_Acid.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,14 +27,10 @@ namespace Nucleic_Acid
     {
         ReadCard V_readCard;
         InfoList V_infoList;
-        public Index()
+        public Index(string name)
         {
             InitializeComponent();
-            if (V_readCard == null)
-            {
-                V_readCard = new ReadCard();
-            }
-            DataContext = V_readCard;
+            Label_Name.Content = name;
         }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
@@ -93,6 +92,15 @@ namespace Nucleic_Acid
             };
             await DialogHost.Show(sampleMessageDialog, "ReadDialog", e);
             action(sampleMessageDialog.IsTrue);
+        }
+
+        public async void LoadingTips(string message)
+        {
+            var sampleMessageDialog = new LodingText()
+            {
+                Message = { Text = message }
+            };
+            await DialogHost.Show(sampleMessageDialog, "ReadDialog");
         }
         private void closingEventHandler(object sender, DialogClosingEventArgs eventArgs)
         {
@@ -177,6 +185,87 @@ namespace Nucleic_Acid
         private void Click_Max(object sender, RoutedEventArgs e)
         {
             this.WindowState = this.WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+        }
+
+        /// <summary>
+        /// 同步本地线上
+        /// </summary>
+        private void synchronization() 
+        {
+            //LoadingTips("正在同步数据...");
+            Task.Factory.StartNew(synchronousData);
+        }
+        private void synchronousData()
+        {
+            List<InfoListModel> lists = SettingJsonConfig.readData()??new List<InfoListModel>();
+            
+            if (lists.Count>0)
+            {
+                synchronousAdd(lists);//同步新增
+                synchronousUpdate(lists);//同步修改的
+            }
+            this.Dispatcher.Invoke(() => { SnackbarTwo.IsActive = true; });
+            Thread.Sleep(5000);//5秒后自动关闭
+            this.Dispatcher.Invoke(() => { SnackbarTwo.IsActive = false; });
+        }
+
+        private void synchronousAdd(List<InfoListModel> lists) 
+        {
+            List<InfoListModel> newlist = lists.Where(u => u.versions == 0).ToList();
+            string str = JsonConvert.SerializeObject(newlist);
+            List<Acid.http.Library.ResponseModel.InfoListModel> lists1 = JsonConvert.DeserializeObject<List<Acid.http.Library.ResponseModel.InfoListModel>>(str);
+            Acid.http.Library.ResponseModel.ResultJson<string> resultJson = InfoListService.addNucleic(lists1);
+            if (resultJson.code == "20000")
+            {
+                foreach (var item in lists.Where(u => u.versions == 0).ToList())
+                {
+                    item.versions = 1;
+                }
+                SettingJsonConfig.saveData(lists);
+                Console.WriteLine("新增:" + newlist.Count + "条数据");
+            }
+        }
+        private void synchronousUpdate(List<InfoListModel> lists)
+        {
+            List<InfoListModel> newlist = lists.Where(u => u.versions == 3).ToList();
+            string str = JsonConvert.SerializeObject(newlist);
+            List<Acid.http.Library.ResponseModel.InfoListModel> lists1 = JsonConvert.DeserializeObject<List<Acid.http.Library.ResponseModel.InfoListModel>>(str);
+            Acid.http.Library.ResponseModel.ResultJson<string> resultJson = InfoListService.updateNucleic(lists1);
+            if (resultJson.code == "20000")
+            {
+                foreach (var item in lists.Where(u => u.versions == 3).ToList())
+                {
+                    item.versions = 1;
+                }
+                SettingJsonConfig.saveData(lists);
+                Console.WriteLine("更新:" + newlist.Count + "条数据");
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            SettingModel settingModel = SettingJsonConfig.readJson() ?? new SettingModel();
+            autoPrint.IsChecked = settingModel.AutoPrint;
+            UrlModel.autoPrint = settingModel.AutoPrint;
+            synchronization();
+            if (V_readCard == null)
+            {
+                V_readCard = new ReadCard();
+            }
+            DataContext = V_readCard;
+        }
+
+        private void SnackbarMessage_ActionClick(object sender, RoutedEventArgs e)
+        {
+            SnackbarTwo.IsActive = false;
+        }
+
+        private void autoPrint_Checked(object sender, RoutedEventArgs e)
+        {
+            SettingModel settingModel = SettingJsonConfig.readJson() ?? new SettingModel();
+            settingModel.AutoPrint = autoPrint.IsChecked ?? false;
+            UrlModel.autoPrint = settingModel.AutoPrint;
+            SettingJsonConfig.saveJson(settingModel);
         }
     }
 }

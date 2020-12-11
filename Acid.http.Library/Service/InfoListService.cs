@@ -62,20 +62,20 @@ namespace Acid.http.Library.Service
         /// </summary>
         /// <param name="requestNucleic"></param>
         /// <returns></returns>
-        public static ResultJson<ResponseModel.InfoListModel> updateNucleic(ResponseModel.InfoListModel requestNucleic) 
+        public static ResultJson<string> updateNucleic(List<ResponseModel.InfoListModel> requestNucleic) 
         {
             try
             {
                 string url = UrlModel.ip + UrlModel.nucleic_update;
                 string result = HttpUrlConfig.PostBody(url, requestNucleic);
-                ResultJson<ResponseModel.InfoListModel> retStu = JsonConvert.DeserializeObject<ResultJson<ResponseModel.InfoListModel>>(result);
+                ResultJson<string> retStu = JsonConvert.DeserializeObject<ResultJson<string>>(result);
                 Console.WriteLine(result);
                 return retStu;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return new ResultJson<ResponseModel.InfoListModel>() {  code="1",message="修改失败，请稍后重试"};
+                return new ResultJson<string>() {  code="1",message="修改失败，请稍后重试"};
             }
         }
 

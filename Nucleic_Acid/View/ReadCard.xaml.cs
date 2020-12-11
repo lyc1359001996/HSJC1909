@@ -6,6 +6,7 @@ using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -22,6 +23,7 @@ namespace Nucleic_Acid.View
     /// </summary>
     public partial class ReadCard : UserControl
     {
+        private bool clearData = false;
         public List<DataModel> Items2 { get; set; }//datagrid数据源
         DispatcherTimer autoRead_Timer = new DispatcherTimer();//自动读卡
         PrintDialog dialog = new PrintDialog();//打印对象
@@ -34,7 +36,6 @@ namespace Nucleic_Acid.View
         //private int IndexOfInfo = INITIALIZED_INDEX;//信息列表更新信息的索引,初始值为1
         private int SelectedItemsIndex = INITIALIZED_INDEX;//登录设备时选中的索引
         private CHCUsbSDK.USB_SDK_USER_LOGIN_INFO StruCurUsbLoginInfo = new CHCUsbSDK.USB_SDK_USER_LOGIN_INFO();
-        private int UserID = -1;
         private List<DeviceModel> deviceModels = new List<DeviceModel>();//存储遍历的设备列表
         private string deviceSerialNumber = "";//设备编号
         public ReadCard()
@@ -50,6 +51,7 @@ namespace Nucleic_Acid.View
             login_device();//登录设备
             autoRead_Timer.Tick += AutoRead_Timer_Tick;
             autoRead_Timer.Interval = TimeSpan.FromMilliseconds(1000);
+            datagrid.Visibility = Visibility.Hidden;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -58,7 +60,6 @@ namespace Nucleic_Acid.View
         }
         private void Init()
         {
-            datagrid.Visibility = Visibility.Hidden;
             autoRead_Timer.Start();
         }
 
@@ -126,12 +127,12 @@ namespace Nucleic_Acid.View
             deviceSerialNumber = StruCurUsbLoginInfo.szSerialNumber;
             CHCUsbSDK.USB_SDK_DEVICE_REG_RES StruDeviceRegRes = new CHCUsbSDK.USB_SDK_DEVICE_REG_RES();
             StruDeviceRegRes.dwSize = (uint)Marshal.SizeOf(StruDeviceRegRes);
-            int UserIDTemp = UserID;
-            UserID = CHCUsbSDK.USB_SDK_Login(ref StruCurUsbLoginInfo, ref StruDeviceRegRes);
-            if (UserID == CHCUsbSDK.INVALID_USER_ID)
+            int UserIDTemp = CHCUsbSDK.UserID;
+            CHCUsbSDK.UserID = CHCUsbSDK.USB_SDK_Login(ref StruCurUsbLoginInfo, ref StruDeviceRegRes);
+            if (CHCUsbSDK.UserID == CHCUsbSDK.INVALID_USER_ID)
             {
-                Console.WriteLine(UserID);
-                UserID = UserIDTemp;//为了解决重复登录时的问题，但是这次只考虑了只能登录一个设备，两个设备同时能登录的话，ID会覆盖得继续解决ID的问题
+                Console.WriteLine(CHCUsbSDK.UserID);
+                CHCUsbSDK.UserID = UserIDTemp;//为了解决重复登录时的问题，但是这次只考虑了只能登录一个设备，两个设备同时能登录的话，ID会覆盖得继续解决ID的问题
             }
             else
             {
@@ -179,7 +180,7 @@ namespace Nucleic_Acid.View
                 struConfigOutputInfo.lpOutBuffer = ptrstruCertificateInfo;
 
                 CHCUsbSDK.USB_CONFIG_INPUT_INFO strConfigInputConfig = new CHCUsbSDK.USB_CONFIG_INPUT_INFO();
-                if (CHCUsbSDK.USB_SDK_GetDeviceConfig(UserID, CHCUsbSDK.USB_SDK_GET_CERTIFICATE_INFO, ref strConfigInputConfig, ref struConfigOutputInfo))
+                if (CHCUsbSDK.USB_SDK_GetDeviceConfig(CHCUsbSDK.UserID, CHCUsbSDK.USB_SDK_GET_CERTIFICATE_INFO, ref strConfigInputConfig, ref struConfigOutputInfo))
                 {
                     struCertificateInfo = (CHCUsbSDK.USB_SDK_CERTIFICATE_INFO)Marshal.PtrToStructure(struConfigOutputInfo.lpOutBuffer, typeof(CHCUsbSDK.USB_SDK_CERTIFICATE_INFO));
                     CertificateInfo = struCertificateInfo;
@@ -204,6 +205,11 @@ namespace Nucleic_Acid.View
         /// </summary>
         private void ProcessChineseCardInfo()
         {
+            if (clearData)
+            {
+                Items2 = new List<DataModel>();
+                clearData = false;
+            }
             ReadChineseIDcardName();
             ReadChineseCardSex();
             ReadBirthDate();
@@ -216,24 +222,32 @@ namespace Nucleic_Acid.View
             {
                 if (Items2.Count > 0)
                 {
-
                     if (Items2[0].temp != dataModel.temp)
                     {
+                        dataModel.acidNo = new SnowConfig(1).nextId();
                         Items2.Clear();
                         Items2.Add(dataModel);
                         datagrid.ItemsSource = null;
                         datagrid.ItemsSource = Items2;
+                        //打印......
+                        if (UrlModel.autoPrint)
+                        {
+                            saveAndPrint(dataModel);
+                        }
                     }
                     datagrid.Visibility = Visibility.Visible;
-
-
                 }
                 else
                 {
+                    dataModel.acidNo = new SnowConfig(1).nextId();
                     Items2.Add(dataModel);
                     datagrid.ItemsSource = Items2;
                     datagrid.Visibility = Visibility.Visible;
-                    //打印......//image1.Source = MemoryStreamToBitmapImage(ZXingHelper.BitmapToMemoryStream(ZXingHelper.Generate2DBarcode(dataModel.temp, 130, 40)));
+                    //打印......
+                    if (UrlModel.autoPrint)
+                    {
+                        saveAndPrint(dataModel);
+                    }
                 }
                 Console.WriteLine(Items2[0].SName);
             }));
@@ -323,7 +337,15 @@ namespace Nucleic_Acid.View
         /// <param name="e"></param>
         private void AutoRead_Timer_Tick(object sender, EventArgs e)
         {
-            Task.Factory.StartNew(Read_Card);
+            if (CHCUsbSDK.UserID != -1)
+            {
+                Task.Factory.StartNew(Read_Card);
+            }
+            else
+            {
+                TraverseDevice();//遍历设备
+                login_device();//登录设备
+            }
         }
         /// <summary>
         /// ms转bi
@@ -359,17 +381,8 @@ namespace Nucleic_Acid.View
              {
                  if (isTrue)
                  {
-                     Console.WriteLine("打印ing......................");
-                     string snowid = new SnowConfig(1).nextId().ToString();
-                     //保存本地
-                     savedata((DataModel)datagrid.SelectedItem, snowid);
-                     //同步线上
-                     saveonline((DataModel)datagrid.SelectedItem, snowid);
-                     //PrintHelper.print("330411199811190011");
-                 }
-                 else
-                 {
-                     Console.WriteLine("取消打印....................");
+                     DataModel selectedItem = (DataModel)datagrid.SelectedItem;
+                     saveAndPrint(selectedItem);
                  }
              }));
 
@@ -379,12 +392,12 @@ namespace Nucleic_Acid.View
         /// </summary>
         /// <param name="dataModel"></param>
         /// <param name="snowID"></param>
-        private void savedata(DataModel dataModel,string snowID)
+        private void savedata(DataModel dataModel, int versions)
         {
             List<InfoListModel> json = SettingJsonConfig.readData() ?? new List<InfoListModel>();
             InfoListModel infoListModel = new InfoListModel()
             {
-                versions = 0,
+                versions = versions,
                 address = dataModel.home,
                 cardNo = dataModel.temp,
                 createTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
@@ -393,7 +406,7 @@ namespace Nucleic_Acid.View
                 userName = dataModel.SName,
                 serialNumber = deviceSerialNumber,
                 updateText = "修改",
-                acidNo = snowID
+                acidNo = dataModel.acidNo.ToString()
             };
             json.Add(infoListModel);
             SettingJsonConfig.saveData(json);
@@ -404,12 +417,11 @@ namespace Nucleic_Acid.View
         /// <param name="dataModel"></param>
         /// <param name="snowID"></param>
         /// <returns></returns>
-        private Acid.http.Library.ResponseModel.ResultJson<string> saveonline(DataModel dataModel, string snowID)
+        private Acid.http.Library.ResponseModel.ResultJson<string> saveonline(DataModel dataModel)
         {
             List<Acid.http.Library.ResponseModel.InfoListModel> infoListModels = new List<Acid.http.Library.ResponseModel.InfoListModel>();
             Acid.http.Library.ResponseModel.InfoListModel infoListModel = new Acid.http.Library.ResponseModel.InfoListModel()
             {
-                versions = 0,
                 address = dataModel.home,
                 cardNo = dataModel.temp,
                 createTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
@@ -418,7 +430,7 @@ namespace Nucleic_Acid.View
                 userName = dataModel.SName,
                 serialNumber = deviceSerialNumber,
                 updateText = "修改",
-                acidNo = snowID
+                acidNo = dataModel.acidNo.ToString()
             };
             infoListModels.Add(infoListModel);
             Acid.http.Library.ResponseModel.ResultJson<string> resultJson = InfoListService.addNucleic(infoListModels);
@@ -426,17 +438,34 @@ namespace Nucleic_Acid.View
         }
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
+            autoRead_Timer.Stop();//暂时停止读卡
             CancelTips("确定要删除吗？", new Action<bool>(isTrue =>
             {
                 if (isTrue)
                 {
                     Console.WriteLine("删除ing......................");
-                    //PrintHelper.print("330411199811190011");
+                    #region 本地删除
+                    DataModel obj = (DataModel)datagrid.SelectedItem;
+                    List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
+                    InfoListModel infoListModel = lists.Where(u => u.acidNo == obj.acidNo.ToString()).SingleOrDefault();
+                    lists.Remove(infoListModel);//移除
+                    SettingJsonConfig.saveData(lists);//保存
+                    #endregion
+                    #region 服务器删除
+                    Acid.http.Library.ResponseModel.ResultJson<string> resultJson = InfoListService.deleteNucleic(new Acid.http.Library.ResponseModel.InfoListModel() { acidNo = obj.acidNo.ToString() });
+                    datagrid.ItemsSource = null;
+                    clearData = true;
+                    Items2 = new List<DataModel>();
+                    datagrid.ItemsSource = Items2;
+                    #endregion
+                    //删除
+                    Console.WriteLine("删除：" + obj.acidNo);
                 }
                 else
                 {
                     Console.WriteLine("取消删除....................");
                 }
+                autoRead_Timer.Start();//重新读卡
             }));
         }
 
@@ -444,6 +473,24 @@ namespace Nucleic_Acid.View
         {
             //index关闭停止定时器
             autoRead_Timer.Stop();
+        }
+
+        private void saveAndPrint(DataModel selectedItem) 
+        {
+            Console.WriteLine("打印ing......................");
+            //同步线上
+            Acid.http.Library.ResponseModel.ResultJson<string> resultJson = saveonline(selectedItem);
+            if (resultJson.code == "20000")
+            {
+                //保存本地
+                savedata(selectedItem, 1);
+            }
+            else
+            {
+                //保存本地
+                savedata(selectedItem, 0);
+            }
+            PrintHelper.print(selectedItem.temp.Trim());
         }
     }
 }

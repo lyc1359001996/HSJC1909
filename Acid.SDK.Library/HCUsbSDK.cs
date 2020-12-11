@@ -9,6 +9,7 @@ namespace Acid.SDK.Library
 {
    public class CHCUsbSDK
     {
+        public static int UserID = -1;
         #region HCUsbSDK.dll macro definition
 
         #region common use

@@ -113,6 +113,9 @@
     <Compile Include="View\InfoListOffline.xaml.cs">
       <DependentUpon>InfoListOffline.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\LodingText.xaml.cs">
+      <DependentUpon>LodingText.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MessageDialog.xaml.cs">
       <DependentUpon>MessageDialog.xaml</DependentUpon>
     </Compile>
@@ -167,6 +170,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\InfoListOffline.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LodingText.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

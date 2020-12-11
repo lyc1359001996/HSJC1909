@@ -11,7 +11,7 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="{materialDesign:MaterialDesignFont}"
-        Title="核酸检测" Height="818" Width="1200" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="核酸检测" Height="818" Width="1200" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
     <materialDesign:DialogHost Identifier="ReadDialog">
         <Grid x:Name="backGrid">
             <Grid Background="#FF44B2F6" Height="60" VerticalAlignment="Top">
@@ -45,7 +45,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,3,98,5" HorizontalAlignment="Right" Width="270">
                     <Label x:Name="Labelp" Content="自动打印" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#DDFFFFFF" FontFamily="Microsoft YaHei" FontSize="16" FontWeight="Bold"/>
-                    <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" VerticalAlignment="Center" ToolTip="自动打印" BorderBrush="White">
+                    <ToggleButton x:Name="autoPrint" Style="{StaticResource MaterialDesignSwitchToggleButton}" VerticalAlignment="Center" ToolTip="自动打印" BorderBrush="White" Unchecked="autoPrint_Checked" Checked="autoPrint_Checked">
                         <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
                             <SolidColorBrush Color="Green" />
                         </materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
@@ -63,6 +63,9 @@
             </Grid>
             <Grid  x:Name="pageGrid" Margin="0,60,0,0" Background="#FFD3D1D1" />
             <ContentControl Grid.Row="0" Content="{Binding}" Margin="0,60,0,0"/>
+            <materialDesign:Snackbar Margin="480,70,432,0" IsActive="False" x:Name="SnackbarTwo" VerticalAlignment="Top" HorizontalContentAlignment="Center">
+                <materialDesign:SnackbarMessage Content="数据同步完成" ActionContent="确认" ActionClick="SnackbarMessage_ActionClick" />
+            </materialDesign:Snackbar>
         </Grid>
     </materialDesign:DialogHost>
 </Window>

@@ -15,6 +15,7 @@ namespace Acid.SDK.Library
         public string Sbirthdate { get; set; }
         public string home { get; set; }
         public string temp { get; set; }
+        public long acidNo { get; set; }
 
         public DataModel(int gIndex, string sName, string sex, string sNationality, string sbirthdate, string home, string temp)
         {

@@ -82,9 +82,9 @@ namespace Nucleic_Acid
                     DialogHost.Close("LoginDialog");
                     if (dictionaries.code == "20000")
                     {
-                        this.Hide();
-                        index = new Index();
+                        index = new Index(username);
                         index.Show();
+                        this.Close();
                     }
                     else
                     {

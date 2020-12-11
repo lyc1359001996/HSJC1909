@@ -39,12 +39,13 @@ namespace Nucleic_Acid.ViewModel
 
         private void offline(Window obj)
         {
-            if (obj != null)
-            {
-                obj.Hide();
-            }
+            
             MainWindow.indexoffline = new IndexOffline();
             MainWindow.indexoffline.Show();
+            if (obj != null)
+            {
+                obj.Close();
+            }
         }
 
         private void exit(Window window) 

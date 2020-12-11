@@ -33,6 +33,17 @@ namespace Nucleic_Acid
             }
             DataContext = V_readCard;
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Init();
+        }
+        private void Init() 
+        {
+            SettingModel settingModel = SettingJsonConfig.readJson()??new SettingModel();
+            autoPrint.IsChecked = settingModel.AutoPrint;
+            UrlModel.autoPrint = settingModel.AutoPrint;
+        }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
@@ -176,6 +187,14 @@ namespace Nucleic_Acid
         private void Click_Max(object sender, RoutedEventArgs e)
         {
             this.WindowState = this.WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+        }
+
+        private void autoPrint_Checked(object sender, RoutedEventArgs e)
+        {
+            SettingModel settingModel = SettingJsonConfig.readJson() ?? new SettingModel();
+            settingModel.AutoPrint = autoPrint.IsChecked??false;
+            UrlModel.autoPrint = settingModel.AutoPrint;
+            SettingJsonConfig.saveJson(settingModel);
         }
     }
 }

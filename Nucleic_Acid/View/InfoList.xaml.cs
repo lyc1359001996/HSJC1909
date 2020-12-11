@@ -168,10 +168,19 @@ namespace Nucleic_Acid.View
              {
                  if (arg)
                  {
+                     List<Acid.http.Library.ResponseModel.InfoListModel> infoListModels = new List<Acid.http.Library.ResponseModel.InfoListModel>();
                      Acid.http.Library.ResponseModel.InfoListModel obj = (Acid.http.Library.ResponseModel.InfoListModel)dataGrid.SelectedItem;
-                     ResultJson<Acid.http.Library.ResponseModel.InfoListModel> resultJson = InfoListService.updateNucleic(obj);
+                     infoListModels.Add(obj);
+                     #region 服务端更新
+                     ResultJson<string> resultJson = InfoListService.updateNucleic(infoListModels); 
+                     #endregion
                      if (resultJson.code=="20000")
                      {
+                         #region 本地更新
+                         List<Acid.common.Library.config.InfoListModel> lists = SettingJsonConfig.readData();
+                         lists.Where(u => u.acidNo == obj.acidNo).SingleOrDefault().testingValue = obj.testingValue;
+                         SettingJsonConfig.saveData(lists); 
+                         #endregion
                          obj.Editor = false;
                          List<Acid.http.Library.ResponseModel.InfoListModel> source = (List<Acid.http.Library.ResponseModel.InfoListModel>)dataGrid.ItemsSource;
                          obj.updateText = "修改";
@@ -223,15 +232,16 @@ namespace Nucleic_Acid.View
                 if (arg)
                 {
                     #region 本地删除
-                    Acid.common.Library.config.InfoListModel obj = (Acid.common.Library.config.InfoListModel)dataGrid.SelectedItem;
-                    List<Acid.common.Library.config.InfoListModel> lists = SettingJsonConfig.readData();
+                    Acid.http.Library.ResponseModel.InfoListModel obj = (Acid.http.Library.ResponseModel.InfoListModel)dataGrid.SelectedItem;
+                    List<Acid.common.Library.config.InfoListModel> lists = SettingJsonConfig.readData() ?? new List<Acid.common.Library.config.InfoListModel>();
                     Acid.common.Library.config.InfoListModel infoListModel = lists.Where(u => u.acidNo == obj.acidNo).SingleOrDefault();
                     lists.Remove(infoListModel);//移除
                     SettingJsonConfig.saveData(lists);//保存
-                    PageControl_OnPagesChanged(pageControl, null);
                     #endregion
-
-                    ResultJson<string> resultJson = InfoListService.deleteNucleic(new Acid.http.Library.ResponseModel.InfoListModel() { id = obj.id });
+                    #region 服务器删除
+                    ResultJson<string> resultJson = InfoListService.deleteNucleic(new Acid.http.Library.ResponseModel.InfoListModel() { acidNo = obj.acidNo }); 
+                    #endregion
+                    PageControl_OnPagesChanged(pageControl, null);//刷新
                     //删除
                     Console.WriteLine("删除：" + obj.acidNo);
                 }
