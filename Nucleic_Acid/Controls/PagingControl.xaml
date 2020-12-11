@@ -31,7 +31,7 @@
         <Button x:Name="btnNextPage" Content="下一页" Height="40" Width="80" Grid.Column="2" Margin="5,0,0,0" Click="NextPage_Click" Foreground="White"/>
         <StackPanel Margin="1,0,-196,0" Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Center">
             <Label Content="跳至" VerticalAlignment="Center"/>
-            <TextBox Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" VerticalAlignment="Top" AcceptsReturn="False" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" materialDesign:HintAssist.Hint="页数" KeyDown="TextBox_KeyDown" PreviewTextInput="TextBox_PreviewTextInput" />
+            <TextBox Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" VerticalAlignment="Top" AcceptsReturn="False" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" materialDesign:HintAssist.Hint="页数" KeyDown="TextBox_KeyDown" PreviewTextInput="TextBox_PreviewTextInput" MaxLength="9" />
             <Label Content="页" VerticalAlignment="Center"/>
             <ComboBox Margin="10,0,0,0" SelectionChanged="ComboBox_SelectionChanged" FontWeight="Bold">
                 <ComboBoxItem IsSelected="True">

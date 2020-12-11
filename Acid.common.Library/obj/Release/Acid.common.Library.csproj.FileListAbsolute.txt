@@ -4,7 +4,6 @@ D:\HSJC\HSJC\Acid.common.Library\bin\Release\Newtonsoft.Json.dll
 D:\HSJC\HSJC\Acid.common.Library\bin\Release\RestSharp.dll
 D:\HSJC\HSJC\Acid.common.Library\bin\Release\Newtonsoft.Json.xml
 D:\HSJC\HSJC\Acid.common.Library\bin\Release\RestSharp.xml
-D:\HSJC\HSJC\Acid.common.Library\obj\Release\Acid.common.Library.csprojAssemblyReference.cache
 D:\HSJC\HSJC\Acid.common.Library\obj\Release\Acid.common.Library.csproj.CoreCompileInputs.cache
 D:\HSJC\HSJC\Acid.common.Library\obj\Release\Acid.common.Library.csproj.CopyComplete
 D:\HSJC\HSJC\Acid.common.Library\obj\Release\Acid.common.Library.dll
