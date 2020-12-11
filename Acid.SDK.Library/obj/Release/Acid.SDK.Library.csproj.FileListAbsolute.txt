@@ -8,3 +8,14 @@ D:\HSJC\HSJC\Acid.SDK.Library\obj\Release\Acid.SDK.Library.csproj.CoreCompileInp
 D:\HSJC\HSJC\Acid.SDK.Library\obj\Release\Acid.SDK.Library.csproj.CopyComplete
 D:\HSJC\HSJC\Acid.SDK.Library\obj\Release\Acid.SDK.Library.dll
 D:\HSJC\HSJC\Acid.SDK.Library\obj\Release\Acid.SDK.Library.pdb
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\bin\Release\Acid.SDK.Library.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\bin\Release\Acid.SDK.Library.pdb
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\bin\Release\zxing.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\bin\Release\zxing.presentation.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\bin\Release\zxing.xml
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\bin\Release\zxing.presentation.xml
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\obj\Release\Acid.SDK.Library.csprojAssemblyReference.cache
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\obj\Release\Acid.SDK.Library.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\obj\Release\Acid.SDK.Library.csproj.CopyComplete
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\obj\Release\Acid.SDK.Library.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\obj\Release\Acid.SDK.Library.pdb

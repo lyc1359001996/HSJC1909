@@ -62,7 +62,6 @@ namespace Nucleic_Acid.View
             else
             {
                 dataGrid.ItemsSource = new List<Acid.http.Library.ResponseModel.InfoListModel>();
-
             }
         }
 
@@ -144,7 +143,7 @@ namespace Nucleic_Acid.View
         private void Button_update_Click(object sender, RoutedEventArgs e)
         {
             Button tag = (sender as Button);
-            if (tag.Content.ToString()=="修改")
+            if (tag.Content.ToString() == "修改")
             {
                 Acid.http.Library.ResponseModel.InfoListModel obj = (Acid.http.Library.ResponseModel.InfoListModel)dataGrid.SelectedItem;
                 obj.Editor = true;
@@ -162,7 +161,7 @@ namespace Nucleic_Acid.View
         /// <summary>
         /// 确认保存
         /// </summary>
-        private void CancelSave() 
+        private void CancelSave()
         {
             CancelTips("确认要修改?", new Action<bool>(arg =>
              {
@@ -179,8 +178,8 @@ namespace Nucleic_Acid.View
                          if (resultJson.code == "20000")
                          {
                              #region 本地更新
-                             List<Acid.common.Library.config.InfoListModel> lists = SettingJsonConfig.readData();
-                             if (lists.Where(u => u.acidNo == obj.acidNo).SingleOrDefault() != null)
+                             List<Acid.common.Library.config.InfoListModel> lists = SettingJsonConfig.readData()??new List<Acid.common.Library.config.InfoListModel>();
+                             if (lists.Where(u => u.acidNo == obj.acidNo).Count()>0)
                              {
                                  lists.Where(u => u.acidNo == obj.acidNo).SingleOrDefault().testingValue = obj.testingValue;
                              }
@@ -249,7 +248,7 @@ namespace Nucleic_Acid.View
                     SettingJsonConfig.saveData(lists);//保存
                     #endregion
                     #region 服务器删除
-                    ResultJson<string> resultJson = InfoListService.deleteNucleic(new Acid.http.Library.ResponseModel.InfoListModel() { acidNo = obj.acidNo }); 
+                    ResultJson<string> resultJson = InfoListService.deleteNucleic(new Acid.http.Library.ResponseModel.InfoListModel() { acidNo = obj.acidNo });
                     #endregion
                     PageControl_OnPagesChanged(pageControl, null);//刷新
                     //删除
@@ -266,7 +265,7 @@ namespace Nucleic_Acid.View
         {
             ComboBox comboBox = (sender as ComboBox);
             Acid.http.Library.ResponseModel.InfoListModel obj = (Acid.http.Library.ResponseModel.InfoListModel)dataGrid.SelectedItem;
-            if (obj!=null)
+            if (obj != null)
             {
                 obj.testingValue = comboBox.SelectedIndex;
             }

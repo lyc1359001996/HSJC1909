@@ -11,3 +11,16 @@ D:\HSJC\HSJC\Acid.http.Library\obj\Release\Acid.http.Library.csproj.CoreCompileI
 D:\HSJC\HSJC\Acid.http.Library\obj\Release\Acid.http.Library.csproj.CopyComplete
 D:\HSJC\HSJC\Acid.http.Library\obj\Release\Acid.http.Library.dll
 D:\HSJC\HSJC\Acid.http.Library\obj\Release\Acid.http.Library.pdb
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\bin\Release\Acid.http.Library.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\bin\Release\Acid.http.Library.pdb
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\bin\Release\Acid.common.Library.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\bin\Release\Newtonsoft.Json.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\bin\Release\RestSharp.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\bin\Release\Acid.common.Library.pdb
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\bin\Release\Newtonsoft.Json.xml
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\bin\Release\RestSharp.xml
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\obj\Release\Acid.http.Library.csprojAssemblyReference.cache
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\obj\Release\Acid.http.Library.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\obj\Release\Acid.http.Library.csproj.CopyComplete
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\obj\Release\Acid.http.Library.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\obj\Release\Acid.http.Library.pdb
