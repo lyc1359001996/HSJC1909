@@ -43,7 +43,7 @@
                         </Button.Background>
                     </Button>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0,3,98,5" HorizontalAlignment="Right" Width="288">
+                <StackPanel Orientation="Horizontal" Margin="0,3,119,5" HorizontalAlignment="Right" Width="auto">
                     <Label x:Name="Labelp" Content="自动打印" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#DDFFFFFF" FontFamily="Microsoft YaHei" FontSize="16" FontWeight="Bold"/>
                     <ToggleButton x:Name="autoPrint" Style="{StaticResource MaterialDesignSwitchToggleButton}" VerticalAlignment="Center" ToolTip="自动打印" BorderBrush="White" Unchecked="autoPrint_Checked" Checked="autoPrint_Checked">
                         <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
@@ -58,7 +58,7 @@
                             <ImageBrush ImageSource="image/矢量智能对象.png"/>
                         </materialDesign:Chip.Background>
                     </materialDesign:Chip>
-                    <Label x:Name="Label_Name" Content="ChaoAdmin" HorizontalAlignment="Left" Foreground="#DDFFFFFF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei" FontWeight="Bold"/>
+                    <Label x:Name="Label_Name" Content="admin" HorizontalAlignment="Left" Foreground="#DDFFFFFF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei" FontWeight="Bold"/>
                 </StackPanel>
             </Grid>
             <Grid  x:Name="pageGrid" Margin="0,60,0,0" Background="#FFD3D1D1" />
