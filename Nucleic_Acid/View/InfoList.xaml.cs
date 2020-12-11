@@ -184,6 +184,50 @@ namespace Nucleic_Acid.View
              }));
         }
         /// <summary>
+        /// 打印
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Print_click(object sender, RoutedEventArgs e)
+        {
+            CancelPrint();
+        }
+        private void CancelPrint()
+        {
+            CancelTips("确认要打印?", new Action<bool>(arg =>
+            {
+                if (arg)
+                {
+                    InfoListModel obj = (InfoListModel)dataGrid.SelectedItem;
+                    string cardid = obj.cardNo;//身份证号
+                                               //打印
+                    Console.WriteLine("打印：" + cardid);
+                }
+            }));
+        }
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void delete_click(object sender, RoutedEventArgs e)
+        {
+            CancelDelete();
+        }
+        private void CancelDelete()
+        {
+            CancelTips("确认要删除?", new Action<bool>(arg =>
+            {
+                if (arg)
+                {
+                    InfoListModel obj = (InfoListModel)dataGrid.SelectedItem;
+                    string acidNo = obj.acidNo;
+                    //删除
+                    Console.WriteLine("删除：" + acidNo);
+                }
+            }));
+        }
+        /// <summary>
         /// 修改检测结果
         /// </summary>
         /// <param name="sender"></param>

@@ -37,7 +37,7 @@
             </StackPanel>
             <ScrollViewer Margin="0,108,0,0">
                 <StackPanel>
-                    <DataGrid  x:Name="dataGrid" ItemsSource="{Binding Items2}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit="FullRow" SelectionMode="Single" Margin="30,0,30,0" BorderBrush="#1F060000" BorderThickness="2" VerticalAlignment="Top" CanUserResizeColumns="False" CanUserResizeRows="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" AreRowDetailsFrozen="True" Height="auto" FontFamily="NSimSun" FontWeight="Normal" FontSize="14" >
+                    <DataGrid  x:Name="dataGrid" ItemsSource="{Binding Items2}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit="FullRow" SelectionMode="Single" Margin="30,0,30,0" BorderBrush="#1F060000" BorderThickness="2" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" AreRowDetailsFrozen="True" Height="auto" FontFamily="NSimSun" FontWeight="Normal" FontSize="14" CanUserReorderColumns="False" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="序号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
                                 <DataGridTextColumn.Binding>
@@ -92,10 +92,10 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <Button Style="{StaticResource MaterialDesignRaisedLightButton}" materialDesign:ButtonAssist.CornerRadius="5" ToolTip="删除" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="55" Height="22">
+                                            <Button Style="{StaticResource MaterialDesignRaisedLightButton}" materialDesign:ButtonAssist.CornerRadius="5" ToolTip="删除" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="55" Height="22" Click="delete_click">
                                                 <TextBlock Text="删除" />
                                             </Button>
-                                            <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="打印" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="55" Margin="20,0,0,0" Height="22">
+                                            <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="打印" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="55" Margin="20,0,0,0" Height="22" Click="Print_click">
                                                 <TextBlock Text="打印" />
                                             </Button>
                                             <Button x:Name="Button_update" Content="{Binding updateText}" Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="修改" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="55" Margin="20,0,0,0" Height="22" Click="Button_update_Click">
