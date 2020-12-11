@@ -1,5 +1,6 @@
 ﻿using Acid.common.Library.config;
 using Acid.http.Library.RequestModel;
+using Acid.print.Library;
 using Nucleic_Acid.Model;
 using System;
 using System.Collections.Generic;
@@ -241,7 +242,7 @@ namespace Nucleic_Acid.View
                 {
                     InfoListModel obj = (InfoListModel)dataGrid.SelectedItem;
                     string cardid = obj.cardNo;//身份证号
-                                               //打印
+                    PrintHelper.print(cardid);//打印
                     Console.WriteLine("打印：" + cardid);
                 }
             }));
@@ -262,9 +263,13 @@ namespace Nucleic_Acid.View
                 if (arg)
                 {
                     InfoListModel obj = (InfoListModel)dataGrid.SelectedItem;
-                    string acidNo = obj.acidNo;
+                    List<InfoListModel> lists = SettingJsonConfig.readData();
+                    InfoListModel infoListModel = lists.Where(u => u.acidNo == obj.acidNo).SingleOrDefault();
+                    lists.Remove(infoListModel);//移除
+                    SettingJsonConfig.saveData(lists);//保存
+                    PageControl_OnPagesChanged(pageControl, null);
                     //删除
-                    Console.WriteLine("删除：" + acidNo);
+                    Console.WriteLine("删除：" + obj.acidNo);
                 }
             }));
         }

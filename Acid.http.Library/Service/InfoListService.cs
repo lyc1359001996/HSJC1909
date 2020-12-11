@@ -101,5 +101,27 @@ namespace Acid.http.Library.Service
             }
         }
 
+        /// <summary>
+        /// 删除检测
+        /// </summary>
+        /// <param name="requestNucleic"></param>
+        /// <returns></returns>
+        public static ResultJson<string> deleteNucleic(ResponseModel.InfoListModel requestNucleic)
+        {
+            try
+            {
+                string url = UrlModel.ip + UrlModel.nucleic_delete;
+                string result = HttpUrlConfig.GetQuery(url, requestNucleic);
+                ResultJson<string> retStu = JsonConvert.DeserializeObject<ResultJson<string>>(result);
+                Console.WriteLine(result);
+                return retStu;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return new ResultJson<string>() { code = "1", message = "删除失败，请稍后重试" };
+            }
+        }
+
     }
 }
