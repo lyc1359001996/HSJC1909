@@ -54,7 +54,7 @@ namespace Acid.http.Library.Service
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return null;
+                return new ResultJson<ResponseInfoListModel>() {  code="1",message="查无结果"};
             }
         }
         /// <summary>
