@@ -11,7 +11,7 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="{materialDesign:MaterialDesignFont}"
-        Title="核酸检测" Height="818" Width="1200" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
+        Title="核酸检测-(离线模式)" Height="818" Width="1200" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
     <materialDesign:DialogHost Identifier="ReadDialog">
         <Grid x:Name="backGrid">
             <Grid Background="#FF44B2F6" Height="60" VerticalAlignment="Top">

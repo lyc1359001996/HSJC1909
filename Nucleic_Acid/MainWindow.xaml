@@ -13,7 +13,7 @@
         TextElement.FontSize="14"
         FontFamily="{materialDesign:MaterialDesignFont}"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
-        Title="核酸检测" Height="818" Width="960" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="核酸检测-(登录)" Height="818" Width="960" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <materialDesign:DialogHost Identifier="LoginDialog" CloseOnClickAway="True" >
         <Grid x:Name="backGrid" Loaded="backGrid_Loaded">
             <Grid.Background>
