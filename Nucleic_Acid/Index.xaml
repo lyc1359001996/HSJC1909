@@ -43,7 +43,7 @@
                         </Button.Background>
                     </Button>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0,3,98,5" HorizontalAlignment="Right" Width="270">
+                <StackPanel Orientation="Horizontal" Margin="0,3,98,5" HorizontalAlignment="Right" Width="288">
                     <Label x:Name="Labelp" Content="自动打印" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#DDFFFFFF" FontFamily="Microsoft YaHei" FontSize="16" FontWeight="Bold"/>
                     <ToggleButton x:Name="autoPrint" Style="{StaticResource MaterialDesignSwitchToggleButton}" VerticalAlignment="Center" ToolTip="自动打印" BorderBrush="White" Unchecked="autoPrint_Checked" Checked="autoPrint_Checked">
                         <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>

@@ -168,28 +168,38 @@ namespace Nucleic_Acid.View
              {
                  if (arg)
                  {
-                     List<Acid.http.Library.ResponseModel.InfoListModel> infoListModels = new List<Acid.http.Library.ResponseModel.InfoListModel>();
-                     Acid.http.Library.ResponseModel.InfoListModel obj = (Acid.http.Library.ResponseModel.InfoListModel)dataGrid.SelectedItem;
-                     infoListModels.Add(obj);
-                     #region 服务端更新
-                     ResultJson<string> resultJson = InfoListService.updateNucleic(infoListModels); 
-                     #endregion
-                     if (resultJson.code=="20000")
+                     try
                      {
-                         #region 本地更新
-                         List<Acid.common.Library.config.InfoListModel> lists = SettingJsonConfig.readData();
-                         lists.Where(u => u.acidNo == obj.acidNo).SingleOrDefault().testingValue = obj.testingValue;
-                         SettingJsonConfig.saveData(lists); 
+                         List<Acid.http.Library.ResponseModel.InfoListModel> infoListModels = new List<Acid.http.Library.ResponseModel.InfoListModel>();
+                         Acid.http.Library.ResponseModel.InfoListModel obj = (Acid.http.Library.ResponseModel.InfoListModel)dataGrid.SelectedItem;
+                         infoListModels.Add(obj);
+                         #region 服务端更新
+                         ResultJson<string> resultJson = InfoListService.updateNucleic(infoListModels);
                          #endregion
-                         obj.Editor = false;
-                         List<Acid.http.Library.ResponseModel.InfoListModel> source = (List<Acid.http.Library.ResponseModel.InfoListModel>)dataGrid.ItemsSource;
-                         obj.updateText = "修改";
-                         dataGrid.ItemsSource = null;
-                         dataGrid.ItemsSource = source;
+                         if (resultJson.code == "20000")
+                         {
+                             #region 本地更新
+                             List<Acid.common.Library.config.InfoListModel> lists = SettingJsonConfig.readData();
+                             if (lists.Where(u => u.acidNo == obj.acidNo).SingleOrDefault() != null)
+                             {
+                                 lists.Where(u => u.acidNo == obj.acidNo).SingleOrDefault().testingValue = obj.testingValue;
+                             }
+                             SettingJsonConfig.saveData(lists);
+                             #endregion
+                             obj.Editor = false;
+                             List<Acid.http.Library.ResponseModel.InfoListModel> source = (List<Acid.http.Library.ResponseModel.InfoListModel>)dataGrid.ItemsSource;
+                             obj.updateText = "修改";
+                             dataGrid.ItemsSource = null;
+                             dataGrid.ItemsSource = source;
+                         }
+                         else
+                         {
+                             MessageTips(resultJson.message);
+                         }
                      }
-                     else
+                     catch (Exception ex)
                      {
-                         MessageTips(resultJson.message);
+                         MessageTips(ex.Message);
                      }
                  }
              }));
