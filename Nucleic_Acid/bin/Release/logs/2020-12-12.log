@@ -29,3 +29,6 @@
 2020-12-12 15:09:28.3154 INFO    <>c__DisplayClass7_0.<Login_Click>b__0 => LoginService.Login_Ex => LoginService.Login
 2020-12-12 15:15:38.0982 INFO    <>c__DisplayClass7_0.<Login_Click>b__0 => LoginService.Login_Ex => LoginService.Login
 2020-12-12 15:16:09.6687 INFO    <>c__DisplayClass7_0.<Login_Click>b__0 => LoginService.Login_Ex => LoginService.Login
+2020-12-12 16:04:23.1125 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-12 16:04:38.6104 ERROR  ´òÓ¡£º330411199811190011  Task.Execute => Task.InnerInvoke => <>c__DisplayClass2_0.<print>b__0
+2020-12-12 16:04:43.8178 ERROR  ´òÓ¡£º330411199811190011  Task.Execute => Task.InnerInvoke => <>c__DisplayClass2_0.<print>b__0
