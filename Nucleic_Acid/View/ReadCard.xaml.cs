@@ -242,7 +242,6 @@ namespace Nucleic_Acid.View
                 {
                     if (Items2[0].temp != dataModel.temp)
                     {
-                        dataModel.acidNo = new SnowConfig(1).nextId();
                         Items2.Clear();
                         Items2.Add(dataModel);
                         datagrid.ItemsSource = null;
@@ -257,7 +256,6 @@ namespace Nucleic_Acid.View
                 }
                 else
                 {
-                    dataModel.acidNo = new SnowConfig(1).nextId();
                     Items2.Add(dataModel);
                     datagrid.ItemsSource = Items2;
                     datagrid.Visibility = Visibility.Visible;
@@ -495,6 +493,7 @@ namespace Nucleic_Acid.View
         private void saveAndPrint(DataModel selectedItem) 
         {
             Console.WriteLine("打印ing......................");
+            selectedItem.acidNo = new SnowConfig(1).nextId();
             //同步线上
             Acid.http.Library.ResponseModel.ResultJson<string> resultJson = saveonline(selectedItem);
             if (resultJson.code == "20000")

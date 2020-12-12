@@ -248,7 +248,6 @@ namespace Nucleic_Acid.View
                 {
                     if (Items2[0].temp != dataModel.temp)
                     {
-                        dataModel.acidNo = new SnowConfig(1).nextId();
                         Items2.Clear();
                         Items2.Add(dataModel);
                         datagrid.ItemsSource = null;
@@ -263,7 +262,6 @@ namespace Nucleic_Acid.View
                 }
                 else
                 {
-                    dataModel.acidNo = new SnowConfig(1).nextId();
                     Items2.Add(dataModel);
                     datagrid.ItemsSource = Items2;
                     datagrid.Visibility = Visibility.Visible;
@@ -444,25 +442,26 @@ namespace Nucleic_Acid.View
             }));
         }
 
-        private void savedata(DataModel dataModel)
+        private void savedata(DataModel dataModel1)
         {
+            dataModel1.acidNo = new SnowConfig(1).nextId();
             List<InfoListModel> json = SettingJsonConfig.readData() ?? new List<InfoListModel>();
             InfoListModel infoListModel = new InfoListModel()
             {
                 versions = 0,
-                address = dataModel.home,
-                cardNo = dataModel.temp,
+                address = dataModel1.home,
+                cardNo = dataModel1.temp,
                 createTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                 testingValue = 0,
-                sex = dataModel.Sex == "男" ? "1" : "0",
-                userName = dataModel.SName,
+                sex = dataModel1.Sex == "男" ? "1" : "0",
+                userName = dataModel1.SName,
                 serialNumber = deviceSerialNumber,
                 updateText = "修改",
-                acidNo = dataModel.acidNo.ToString()
+                acidNo = dataModel1.acidNo.ToString()
             };
             json.Add(infoListModel);
             SettingJsonConfig.saveData(json);
-            PrintHelper.print(dataModel.temp);
+            PrintHelper.print(dataModel1.temp);
         }
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
