@@ -32,7 +32,7 @@ namespace Nucleic_Acid.View
         {
             InitializeComponent();
             pageControl.OnPagesChanged += PageControl_OnPagesChanged;
-            InitDataGrid();
+            //InitDataGrid();
         }
 
         private void PageControl_OnPagesChanged(object sender, WpfPaging.PagesChangedArgs e)

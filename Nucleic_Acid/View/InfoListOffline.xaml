@@ -37,7 +37,7 @@
             </StackPanel>
             <ScrollViewer Margin="0,108,0,0">
                 <StackPanel>
-                    <DataGrid  x:Name="dataGrid" ItemsSource="{Binding Items2}" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit="FullRow" SelectionMode="Single" Margin="30,0,30,0" BorderBrush="#1F060000" BorderThickness="2" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" AreRowDetailsFrozen="True" Height="auto" FontFamily="NSimSun" FontWeight="Normal" FontSize="14" CanUserReorderColumns="False" >
+                    <DataGrid  x:Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit="FullRow" SelectionMode="Single" Margin="30,0,30,0" BorderBrush="#1F060000" BorderThickness="2" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" AreRowDetailsFrozen="True" Height="auto" FontFamily="NSimSun" FontWeight="Normal" FontSize="14" CanUserReorderColumns="False" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="序号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
                                 <DataGridTextColumn.Binding>
