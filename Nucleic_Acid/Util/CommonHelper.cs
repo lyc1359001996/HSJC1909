@@ -17,5 +17,15 @@ namespace Nucleic_Acid.Util
                 default:return "男";
             }
         }
+
+        public static string SexToInt(string sex)
+        {
+            switch (sex)
+            {
+                case "女": return "0";
+                case "男": return "1";
+                default: return "1";
+            }
+        }
     }
 }
