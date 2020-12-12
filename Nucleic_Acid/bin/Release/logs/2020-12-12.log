@@ -23,3 +23,9 @@
 2020-12-12 14:36:24.0138 ERROR  ´òÓ¡£º123  Task.Execute => Task.InnerInvoke => <>c__DisplayClass2_0.<print>b__0
 2020-12-12 14:36:24.4198 ERROR  ´òÓ¡£º123  Task.Execute => Task.InnerInvoke => <>c__DisplayClass2_0.<print>b__0
 2020-12-12 14:37:19.6802 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-12 15:08:04.9201 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-12 15:08:22.4673 INFO    <>c__DisplayClass7_0.<Login_Click>b__0 => LoginService.Login_Ex => LoginService.Login
+2020-12-12 15:09:14.3658 INFO    <>c__DisplayClass7_0.<Login_Click>b__0 => LoginService.Login_Ex => LoginService.Login
+2020-12-12 15:09:28.3154 INFO    <>c__DisplayClass7_0.<Login_Click>b__0 => LoginService.Login_Ex => LoginService.Login
+2020-12-12 15:15:38.0982 INFO    <>c__DisplayClass7_0.<Login_Click>b__0 => LoginService.Login_Ex => LoginService.Login
+2020-12-12 15:16:09.6687 INFO    <>c__DisplayClass7_0.<Login_Click>b__0 => LoginService.Login_Ex => LoginService.Login

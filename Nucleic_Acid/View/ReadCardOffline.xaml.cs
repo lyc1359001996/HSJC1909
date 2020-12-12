@@ -233,12 +233,12 @@ namespace Nucleic_Acid.View
                 Items2 = new List<DataModel>();
                 clearData = false;
             }
+            ReadIDnum();
             ReadChineseIDcardName();
             ReadChineseCardSex();
             //ReadBirthDate();
             ReadHomeAddress();
             ReadChineseNationality();
-            ReadIDnum();
             gIndex = 1;
             dataModel.gIndex = gIndex;
             dataModel.Sbirthdate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
@@ -246,7 +246,6 @@ namespace Nucleic_Acid.View
             {
                 if (Items2.Count > 0)
                 {
-
                     if (Items2[0].temp != dataModel.temp)
                     {
                         dataModel.acidNo = new SnowConfig(1).nextId();
