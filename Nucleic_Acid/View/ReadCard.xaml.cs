@@ -318,7 +318,6 @@ namespace Nucleic_Acid.View
             string BirthDate = Encoding.Unicode.GetString(Bbirthdate);
             StandardFormalOfBrithDate(ref BirthDate);
             dataModel.Sbirthdate = BirthDate;
-
         }
         private void StandardFormalOfBrithDate(ref string BirthDate)
         {
