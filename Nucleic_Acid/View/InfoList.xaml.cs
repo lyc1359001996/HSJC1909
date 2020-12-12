@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,16 +32,21 @@ namespace Nucleic_Acid.View
         private string staticName = "";
         private string staticCardNo = "";
         private string staticTestValue = "-1";
+        private bool ispage = true;//是否触发分页查询
         public InfoList()
         {
             InitializeComponent();
             pageControl.OnPagesChanged += PageControl_OnPagesChanged;
-            //InitDataGrid();
+            InitDataGrid();
         }
 
         private void PageControl_OnPagesChanged(object sender, WpfPaging.PagesChangedArgs e)
         {
-            QuerySelect_page(((PagingControl)sender).CurrentPage);
+            if (ispage)
+            {
+                QuerySelect_page(((PagingControl)sender).CurrentPage);
+            }
+            ispage = true;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -57,6 +63,7 @@ namespace Nucleic_Acid.View
             Task.Run(() =>
             {
                 ResultJson<ResponseInfoListModel> resultJson = InfoListService.getQuery(requestInfoListModel);
+                Thread.Sleep(500);
                 this.Dispatcher.Invoke(() =>
                 {
                     if (resultJson.code == "20000")
@@ -75,11 +82,13 @@ namespace Nucleic_Acid.View
 
         private void InitDataGrid()
         {
+            ispage = false;
             SetInfoList(new RequestInfoListModel(1, 10));
         }
 
         private void QuerySelect_page(int page)
         {
+            ispage = false;
             RequestInfoListModel requestInfoListModel = new RequestInfoListModel()
             {
                 pageNo = page,
@@ -93,6 +102,7 @@ namespace Nucleic_Acid.View
 
         private void QuerySelect_click(int page)
         {
+            ispage = false;
             RequestInfoListModel requestInfoListModel = new RequestInfoListModel()
             {
                 pageNo = page,
@@ -123,7 +133,7 @@ namespace Nucleic_Acid.View
         }
         public void lodings_close() 
         {
-            MainWindow.index.Close();
+            MainWindow.index.Loding_close();
         }
 
         /// <summary>

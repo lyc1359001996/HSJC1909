@@ -131,9 +131,10 @@ namespace Nucleic_Acid.View
             CHCUsbSDK.UserID = CHCUsbSDK.USB_SDK_Login(ref StruCurUsbLoginInfo, ref StruDeviceRegRes);
             if (CHCUsbSDK.UserID == CHCUsbSDK.INVALID_USER_ID)
             {
-                changeConn(false);
+                CHCUsbSDK.UserID = UserIDTemp;
+                changeConn(CHCUsbSDK.UserID!=-1);
                 Console.WriteLine(CHCUsbSDK.UserID);
-                CHCUsbSDK.UserID = UserIDTemp;//为了解决重复登录时的问题，但是这次只考虑了只能登录一个设备，两个设备同时能登录的话，ID会覆盖得继续解决ID的问题
+                //为了解决重复登录时的问题，但是这次只考虑了只能登录一个设备，两个设备同时能登录的话，ID会覆盖得继续解决ID的问题
             }
             else
             {
