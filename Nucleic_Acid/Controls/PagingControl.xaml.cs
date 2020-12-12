@@ -91,7 +91,7 @@ namespace WpfPaging
         public int DataTote
         {
             get { return (int)GetValue(DataToteProperty); }
-            set { SetValue(DataToteProperty, value); }
+            set { SetValue(DataToteProperty, value); Text_Total.Text = value.ToString(); }
         }
         /// <summary>
         /// 数据总数

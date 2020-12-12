@@ -6,7 +6,7 @@
              TextElement.FontWeight="Medium"
              TextElement.FontSize="14"
              FontFamily="{materialDesign:MaterialDesignFont}"
-             Height="55" Width="770">
+             Height="55" Width="850">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -14,7 +14,12 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="btnBackPage" Content="上一页" Height="40" Width="80" Grid.Column="0" Click="BackPage_Click" Foreground="White"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="共" VerticalAlignment="Center" Margin="10,0,0,0"></TextBlock>
+            <TextBlock x:Name="Text_Total" Text="0" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Text="条" VerticalAlignment="Center"></TextBlock>
+            <Button x:Name="btnBackPage" Margin="10,0,0,0" Content="上一页" Height="40" Width="80" Grid.Column="0" Click="BackPage_Click" Foreground="White"/>
+        </StackPanel>
         <ScrollViewer x:Name="scrollViewer" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden" MaxWidth="500" Grid.Column="1" HorizontalAlignment="Left" Width="Auto">
             <StackPanel x:Name="pagePanel" Orientation="Horizontal">
                 <Button Content="1" Height="40" Width="40" Margin="5,0,0,0"/>
@@ -41,7 +46,7 @@
                     20条/页
                 </ComboBoxItem>
                 <ComboBoxItem>
-                   30条/页
+                    30条/页
                 </ComboBoxItem>
                 <ComboBoxItem>
                     50条/页
