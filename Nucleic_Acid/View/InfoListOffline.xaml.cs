@@ -204,7 +204,7 @@ namespace Nucleic_Acid.View
                 List<InfoListModel> source = (List<InfoListModel>)dataGrid.ItemsSource;
                 obj.updateText = "保存";
                 dataGrid.ItemsSource = null;
-                dataGrid.ItemsSource = ToDataGrid(source);
+                dataGrid.ItemsSource = source;
             }
             else
             {
@@ -233,7 +233,7 @@ namespace Nucleic_Acid.View
                         List<InfoListModel> source = (List<InfoListModel>)dataGrid.ItemsSource;
                         obj.updateText = "修改";
                         dataGrid.ItemsSource = null;
-                        dataGrid.ItemsSource = ToDataGrid(source);
+                        dataGrid.ItemsSource = source;
                     }
                     catch (Exception ex)
                     {

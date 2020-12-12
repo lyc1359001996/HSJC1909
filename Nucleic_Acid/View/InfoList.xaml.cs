@@ -176,7 +176,7 @@ namespace Nucleic_Acid.View
             {
                 Acid.http.Library.ResponseModel.InfoListModel obj = (Acid.http.Library.ResponseModel.InfoListModel)dataGrid.SelectedItem;
                 obj.Editor = true;
-                List<Acid.http.Library.ResponseModel.InfoListModel> source = ToDataGrid((List<Acid.http.Library.ResponseModel.InfoListModel>)dataGrid.ItemsSource);
+                List<Acid.http.Library.ResponseModel.InfoListModel> source = (List<Acid.http.Library.ResponseModel.InfoListModel>)dataGrid.ItemsSource;
                 obj.updateText = "保存";
                 dataGrid.ItemsSource = null;
                 dataGrid.ItemsSource = source;
@@ -215,7 +215,7 @@ namespace Nucleic_Acid.View
                              SettingJsonConfig.saveData(lists);
                              #endregion
                              obj.Editor = false;
-                             List<Acid.http.Library.ResponseModel.InfoListModel> source = ToDataGrid((List<Acid.http.Library.ResponseModel.InfoListModel>)dataGrid.ItemsSource);
+                             List<Acid.http.Library.ResponseModel.InfoListModel> source = (List<Acid.http.Library.ResponseModel.InfoListModel>)dataGrid.ItemsSource;
                              obj.updateText = "修改";
                              dataGrid.ItemsSource = null;
                              dataGrid.ItemsSource = source;
