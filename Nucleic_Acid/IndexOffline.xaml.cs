@@ -122,6 +122,23 @@ namespace Nucleic_Acid
                 .ContinueWith((t, _) => eventArgs.Session.Close(false), null,
                     TaskScheduler.FromCurrentSynchronizationContext());
         }
+
+        public async void Loding()
+        {
+            var sampleMessageDialog = new SampleProgressDialog();
+            await DialogHost.Show(sampleMessageDialog, "ReadDialog");
+        }
+        public void Loding_close()
+        {
+            try
+            {
+                DialogHost.Close("ReadDialog");
+            }
+            catch (Exception ex)
+            {
+                MessageTips(ex.Message);
+            }
+        }
         /// <summary>
         /// 重新加载
         /// </summary>
