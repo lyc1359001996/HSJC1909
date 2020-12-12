@@ -56,7 +56,7 @@ namespace Nucleic_Acid.View
         }
         private void Init()
         {
-
+            QuerySelect_page(pageControl.CurrentPage,false,false);
         }
         private void SetInfoList(RequestInfoListModel requestInfoListModel, bool show = true, bool hide = true)
         {
