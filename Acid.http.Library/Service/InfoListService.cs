@@ -26,12 +26,12 @@ namespace Acid.http.Library.Service
                 RequestInfoListModel requestLoginModel = new RequestInfoListModel(page, size);
                 string result = HttpUrlConfig.GetQuery(url, requestLoginModel);
                 ResultJson<ResponseInfoListModel> retStu = JsonConvert.DeserializeObject<ResultJson<ResponseInfoListModel>>(result);
-                Console.WriteLine(result);
+                Logger.Default.Info(result);
                 return retStu;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Logger.Default.Error(ex.Message);
                 return null;
             }
         }
@@ -48,12 +48,12 @@ namespace Acid.http.Library.Service
                 string url = UrlModel.ip + UrlModel.nucleic;
                 string result = HttpUrlConfig.GetQuery(url, re);
                 ResultJson<ResponseInfoListModel> retStu = JsonConvert.DeserializeObject<ResultJson<ResponseInfoListModel>>(result);
-                Console.WriteLine(result);
+                Logger.Default.Info(result);
                 return retStu;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Logger.Default.Error(ex.Message);
                 return new ResultJson<ResponseInfoListModel>() {  code="1",message="查无结果"};
             }
         }
@@ -69,12 +69,12 @@ namespace Acid.http.Library.Service
                 string url = UrlModel.ip + UrlModel.nucleic_update;
                 string result = HttpUrlConfig.PostBody(url, requestNucleic);
                 ResultJson<string> retStu = JsonConvert.DeserializeObject<ResultJson<string>>(result);
-                Console.WriteLine(result);
+                Logger.Default.Info(result);
                 return retStu;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Logger.Default.Error(ex.Message);
                 return new ResultJson<string>() {  code="1",message="修改失败，请稍后重试"};
             }
         }
@@ -91,12 +91,12 @@ namespace Acid.http.Library.Service
                 string url = UrlModel.ip + UrlModel.nucleic_add;
                 string result = HttpUrlConfig.PostBody(url, requestNucleic);
                 ResultJson<string> retStu = JsonConvert.DeserializeObject<ResultJson<string>>(result);
-                Console.WriteLine(result);
+                Logger.Default.Info(result);
                 return retStu;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Logger.Default.Error(ex.Message);
                 return new ResultJson<string>() { code = "1", message = "新增失败，请稍后重试" };
             }
         }
@@ -113,12 +113,12 @@ namespace Acid.http.Library.Service
                 string url = UrlModel.ip + UrlModel.nucleic_delete;
                 string result = HttpUrlConfig.GetQuery(url, requestNucleic);
                 ResultJson<string> retStu = JsonConvert.DeserializeObject<ResultJson<string>>(result);
-                Console.WriteLine(result);
+                Logger.Default.Info(result);
                 return retStu;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Logger.Default.Error(ex.Message);
                 return new ResultJson<string>() { code = "1", message = "删除失败，请稍后重试" };
             }
         }
