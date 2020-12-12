@@ -108,6 +108,7 @@
     <Compile Include="Model\P_LoginModel.cs" />
     <Compile Include="Model\ReadInfoModel.cs" />
     <Compile Include="Util\AnotherCommandImplementation.cs" />
+    <Compile Include="Util\CommonHelper.cs" />
     <Compile Include="Util\Logger.cs" />
     <Compile Include="ViewModel\InfoListViewModel.cs" />
     <Compile Include="ViewModel\ReadCardViewModel.cs" />

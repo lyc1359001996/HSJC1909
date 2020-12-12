@@ -106,13 +106,13 @@ namespace Nucleic_Acid
         public async void Loding()
         {
             var sampleMessageDialog = new SampleProgressDialog();
-            await DialogHost.Show(sampleMessageDialog, "ReadDialog");
+            await DialogHost.Show(sampleMessageDialog, "ReadDialog_new");
         }
         public void Loding_close()
         {
             try
             {
-                DialogHost.Close("ReadDialog");
+                DialogHost.Close("ReadDialog_new");
             }
             catch (Exception ex)
             {
