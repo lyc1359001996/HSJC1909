@@ -5,6 +5,7 @@ using Acid.http.Library.Service;
 using Acid.print.Library;
 using MaterialDesignThemes.Wpf;
 using Nucleic_Acid.Model;
+using Nucleic_Acid.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,9 +58,10 @@ namespace Nucleic_Acid.View
         {
 
         }
-        private void SetInfoList(RequestInfoListModel requestInfoListModel)
+        private void SetInfoList(RequestInfoListModel requestInfoListModel, bool show = true, bool hide = true)
         {
-            lodings();
+            if (show)
+                lodings();
             Task.Run(() =>
             {
                 ResultJson<ResponseInfoListModel> resultJson = InfoListService.getQuery(requestInfoListModel);
@@ -69,13 +71,14 @@ namespace Nucleic_Acid.View
                     if (resultJson.code == "20000")
                     {
                         pageControl.DataTote = resultJson.data.total;
-                        dataGrid.ItemsSource = resultJson.data.addIndex(resultJson.data.data) ?? new List<Acid.http.Library.ResponseModel.InfoListModel>();
+                        dataGrid.ItemsSource = ToDataGrid(resultJson.data.addIndex(resultJson.data.data) ?? new List<Acid.http.Library.ResponseModel.InfoListModel>());
                     }
                     else
                     {
-                        dataGrid.ItemsSource = new List<Acid.http.Library.ResponseModel.InfoListModel>();
+                        dataGrid.ItemsSource = ToDataGrid(new List<Acid.http.Library.ResponseModel.InfoListModel>());
                     }
-                    lodings_close();
+                    if (hide)
+                        lodings_close();
                 });
             });
         }
@@ -86,7 +89,7 @@ namespace Nucleic_Acid.View
             SetInfoList(new RequestInfoListModel(1, 10));
         }
 
-        private void QuerySelect_page(int page)
+        private void QuerySelect_page(int page, bool show = true, bool hide = true)
         {
             ispage = false;
             RequestInfoListModel requestInfoListModel = new RequestInfoListModel()
@@ -97,7 +100,7 @@ namespace Nucleic_Acid.View
                 name = staticName == "" ? null : staticName,
                 testValue = staticTestValue == "-1" ? null : staticTestValue
             };
-            SetInfoList(requestInfoListModel);
+            SetInfoList(requestInfoListModel, show, hide);
         }
 
         private void QuerySelect_click(int page)
@@ -131,7 +134,7 @@ namespace Nucleic_Acid.View
         {
             MainWindow.index.Loding();
         }
-        public void lodings_close() 
+        public void lodings_close()
         {
             MainWindow.index.Loding_close();
         }
@@ -173,7 +176,7 @@ namespace Nucleic_Acid.View
             {
                 Acid.http.Library.ResponseModel.InfoListModel obj = (Acid.http.Library.ResponseModel.InfoListModel)dataGrid.SelectedItem;
                 obj.Editor = true;
-                List<Acid.http.Library.ResponseModel.InfoListModel> source = (List<Acid.http.Library.ResponseModel.InfoListModel>)dataGrid.ItemsSource;
+                List<Acid.http.Library.ResponseModel.InfoListModel> source = ToDataGrid((List<Acid.http.Library.ResponseModel.InfoListModel>)dataGrid.ItemsSource);
                 obj.updateText = "保存";
                 dataGrid.ItemsSource = null;
                 dataGrid.ItemsSource = source;
@@ -212,7 +215,7 @@ namespace Nucleic_Acid.View
                              SettingJsonConfig.saveData(lists);
                              #endregion
                              obj.Editor = false;
-                             List<Acid.http.Library.ResponseModel.InfoListModel> source = (List<Acid.http.Library.ResponseModel.InfoListModel>)dataGrid.ItemsSource;
+                             List<Acid.http.Library.ResponseModel.InfoListModel> source = ToDataGrid((List<Acid.http.Library.ResponseModel.InfoListModel>)dataGrid.ItemsSource);
                              obj.updateText = "修改";
                              dataGrid.ItemsSource = null;
                              dataGrid.ItemsSource = source;
@@ -276,7 +279,7 @@ namespace Nucleic_Acid.View
                     #region 服务器删除
                     ResultJson<string> resultJson = InfoListService.deleteNucleic(new Acid.http.Library.ResponseModel.InfoListModel() { acidNo = obj.acidNo });
                     #endregion
-                    PageControl_OnPagesChanged(pageControl, null);//刷新
+                    QuerySelect_page(pageControl.CurrentPage, false, false);
                     //删除
                     Console.WriteLine("删除：" + obj.acidNo);
                 }
@@ -295,6 +298,15 @@ namespace Nucleic_Acid.View
             {
                 obj.testingValue = comboBox.SelectedIndex;
             }
+        }
+
+        private List<Acid.http.Library.ResponseModel.InfoListModel> ToDataGrid(List<Acid.http.Library.ResponseModel.InfoListModel> infoListModels)
+        {
+            foreach (var item in infoListModels)
+            {
+                item.sex = CommonHelper.ToSex(int.Parse(item.sex));
+            }
+            return infoListModels;
         }
     }
 }

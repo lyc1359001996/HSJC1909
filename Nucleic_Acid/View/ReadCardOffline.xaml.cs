@@ -454,7 +454,7 @@ namespace Nucleic_Acid.View
                 cardNo = dataModel.temp,
                 createTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                 testingValue = 0,
-                sex = dataModel.Sex == "男" ? 1 : 0,
+                sex = dataModel.Sex == "男" ? "1" : "0",
                 userName = dataModel.SName,
                 serialNumber = deviceSerialNumber,
                 updateText = "修改",

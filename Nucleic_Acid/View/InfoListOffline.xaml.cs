@@ -2,6 +2,7 @@
 using Acid.http.Library.RequestModel;
 using Acid.print.Library;
 using Nucleic_Acid.Model;
+using Nucleic_Acid.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,9 +56,10 @@ namespace Nucleic_Acid.View
 
         }
 
-        private void SetInfoList(RequestInfoListModel requestInfoListModel)
+        private void SetInfoList(RequestInfoListModel requestInfoListModel, bool show = true, bool hide = true)
         {
-            lodings();
+            if (show)
+                lodings();
             Task.Run(() =>
             {
                 List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
@@ -89,16 +91,18 @@ namespace Nucleic_Acid.View
                     {
                         pageControl.DataTote = lists.Count();
                         pageControl.CurrentPage = requestInfoListModel.pageNo;
-                        dataGrid.ItemsSource = data;
-                        lodings_close();
+                        dataGrid.ItemsSource = ToDataGrid(data);
+                        if (hide)
+                            lodings_close();
                     });
                 }
                 else
                 {
                     this.Dispatcher.Invoke(() =>
                     {
-                        dataGrid.ItemsSource = new List<InfoListModel>();
-                        lodings_close();
+                        dataGrid.ItemsSource = ToDataGrid(new List<InfoListModel>());
+                        if (hide)
+                            lodings_close();
                     });
                 }
             });
@@ -112,7 +116,7 @@ namespace Nucleic_Acid.View
         /// 分页查询
         /// </summary>
         /// <returns></returns>
-        private void QuerySelect_page(int page)
+        private void QuerySelect_page(int page, bool show = true, bool hide = true)
         {
             ispage = false;
             RequestInfoListModel requestInfoListModel = new RequestInfoListModel()
@@ -123,7 +127,7 @@ namespace Nucleic_Acid.View
                 name = staticName == "" ? null : staticName,
                 testValue = staticTestValue == "-1" ? null : staticTestValue
             };
-            SetInfoList(requestInfoListModel);
+            SetInfoList(requestInfoListModel, show, hide);
         }
         /// <summary>
         /// 条件
@@ -200,7 +204,7 @@ namespace Nucleic_Acid.View
                 List<InfoListModel> source = (List<InfoListModel>)dataGrid.ItemsSource;
                 obj.updateText = "保存";
                 dataGrid.ItemsSource = null;
-                dataGrid.ItemsSource = source;
+                dataGrid.ItemsSource = ToDataGrid(source);
             }
             else
             {
@@ -229,7 +233,7 @@ namespace Nucleic_Acid.View
                         List<InfoListModel> source = (List<InfoListModel>)dataGrid.ItemsSource;
                         obj.updateText = "修改";
                         dataGrid.ItemsSource = null;
-                        dataGrid.ItemsSource = source;
+                        dataGrid.ItemsSource = ToDataGrid(source);
                     }
                     catch (Exception ex)
                     {
@@ -297,11 +301,29 @@ namespace Nucleic_Acid.View
                     InfoListModel infoListModel = lists.Where(u => u.acidNo == obj.acidNo).SingleOrDefault();
                     lists.Remove(infoListModel);//移除
                     SettingJsonConfig.saveData(lists);//保存
-                    PageControl_OnPagesChanged(pageControl, null);
+                    QuerySelect_page(pageControl.CurrentPage,false,false);
                     //删除
                     Console.WriteLine("删除：" + obj.acidNo);
                 }
             }));
+        }
+
+        private List<Acid.http.Library.ResponseModel.InfoListModel> ToDataGrid(List<Acid.http.Library.ResponseModel.InfoListModel> infoListModels)
+        {
+            foreach (var item in infoListModels)
+            {
+                item.sex = CommonHelper.ToSex(int.Parse(item.sex));
+            }
+            return infoListModels;
+        }
+
+        private List<InfoListModel> ToDataGrid(List<InfoListModel> infoListModels)
+        {
+            foreach (var item in infoListModels)
+            {
+                item.sex = CommonHelper.ToSex(int.Parse(item.sex));
+            }
+            return infoListModels;
         }
     }
 }
