@@ -594,7 +594,6 @@ namespace WpfPaging
         {
             if (e.Key == System.Windows.Input.Key.Enter)
             {
-
                 TextBox that = sender as TextBox;
                 that.Text = that.Text == "" ? "1" : that.Text;
                 Regex re = new Regex("[^0-9.\\-]+");
@@ -662,6 +661,7 @@ namespace WpfPaging
                 }
                 //设置页码
                 this.SetCurrentPage(thispage);
+                that.Clear();
             }
         }
         /// <summary>
