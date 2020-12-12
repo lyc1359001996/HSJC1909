@@ -102,6 +102,23 @@ namespace Nucleic_Acid
             };
             await DialogHost.Show(sampleMessageDialog, "ReadDialog");
         }
+
+        public async void Loding()
+        {
+            var sampleMessageDialog = new SampleProgressDialog();
+            await DialogHost.Show(sampleMessageDialog, "ReadDialog");
+        }
+        public void Loding_close()
+        {
+            try
+            {
+                DialogHost.Close("ReadDialog");
+            }
+            catch (Exception ex)
+            {
+                MessageTips(ex.Message);
+            }
+        }
         private void closingEventHandler(object sender, DialogClosingEventArgs eventArgs)
         {
             if (eventArgs.Parameter is bool parameter &&

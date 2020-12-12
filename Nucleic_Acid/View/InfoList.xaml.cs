@@ -35,7 +35,7 @@ namespace Nucleic_Acid.View
         {
             InitializeComponent();
             pageControl.OnPagesChanged += PageControl_OnPagesChanged;
-            InitDataGrid();
+            //InitDataGrid();
         }
 
         private void PageControl_OnPagesChanged(object sender, WpfPaging.PagesChangedArgs e)
@@ -53,16 +53,24 @@ namespace Nucleic_Acid.View
         }
         private void SetInfoList(RequestInfoListModel requestInfoListModel)
         {
-            ResultJson<ResponseInfoListModel> resultJson = InfoListService.getQuery(requestInfoListModel);
-            if (resultJson.code == "20000")
+            lodings();
+            Task.Run(() =>
             {
-                pageControl.DataTote = resultJson.data.total;
-                dataGrid.ItemsSource = resultJson.data.addIndex(resultJson.data.data) ?? new List<Acid.http.Library.ResponseModel.InfoListModel>();
-            }
-            else
-            {
-                dataGrid.ItemsSource = new List<Acid.http.Library.ResponseModel.InfoListModel>();
-            }
+                ResultJson<ResponseInfoListModel> resultJson = InfoListService.getQuery(requestInfoListModel);
+                this.Dispatcher.Invoke(() =>
+                {
+                    if (resultJson.code == "20000")
+                    {
+                        pageControl.DataTote = resultJson.data.total;
+                        dataGrid.ItemsSource = resultJson.data.addIndex(resultJson.data.data) ?? new List<Acid.http.Library.ResponseModel.InfoListModel>();
+                    }
+                    else
+                    {
+                        dataGrid.ItemsSource = new List<Acid.http.Library.ResponseModel.InfoListModel>();
+                    }
+                    lodings_close();
+                });
+            });
         }
 
         private void InitDataGrid()
@@ -108,6 +116,14 @@ namespace Nucleic_Acid.View
         public void CancelTips(string message, Action<bool> action, DialogClosingEventHandler e = null)
         {
             MainWindow.index.CancelTips(message, action, e);
+        }
+        public void lodings()
+        {
+            MainWindow.index.Loding();
+        }
+        public void lodings_close() 
+        {
+            MainWindow.index.Close();
         }
 
         /// <summary>
@@ -178,8 +194,8 @@ namespace Nucleic_Acid.View
                          if (resultJson.code == "20000")
                          {
                              #region 本地更新
-                             List<Acid.common.Library.config.InfoListModel> lists = SettingJsonConfig.readData()??new List<Acid.common.Library.config.InfoListModel>();
-                             if (lists.Where(u => u.acidNo == obj.acidNo).Count()>0)
+                             List<Acid.common.Library.config.InfoListModel> lists = SettingJsonConfig.readData() ?? new List<Acid.common.Library.config.InfoListModel>();
+                             if (lists.Where(u => u.acidNo == obj.acidNo).Count() > 0)
                              {
                                  lists.Where(u => u.acidNo == obj.acidNo).SingleOrDefault().testingValue = obj.testingValue;
                              }

@@ -32,7 +32,7 @@ namespace Nucleic_Acid.View
         {
             InitializeComponent();
             pageControl.OnPagesChanged += PageControl_OnPagesChanged;
-            InitDataGrid();
+            //InitDataGrid();
         }
 
         private void PageControl_OnPagesChanged(object sender, WpfPaging.PagesChangedArgs e)
@@ -51,38 +51,49 @@ namespace Nucleic_Acid.View
 
         private void SetInfoList(RequestInfoListModel requestInfoListModel)
         {
-            List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
-            if (lists!=null)
+            lodings();
+            Task.Run(() =>
             {
-                if (requestInfoListModel.testValue!=null)
+                List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
+                if (lists != null)
                 {
-                    lists = lists.Where(u => u.testingValue.ToString() == requestInfoListModel.testValue).ToList();
+                    if (requestInfoListModel.testValue != null)
+                    {
+                        lists = lists.Where(u => u.testingValue.ToString() == requestInfoListModel.testValue).ToList();
+                    }
+                    if (requestInfoListModel.name != null)
+                    {
+                        lists = lists.Where(u => u.userName.ToString() == requestInfoListModel.name).ToList();
+                    }
+                    if (requestInfoListModel.cardNo != null)
+                    {
+                        lists = lists.Where(u => u.cardNo.ToString() == requestInfoListModel.cardNo).ToList();
+                    }
+                    List<InfoListModel> data = lists.Skip((requestInfoListModel.pageNo - 1) * requestInfoListModel.pageSize).Take(requestInfoListModel.pageSize).ToList();
+                    //添加序号
+                    int current = 1;
+                    foreach (var item in data)
+                    {
+                        item.index = current;
+                        current++;
+                    }
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        pageControl.DataTote = lists.Count();
+                        pageControl.CurrentPage = requestInfoListModel.pageNo;
+                        dataGrid.ItemsSource = data;
+                        lodings_close();
+                    });
                 }
-                if (requestInfoListModel.name!=null)
+                else
                 {
-                    lists = lists.Where(u => u.userName.ToString() == requestInfoListModel.name).ToList();
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        dataGrid.ItemsSource = new List<InfoListModel>();
+                        lodings_close();
+                    });
                 }
-                if (requestInfoListModel.cardNo!=null)
-                {
-                    lists = lists.Where(u => u.cardNo.ToString() == requestInfoListModel.cardNo).ToList();
-                }
-                List<InfoListModel> data = lists.Skip((requestInfoListModel.pageNo - 1) * requestInfoListModel.pageSize).Take(requestInfoListModel.pageSize).ToList();
-                pageControl.DataTote = lists.Count();
-                pageControl.CurrentPage = requestInfoListModel.pageNo;
-                //添加序号
-                int current = 1;
-                foreach (var item in data)
-                {
-                    item.index = current;
-                    current++;
-                }
-                dataGrid.ItemsSource = data;
-            }
-            else
-            {
-                dataGrid.ItemsSource = new List<InfoListModel>();
-            }
-            
+            });
         }
         private void InitDataGrid()
         {
@@ -201,7 +212,7 @@ namespace Nucleic_Acid.View
                         List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
                         InfoListModel infoListModel = lists.Where(u => u.acidNo == obj.acidNo).SingleOrDefault();
                         infoListModel.testingValue = obj.testingValue;
-                        infoListModel.versions = obj.versions==0?0:3;
+                        infoListModel.versions = obj.versions == 0 ? 0 : 3;
                         SettingJsonConfig.saveData(lists);
                         obj.Editor = false;
                         List<InfoListModel> source = (List<InfoListModel>)dataGrid.ItemsSource;
@@ -225,6 +236,14 @@ namespace Nucleic_Acid.View
         {
             MainWindow.indexoffline.CancelTips(message, action, null);
         }
+        public void lodings()
+        {
+            MainWindow.indexoffline.Loding();
+        }
+        public void lodings_close()
+        {
+            MainWindow.indexoffline.Close();
+        }
         /// <summary>
         /// 打印
         /// </summary>
@@ -234,7 +253,7 @@ namespace Nucleic_Acid.View
         {
             CancelPrint();
         }
-        private void CancelPrint() 
+        private void CancelPrint()
         {
             CancelTips("确认要打印?", new Action<bool>(arg =>
             {
