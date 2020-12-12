@@ -235,12 +235,13 @@ namespace Nucleic_Acid.View
             }
             ReadChineseIDcardName();
             ReadChineseCardSex();
-            ReadBirthDate();
+            //ReadBirthDate();
             ReadHomeAddress();
             ReadChineseNationality();
             ReadIDnum();
             gIndex = 1;
             dataModel.gIndex = gIndex;
+            dataModel.Sbirthdate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             this.Dispatcher.BeginInvoke(new Action(() =>
             {
                 if (Items2.Count > 0)

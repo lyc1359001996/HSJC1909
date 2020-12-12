@@ -44,7 +44,7 @@
                             <Binding Path="home"/>
                         </DataGridTextColumn.Binding>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="时间" IsReadOnly="True" FontWeight="Bold" FontFamily="NSimSun">
+                    <DataGridTextColumn Header="刷卡时间" IsReadOnly="True" FontWeight="Bold" FontFamily="NSimSun">
                         <DataGridTextColumn.Binding>
                             <Binding Path="Sbirthdate"/>
                         </DataGridTextColumn.Binding>
