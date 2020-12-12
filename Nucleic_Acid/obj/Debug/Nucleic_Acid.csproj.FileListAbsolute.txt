@@ -271,7 +271,6 @@ C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Debug\View\Messag
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Debug\View\ReadCard.g.cs
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Debug\View\ReadCardOffline.g.cs
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Debug\View\ReadDialog.g.cs
-C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Debug\OfflineIndex.g.cs
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Debug\View\SampleProgressDialog.g.cs
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Debug\Window2.g.cs
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Debug\App.g.cs
@@ -289,7 +288,6 @@ C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Debug\View\Messag
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Debug\View\ReadCard.baml
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Debug\View\ReadCardOffline.baml
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Debug\View\ReadDialog.baml
-C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Debug\OfflineIndex.baml
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Debug\View\SampleProgressDialog.baml
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Debug\Window2.baml
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Debug\Nucleic_Acid.g.resources
@@ -306,3 +304,6 @@ D:\HSJC\HSJC\Nucleic_Acid\obj\Debug\View\LodingText.baml
 D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\NLog.dll
 D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\NLog.xml
 D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\NLog.config
+C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Debug\NLog.config
+C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Debug\NLog.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Debug\NLog.xml

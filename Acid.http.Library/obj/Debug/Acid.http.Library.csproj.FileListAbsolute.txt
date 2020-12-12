@@ -37,3 +37,6 @@ C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\obj\Debug\Acid.h
 D:\HSJC\HSJC\Acid.http.Library\bin\Debug\NLog.config
 D:\HSJC\HSJC\Acid.http.Library\bin\Debug\NLog.dll
 D:\HSJC\HSJC\Acid.http.Library\bin\Debug\NLog.xml
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\bin\Debug\NLog.config
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\bin\Debug\NLog.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\bin\Debug\NLog.xml

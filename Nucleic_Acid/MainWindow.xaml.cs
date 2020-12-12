@@ -53,6 +53,7 @@ namespace Nucleic_Acid
         /// <param name="e"></param>
         private void Init()
         {
+            Util.Logger.Default.Info("------------------------start------------------------------");
             SettingModel settingModel1 = SettingJsonConfig.readJson();
             settingModel = settingModel1 == null ? new SettingModel() : settingModel1;
             userNameBox.Text = settingModel.userName == null ? "" : settingModel.userName;
@@ -63,7 +64,6 @@ namespace Nucleic_Acid
             {
                 Login_Click(null, null);
             }
-;
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)
