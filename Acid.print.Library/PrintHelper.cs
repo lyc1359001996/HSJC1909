@@ -12,6 +12,7 @@ namespace Acid.print.Library
         private static string printName1 = "Microsoft Print to PDF";
         public static void print(string code)
         {
+
             Task.Run(() =>
             {
                 try
@@ -22,6 +23,7 @@ namespace Acid.print.Library
                     PrintSDK.barcode("20", "0", "128", "30", "1", "0", "2", "2", code);
                     PrintSDK.printlabel("1", "2");                                                    //Print labels
                     PrintSDK.closeport();
+                    Logger.Default.Error("打印："+code);
                 }
                 catch (Exception ex)
                 {

@@ -509,5 +509,7 @@ namespace Nucleic_Acid.View
             }
             PrintHelper.print(selectedItem.temp.Trim());
         }
+
+        
     }
 }
