@@ -202,7 +202,7 @@ namespace Nucleic_Acid.View
                          Acid.http.Library.ResponseModel.InfoListModel obj = (Acid.http.Library.ResponseModel.InfoListModel)dataGrid.SelectedItem;
                          infoListModels.Add(obj);
                          #region 服务端更新
-                         ResultJson<string> resultJson = InfoListService.updateNucleic(infoListModels);
+                         ResultJson<string> resultJson = InfoListService.updateNucleic(ToList(infoListModels));
                          #endregion
                          if (resultJson.code == "20000")
                          {
@@ -305,6 +305,15 @@ namespace Nucleic_Acid.View
             foreach (var item in infoListModels)
             {
                 item.sex = CommonHelper.ToSex(int.Parse(item.sex));
+            }
+            return infoListModels;
+        }
+
+        private List<Acid.http.Library.ResponseModel.InfoListModel> ToList(List<Acid.http.Library.ResponseModel.InfoListModel> infoListModels)
+        {
+            foreach (var item in infoListModels)
+            {
+                item.sex = CommonHelper.SexToInt(item.sex);
             }
             return infoListModels;
         }
