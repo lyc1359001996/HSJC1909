@@ -13,12 +13,19 @@ namespace Acid.print.Library
         {
             Task.Run(() =>
             {
-                PrintSDK.openport(printName);                                           //Open specified printer driver
-                PrintSDK.setup("40", "11.9", "4", "8", "0", "0", "0");                             //Setup the media size and sensor type info        
-                PrintSDK.clearbuffer();
-                PrintSDK.barcode("20", "0", "128", "30", "1", "0", "2", "2", code);
-                PrintSDK.printlabel("1", "1");                                                    //Print labels
-                PrintSDK.closeport();
+                try
+                {
+                    PrintSDK.openport(printName);                                           //Open specified printer driver
+                    PrintSDK.setup("40", "11.9", "4", "8", "0", "0", "0");                             //Setup the media size and sensor type info        
+                    PrintSDK.clearbuffer();
+                    PrintSDK.barcode("20", "0", "128", "30", "1", "0", "2", "2", code);
+                    PrintSDK.printlabel("1", "1");                                                    //Print labels
+                    PrintSDK.closeport();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Default.Error(ex.Message);
+                }
             });
         }
     }

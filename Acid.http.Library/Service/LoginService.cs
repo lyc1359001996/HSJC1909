@@ -21,12 +21,12 @@ namespace Acid.http.Library.Service
                 RequestLoginModel requestLoginModel = new RequestLoginModel(username, password);
                 string result = HttpUrlConfig.PostBody(url, requestLoginModel);
                 ResultJson<LoginModel> retStu = JsonConvert.DeserializeObject<ResultJson<LoginModel>>(result);
-                Console.WriteLine(result);
+                Logger.Default.Info(result);
                 return retStu;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Logger.Default.Error(ex.Message);
                 return null;
             }
         }
