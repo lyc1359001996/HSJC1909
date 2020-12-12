@@ -24,3 +24,6 @@ C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\obj\Release\Acid
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\obj\Release\Acid.http.Library.csproj.CopyComplete
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\obj\Release\Acid.http.Library.dll
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\obj\Release\Acid.http.Library.pdb
+D:\HSJC\HSJC\Acid.http.Library\bin\Release\NLog.config
+D:\HSJC\HSJC\Acid.http.Library\bin\Release\NLog.dll
+D:\HSJC\HSJC\Acid.http.Library\bin\Release\NLog.xml

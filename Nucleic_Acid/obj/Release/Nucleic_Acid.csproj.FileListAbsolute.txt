@@ -49,7 +49,6 @@ D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\MessageDialog.g.cs
 D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\ReadCard.g.cs
 D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\ReadCardOffline.g.cs
 D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\ReadDialog.g.cs
-D:\HSJC\HSJC\Nucleic_Acid\obj\Release\OfflineIndex.g.cs
 D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\SampleProgressDialog.g.cs
 D:\HSJC\HSJC\Nucleic_Acid\obj\Release\Window2.g.cs
 D:\HSJC\HSJC\Nucleic_Acid\obj\Release\App.g.cs
@@ -68,7 +67,6 @@ D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\MessageDialog.baml
 D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\ReadCard.baml
 D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\ReadCardOffline.baml
 D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\ReadDialog.baml
-D:\HSJC\HSJC\Nucleic_Acid\obj\Release\OfflineIndex.baml
 D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\SampleProgressDialog.baml
 D:\HSJC\HSJC\Nucleic_Acid\obj\Release\Window2.baml
 D:\HSJC\HSJC\Nucleic_Acid\obj\Release\Nucleic_Acid.g.resources
@@ -158,3 +156,6 @@ C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\Nucleic_A
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\Nucleic_Acid.csproj.CopyComplete
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\Nucleic_Acid.exe
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\Nucleic_Acid.pdb
+D:\HSJC\HSJC\Nucleic_Acid\bin\Release\NLog.config
+D:\HSJC\HSJC\Nucleic_Acid\bin\Release\NLog.dll
+D:\HSJC\HSJC\Nucleic_Acid\bin\Release\NLog.xml
