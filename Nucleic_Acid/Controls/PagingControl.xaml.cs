@@ -689,7 +689,7 @@ namespace WpfPaging
                 case 2: this.PageSize = 30; break;
                 case 3: this.PageSize = 50; break;
                 default:
-                    this.PageSize = 10;
+                    this.PageSize = 10; 
                     break;
             }
         }
