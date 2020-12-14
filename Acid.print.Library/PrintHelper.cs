@@ -9,7 +9,6 @@ namespace Acid.print.Library
     public class PrintHelper
     {
         private static string printName = "Gprinter GP-3120TU";
-        private static string printName1 = "Microsoft Print to PDF";
         public static void print(string code)
         {
 
