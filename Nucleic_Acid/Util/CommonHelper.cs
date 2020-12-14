@@ -8,8 +8,13 @@ namespace Nucleic_Acid.Util
 {
    public class CommonHelper
     {
-        public static string ToSex(int sex)
+        public static string ToSex(string sexs)
         {
+            if (sexs!="0"&&sexs!="1")
+            {
+                return sexs.ToString();
+            }
+            int sex = int.Parse(sexs);
             switch (sex)
             {
                 case 0:return "女"; 
@@ -20,6 +25,10 @@ namespace Nucleic_Acid.Util
 
         public static string SexToInt(string sex)
         {
+            if (sex!="男"&&sex!="女")
+            {
+                return "1";
+            }
             switch (sex)
             {
                 case "女": return "0";

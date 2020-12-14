@@ -33,21 +33,24 @@ namespace Nucleic_Acid.View
         private string staticName = "";
         private string staticCardNo = "";
         private string staticTestValue = "-1";
-        private bool ispage = true;//是否触发分页查询
+        private bool isfirt = false;
         public InfoList()
         {
             InitializeComponent();
             pageControl.OnPagesChanged += PageControl_OnPagesChanged;
-            InitDataGrid();
+            //InitDataGrid();
         }
 
         private void PageControl_OnPagesChanged(object sender, WpfPaging.PagesChangedArgs e)
         {
-            if (ispage)
+            if (isfirt)
             {
                 QuerySelect_page(((PagingControl)sender).CurrentPage);
             }
-            ispage = true;
+            else
+            {
+                isfirt = true;
+            }
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -56,42 +59,39 @@ namespace Nucleic_Acid.View
         }
         private void Init()
         {
-            QuerySelect_page(pageControl.CurrentPage,false,false);
+            QuerySelect_page(pageControl.CurrentPage);
         }
-        private void SetInfoList(RequestInfoListModel requestInfoListModel, bool show = true, bool hide = true)
+        private void SetInfoList(RequestInfoListModel requestInfoListModel)
         {
-            if (show)
-                lodings();
+            loding.Visibility = Visibility.Visible;
             Task.Run(() =>
             {
                 ResultJson<ResponseInfoListModel> resultJson = InfoListService.getQuery(requestInfoListModel);
-                Thread.Sleep(500);
                 this.Dispatcher.Invoke(() =>
                 {
                     if (resultJson.code == "20000")
                     {
                         pageControl.DataTote = resultJson.data.total;
                         dataGrid.ItemsSource = ToDataGrid(resultJson.data.addIndex(resultJson.data.data) ?? new List<Acid.http.Library.ResponseModel.InfoListModel>());
+                        loding.Visibility = Visibility.Hidden;
                     }
                     else
                     {
+                        MessageTips(resultJson.message);
                         dataGrid.ItemsSource = ToDataGrid(new List<Acid.http.Library.ResponseModel.InfoListModel>());
+                        loding.Visibility = Visibility.Hidden;
                     }
-                    if (hide)
-                        lodings_close();
                 });
             });
         }
 
         private void InitDataGrid()
         {
-            ispage = false;
-            SetInfoList(new RequestInfoListModel(1, 10));
+            SetInfoList(new RequestInfoListModel(1, pageControl.PageSize));
         }
 
-        private void QuerySelect_page(int page, bool show = true, bool hide = true)
+        private void QuerySelect_page(int page)
         {
-            ispage = false;
             RequestInfoListModel requestInfoListModel = new RequestInfoListModel()
             {
                 pageNo = page,
@@ -100,12 +100,15 @@ namespace Nucleic_Acid.View
                 name = staticName == "" ? null : staticName,
                 testValue = staticTestValue == "-1" ? null : staticTestValue
             };
-            SetInfoList(requestInfoListModel, show, hide);
+            SetInfoList(requestInfoListModel);
         }
 
+        /// <summary>
+        /// 条件
+        /// </summary>
+        /// <param name="page"></param>
         private void QuerySelect_click(int page)
         {
-            ispage = false;
             RequestInfoListModel requestInfoListModel = new RequestInfoListModel()
             {
                 pageNo = page,
@@ -152,7 +155,9 @@ namespace Nucleic_Acid.View
             TextBox_CardNo.Clear();
             TextBox_Name.Clear();
             ComboBox_TestValue.SelectedIndex = -1;
+            pageControl.CurrentPage = 1;
             InitDataGrid();
+
         }
 
         /// <summary>
@@ -162,7 +167,12 @@ namespace Nucleic_Acid.View
         /// <param name="e"></param>
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            //staticName = TextBox_Name.Text;
+            //staticCardNo = TextBox_CardNo.Text;
+            //staticTestValue = ComboBox_TestValue.SelectedIndex.ToString();
+            pageControl.CurrentPage = 1;
             QuerySelect_click(1);
+
         }
         /// <summary>
         /// 点击修改
@@ -218,7 +228,7 @@ namespace Nucleic_Acid.View
                              List<Acid.http.Library.ResponseModel.InfoListModel> source = (List<Acid.http.Library.ResponseModel.InfoListModel>)dataGrid.ItemsSource;
                              obj.updateText = "修改";
                              dataGrid.ItemsSource = null;
-                             dataGrid.ItemsSource = source;
+                             dataGrid.ItemsSource = ToDataGrid(source);
                          }
                          else
                          {
@@ -279,7 +289,7 @@ namespace Nucleic_Acid.View
                     #region 服务器删除
                     ResultJson<string> resultJson = InfoListService.deleteNucleic(new Acid.http.Library.ResponseModel.InfoListModel() { acidNo = obj.acidNo });
                     #endregion
-                    QuerySelect_page(pageControl.CurrentPage, false, false);
+                    QuerySelect_page(pageControl.CurrentPage);
                     //删除
                     Console.WriteLine("删除：" + obj.acidNo);
                 }
@@ -304,11 +314,10 @@ namespace Nucleic_Acid.View
         {
             foreach (var item in infoListModels)
             {
-                item.sex = CommonHelper.ToSex(int.Parse(item.sex));
+                item.sex = CommonHelper.ToSex(item.sex);
             }
             return infoListModels;
         }
-
         private List<Acid.http.Library.ResponseModel.InfoListModel> ToList(List<Acid.http.Library.ResponseModel.InfoListModel> infoListModels)
         {
             foreach (var item in infoListModels)

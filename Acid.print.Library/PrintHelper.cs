@@ -21,7 +21,7 @@ namespace Acid.print.Library
                     PrintSDK.setup("40", "11.9", "4", "8", "0", "0", "0");                             //Setup the media size and sensor type info        
                     PrintSDK.clearbuffer();
                     PrintSDK.barcode("20", "0", "128", "30", "1", "0", "2", "2", code);
-                    PrintSDK.printlabel("1", "2");                                                    //Print labels
+                    PrintSDK.printlabel("1", "1");                                                //Print labels
                     PrintSDK.closeport();
                     Logger.Default.Error("打印："+code);
                 }
