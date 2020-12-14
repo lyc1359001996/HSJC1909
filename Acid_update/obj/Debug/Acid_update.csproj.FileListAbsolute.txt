@@ -1,0 +1,14 @@
+D:\HSJC\HSJC\Acid_update\bin\Debug\Acid_update.exe.config
+D:\HSJC\HSJC\Acid_update\bin\Debug\Acid_update.exe
+D:\HSJC\HSJC\Acid_update\bin\Debug\Acid_update.pdb
+D:\HSJC\HSJC\Acid_update\obj\Debug\MainWindow.g.cs
+D:\HSJC\HSJC\Acid_update\obj\Debug\App.g.cs
+D:\HSJC\HSJC\Acid_update\obj\Debug\Acid_update_MarkupCompile.cache
+D:\HSJC\HSJC\Acid_update\obj\Debug\Acid_update_MarkupCompile.lref
+D:\HSJC\HSJC\Acid_update\obj\Debug\MainWindow.baml
+D:\HSJC\HSJC\Acid_update\obj\Debug\Acid_update.g.resources
+D:\HSJC\HSJC\Acid_update\obj\Debug\Acid_update.Properties.Resources.resources
+D:\HSJC\HSJC\Acid_update\obj\Debug\Acid_update.csproj.GenerateResource.cache
+D:\HSJC\HSJC\Acid_update\obj\Debug\Acid_update.csproj.CoreCompileInputs.cache
+D:\HSJC\HSJC\Acid_update\obj\Debug\Acid_update.exe
+D:\HSJC\HSJC\Acid_update\obj\Debug\Acid_update.pdb

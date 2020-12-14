@@ -307,3 +307,15 @@ D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\NLog.config
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Debug\NLog.config
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Debug\NLog.dll
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Debug\NLog.xml
+D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\DeltaCompressionDotNet.dll
+D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\DeltaCompressionDotNet.MsDelta.dll
+D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\DeltaCompressionDotNet.PatchApi.dll
+D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\Mono.Cecil.dll
+D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\Mono.Cecil.Mdb.dll
+D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\Mono.Cecil.Pdb.dll
+D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\Mono.Cecil.Rocks.dll
+D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\SharpCompress.dll
+D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\Mono.Cecil.pdb
+D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\Mono.Cecil.Mdb.pdb
+D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\Mono.Cecil.Pdb.pdb
+D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\Mono.Cecil.Rocks.pdb

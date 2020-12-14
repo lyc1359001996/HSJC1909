@@ -25,7 +25,6 @@ D:\HSJC\HSJC\Acid.SDK.Library\bin\Debug\zxing.dll
 D:\HSJC\HSJC\Acid.SDK.Library\bin\Debug\zxing.presentation.dll
 D:\HSJC\HSJC\Acid.SDK.Library\bin\Debug\zxing.xml
 D:\HSJC\HSJC\Acid.SDK.Library\bin\Debug\zxing.presentation.xml
-D:\HSJC\HSJC\Acid.SDK.Library\obj\Debug\Acid.SDK.Library.csprojAssemblyReference.cache
 D:\HSJC\HSJC\Acid.SDK.Library\obj\Debug\Acid.SDK.Library.csproj.CoreCompileInputs.cache
 D:\HSJC\HSJC\Acid.SDK.Library\obj\Debug\Acid.SDK.Library.csproj.CopyComplete
 D:\HSJC\HSJC\Acid.SDK.Library\obj\Debug\Acid.SDK.Library.dll
