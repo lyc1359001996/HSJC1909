@@ -12,6 +12,8 @@ namespace Acid.http.Library.ResponseModel
         public string id { get; set; }
         public string createTime { get; set; }
         public string updateTime { get; set; }
+        public string updateName { get; set; }
+        public string detectionName { get; set; }
         public object deleted { get; set; }
         public long createBy { get; set; }
         public long? updateBy { get; set; }

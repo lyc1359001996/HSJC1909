@@ -14,6 +14,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Acid.common.Library.config;
+using Nucleic_Acid.Util;
 
 namespace Nucleic_Acid.View
 {
@@ -22,6 +23,7 @@ namespace Nucleic_Acid.View
     /// </summary>
     public partial class ReadCardOffline : UserControl
     {
+        private string detectionName = CommonHelper.detectionName;
         private bool clearData = false;
         public List<DataModel> Items2 { get; set; }//datagrid数据源
         DispatcherTimer autoRead_Timer = new DispatcherTimer();//自动读卡
@@ -457,7 +459,9 @@ namespace Nucleic_Acid.View
                 userName = dataModel1.SName,
                 serialNumber = deviceSerialNumber,
                 updateText = "修改",
-                acidNo = dataModel1.acidNo.ToString()
+                acidNo = dataModel1.acidNo.ToString(),
+                detectionName = detectionName,
+                updateName = detectionName
             };
             json.Add(infoListModel);
             SettingJsonConfig.saveData(json);
@@ -469,7 +473,7 @@ namespace Nucleic_Acid.View
             autoRead_Timer.Stop();
         }
 
-        private void saveAndPrintoffline(DataModel dataModel) 
+        private void saveAndPrintoffline(DataModel dataModel)
         {
             savedata(dataModel);
         }

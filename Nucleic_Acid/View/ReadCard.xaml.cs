@@ -3,6 +3,7 @@ using Acid.http.Library.Service;
 using Acid.print.Library;
 using Acid.SDK.Library;
 using MaterialDesignThemes.Wpf;
+using Nucleic_Acid.Util;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +24,7 @@ namespace Nucleic_Acid.View
     /// </summary>
     public partial class ReadCard : UserControl
     {
+        private string detectionName = CommonHelper.detectionName;
         private bool clearData = false;
         public List<DataModel> Items2 { get; set; }//datagrid数据源
         DispatcherTimer autoRead_Timer = new DispatcherTimer();//自动读卡
@@ -132,7 +134,7 @@ namespace Nucleic_Acid.View
             if (CHCUsbSDK.UserID == CHCUsbSDK.INVALID_USER_ID)
             {
                 CHCUsbSDK.UserID = UserIDTemp;
-                changeConn(CHCUsbSDK.UserID!=-1);
+                changeConn(CHCUsbSDK.UserID != -1);
                 Console.WriteLine(CHCUsbSDK.UserID);
                 //为了解决重复登录时的问题，但是这次只考虑了只能登录一个设备，两个设备同时能登录的话，ID会覆盖得继续解决ID的问题
             }
@@ -144,7 +146,7 @@ namespace Nucleic_Acid.View
             }
         }
 
-        private void changeConn(bool TF) 
+        private void changeConn(bool TF)
         {
             if (TF)
             {
@@ -421,7 +423,9 @@ namespace Nucleic_Acid.View
                 userName = dataModel.SName,
                 serialNumber = deviceSerialNumber,
                 updateText = "修改",
-                acidNo = dataModel.acidNo.ToString()
+                acidNo = dataModel.acidNo.ToString(),
+                detectionName = detectionName,
+                updateName = detectionName
             };
             json.Add(infoListModel);
             SettingJsonConfig.saveData(json);
@@ -445,7 +449,9 @@ namespace Nucleic_Acid.View
                 userName = dataModel.SName,
                 serialNumber = deviceSerialNumber,
                 updateText = "修改",
-                acidNo = dataModel.acidNo.ToString()
+                acidNo = dataModel.acidNo.ToString(),
+                detectionName = detectionName,
+                updateName = detectionName
             };
             infoListModels.Add(infoListModel);
             Acid.http.Library.ResponseModel.ResultJson<string> resultJson = InfoListService.addNucleic(infoListModels);
@@ -490,7 +496,7 @@ namespace Nucleic_Acid.View
             autoRead_Timer.Stop();
         }
 
-        private void saveAndPrint(DataModel selectedItem) 
+        private void saveAndPrint(DataModel selectedItem)
         {
             Console.WriteLine("打印ing......................");
             selectedItem.acidNo = new SnowConfig(1).nextId();
@@ -509,6 +515,6 @@ namespace Nucleic_Acid.View
             PrintHelper.print(selectedItem.temp.Trim());
         }
 
-        
+
     }
 }

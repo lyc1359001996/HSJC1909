@@ -8,6 +8,10 @@ namespace Nucleic_Acid.Util
 {
    public class CommonHelper
     {
+        /// <summary>
+        /// 操作员姓名
+        /// </summary>
+        public static string detectionName = "";
         public static string ToSex(string sexs)
         {
             if (sexs!="0"&&sexs!="1")

@@ -11,7 +11,7 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="{materialDesign:MaterialDesignFont}"
-        Title="核酸检测-(离线模式)" Height="818" Width="1200" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded">
+        Title="核酸检测-(离线模式)" Height="818" Width="1200" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded" Icon="logo.ico">
     <materialDesign:DialogHost Identifier="ReadDialog">
         <Grid x:Name="backGrid">
             <Grid Background="#FF44B2F6" Height="60" VerticalAlignment="Top">
@@ -22,11 +22,11 @@
                 <StackPanel Orientation="Horizontal" Margin="0,4" HorizontalAlignment="Right" Width="130">
                     <materialDesign:PopupBox  DockPanel.Dock="Right"   PlacementMode="BottomAndAlignRightEdges" Foreground="#DDFFFFFF">
                         <ListBox>
+                            <ListBoxItem FontFamily="Microsoft YaHei" FontSize="12" FontWeight="Bold" MouseUp="about_MouseUp">
+                                关闭程序
+                            </ListBoxItem>
                             <ListBoxItem FontFamily="Microsoft YaHei" FontSize="12" FontWeight="Bold" MouseUp="reload_MouseUp">
                                 重新登录
-                            </ListBoxItem>
-                            <ListBoxItem FontFamily="Microsoft YaHei" FontSize="12" FontWeight="Bold" MouseUp="close_MouseUp">
-                                退出程序
                             </ListBoxItem>
                         </ListBox>
                     </materialDesign:PopupBox>
@@ -43,7 +43,7 @@
                         </Button.Background>
                     </Button>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0,3,98,5" HorizontalAlignment="Right" Width="270">
+                <StackPanel Orientation="Horizontal" Margin="0,3,121,5" HorizontalAlignment="Right" Width="220">
                     <Label x:Name="Labelp" Content="自动打印" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#DDFFFFFF" FontFamily="Microsoft YaHei" FontSize="16" FontWeight="Bold"/>
                     <ToggleButton x:Name="autoPrint" Style="{StaticResource MaterialDesignSwitchToggleButton}" VerticalAlignment="Center" ToolTip="自动打印" BorderBrush="White" Checked="autoPrint_Checked" Unchecked="autoPrint_Checked">
                         <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
@@ -58,7 +58,7 @@
                             <ImageBrush ImageSource="image/矢量智能对象.png"/>
                         </materialDesign:Chip.Background>
                     </materialDesign:Chip>
-                    <Label x:Name="Label_Name" Content="离线模式" HorizontalAlignment="Left" Foreground="#DDFFFFFF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei" FontWeight="Bold"/>
+                    <Label x:Name="Label_Name" Content="管理员" HorizontalAlignment="Left" Foreground="#DDFFFFFF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei" FontWeight="Bold"/>
                 </StackPanel>
             </Grid>
             <Grid  x:Name="pageGrid" Margin="0,60,0,0" Background="#FFD3D1D1" />

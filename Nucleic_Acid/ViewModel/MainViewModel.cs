@@ -27,26 +27,14 @@ namespace Nucleic_Acid.ViewModel
     public class MainViewModel : ViewModelBase
     {
         public RelayCommand<Window> Exit_Click { get; set; }
-        public RelayCommand<Window> Offline_Click { get; set; }
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
         public MainViewModel()
         {
             Exit_Click = new RelayCommand<Window>(exit);
-            Offline_Click = new RelayCommand<Window>(offline);
         }
 
-        private void offline(Window obj)
-        {
-            
-            MainWindow.indexoffline = new IndexOffline();
-            MainWindow.indexoffline.Show();
-            if (obj != null)
-            {
-                obj.Close();
-            }
-        }
 
         private void exit(Window window) 
         {

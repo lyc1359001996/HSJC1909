@@ -319,3 +319,5 @@ D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\Mono.Cecil.pdb
 D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\Mono.Cecil.Mdb.pdb
 D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\Mono.Cecil.Pdb.pdb
 D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\Mono.Cecil.Rocks.pdb
+D:\HSJC\HSJC\Nucleic_Acid\obj\Debug\View\AboutUs.g.cs
+D:\HSJC\HSJC\Nucleic_Acid\obj\Debug\View\AboutUs.baml

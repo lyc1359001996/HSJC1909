@@ -24,7 +24,7 @@ namespace Nucleic_Acid
     {
         ReadCardOffline V_readCard;
         InfoListOffline V_infoList;
-        public IndexOffline()
+        public IndexOffline(string name)
         {
             InitializeComponent();
             if (V_readCard == null)
@@ -32,6 +32,7 @@ namespace Nucleic_Acid
                 V_readCard = new ReadCardOffline();
             }
             DataContext = V_readCard;
+            Label_Name.Content = name;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -165,7 +166,7 @@ namespace Nucleic_Acid
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void close_MouseUp(object sender, MouseButtonEventArgs e)
+        private void about_MouseUp(object sender, MouseButtonEventArgs e)
         {
             CancelTips("确定要关闭程序吗?", new Action<bool>(arg =>
             {
