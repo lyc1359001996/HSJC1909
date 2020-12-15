@@ -1,0 +1,14 @@
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid_update\bin\Release\Acid_update.exe.config
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid_update\bin\Release\Acid_update.exe
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid_update\bin\Release\Acid_update.pdb
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid_update\obj\Release\MainWindow.g.cs
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid_update\obj\Release\App.g.cs
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid_update\obj\Release\Acid_update_MarkupCompile.cache
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid_update\obj\Release\Acid_update_MarkupCompile.lref
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid_update\obj\Release\MainWindow.baml
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid_update\obj\Release\Acid_update.g.resources
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid_update\obj\Release\Acid_update.Properties.Resources.resources
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid_update\obj\Release\Acid_update.csproj.GenerateResource.cache
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid_update\obj\Release\Acid_update.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid_update\obj\Release\Acid_update.exe
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid_update\obj\Release\Acid_update.pdb

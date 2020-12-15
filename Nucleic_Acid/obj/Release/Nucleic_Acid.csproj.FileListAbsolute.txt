@@ -127,7 +127,6 @@ C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\View\Mess
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\View\ReadCard.g.cs
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\View\ReadCardOffline.g.cs
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\View\ReadDialog.g.cs
-C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\OfflineIndex.g.cs
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\View\SampleProgressDialog.g.cs
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\Window2.g.cs
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\App.g.cs
@@ -146,7 +145,6 @@ C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\View\Mess
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\View\ReadCard.baml
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\View\ReadCardOffline.baml
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\View\ReadDialog.baml
-C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\OfflineIndex.baml
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\View\SampleProgressDialog.baml
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\Window2.baml
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\Nucleic_Acid.g.resources
@@ -171,3 +169,18 @@ D:\HSJC\HSJC\Nucleic_Acid\bin\Release\Mono.Cecil.pdb
 D:\HSJC\HSJC\Nucleic_Acid\bin\Release\Mono.Cecil.Mdb.pdb
 D:\HSJC\HSJC\Nucleic_Acid\bin\Release\Mono.Cecil.Pdb.pdb
 D:\HSJC\HSJC\Nucleic_Acid\bin\Release\Mono.Cecil.Rocks.pdb
+C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Release\NLog.config
+C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Release\DeltaCompressionDotNet.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Release\DeltaCompressionDotNet.MsDelta.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Release\DeltaCompressionDotNet.PatchApi.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Release\Mono.Cecil.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Release\Mono.Cecil.Mdb.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Release\Mono.Cecil.Pdb.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Release\Mono.Cecil.Rocks.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Release\NLog.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Release\SharpCompress.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Release\Mono.Cecil.pdb
+C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Release\Mono.Cecil.Mdb.pdb
+C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Release\Mono.Cecil.Pdb.pdb
+C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Release\Mono.Cecil.Rocks.pdb
+C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Release\NLog.xml

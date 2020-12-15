@@ -14,3 +14,6 @@ C:\Users\Administrator\Source\Repos\HSJC19092\Test\obj\Release\Test.csproj.CoreC
 C:\Users\Administrator\Source\Repos\HSJC19092\Test\obj\Release\Test.csproj.CopyComplete
 C:\Users\Administrator\Source\Repos\HSJC19092\Test\obj\Release\Test.exe
 C:\Users\Administrator\Source\Repos\HSJC19092\Test\obj\Release\Test.pdb
+C:\Users\Administrator\Source\Repos\HSJC19092\Test\bin\Release\NLog.config
+C:\Users\Administrator\Source\Repos\HSJC19092\Test\bin\Release\NLog.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Test\bin\Release\NLog.xml
