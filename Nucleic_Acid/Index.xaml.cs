@@ -163,7 +163,7 @@ namespace Nucleic_Acid
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void close_MouseUp(object sender, MouseButtonEventArgs e)
+        private void about_MouseUp(object sender, MouseButtonEventArgs e)
         {
             CancelTips("确定要关闭程序吗?", new Action<bool>(arg =>
             {

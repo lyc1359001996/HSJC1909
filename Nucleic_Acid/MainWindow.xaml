@@ -13,49 +13,62 @@
         TextElement.FontSize="14"
         FontFamily="{materialDesign:MaterialDesignFont}"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
-        Title="核酸检测-(登录)" Height="818" Width="960" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Topmost="True" Loaded="Wmain_Loaded">
+        Title="核酸检测-(登录)" Height="818" Width="960" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Topmost="True" Loaded="Wmain_Loaded" Icon="logo.ico" Unloaded="Wmain_Unloaded">
     <materialDesign:DialogHost Identifier="LoginDialog" CloseOnClickAway="True" >
         <Grid x:Name="backGrid" Loaded="backGrid_Loaded">
             <Grid.Background>
-                <ImageBrush ImageSource="image/背景.png"/>
+                <ImageBrush ImageSource="image/背景.png" Stretch="None"/>
             </Grid.Background>
             <Grid>
-                <Rectangle Height="493" Margin="80,163,80,0" VerticalAlignment="Top" RadiusY="27.051" RadiusX="27.051">
+                <Rectangle Margin="80,163,80,0" RadiusY="27.051" RadiusX="27.051" Height="493" VerticalAlignment="Top">
                     <Rectangle.Fill>
-                        <ImageBrush ImageSource="image/组 15.png" Stretch="UniformToFill"/>
+                        <ImageBrush ImageSource="image/组 15.png"/>
                     </Rectangle.Fill>
                 </Rectangle>
-                <Grid Margin="566,330,195,394">
-                    <materialDesign:PackIcon Kind="Account" Foreground="#FFAAAAAA" Margin="-25,50,0,0" />
-                    <TextBox x:Name="userNameBox" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.PrefixText=" " materialDesign:TextFieldAssist.SuffixText=" " Foreground="#FFAAAAAA" FontSize="16">
+                <Grid Margin="566,336,195,388">
+                    <materialDesign:PackIcon Kind="Account" Foreground="#FFAAAAAA" Margin="-30,26,0,0" Height="24" Width="24" />
+                    <TextBox x:Name="userNameBox" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.PrefixText=" " materialDesign:TextFieldAssist.SuffixText=" " Foreground="#FFAAAAAA" FontSize="16" Margin="0,7,0,41">
                         <materialDesign:HintAssist.Hint>
                             <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
                                 <!--<materialDesign:PackIcon Kind="AccessPoint" />-->
                                 <TextBlock FontWeight="Bold">
-                            username账号
+                                    Username账号
                                 </TextBlock>
                             </StackPanel>
                         </materialDesign:HintAssist.Hint>
                     </TextBox>
                 </Grid>
-                <Grid Margin="566,388,195,336">
-                    <materialDesign:PackIcon Kind="LockOutline" Foreground="#FFAAAAAA" Margin="-25,50,0,0" />
-                    <PasswordBox x:Name="passWordBox" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" VerticalAlignment="Center" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.PrefixText=" " materialDesign:TextFieldAssist.SuffixText=" " Foreground="#FFAAAAAA" FontSize="16">
+                <Grid Margin="566,386,195,338">
+                    <materialDesign:PackIcon Kind="LockOutline" Foreground="#FFAAAAAA" Margin="-30,26,0,0" Height="24" Width="24" />
+                    <PasswordBox x:Name="passWordBox" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" VerticalAlignment="Center" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.PrefixText=" " materialDesign:TextFieldAssist.SuffixText=" " Foreground="#FFAAAAAA" FontSize="16" Margin="0,10,0,44">
                         <materialDesign:HintAssist.Hint>
                             <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
                                 <!--<materialDesign:PackIcon Kind="AccessPoint" />-->
-                                <TextBlock><Run Text=" password密码" FontWeight="Bold"/></TextBlock>
+                                <TextBlock><Run Text=" Password密码" FontWeight="Bold"/></TextBlock>
                             </StackPanel>
                         </materialDesign:HintAssist.Hint>
                     </PasswordBox>
                 </Grid>
-                <Grid Margin="562,462,195,330">
+                <Grid Margin="566,430,195,294">
+                    <materialDesign:PackIcon Kind="CreditCardScan" Foreground="#FFAAAAAA" Margin="-30,26,0,0" Height="24" Width="24"/>
+                    <TextBox x:Name="nameBox" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.PrefixText=" " materialDesign:TextFieldAssist.SuffixText=" " Foreground="#FFAAAAAA" FontSize="16" Margin="0,7,0,41" IsEnabled="False">
+                        <materialDesign:HintAssist.Hint>
+                            <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
+                                <!--<materialDesign:PackIcon Kind="AccessPoint" />-->
+                                <TextBlock FontWeight="Bold">
+                                    刷卡验证
+                                </TextBlock>
+                            </StackPanel>
+                        </materialDesign:HintAssist.Hint>
+                    </TextBox>
+                </Grid>
+                <Grid Margin="562,491,195,301">
                     <CheckBox x:Name="CheckBox_isRember" IsChecked="True" Style="{StaticResource MaterialDesignLightCheckBox}" Content="记住密码"  FontFamily="Magneto" FontWeight="Normal" FontSize="12" Foreground="#DDCFC2C2" HorizontalAlignment="Left" Width="73" />
                     <CheckBox x:Name="CheckBox_isAuto" IsChecked="True" Style="{StaticResource MaterialDesignLightCheckBox}" Content="自动登录" FontFamily="Magneto" FontWeight="Normal" FontSize="12" Foreground="#DDCFC2C2" HorizontalAlignment="Right" Width="75" />
                 </Grid>
-                <Grid Margin="562,495,136,275" VerticalAlignment="Center" HorizontalAlignment="Center" Width="262">
+                <Grid Margin="562,524,136,246" VerticalAlignment="Center" HorizontalAlignment="Center" Width="262">
                     <Button Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ButtonProgressAssist.Value="-1" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True" Content="登录" Margin="2,8,0,8" Foreground="White" Click="Login_Click" HorizontalAlignment="Left" Width="85" FontFamily="NSimSun" FontSize="12" FontWeight="Bold" Background="#FF44B2F6"/>
-                    <Button Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ButtonProgressAssist.Value="-1" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True" Content="离线模式" Margin="120,8,0,8" Foreground="White" Command="{Binding Offline_Click}" CommandParameter="{Binding ElementName=Wmain}" HorizontalAlignment="Left" Width="85" FontFamily="NSimSun" FontWeight="Bold" FontSize="12" Background="#FF44B2F6"/>
+                    <Button Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ButtonProgressAssist.Value="-1" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True" Content="离线模式" Margin="120,8,0,8" Foreground="White" Click="Offline_Click" HorizontalAlignment="Left" Width="85" FontFamily="NSimSun" FontWeight="Bold" FontSize="12" Background="#FF44B2F6"/>
                 </Grid>
                 <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.Value="50" ToolTip="退出程序" materialDesign:ButtonProgressAssist.IsIndeterminate="True" Content="退出" Margin="0,3,8,0" Foreground="{x:Null}" Command="{Binding Exit_Click}" CommandParameter="{Binding ElementName=Wmain}" HorizontalAlignment="Right" Width="22" BorderBrush="{x:Null}" Height="23" VerticalAlignment="Top">
                     <Button.Background>

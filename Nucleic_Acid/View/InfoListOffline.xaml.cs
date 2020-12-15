@@ -27,6 +27,7 @@ namespace Nucleic_Acid.View
     /// </summary>
     public partial class InfoListOffline : UserControl
     {
+        private string detectionName = CommonHelper.detectionName;
         private string staticName = "";
         private string staticCardNo = "";
         private string staticTestValue = "-1";
@@ -226,6 +227,8 @@ namespace Nucleic_Acid.View
                         List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
                         InfoListModel infoListModel = lists.Where(u => u.acidNo == obj.acidNo).SingleOrDefault();
                         infoListModel.testingValue = obj.testingValue;
+                        infoListModel.updateName = detectionName;
+                        infoListModel.updateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                         infoListModel.versions = obj.versions == 0 ? 0 : 3;
                         SettingJsonConfig.saveData(lists);
                         obj.Editor = false;

@@ -30,6 +30,7 @@ namespace Nucleic_Acid.View
     /// </summary>
     public partial class InfoList : UserControl
     {
+        private string detectionName = CommonHelper.detectionName;
         private string staticName = "";
         private string staticCardNo = "";
         private string staticTestValue = "-1";
@@ -208,8 +209,11 @@ namespace Nucleic_Acid.View
                  {
                      try
                      {
+                         string thisTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); 
                          List<Acid.http.Library.ResponseModel.InfoListModel> infoListModels = new List<Acid.http.Library.ResponseModel.InfoListModel>();
                          Acid.http.Library.ResponseModel.InfoListModel obj = (Acid.http.Library.ResponseModel.InfoListModel)dataGrid.SelectedItem;
+                         obj.updateName = detectionName;
+                         obj.updateTime = thisTime;
                          infoListModels.Add(obj);
                          #region 服务端更新
                          ResultJson<string> resultJson = InfoListService.updateNucleic(ToList(infoListModels));
@@ -220,7 +224,10 @@ namespace Nucleic_Acid.View
                              List<Acid.common.Library.config.InfoListModel> lists = SettingJsonConfig.readData() ?? new List<Acid.common.Library.config.InfoListModel>();
                              if (lists.Where(u => u.acidNo == obj.acidNo).Count() > 0)
                              {
-                                 lists.Where(u => u.acidNo == obj.acidNo).SingleOrDefault().testingValue = obj.testingValue;
+                                 Acid.common.Library.config.InfoListModel infoListModel = lists.Where(u => u.acidNo == obj.acidNo).SingleOrDefault();
+                                 infoListModel.testingValue = obj.testingValue;
+                                 infoListModel.updateName = detectionName;
+                                 infoListModel.updateTime = thisTime;
                              }
                              SettingJsonConfig.saveData(lists);
                              #endregion
