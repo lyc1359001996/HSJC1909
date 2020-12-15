@@ -27,6 +27,3 @@ C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\obj\Release\Acid
 D:\HSJC\HSJC\Acid.http.Library\bin\Release\NLog.config
 D:\HSJC\HSJC\Acid.http.Library\bin\Release\NLog.dll
 D:\HSJC\HSJC\Acid.http.Library\bin\Release\NLog.xml
-C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\bin\Release\NLog.config
-C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\bin\Release\NLog.dll
-C:\Users\Administrator\Source\Repos\HSJC19092\Acid.http.Library\bin\Release\NLog.xml
