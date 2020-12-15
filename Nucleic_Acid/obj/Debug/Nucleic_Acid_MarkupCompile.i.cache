@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\HSJC\HSJC\Nucleic_Acid\obj\Debug\
+C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Debug\
 Nucleic_Acid
 none
 false
 DEBUG;TRACE
-D:\HSJC\HSJC\Nucleic_Acid\App.xaml
+C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\App.xaml
 141278724269
 
 301073475423
-92408382514
+92-1459195405
 Controls\PagingControl.xaml;Index.xaml;IndexOffline.xaml;MainWindow.xaml;View\CanCancel.xaml;View\InfoList.xaml;View\InfoListOffline.xaml;View\LodingText.xaml;View\MessageDialog.xaml;View\ReadCard.xaml;View\ReadCardOffline.xaml;View\ReadDialog.xaml;View\SampleProgressDialog.xaml;Window2.xaml;
 
 True
