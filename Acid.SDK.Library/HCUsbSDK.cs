@@ -7,15 +7,15 @@ using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 namespace Acid.SDK.Library
 {
-   public class CHCUsbSDK
+    public class CHCUsbSDK
     {
         public static int UserID = -1;
         #region HCUsbSDK.dll macro definition
 
         #region common use
-        public const int MAX_MANUFACTURE_LEN=32;
-        public const int MAX_DEVICE_NAME_LEN=32;
-        public const int MAX_SERIAL_NUM_LEN=48;////序列号的最大长度
+        public const int MAX_MANUFACTURE_LEN = 32;
+        public const int MAX_DEVICE_NAME_LEN = 32;
+        public const int MAX_SERIAL_NUM_LEN = 48;////序列号的最大长度
         public const int MAX_USB_DEV_LEN = 64;
         public const int ERR_LEVEL = 1;//ListInfo里面的信息类型
         public const int DBG_LEVEL = 2;//ListInfo里面的信息类型
@@ -30,9 +30,9 @@ namespace Acid.SDK.Library
         #endregion
 
         #region
-        public const int USB_SDK_SET_BEEP_AND_FLICKER = 0x0100;     //控制蜂鸣器及显示灯
+        public const int USB_SDK_SET_BEEP_AND_FLICKERs = 0x0100;     //控制蜂鸣器及显示灯
         public const int USB_SDK_SET_CARD_PROTO = 0x0103;           //设置操作卡协议类型
-        public const int USB_SDK_SET_M1_PWD_VERIFY  = 0x0106;       //(M1卡) 验证扇区密码
+        public const int USB_SDK_SET_M1_PWD_VERIFY = 0x0106;       //(M1卡) 验证扇区密码
         public const int USB_SDK_SET_M1_WRITE_BLOCK = 0x0108;       //(M1卡) 写卡指定块数据
         public const int USB_SDK_SET_M1_MODIFY_SCB = 0x0109;        //(M1卡) 修改指定扇区控制块
         public const int USB_SDK_SET_M1_BLOCK_ADD_VALUE = 0x010A;   //(M1卡) 块加值
@@ -45,7 +45,7 @@ namespace Acid.SDK.Library
 
         public enum LOG_LEVEL_ENUM
         {
-            ENUM_ERROR_LEVEL= 1,
+            ENUM_ERROR_LEVEL = 1,
             ENUM_DEBUG_LEVEL = 2,
             ENUM_INFO_LEVEL = 3
         }
@@ -64,7 +64,7 @@ namespace Acid.SDK.Library
             public string szDeviceName;//设备名称（来自描述符）
             [MarshalAsAttribute(UnmanagedType.ByValTStr, SizeConst = MAX_SERIAL_NUM_LEN)]
             public string szSerialNumber;//设备序列号（来自描述符）
-            [MarshalAsAttribute(UnmanagedType.ByValArray, SizeConst =68, ArraySubType = UnmanagedType.I1)]
+            [MarshalAsAttribute(UnmanagedType.ByValArray, SizeConst = 68, ArraySubType = UnmanagedType.I1)]
             public byte[] byRes;
             public void Init()
             {
@@ -116,15 +116,15 @@ namespace Acid.SDK.Library
         [StructLayout(LayoutKind.Sequential)]
         public struct USB_SDK_M1_PWD_VERIFY_INFO    //卡扇区带密码验证结构体
         {
-            public uint    dwSize;
-            public byte     byPasswordType;
-            public byte     bySectionNum;
+            public uint dwSize;
+            public byte byPasswordType;
+            public byte bySectionNum;
             [MarshalAsAttribute(UnmanagedType.ByValArray, SizeConst = 2, ArraySubType = UnmanagedType.I1)]
-            public byte[]     byRes1;
+            public byte[] byRes1;
             [MarshalAsAttribute(UnmanagedType.ByValArray, SizeConst = 6, ArraySubType = UnmanagedType.I1)]
-            public byte[]     byPassword;
+            public byte[] byPassword;
             [MarshalAsAttribute(UnmanagedType.ByValArray, SizeConst = 18, ArraySubType = UnmanagedType.I1)]
-            public byte[]     byRes;
+            public byte[] byRes;
             public void Init()
             {
                 byRes1 = new byte[2];
@@ -136,14 +136,14 @@ namespace Acid.SDK.Library
         [StructLayout(LayoutKind.Sequential)]
         public struct USB_SDK_M1_BLOCK_WRITE_DATA   //写卡指定块数据
         {
-            public uint     dwSize;
-            public short    wAddr;
-            public byte     byDataLen;
-            public byte     byRes1;
+            public uint dwSize;
+            public short wAddr;
+            public byte byDataLen;
+            public byte byRes1;
             [MarshalAsAttribute(UnmanagedType.ByValArray, SizeConst = 16, ArraySubType = UnmanagedType.I1)]
-            public byte[]   byData;
+            public byte[] byData;
             [MarshalAsAttribute(UnmanagedType.ByValArray, SizeConst = 8, ArraySubType = UnmanagedType.I1)]
-            public byte[]   byRes;
+            public byte[] byRes;
             public void Init()
             {
                 byData = new byte[16];
@@ -151,29 +151,29 @@ namespace Acid.SDK.Library
             }
         }
 
-       [StructLayout(LayoutKind.Sequential)]
+        [StructLayout(LayoutKind.Sequential)]
         public struct USB_SDK_M1_MODIFY_SCB   //(M1卡) 修改指定扇区控制块
-       {
-            public uint     dwSize;
-            public byte     bySectionNum;
+        {
+            public uint dwSize;
+            public byte bySectionNum;
             [MarshalAsAttribute(UnmanagedType.ByValArray, SizeConst = 6, ArraySubType = UnmanagedType.I1)]
-            public byte[]   byPasswordA;
-            public byte     byRes1;
-           [MarshalAsAttribute(UnmanagedType.ByValArray, SizeConst = 4, ArraySubType = UnmanagedType.I1)]
-            public byte[]   byCtrlBits;
-           [MarshalAsAttribute(UnmanagedType.ByValArray, SizeConst = 6, ArraySubType = UnmanagedType.I1)]
-            public byte[]   byPasswordB;
-           [MarshalAsAttribute(UnmanagedType.ByValArray, SizeConst = 10, ArraySubType = UnmanagedType.I1)]
-            public byte[]   byRes;
-           public void Init()
-           {
-               byPasswordA = new byte[6];
-               byCtrlBits = new byte[4];
-               byPasswordB = new byte[6];
-               byRes = new byte[10];
-           }
-       }
-        
+            public byte[] byPasswordA;
+            public byte byRes1;
+            [MarshalAsAttribute(UnmanagedType.ByValArray, SizeConst = 4, ArraySubType = UnmanagedType.I1)]
+            public byte[] byCtrlBits;
+            [MarshalAsAttribute(UnmanagedType.ByValArray, SizeConst = 6, ArraySubType = UnmanagedType.I1)]
+            public byte[] byPasswordB;
+            [MarshalAsAttribute(UnmanagedType.ByValArray, SizeConst = 10, ArraySubType = UnmanagedType.I1)]
+            public byte[] byRes;
+            public void Init()
+            {
+                byPasswordA = new byte[6];
+                byCtrlBits = new byte[4];
+                byPasswordB = new byte[6];
+                byRes = new byte[10];
+            }
+        }
+
 
 
 
@@ -269,6 +269,21 @@ namespace Acid.SDK.Library
             }
         }
 
+        [StructLayout(LayoutKind.Sequential)]
+        public struct USB_SDK_BEEP_AND_FLICKER
+        {
+           public uint dwSize; //结构体大小
+           public byte byBeepType;// 蜂鸣类型 0 无效，1 连续，2 慢鸣，3 快鸣，4 停止
+           public byte byBeepCount;// 鸣叫次数, （只对慢鸣、快鸣有效，且不能为 0）
+           public byte byFlickerType;// 闪烁类型 0 无效，1 连续，2 错误，3 正确，4 停止
+           public byte byFlickerCount;// 闪烁次数（只对错误、正确有效，且不能为 0）
+           public byte[] byRes;//24
+            public void Init()
+            {
+                byRes = new byte[24];
+            }
+        }
+
         #endregion
 
         #region HCUsbSDK.dll function definition
@@ -293,7 +308,7 @@ namespace Acid.SDK.Library
 
         [DllImport(@"..\HCUsbSDK.dll")]
         public static extern uint USB_SDK_GetSDKVersion();
-        
+
         [DllImport(@"..\HCUsbSDK.dll")]
         public static extern int USB_SDK_Login(ref CHCUsbSDK.USB_SDK_USER_LOGIN_INFO pUsbLoginInfo, ref CHCUsbSDK.USB_SDK_DEVICE_REG_RES pDevRegRes);
 
@@ -308,6 +323,31 @@ namespace Acid.SDK.Library
 
         [DllImport(@"..\Dewlt.dll")]
         public static extern int dewlt(IntPtr strPictureBin);
+
+        public static bool Beep(int lUserID, byte buBeepType, byte buBeepCount, byte byFlickerType, byte byFlickerCount)
+        {
+            USB_SDK_BEEP_AND_FLICKER flicker = new USB_SDK_BEEP_AND_FLICKER();
+            flicker.dwSize = (uint)Marshal.SizeOf(flicker);
+            flicker.byBeepType = buBeepType;
+            flicker.byBeepCount = buBeepCount;
+            flicker.byFlickerType = byFlickerType;
+            flicker.byFlickerCount = byFlickerCount;
+            flicker.Init();
+
+            USB_CONFIG_INPUT_INFO pInputInfo = new USB_CONFIG_INPUT_INFO();
+            int size = Marshal.SizeOf(pInputInfo);
+            IntPtr intPtr = Marshal.AllocHGlobal(size);
+            Marshal.StructureToPtr(pInputInfo, intPtr, true);
+            pInputInfo.lpInBuffer = intPtr;
+            pInputInfo.dwInBufferSize = flicker.dwSize;
+            pInputInfo.Init();
+
+            USB_CONFIG_OUTPUT_INFO pOutInfo = new USB_CONFIG_OUTPUT_INFO();
+            pOutInfo.dwOutBufferSize = flicker.dwSize;
+            pOutInfo.Init();
+            bool bb = USB_SDK_SetDeviceConfig(lUserID, USB_SDK_SET_BEEP_AND_FLICKERs, ref pInputInfo, ref pOutInfo);
+            return bb;
+        }
         #endregion
 
     }

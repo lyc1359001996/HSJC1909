@@ -12,3 +12,4 @@ D:\HSJC\HSJC\Acid_update\obj\Debug\Acid_update.csproj.GenerateResource.cache
 D:\HSJC\HSJC\Acid_update\obj\Debug\Acid_update.csproj.CoreCompileInputs.cache
 D:\HSJC\HSJC\Acid_update\obj\Debug\Acid_update.exe
 D:\HSJC\HSJC\Acid_update\obj\Debug\Acid_update.pdb
+D:\HSJC\HSJC\Acid_update\obj\Debug\Acid_update.csprojAssemblyReference.cache

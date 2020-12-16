@@ -46,3 +46,6 @@ C:\Users\Administrator\Source\Repos\HSJC19092\Test\obj\Debug\Test.csproj.CoreCom
 C:\Users\Administrator\Source\Repos\HSJC19092\Test\obj\Debug\Test.csproj.CopyComplete
 C:\Users\Administrator\Source\Repos\HSJC19092\Test\obj\Debug\Test.exe
 C:\Users\Administrator\Source\Repos\HSJC19092\Test\obj\Debug\Test.pdb
+D:\HSJC\HSJC\Test\bin\Debug\NLog.config
+D:\HSJC\HSJC\Test\bin\Debug\NLog.dll
+D:\HSJC\HSJC\Test\bin\Debug\NLog.xml

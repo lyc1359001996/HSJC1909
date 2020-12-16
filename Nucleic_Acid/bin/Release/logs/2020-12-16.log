@@ -1,0 +1,11 @@
+2020-12-16 10:16:03.2384 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-16 10:17:12.0694 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-16 10:17:50.9610 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-16 10:20:11.7224 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-16 10:20:30.5650 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-16 10:21:00.2668 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-16 12:17:49.0805 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-16 12:18:12.5750 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-16 12:33:07.3697 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-16 12:33:23.5969 INFO  {"code":20000,"message":"³É¹¦","data":{"name":"limit","token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJlbXBsb3llZUlkIjoiMTMzNjQ4NzI4OTg3MDcyMTAyNSIsImZhaWx1cmVUaW1lIjoxNjA5ODIxMTk1ODc2fQ.TSpQPzb6iAqZiI3nu2h3CukcuuT0zPBga2VrOMC8Foe1nN8y0_uAonhNUYTZ5UN8OeZ72_oUZcH2KkuuXC9cOw"}}  <>c__DisplayClass17_0.<Login_Click>b__0 => LoginService.Login_Ex => LoginService.Login
+2020-12-16 12:44:14.1269 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init

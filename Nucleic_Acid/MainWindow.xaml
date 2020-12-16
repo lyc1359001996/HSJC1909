@@ -51,7 +51,7 @@
                 </Grid>
                 <Grid Margin="566,430,195,294">
                     <materialDesign:PackIcon Kind="CreditCardScan" Foreground="#FFAAAAAA" Margin="-30,26,0,0" Height="24" Width="24"/>
-                    <TextBox x:Name="nameBox" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.PrefixText=" " materialDesign:TextFieldAssist.SuffixText=" " Foreground="#FFAAAAAA" FontSize="16" Margin="0,7,0,41" IsEnabled="False">
+                    <TextBox x:Name="nameBox" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.PrefixText=" " materialDesign:TextFieldAssist.SuffixText=" " Foreground="Black" FontSize="16" Margin="0,7,0,41" IsEnabled="False" FontFamily="Roboto" FontWeight="Bold">
                         <materialDesign:HintAssist.Hint>
                             <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
                                 <!--<materialDesign:PackIcon Kind="AccessPoint" />-->
@@ -61,6 +61,14 @@
                             </StackPanel>
                         </materialDesign:HintAssist.Hint>
                     </TextBox>
+                    <!--<ToggleButton Style="{StaticResource MaterialDesignActionToggleButton}" ToolTip="MaterialDesignActionLightToggleButton" Margin="73,22,94,40" Background="White" Foreground="#FFFF2424" Focusable="False" IsTabStop="False" IsEnabled="False" IsChecked="True">
+                        <ToggleButton.Content>
+                            <materialDesign:PackIcon Kind="EmoticonSad" />
+                        </ToggleButton.Content>
+                        <materialDesign:ToggleButtonAssist.OnContent>
+                            <materialDesign:PackIcon Kind="EmoticonHappy" Foreground="#FF0099FF" />
+                        </materialDesign:ToggleButtonAssist.OnContent>
+                    </ToggleButton>-->
                 </Grid>
                 <Grid Margin="562,491,195,301">
                     <CheckBox x:Name="CheckBox_isRember" IsChecked="True" Style="{StaticResource MaterialDesignLightCheckBox}" Content="记住密码"  FontFamily="Magneto" FontWeight="Normal" FontSize="12" Foreground="#DDCFC2C2" HorizontalAlignment="Left" Width="73" />
@@ -70,6 +78,11 @@
                     <Button Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ButtonProgressAssist.Value="-1" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True" Content="登录" Margin="2,8,0,8" Foreground="White" Click="Login_Click" HorizontalAlignment="Left" Width="85" FontFamily="NSimSun" FontSize="12" FontWeight="Bold" Background="#FF44B2F6"/>
                     <Button Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ButtonProgressAssist.Value="-1" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True" Content="离线模式" Margin="120,8,0,8" Foreground="White" Click="Offline_Click" HorizontalAlignment="Left" Width="85" FontFamily="NSimSun" FontWeight="Bold" FontSize="12" Background="#FF44B2F6"/>
                 </Grid>
+                <Button ToolTip="最小化"  BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0,3,50,0" Width="21" Click="Click_Min" HorizontalAlignment="Right" VerticalAlignment="Top" >
+                    <Button.Background>
+                        <ImageBrush ImageSource="image/最小化.png" Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
                 <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.Value="50" ToolTip="退出程序" materialDesign:ButtonProgressAssist.IsIndeterminate="True" Content="退出" Margin="0,3,8,0" Foreground="{x:Null}" Command="{Binding Exit_Click}" CommandParameter="{Binding ElementName=Wmain}" HorizontalAlignment="Right" Width="22" BorderBrush="{x:Null}" Height="23" VerticalAlignment="Top">
                     <Button.Background>
                         <ImageBrush ImageSource="image/退出.png"/>

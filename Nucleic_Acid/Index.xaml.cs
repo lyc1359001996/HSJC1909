@@ -2,6 +2,7 @@
 using Acid.http.Library.Service;
 using MaterialDesignThemes.Wpf;
 using Newtonsoft.Json;
+using Nucleic_Acid.Util;
 using Nucleic_Acid.View;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace Nucleic_Acid
         public Index(string name)
         {
             InitializeComponent();
-            Label_Name.Content = name;
+            Label_Name.Content = name+"-在线";
         }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
@@ -283,6 +284,17 @@ namespace Nucleic_Acid
             settingModel.AutoPrint = autoPrint.IsChecked ?? false;
             UrlModel.autoPrint = settingModel.AutoPrint;
             SettingJsonConfig.saveJson(settingModel);
+        }
+        /// <summary>
+        /// 转到离线
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void turn_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow.indexoffline = new IndexOffline(CommonHelper.detectionName);
+            MainWindow.indexoffline.Show();
+            this.Close();
         }
     }
 }

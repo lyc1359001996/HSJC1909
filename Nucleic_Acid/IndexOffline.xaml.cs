@@ -1,5 +1,6 @@
 ﻿using Acid.common.Library.config;
 using MaterialDesignThemes.Wpf;
+using Nucleic_Acid.Util;
 using Nucleic_Acid.View;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace Nucleic_Acid
                 V_readCard = new ReadCardOffline();
             }
             DataContext = V_readCard;
-            Label_Name.Content = name;
+            Label_Name.Content = name+"-离线";
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -213,6 +214,19 @@ namespace Nucleic_Acid
             settingModel.AutoPrint = autoPrint.IsChecked??false;
             UrlModel.autoPrint = settingModel.AutoPrint;
             SettingJsonConfig.saveJson(settingModel);
+        }
+        /// <summary>
+        /// 转到在线
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void turn_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow main = new MainWindow(CommonHelper.userName, CommonHelper.passWord, CommonHelper.detectionName);
+            main.Show();
+            main.Login_Click(null, null);
+            this.Close();
+            //MainWindow.index = new Index(CommonHelper.detectionName);
         }
     }
 }

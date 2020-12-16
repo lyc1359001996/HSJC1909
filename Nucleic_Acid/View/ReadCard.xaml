@@ -45,6 +45,11 @@
                             <Binding Path="home"/>
                         </DataGridTextColumn.Binding>
                     </DataGridTextColumn>
+                    <DataGridTextColumn Header="现居住地址" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="False" MaxWidth="400" FontWeight="Bold" FontFamily="NSimSun">
+                        <DataGridTextColumn.Binding>
+                            <Binding Path="homeAddress"/>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
                     <DataGridTextColumn Header="刷卡时间" IsReadOnly="True" FontWeight="Bold" FontFamily="NSimSun">
                         <DataGridTextColumn.Binding>
                             <Binding Path="Sbirthdate"/>

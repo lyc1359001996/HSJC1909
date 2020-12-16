@@ -12,6 +12,14 @@ namespace Nucleic_Acid.Util
         /// 操作员姓名
         /// </summary>
         public static string detectionName = "";
+        /// <summary>
+        /// 帐号
+        /// </summary>
+        public static string userName = "";
+        /// <summary>
+        /// 密码
+        /// </summary>
+        public static string passWord = "";
         public static string ToSex(string sexs)
         {
             if (sexs!="0"&&sexs!="1")

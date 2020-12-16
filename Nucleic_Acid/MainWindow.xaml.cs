@@ -29,7 +29,7 @@ namespace Nucleic_Acid
         public static IndexOffline indexoffline;
         private const int INITIALIZED_INDEX = 1;
         private uint m_VersionNum = 0;
-        private string szLogPath = "C:/UsbSDKLog/";
+        //private string szLogPath = "C:/UsbSDKLog/";
         private int g_nEnumDevIndex = INITIALIZED_INDEX;
         private CHCUsbSDK.USB_SDK_DEVICE_INFO[] m_aHidDevInfo;//这个存储着遍历到的设备，列表索引1开始，所以添加
         public static CHCUsbSDK.EnumDeviceCallBack m_OnEnumDeviceCallBack = null;//遍历设备的回调
@@ -42,15 +42,32 @@ namespace Nucleic_Acid
         {
             InitializeComponent();
             bool res = CHCUsbSDK.USB_SDK_Init();//USB initialize
-            IntPtr ptrLogPath = Marshal.StringToHGlobalAnsi(szLogPath);//写日志
-            CHCUsbSDK.USB_SDK_SetLogToFile(3, ptrLogPath, false);//这里用枚举参数不匹配，直接写了3,
-            Marshal.FreeHGlobal(ptrLogPath);
+            //IntPtr ptrLogPath = Marshal.StringToHGlobalAnsi(szLogPath);//写日志
+            //CHCUsbSDK.USB_SDK_SetLogToFile(3, ptrLogPath, false);//这里用枚举参数不匹配，直接写了3,
+            //Marshal.FreeHGlobal(ptrLogPath);
             m_VersionNum = CHCUsbSDK.USB_SDK_GetSDKVersion();
             TraverseDevice();//遍历设备
             login_device();//登录设备
             autoRead_Timer.Tick += AutoRead_Timer_Tick;
             autoRead_Timer.Interval = TimeSpan.FromMilliseconds(1000);
             autoRead_Timer.Start();
+        }
+        public MainWindow(string username,string password,string name)
+        {
+            InitializeComponent();
+            bool res = CHCUsbSDK.USB_SDK_Init();//USB initialize
+            //IntPtr ptrLogPath = Marshal.StringToHGlobalAnsi(szLogPath);//写日志
+            //CHCUsbSDK.USB_SDK_SetLogToFile(3, ptrLogPath, false);//这里用枚举参数不匹配，直接写了3,
+            //Marshal.FreeHGlobal(ptrLogPath);
+            m_VersionNum = CHCUsbSDK.USB_SDK_GetSDKVersion();
+            TraverseDevice();//遍历设备
+            login_device();//登录设备
+            autoRead_Timer.Tick += AutoRead_Timer_Tick;
+            autoRead_Timer.Interval = TimeSpan.FromMilliseconds(1000);
+            autoRead_Timer.Start();
+            userNameBox.Text = username;
+            passWordBox.Password = password;
+            nameBox.Text = name;
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -93,7 +110,7 @@ namespace Nucleic_Acid
             }
         }
 
-        private void Login_Click(object sender, RoutedEventArgs e)
+        public void Login_Click(object sender, RoutedEventArgs e)
         {
             if (userNameBox.Text == null || userNameBox.Text == "")
             {
@@ -110,7 +127,7 @@ namespace Nucleic_Acid
                 MessageTips("请先刷卡认证您的资料", sender, e);
                 return;
             }
-            CommonHelper.detectionName = nameBox.Text;
+
             LogindTips();
             string username = userNameBox.Text;
             string password = passWordBox.Password;
@@ -125,6 +142,9 @@ namespace Nucleic_Acid
                     DialogHost.Close("LoginDialog");
                     if (dictionaries.code == "20000")
                     {
+                        CommonHelper.userName = userNameBox.Text.Trim() ?? "";
+                        CommonHelper.passWord = passWordBox.Password.Trim() ?? "";
+                        CommonHelper.detectionName = nameBox.Text.Trim() ?? "";
                         index = new Index(CommonHelper.detectionName);
                         index.Show();
                         this.Close();
@@ -407,10 +427,17 @@ namespace Nucleic_Acid
                 MessageTips("请先刷卡认证您的资料", sender, e);
                 return;
             }
-            CommonHelper.detectionName = nameBox.Text;
+            CommonHelper.userName = userNameBox.Text.Trim() ?? "";
+            CommonHelper.passWord = passWordBox.Password.Trim() ?? "";
+            CommonHelper.detectionName = nameBox.Text.Trim() ?? "";
             indexoffline = new IndexOffline(CommonHelper.detectionName);
             indexoffline.Show();
             this.Close();
+        }
+
+        private void Click_Min(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
     }
 }

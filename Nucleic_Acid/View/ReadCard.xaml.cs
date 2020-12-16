@@ -31,7 +31,7 @@ namespace Nucleic_Acid.View
         PrintDialog dialog = new PrintDialog();//打印对象
         private const int INITIALIZED_INDEX = 1;
         private uint m_VersionNum = 0;
-        private string szLogPath = "C:/UsbSDKLog/";
+        //private string szLogPath = "C:/UsbSDKLog/";
         private int g_nEnumDevIndex = INITIALIZED_INDEX;
         private CHCUsbSDK.USB_SDK_DEVICE_INFO[] m_aHidDevInfo;//这个存储着遍历到的设备，列表索引1开始，所以添加
         public static CHCUsbSDK.EnumDeviceCallBack m_OnEnumDeviceCallBack = null;//遍历设备的回调
@@ -45,9 +45,9 @@ namespace Nucleic_Acid.View
             InitializeComponent();
             Items2 = new List<DataModel>();
             bool res = CHCUsbSDK.USB_SDK_Init();//USB initialize
-            IntPtr ptrLogPath = Marshal.StringToHGlobalAnsi(szLogPath);//写日志
-            CHCUsbSDK.USB_SDK_SetLogToFile(3, ptrLogPath, false);//这里用枚举参数不匹配，直接写了3,
-            Marshal.FreeHGlobal(ptrLogPath);
+            //IntPtr ptrLogPath = Marshal.StringToHGlobalAnsi(szLogPath);//写日志
+            //CHCUsbSDK.USB_SDK_SetLogToFile(3, ptrLogPath, false);//这里用枚举参数不匹配，直接写了3,
+            //Marshal.FreeHGlobal(ptrLogPath);
             m_VersionNum = CHCUsbSDK.USB_SDK_GetSDKVersion();
             TraverseDevice();//遍历设备
             login_device();//登录设备
@@ -229,6 +229,7 @@ namespace Nucleic_Acid.View
                 Items2 = new List<DataModel>();
                 clearData = false;
             }
+            dataModel = new DataModel();
             ReadChineseIDcardName();
             ReadChineseCardSex();
             //ReadBirthDate();

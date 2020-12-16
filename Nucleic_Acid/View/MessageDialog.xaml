@@ -13,7 +13,7 @@
              FontFamily="{materialDesign:MaterialDesignFont}" MaxWidth="400" Height="97.31" Width="auto">
     <Grid>
         <StackPanel>
-            <TextBlock Margin="28,20,27,0"  x:Name="Message" Text="sadaasdsadasdsadas"   FontFamily="Microsoft YaHei" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Margin="28,20,27,0"  x:Name="Message" Text="警告"   FontFamily="Microsoft YaHei" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </StackPanel>
         <Button IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Center" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Foreground="#FF008EFF" FontFamily="NSimSun" Height="33" Width="60" Content="确认" Margin="66,0,67,6" VerticalAlignment="Bottom"/>
     </Grid>

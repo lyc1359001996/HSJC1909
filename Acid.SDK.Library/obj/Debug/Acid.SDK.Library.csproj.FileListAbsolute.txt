@@ -40,3 +40,4 @@ C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\obj\Debug\Acid.SD
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\obj\Debug\Acid.SDK.Library.csproj.CopyComplete
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\obj\Debug\Acid.SDK.Library.dll
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\obj\Debug\Acid.SDK.Library.pdb
+D:\HSJC\HSJC\Acid.SDK.Library\obj\Debug\Acid.SDK.Library.csprojAssemblyReference.cache

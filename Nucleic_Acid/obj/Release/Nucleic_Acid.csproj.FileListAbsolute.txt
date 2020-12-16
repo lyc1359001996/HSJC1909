@@ -186,3 +186,5 @@ C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Release\Mono.Ceci
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\bin\Release\NLog.xml
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\View\AboutUs.g.cs
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\View\AboutUs.baml
+D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\AboutUs.g.cs
+D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\AboutUs.baml

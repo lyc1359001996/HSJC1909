@@ -15,6 +15,7 @@ namespace Acid.common.Library.config
         public string updateName { get; set; }
         public string detectionName { get; set; }
         public object deleted { get; set; }
+        public string homeAddress { get; set; }
         public long createBy { get; set; }
         public long? updateBy { get; set; }
         public string cardNo { get; set; }
