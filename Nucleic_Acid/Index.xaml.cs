@@ -77,6 +77,17 @@ namespace Nucleic_Acid
             };
             await DialogHost.Show(sampleMessageDialog, "ReadDialog");
         }
+        public async void TextTips(string message, Action<string> action, DialogClosingEventHandler e = null)
+        {
+            if (e == null)
+                e = closingEventHandler;
+            var textDialog = new TextDialog()
+            {
+                Message = { Text = message }
+            };
+            await DialogHost.Show(textDialog, "ReadDialog");
+            action(textDialog.address);
+        }
         /// <summary>
         /// 确定取消弹窗
         /// </summary>

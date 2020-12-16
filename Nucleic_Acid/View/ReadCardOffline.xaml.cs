@@ -253,33 +253,41 @@ namespace Nucleic_Acid.View
                 {
                     if (Items2[0].temp != dataModel.temp)
                     {
+                        TextTips(dataModel.home,Addressaction);
                         Items2.Clear();
                         Items2.Add(dataModel);
                         datagrid.ItemsSource = null;
                         datagrid.ItemsSource = Items2;
-                        //打印......
-                        if (UrlModel.autoPrint)
-                        {
-                            saveAndPrintoffline(dataModel);
-                        }
                     }
                     datagrid.Visibility = Visibility.Visible;
                 }
                 else
                 {
+                    TextTips(dataModel.home, Addressaction);
                     Items2.Add(dataModel);
                     datagrid.ItemsSource = null;
                     datagrid.ItemsSource = Items2;
                     datagrid.Visibility = Visibility.Visible;
-                    //打印......
-                    if (UrlModel.autoPrint)
-                    {
-                        saveAndPrintoffline(dataModel);
-                    }
+                    
                 }
                 Console.WriteLine(Items2[0].SName);
             }));
         }
+
+        private void Addressaction(string obj)
+        {
+            dataModel.homeAddress = obj.Trim();
+            Items2.Clear();
+            Items2.Add(dataModel);
+            datagrid.ItemsSource = null;
+            datagrid.ItemsSource = Items2;
+            //打印......
+            if (UrlModel.autoPrint)
+            {
+                saveAndPrintoffline(dataModel);
+            }
+        }
+
         /// <summary>
         /// 姓名
         /// </summary>
@@ -346,7 +354,7 @@ namespace Nucleic_Acid.View
             byte[] HomeAddress = new byte[70];
             Buffer.BlockCopy(CertificateInfo.byWordInfo, 52, HomeAddress, 0, 70);
             string Address = Encoding.Unicode.GetString(HomeAddress);
-            dataModel.home = Address;
+            dataModel.home = Address.Trim();
         }
         /// <summary>
         /// 身份证号
@@ -404,6 +412,10 @@ namespace Nucleic_Acid.View
             MainWindow.indexoffline.CancelTips(message, action, e);
         }
 
+        public void TextTips(string message, Action<string> action, DialogClosingEventHandler e = null)
+        {
+            MainWindow.indexoffline.TextTips(message, action, e);
+        }
         private void Print_Click(object sender, RoutedEventArgs e)
         {
             CancelTips("确定要打印吗？", new Action<bool>(isTrue =>
@@ -448,6 +460,8 @@ namespace Nucleic_Acid.View
             }));
         }
 
+
+
         private void savedata(DataModel dataModel1)
         {
             dataModel1.acidNo = new SnowConfig(1).nextId();
@@ -465,7 +479,8 @@ namespace Nucleic_Acid.View
                 updateText = "修改",
                 acidNo = dataModel1.acidNo.ToString(),
                 detectionName = detectionName,
-                updateName = detectionName
+                updateName = detectionName,
+                homeAddress = dataModel1.homeAddress
             };
             json.Add(infoListModel);
             SettingJsonConfig.saveData(json);

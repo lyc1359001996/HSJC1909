@@ -10,10 +10,20 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              TextElement.FontWeight="Medium"
              TextElement.FontSize="14"
-             FontFamily="{materialDesign:MaterialDesignFont}" MaxWidth="400" Height="97.31" Width="auto" Loaded="UserControl_Loaded">
+             FontFamily="{materialDesign:MaterialDesignFont}" Height="120" Width="auto" Loaded="UserControl_Loaded">
     <Grid>
-        <StackPanel>
-            <TextBox Margin="28,20,27,0"  x:Name="Message" Text="Address"  FontFamily="Microsoft YaHei" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+            <materialDesign:PackIcon Kind="MapMarker"  VerticalAlignment="Center" Margin="0,-10,0,0" Foreground="#FF0099FF"/>
+            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,-30,0,0"  x:Name="Message" Text="Address"  FontFamily="Microsoft YaHei" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <materialDesign:HintAssist.Hint>
+                    <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
+                        <!--<materialDesign:PackIcon Kind="AccessPoint" />-->
+                        <TextBlock FontWeight="Bold">
+                                    现居住地址
+                        </TextBlock>
+                    </StackPanel>
+                </materialDesign:HintAssist.Hint>
+            </TextBox>
         </StackPanel>
         <Button IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Center" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Foreground="#FF008EFF" FontFamily="NSimSun" Height="33" Width="60" Content="确认" Margin="66,0,67,6" VerticalAlignment="Bottom" Click="Button_Click"/>
     </Grid>
