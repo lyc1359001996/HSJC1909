@@ -300,8 +300,11 @@ namespace Nucleic_Acid.View
                 {
                     InfoListModel obj = (InfoListModel)dataGrid.SelectedItem;
                     List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
-                    InfoListModel infoListModel = lists.Where(u => u.acidNo == obj.acidNo).SingleOrDefault();
-                    lists.Remove(infoListModel);//移除
+                    List<Acid.common.Library.config.InfoListModel> infoListModel = lists.Where(u => u.acidNo == obj.acidNo).ToList();
+                    foreach (var item in infoListModel)
+                    {
+                        lists.Remove(item);//移除
+                    }
                     SettingJsonConfig.saveData(lists);//保存
                     QuerySelect_page(pageControl.CurrentPage);
                     //删除

@@ -39,4 +39,3 @@ C:\Users\Administrator\Source\Repos\HSJC19092\Acid.common.Library\obj\Debug\Acid
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.common.Library\obj\Debug\Acid.common.Library.csproj.CopyComplete
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.common.Library\obj\Debug\Acid.common.Library.dll
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.common.Library\obj\Debug\Acid.common.Library.pdb
-D:\HSJC\HSJC\Acid.common.Library\obj\Debug\Acid.common.Library.csprojAssemblyReference.cache

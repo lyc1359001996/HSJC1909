@@ -289,8 +289,11 @@ namespace Nucleic_Acid.View
                     #region 本地删除
                     Acid.http.Library.ResponseModel.InfoListModel obj = (Acid.http.Library.ResponseModel.InfoListModel)dataGrid.SelectedItem;
                     List<Acid.common.Library.config.InfoListModel> lists = SettingJsonConfig.readData() ?? new List<Acid.common.Library.config.InfoListModel>();
-                    Acid.common.Library.config.InfoListModel infoListModel = lists.Where(u => u.acidNo == obj.acidNo).SingleOrDefault();
-                    lists.Remove(infoListModel);//移除
+                    List<Acid.common.Library.config.InfoListModel> infoListModel = lists.Where(u => u.acidNo == obj.acidNo).ToList();
+                    foreach (var item in infoListModel)
+                    {
+                        lists.Remove(item);//移除
+                    }
                     SettingJsonConfig.saveData(lists);//保存
                     #endregion
                     #region 服务器删除

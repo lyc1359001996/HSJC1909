@@ -1,0 +1,17 @@
+2020-12-17 11:31:29.2130 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-17 11:33:48.7824 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-17 13:18:03.7570 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-17 13:18:36.3732 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-17 13:18:47.0049 INFO    <>c__DisplayClass17_0.<Login_Click>b__0 => LoginService.Login_Ex => LoginService.Login
+2020-12-17 13:19:04.9222 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-17 13:19:35.6129 INFO  {"code":20000,"message":"成功","data":{"name":"limit","token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJlbXBsb3llZUlkIjoiMTMzNjQ4NzI4OTg3MDcyMTAyNSIsImZhaWx1cmVUaW1lIjoxNjA5OTEwMzc1MjA0fQ.LT6zI25G0WPXhCCcWn7i2-GFF31gnf9bs-uYFE5qrldcYlznWZd6tyTDRB39tqkZSh689CU3fIJq1DfICXVq9Q"}}  <>c__DisplayClass17_0.<Login_Click>b__0 => LoginService.Login_Ex => LoginService.Login
+2020-12-17 13:19:43.4790 ERROR  Unexpected character encountered while parsing value: <. Path '', line 0, position 0.  Index.synchronousData => Index.synchronousAdd => InfoListService.addNucleic
+2020-12-17 13:19:43.5453 INFO  {"code":20000,"message":"修改成功","data":null}  Index.synchronousData => Index.synchronousUpdate => InfoListService.updateNucleic
+2020-12-17 13:20:20.9325 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-17 13:21:22.0152 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-17 13:21:30.8920 INFO  {"code":20000,"message":"成功","data":{"name":"limit","token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJlbXBsb3llZUlkIjoiMTMzNjQ4NzI4OTg3MDcyMTAyNSIsImZhaWx1cmVUaW1lIjoxNjA5OTEwNDkwNDczfQ.MZF3Zcurr2rSPD2Nq4zukiqcRsBeOgwBeHbQehC8DdzMi1oH-imNSFaE8P8u-S7cB1jN0bR33lzb2S9lSFvfkw"}}  <>c__DisplayClass17_0.<Login_Click>b__0 => LoginService.Login_Ex => LoginService.Login
+2020-12-17 13:21:38.9854 ERROR  Unexpected character encountered while parsing value: <. Path '', line 0, position 0.  Index.synchronousData => Index.synchronousAdd => InfoListService.addNucleic
+2020-12-17 13:21:39.1162 INFO  {"code":20000,"message":"修改成功","data":null}  Index.synchronousData => Index.synchronousUpdate => InfoListService.updateNucleic
+2020-12-17 14:39:41.9162 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-17 14:40:55.4139 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-17 14:42:30.1730 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init

@@ -188,5 +188,7 @@ C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\View\Abou
 C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\View\AboutUs.baml
 D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\AboutUs.g.cs
 D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\AboutUs.baml
-C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\View\TextDialog.g.cs
-C:\Users\Administrator\Source\Repos\HSJC19092\Nucleic_Acid\obj\Release\View\TextDialog.baml
+D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\PrintSet.g.cs
+D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\TextDialog.g.cs
+D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\PrintSet.baml
+D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\TextDialog.baml
