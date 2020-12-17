@@ -439,5 +439,6 @@ namespace Nucleic_Acid
         {
             this.WindowState = WindowState.Minimized;
         }
+
     }
 }

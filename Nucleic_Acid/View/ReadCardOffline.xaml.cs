@@ -23,6 +23,7 @@ namespace Nucleic_Acid.View
     /// </summary>
     public partial class ReadCardOffline : UserControl
     {
+        DispatcherTimer autoScan_Timer = new DispatcherTimer();//扫描动画
         private string detectionName = CommonHelper.detectionName;
         private bool clearData = false;
         public List<DataModel> Items2 { get; set; }//datagrid数据源
@@ -50,11 +51,48 @@ namespace Nucleic_Acid.View
             m_VersionNum = CHCUsbSDK.USB_SDK_GetSDKVersion();
             TraverseDevice();//遍历设备
             login_device();//登录设备
-            datagrid.Visibility = Visibility.Hidden;
             autoRead_Timer.Tick += AutoRead_Timer_Tick;
             autoRead_Timer.Interval = TimeSpan.FromMilliseconds(1000);
-
+            autoScan_Timer.Tick += AutoScan_Timer_Tick;
+            autoScan_Timer.Interval = TimeSpan.FromMilliseconds(10);
         }
+        bool turns = true;//true 从上往下  false从下往上
+        private void AutoScan_Timer_Tick(object sender, EventArgs e)
+        {
+            if (turns)
+            {
+                Thickness margin = scanR.Margin;
+                if (margin.Bottom > 10)
+                {
+                    margin.Bottom -= 2;
+                    margin.Top += 2;
+                    scanR.Margin = margin;
+                }
+                else
+                {
+                    turns = false;
+                    of1.Offset = 0;
+                    of2.Offset = 1;
+                }
+            }
+            else
+            {
+                Thickness margin = scanR.Margin;
+                if (margin.Bottom < 232)
+                {
+                    margin.Bottom += 2;
+                    margin.Top -= 2;
+                    scanR.Margin = margin;
+                }
+                else
+                {
+                    turns = true;
+                    of1.Offset = 1;
+                    of2.Offset = 0;
+                }
+            }
+        }
+
         /// <summary>
         /// 初始化
         /// </summary>
@@ -67,6 +105,7 @@ namespace Nucleic_Acid.View
         private void Init()
         {
             autoRead_Timer.Start();
+            autoScan_Timer.Start();
         }
 
 
@@ -259,7 +298,6 @@ namespace Nucleic_Acid.View
                         datagrid.ItemsSource = null;
                         datagrid.ItemsSource = Items2;
                     }
-                    datagrid.Visibility = Visibility.Visible;
                 }
                 else
                 {
@@ -267,7 +305,6 @@ namespace Nucleic_Acid.View
                     Items2.Add(dataModel);
                     datagrid.ItemsSource = null;
                     datagrid.ItemsSource = Items2;
-                    datagrid.Visibility = Visibility.Visible;
                     
                 }
                 Console.WriteLine(Items2[0].SName);
@@ -398,6 +435,7 @@ namespace Nucleic_Acid.View
             return bit3;
         }
         #endregion
+
         /// <summary>
         /// 弹窗
         /// </summary>
@@ -490,6 +528,7 @@ namespace Nucleic_Acid.View
         {
             //停止定时器
             autoRead_Timer.Stop();
+            autoScan_Timer.Stop();
         }
 
         private void saveAndPrintoffline(DataModel dataModel)

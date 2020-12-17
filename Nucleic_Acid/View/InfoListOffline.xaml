@@ -13,7 +13,7 @@
              FontFamily="{materialDesign:MaterialDesignFont}"
              DataContext="{Binding Source={StaticResource Locator}, Path=V_ReadCard}"
              mc:Ignorable="d" d:DesignHeight="758" d:DesignWidth="1200" Loaded="UserControl_Loaded">
-    <Grid Background="#FFD3D1D1">
+    <Grid Background="White">
         <Grid Margin="25,10" Background="White">
             <StackPanel Margin="35,38,0,0" Orientation="Horizontal" HorizontalAlignment="Left" Width="565" Height="55" VerticalAlignment="Top" >
                 <TextBox x:Name="TextBox_Name" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="请输入姓名" Margin="0,8" FontFamily="NSimSun" Height="38" FontSize="12" Width="170"/>

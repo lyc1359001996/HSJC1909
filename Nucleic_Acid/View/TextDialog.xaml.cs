@@ -35,5 +35,10 @@ namespace Nucleic_Acid.View
         {
             address = Message.Text;
         }
+
+        private void Message_KeyDown(object sender, KeyEventArgs e)
+        {
+            Button_Click(this.aceept, null);
+        }
     }
 }
