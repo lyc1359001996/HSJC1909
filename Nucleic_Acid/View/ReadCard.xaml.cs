@@ -446,14 +446,13 @@ namespace Nucleic_Acid.View
         private void Print_Click(object sender, RoutedEventArgs e)
         {
             CancelTips("确定要打印吗？", new Action<bool>(isTrue =>
-             {
-                 if (isTrue)
-                 {
-                     DataModel selectedItem = (DataModel)datagrid.SelectedItem;
-                     saveAndPrint(selectedItem);
-                 }
-             }));
-
+            {
+                if (isTrue)
+                {
+                    DataModel selectedItem = (DataModel)datagrid.SelectedItem;
+                    saveAndPrint(selectedItem);
+                }
+            }));
         }
         /// <summary>
         /// 保存本地数据
@@ -473,7 +472,7 @@ namespace Nucleic_Acid.View
                 sex = dataModel.Sex == "男" ? "1" : "0",
                 userName = dataModel.SName,
                 serialNumber = deviceSerialNumber,
-                updateText = "修改",
+                updateText = "编辑",
                 acidNo = dataModel.acidNo.ToString(),
                 detectionName = detectionName,
                 updateName = detectionName,
@@ -500,11 +499,11 @@ namespace Nucleic_Acid.View
                 sex = dataModel.Sex == "男" ? "1" : "0",
                 userName = dataModel.SName,
                 serialNumber = deviceSerialNumber,
-                updateText = "修改",
+                updateText = "编辑",
                 acidNo = dataModel.acidNo.ToString(),
                 detectionName = detectionName,
                 updateName = detectionName,
-                 homeAddress = dataModel.homeAddress
+                homeAddress = dataModel.homeAddress
             };
             infoListModels.Add(infoListModel);
             Acid.http.Library.ResponseModel.ResultJson<string> resultJson = InfoListService.addNucleic(infoListModels);

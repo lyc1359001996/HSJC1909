@@ -514,7 +514,7 @@ namespace Nucleic_Acid.View
                 sex = dataModel1.Sex == "男" ? "1" : "0",
                 userName = dataModel1.SName,
                 serialNumber = deviceSerialNumber,
-                updateText = "修改",
+                updateText = "编辑",
                 acidNo = dataModel1.acidNo.ToString(),
                 detectionName = detectionName,
                 updateName = detectionName,

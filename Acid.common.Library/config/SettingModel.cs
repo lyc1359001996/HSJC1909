@@ -21,10 +21,6 @@ namespace Acid.common.Library.config
         /// </summary>
         public bool isRember { get; set; }
         /// <summary>
-        /// 是否自动登录
-        /// </summary>
-        public bool isAuto { get; set; }
-        /// <summary>
         /// 是否开启自动打印
         /// </summary>
         public bool AutoPrint { get; set; }

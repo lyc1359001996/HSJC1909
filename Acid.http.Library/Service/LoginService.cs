@@ -30,7 +30,7 @@ namespace Acid.http.Library.Service
                 return null;
             }
         }
-        public static ResultJson<LoginModel> Login_Ex(string username, string password, bool? rem = false, bool? auto = false)
+        public static ResultJson<LoginModel> Login_Ex(string username, string password, bool? rem = false)
         {
             ResultJson<LoginModel> resultJson = Login(username, password);
             if (resultJson == null)
@@ -47,7 +47,6 @@ namespace Acid.http.Library.Service
                     json.userName = username;
                     json.passWord = password;
                     json.isRember = (bool)rem;
-                    json.isAuto = (bool)auto;
                     SettingJsonConfig.saveJson(json);
                 }
                 else
@@ -55,7 +54,6 @@ namespace Acid.http.Library.Service
                     json.userName = "";
                     json.passWord = "";
                     json.isRember = false;
-                    json.isAuto = false;
                     SettingJsonConfig.saveJson(json);
                 }
                 return resultJson;

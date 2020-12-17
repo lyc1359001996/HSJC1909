@@ -19,7 +19,7 @@ namespace Acid.http.Library.ResponseModel
             foreach (var item in data)
             {
                 item.index = current;
-                item.updateText = "修改";
+                item.updateText = "编辑";
                 item.Editor = false;
                 current++;
 

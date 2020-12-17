@@ -72,11 +72,9 @@
                 </Grid>
                 <Grid Margin="562,491,195,301">
                     <CheckBox x:Name="CheckBox_isRember" IsChecked="True" Style="{StaticResource MaterialDesignLightCheckBox}" Content="记住密码"  FontFamily="Magneto" FontWeight="Normal" FontSize="12" Foreground="#DDCFC2C2" HorizontalAlignment="Left" Width="73" />
-                    <CheckBox x:Name="CheckBox_isAuto" IsChecked="True" Style="{StaticResource MaterialDesignLightCheckBox}" Content="自动登录" FontFamily="Magneto" FontWeight="Normal" FontSize="12" Foreground="#DDCFC2C2" HorizontalAlignment="Right" Width="75" />
                 </Grid>
-                <Grid Margin="562,524,136,246" VerticalAlignment="Center" HorizontalAlignment="Center" Width="262">
-                    <Button Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ButtonProgressAssist.Value="-1" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True" Content="登录" Margin="2,8,0,8" Foreground="White" Click="Login_Click" HorizontalAlignment="Left" Width="85" FontFamily="NSimSun" FontSize="12" FontWeight="Bold" Background="#FF44B2F6"/>
-                    <Button Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ButtonProgressAssist.Value="-1" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True" Content="离线模式" Margin="120,8,0,8" Foreground="White" Click="Offline_Click" HorizontalAlignment="Left" Width="85" FontFamily="NSimSun" FontWeight="Bold" FontSize="12" Background="#FF44B2F6"/>
+                <Grid Margin="580,524,136,246" VerticalAlignment="Center" HorizontalAlignment="Center" Width="244">
+                    <Button Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ButtonProgressAssist.Value="-1" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True" Content="登录" Margin="2,8,0,8" Foreground="White" Click="Login_Click" HorizontalAlignment="Left" Width="158" FontFamily="NSimSun" FontSize="12" FontWeight="Bold" Background="#FF44B2F6"/>
                 </Grid>
                 <Button ToolTip="最小化"  BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0,3,50,0" Width="21" Click="Click_Min" HorizontalAlignment="Right" VerticalAlignment="Top" >
                     <Button.Background>

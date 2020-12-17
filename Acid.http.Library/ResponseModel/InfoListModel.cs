@@ -27,7 +27,8 @@ namespace Acid.http.Library.ResponseModel
         public string acidNo { get; set; }
 
         public string updateText { get; set; }
-        public bool Editor { get; set; }
+        public bool Editor_workUnit { get; set; }
+        public bool Editor_homeAddress { get; set; }
         /// <summary>
         /// 0未同步 1已同步
         /// </summary>

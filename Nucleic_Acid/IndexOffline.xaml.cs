@@ -164,7 +164,6 @@ namespace Nucleic_Acid
                 if (arg)
                 {
                     SettingModel json = SettingJsonConfig.readJson() ?? new SettingModel();
-                    json.isAuto = false;
                     SettingJsonConfig.saveJson(json);
                     MainWindow main = new MainWindow();
                     main.Show();
@@ -235,7 +234,7 @@ namespace Nucleic_Acid
         {
             MainWindow main = new MainWindow(CommonHelper.userName, CommonHelper.passWord, CommonHelper.detectionName);
             main.Show();
-            main.Login_Click(null, null);
+            main.login();
             this.Close();
             //MainWindow.index = new Index(CommonHelper.detectionName);
         }

@@ -160,12 +160,10 @@ namespace Nucleic_Acid
                  if (arg)
                  {
                      SettingModel json = SettingJsonConfig.readJson() ?? new SettingModel();
-                     json.isAuto = false;
                      SettingJsonConfig.saveJson(json);
                      MainWindow main = new MainWindow();
                      main.Show();
                      this.Close();
-
                  }
              }));
 
@@ -226,24 +224,31 @@ namespace Nucleic_Acid
         }
         private void synchronousData()
         {
-            List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
+            try
+            {
+                List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
 
-            if (lists.Count > 0)
-            {
-                synchronousAdd(lists);//同步新增
-                synchronousUpdate(lists);//同步修改的
+                if (lists.Count > 0)
+                {
+                    synchronousAdd(lists);//同步新增
+                    synchronousUpdate(lists);//同步修改的
+                }
+                this.Dispatcher.Invoke(() =>
+                {
+                    SnackbarOK.IsActive = true;
+                    SnackbarLoding.IsActive = false;
+                    lodingBar.Visibility = Visibility.Hidden;
+                });
+                Thread.Sleep(5000);//5秒后自动关闭
+                this.Dispatcher.Invoke(() =>
+                {
+                    SnackbarOK.IsActive = false;
+                });
             }
-            this.Dispatcher.Invoke(() =>
+            catch (Exception ex)
             {
-                SnackbarOK.IsActive = true;
-                SnackbarLoding.IsActive = false;
-                lodingBar.Visibility = Visibility.Hidden;
-            });
-            Thread.Sleep(5000);//5秒后自动关闭
-            this.Dispatcher.Invoke(() =>
-            {
-                SnackbarOK.IsActive = false;
-            });
+                Util.Logger.Default.Error(ex.Message);
+            }
         }
 
         private void synchronousAdd(List<InfoListModel> lists)

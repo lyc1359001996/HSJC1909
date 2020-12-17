@@ -33,7 +33,6 @@ namespace Nucleic_Acid.View
         private string detectionName = CommonHelper.detectionName;
         private string staticName = "";
         private string staticCardNo = "";
-        private string staticTestValue = "-1";
         private bool isfirt = false;
         public InfoList()
         {
@@ -98,8 +97,7 @@ namespace Nucleic_Acid.View
                 pageNo = page,
                 pageSize = pageControl.PageSize,
                 cardNo = staticCardNo == "" ? null : staticCardNo,
-                name = staticName == "" ? null : staticName,
-                testValue = staticTestValue == "-1" ? null : staticTestValue
+                name = staticName == "" ? null : staticName
             };
             SetInfoList(requestInfoListModel);
         }
@@ -116,13 +114,11 @@ namespace Nucleic_Acid.View
                 pageSize = pageControl.PageSize,
                 cardNo = TextBox_CardNo.Text == "" ? null : TextBox_CardNo.Text,
                 name = TextBox_Name.Text == "" ? null : TextBox_Name.Text,
-                testValue = ComboBox_TestValue.SelectedIndex == -1 ? null : ComboBox_TestValue.SelectedIndex.ToString()
             };
             SetInfoList(requestInfoListModel);
             //绑定静态值
             staticName = TextBox_Name.Text;
             staticCardNo = TextBox_CardNo.Text;
-            staticTestValue = ComboBox_TestValue.SelectedIndex.ToString();
         }
 
         public void MessageTips(string message)
@@ -152,10 +148,8 @@ namespace Nucleic_Acid.View
         {
             staticName = "";
             staticCardNo = "";
-            staticTestValue = "-1";
             TextBox_CardNo.Clear();
             TextBox_Name.Clear();
-            ComboBox_TestValue.SelectedIndex = -1;
             pageControl.CurrentPage = 1;
             InitDataGrid();
 
@@ -183,10 +177,11 @@ namespace Nucleic_Acid.View
         private void Button_update_Click(object sender, RoutedEventArgs e)
         {
             Button tag = (sender as Button);
-            if (tag.Content.ToString() == "修改")
+            if (tag.Content.ToString() == "编辑")
             {
                 Acid.http.Library.ResponseModel.InfoListModel obj = (Acid.http.Library.ResponseModel.InfoListModel)dataGrid.SelectedItem;
-                obj.Editor = true;
+                obj.Editor_homeAddress = true;
+                obj.Editor_workUnit = true;
                 List<Acid.http.Library.ResponseModel.InfoListModel> source = (List<Acid.http.Library.ResponseModel.InfoListModel>)dataGrid.ItemsSource;
                 obj.updateText = "保存";
                 dataGrid.ItemsSource = null;
@@ -231,7 +226,8 @@ namespace Nucleic_Acid.View
                              }
                              SettingJsonConfig.saveData(lists);
                              #endregion
-                             obj.Editor = false;
+                             obj.Editor_homeAddress = false;
+                             obj.Editor_workUnit = false;
                              List<Acid.http.Library.ResponseModel.InfoListModel> source = (List<Acid.http.Library.ResponseModel.InfoListModel>)dataGrid.ItemsSource;
                              obj.updateText = "修改";
                              dataGrid.ItemsSource = null;
@@ -276,35 +272,35 @@ namespace Nucleic_Acid.View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void delete_click(object sender, RoutedEventArgs e)
-        {
-            CancelDelete();
-        }
-        private void CancelDelete()
-        {
-            CancelTips("确认要删除?", new Action<bool>(arg =>
-            {
-                if (arg)
-                {
-                    #region 本地删除
-                    Acid.http.Library.ResponseModel.InfoListModel obj = (Acid.http.Library.ResponseModel.InfoListModel)dataGrid.SelectedItem;
-                    List<Acid.common.Library.config.InfoListModel> lists = SettingJsonConfig.readData() ?? new List<Acid.common.Library.config.InfoListModel>();
-                    List<Acid.common.Library.config.InfoListModel> infoListModel = lists.Where(u => u.acidNo == obj.acidNo).ToList();
-                    foreach (var item in infoListModel)
-                    {
-                        lists.Remove(item);//移除
-                    }
-                    SettingJsonConfig.saveData(lists);//保存
-                    #endregion
-                    #region 服务器删除
-                    ResultJson<string> resultJson = InfoListService.deleteNucleic(new Acid.http.Library.ResponseModel.InfoListModel() { acidNo = obj.acidNo });
-                    #endregion
-                    QuerySelect_page(pageControl.CurrentPage);
-                    //删除
-                    Console.WriteLine("删除：" + obj.acidNo);
-                }
-            }));
-        }
+        //private void delete_click(object sender, RoutedEventArgs e)
+        //{
+        //    CancelDelete();
+        //}
+        //private void CancelDelete()
+        //{
+        //    CancelTips("确认要删除?", new Action<bool>(arg =>
+        //    {
+        //        if (arg)
+        //        {
+        //            #region 本地删除
+        //            Acid.http.Library.ResponseModel.InfoListModel obj = (Acid.http.Library.ResponseModel.InfoListModel)dataGrid.SelectedItem;
+        //            List<Acid.common.Library.config.InfoListModel> lists = SettingJsonConfig.readData() ?? new List<Acid.common.Library.config.InfoListModel>();
+        //            List<Acid.common.Library.config.InfoListModel> infoListModel = lists.Where(u => u.acidNo == obj.acidNo).ToList();
+        //            foreach (var item in infoListModel)
+        //            {
+        //                lists.Remove(item);//移除
+        //            }
+        //            SettingJsonConfig.saveData(lists);//保存
+        //            #endregion
+        //            #region 服务器删除
+        //            ResultJson<string> resultJson = InfoListService.deleteNucleic(new Acid.http.Library.ResponseModel.InfoListModel() { acidNo = obj.acidNo });
+        //            #endregion
+        //            QuerySelect_page(pageControl.CurrentPage);
+        //            //删除
+        //            Console.WriteLine("删除：" + obj.acidNo);
+        //        }
+        //    }));
+        //}
         /// <summary>
         /// 修改检测结果
         /// </summary>

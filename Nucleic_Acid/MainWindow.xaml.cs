@@ -42,29 +42,26 @@ namespace Nucleic_Acid
         {
             InitializeComponent();
             bool res = CHCUsbSDK.USB_SDK_Init();//USB initialize
-            //IntPtr ptrLogPath = Marshal.StringToHGlobalAnsi(szLogPath);//写日志
-            //CHCUsbSDK.USB_SDK_SetLogToFile(3, ptrLogPath, false);//这里用枚举参数不匹配，直接写了3,
-            //Marshal.FreeHGlobal(ptrLogPath);
             m_VersionNum = CHCUsbSDK.USB_SDK_GetSDKVersion();
             TraverseDevice();//遍历设备
             login_device();//登录设备
             autoRead_Timer.Tick += AutoRead_Timer_Tick;
             autoRead_Timer.Interval = TimeSpan.FromMilliseconds(1000);
-            autoRead_Timer.Start();
+            SettingModel settingModel1 = SettingJsonConfig.readJson();
+            settingModel = settingModel1 == null ? new SettingModel() : settingModel1;
+            userNameBox.Text = settingModel.userName == null ? "" : settingModel.userName;
+            passWordBox.Password = settingModel.passWord == null ? "" : settingModel.passWord;
+            CheckBox_isRember.IsChecked = settingModel.isRember;
         }
         public MainWindow(string username,string password,string name)
         {
             InitializeComponent();
             bool res = CHCUsbSDK.USB_SDK_Init();//USB initialize
-            //IntPtr ptrLogPath = Marshal.StringToHGlobalAnsi(szLogPath);//写日志
-            //CHCUsbSDK.USB_SDK_SetLogToFile(3, ptrLogPath, false);//这里用枚举参数不匹配，直接写了3,
-            //Marshal.FreeHGlobal(ptrLogPath);
             m_VersionNum = CHCUsbSDK.USB_SDK_GetSDKVersion();
             TraverseDevice();//遍历设备
             login_device();//登录设备
             autoRead_Timer.Tick += AutoRead_Timer_Tick;
             autoRead_Timer.Interval = TimeSpan.FromMilliseconds(1000);
-            autoRead_Timer.Start();
             userNameBox.Text = username;
             passWordBox.Password = password;
             nameBox.Text = name;
@@ -88,6 +85,7 @@ namespace Nucleic_Acid
         private void backGrid_Loaded(object sender, RoutedEventArgs e)
         {
             Init();
+            autoRead_Timer.Start();
         }
 
         /// <summary>
@@ -98,45 +96,47 @@ namespace Nucleic_Acid
         private void Init()
         {
             Util.Logger.Default.Info("------------------------start------------------------------");
-            SettingModel settingModel1 = SettingJsonConfig.readJson();
-            settingModel = settingModel1 == null ? new SettingModel() : settingModel1;
-            userNameBox.Text = settingModel.userName == null ? "" : settingModel.userName;
-            passWordBox.Password = settingModel.passWord == null ? "" : settingModel.passWord;
-            CheckBox_isRember.IsChecked = settingModel.isRember;
-            CheckBox_isAuto.IsChecked = settingModel.isAuto;
-            if (settingModel.isAuto)//自动登录
-            {
-                Login_Click(null, null);
-            }
         }
 
         public void Login_Click(object sender, RoutedEventArgs e)
         {
-            if (userNameBox.Text == null || userNameBox.Text == "")
-            {
-                MessageTips("请输入Username用户名", sender, e);
-                return;
-            }
-            else if (passWordBox.Password == null || passWordBox.Password == "")
-            {
-                MessageTips("请输入Password密码", sender, e);
-                return;
-            }
-            else if (nameBox.Text == null || nameBox.Text == "")
+            if (nameBox.Text == null || nameBox.Text == "")
             {
                 MessageTips("请先刷卡认证您的资料", sender, e);
                 return;
             }
-
+            CommonHelper.userName = userNameBox.Text.Trim() ?? "";
+            CommonHelper.passWord = passWordBox.Password.Trim() ?? "";
+            CommonHelper.detectionName = nameBox.Text.Trim() ?? "";
+            indexoffline = new IndexOffline(CommonHelper.detectionName);
+            indexoffline.Show();
+            this.Close();
+        }
+        public void login() 
+        {
+            if (userNameBox.Text == null || userNameBox.Text == "")
+            {
+                MessageTips("请输入Username用户名");
+                return;
+            }
+            else if (passWordBox.Password == null || passWordBox.Password == "")
+            {
+                MessageTips("请输入Password密码");
+                return;
+            }
+            else if (nameBox.Text == null || nameBox.Text == "")
+            {
+                MessageTips("请先刷卡认证您的资料");
+                return;
+            }
             LogindTips();
             string username = userNameBox.Text;
             string password = passWordBox.Password;
             bool? isRember = CheckBox_isRember.IsChecked;
-            bool? isAuto = CheckBox_isAuto.IsChecked;
             Task.Run(() =>
             {
                 Thread.Sleep(500);//看效果
-                ResultJson<LoginModel> dictionaries = LoginService.Login_Ex(username, password, isRember, isAuto);
+                ResultJson<LoginModel> dictionaries = LoginService.Login_Ex(username, password, isRember);
                 this.Dispatcher.Invoke(() =>
                 {
                     DialogHost.Close("LoginDialog");
@@ -151,11 +151,10 @@ namespace Nucleic_Acid
                     }
                     else
                     {
-                        MessageTips(dictionaries.message, sender, e);
+                        MessageTips(dictionaries.message);
                     }
                 });
             });
-
         }
 
 
@@ -422,17 +421,17 @@ namespace Nucleic_Acid
 
         private void Offline_Click(object sender, RoutedEventArgs e)
         {
-            if (nameBox.Text == null || nameBox.Text == "")
-            {
-                MessageTips("请先刷卡认证您的资料", sender, e);
-                return;
-            }
-            CommonHelper.userName = userNameBox.Text.Trim() ?? "";
-            CommonHelper.passWord = passWordBox.Password.Trim() ?? "";
-            CommonHelper.detectionName = nameBox.Text.Trim() ?? "";
-            indexoffline = new IndexOffline(CommonHelper.detectionName);
-            indexoffline.Show();
-            this.Close();
+            //if (nameBox.Text == null || nameBox.Text == "")
+            //{
+            //    MessageTips("请先刷卡认证您的资料", sender, e);
+            //    return;
+            //}
+            //CommonHelper.userName = userNameBox.Text.Trim() ?? "";
+            //CommonHelper.passWord = passWordBox.Password.Trim() ?? "";
+            //CommonHelper.detectionName = nameBox.Text.Trim() ?? "";
+            //indexoffline = new IndexOffline(CommonHelper.detectionName);
+            //indexoffline.Show();
+            //this.Close();
         }
 
         private void Click_Min(object sender, RoutedEventArgs e)
