@@ -31,7 +31,7 @@ namespace Nucleic_Acid
         public Index(string name)
         {
             InitializeComponent();
-            Label_Name.Content = name+"-在线";
+            Label_Name.Content = name + "-在线";
         }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
@@ -165,7 +165,7 @@ namespace Nucleic_Acid
                      MainWindow main = new MainWindow();
                      main.Show();
                      this.Close();
-                     
+
                  }
              }));
 
@@ -219,31 +219,46 @@ namespace Nucleic_Acid
         /// <summary>
         /// 同步本地线上
         /// </summary>
-        private void synchronization() 
+        private void synchronization()
         {
             //LoadingTips("正在同步数据...");
             Task.Factory.StartNew(synchronousData);
         }
         private void synchronousData()
         {
-            List<InfoListModel> lists = SettingJsonConfig.readData()??new List<InfoListModel>();
-            
-            if (lists.Count>0)
+            List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
+
+            if (lists.Count > 0)
             {
                 synchronousAdd(lists);//同步新增
                 synchronousUpdate(lists);//同步修改的
             }
-            this.Dispatcher.Invoke(() => { SnackbarTwo.IsActive = true; });
+            this.Dispatcher.Invoke(() =>
+            {
+                SnackbarOK.IsActive = true;
+                SnackbarLoding.IsActive = false;
+                lodingBar.Visibility = Visibility.Hidden;
+            });
             Thread.Sleep(5000);//5秒后自动关闭
-            this.Dispatcher.Invoke(() => { SnackbarTwo.IsActive = false; });
+            this.Dispatcher.Invoke(() =>
+            {
+                SnackbarOK.IsActive = false;
+            });
         }
 
-        private void synchronousAdd(List<InfoListModel> lists) 
+        private void synchronousAdd(List<InfoListModel> lists)
         {
             List<InfoListModel> newlist = lists.Where(u => u.versions == 0).ToList();
             string str = JsonConvert.SerializeObject(newlist);
             List<Acid.http.Library.ResponseModel.InfoListModel> lists1 = JsonConvert.DeserializeObject<List<Acid.http.Library.ResponseModel.InfoListModel>>(str);
-            Acid.http.Library.ResponseModel.ResultJson<string> resultJson = InfoListService.addNucleic(lists1);
+            int count = lists1.Count();
+            int page = count / 1000 + 1;
+            Acid.http.Library.ResponseModel.ResultJson<string> resultJson = new Acid.http.Library.ResponseModel.ResultJson<string>() { code = "1" };
+            for (int i = 1; i <= page; i++)
+            {
+                List<Acid.http.Library.ResponseModel.InfoListModel> data = lists1.Skip((i - 1) * 1000).Take(1000).ToList();
+                resultJson = InfoListService.addNucleic(data);
+            }
             if (resultJson.code == "20000")
             {
                 foreach (var item in lists.Where(u => u.versions == 0).ToList())
@@ -259,7 +274,14 @@ namespace Nucleic_Acid
             List<InfoListModel> newlist = lists.Where(u => u.versions == 3).ToList();
             string str = JsonConvert.SerializeObject(newlist);
             List<Acid.http.Library.ResponseModel.InfoListModel> lists1 = JsonConvert.DeserializeObject<List<Acid.http.Library.ResponseModel.InfoListModel>>(str);
-            Acid.http.Library.ResponseModel.ResultJson<string> resultJson = InfoListService.updateNucleic(lists1);
+            int count = lists1.Count();
+            int page = count / 1000 + 1;
+            Acid.http.Library.ResponseModel.ResultJson<string> resultJson = new Acid.http.Library.ResponseModel.ResultJson<string>() { code = "1" };
+            for (int i = 1; i <= page; i++)
+            {
+                List<Acid.http.Library.ResponseModel.InfoListModel> data = lists1.Skip((i - 1) * 1000).Take(1000).ToList();
+                resultJson = InfoListService.updateNucleic(lists1);
+            }
             if (resultJson.code == "20000")
             {
                 foreach (var item in lists.Where(u => u.versions == 3).ToList())
@@ -286,7 +308,7 @@ namespace Nucleic_Acid
 
         private void SnackbarMessage_ActionClick(object sender, RoutedEventArgs e)
         {
-            SnackbarTwo.IsActive = false;
+            SnackbarOK.IsActive = false;
         }
 
         private void autoPrint_Checked(object sender, RoutedEventArgs e)
