@@ -14,7 +14,6 @@ C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\bin\Release\zxing
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\bin\Release\zxing.presentation.dll
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\bin\Release\zxing.xml
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\bin\Release\zxing.presentation.xml
-C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\obj\Release\Acid.SDK.Library.csprojAssemblyReference.cache
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\obj\Release\Acid.SDK.Library.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\obj\Release\Acid.SDK.Library.csproj.CopyComplete
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.SDK.Library\obj\Release\Acid.SDK.Library.dll

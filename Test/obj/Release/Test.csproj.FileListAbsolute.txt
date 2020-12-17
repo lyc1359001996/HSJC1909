@@ -33,3 +33,6 @@ D:\HSJC\HSJC\Test\obj\Release\Test.csproj.CoreCompileInputs.cache
 D:\HSJC\HSJC\Test\obj\Release\Test.csproj.CopyComplete
 D:\HSJC\HSJC\Test\obj\Release\Test.exe
 D:\HSJC\HSJC\Test\obj\Release\Test.pdb
+C:\Users\Administrator\Source\Repos\HSJC19092\Test\bin\Release\NLog.config
+C:\Users\Administrator\Source\Repos\HSJC19092\Test\bin\Release\NLog.dll
+C:\Users\Administrator\Source\Repos\HSJC19092\Test\bin\Release\NLog.xml
