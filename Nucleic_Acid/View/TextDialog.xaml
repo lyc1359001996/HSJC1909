@@ -10,11 +10,11 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              TextElement.FontWeight="Medium"
              TextElement.FontSize="14"
-             FontFamily="{materialDesign:MaterialDesignFont}" Height="120" Width="auto" Loaded="UserControl_Loaded">
+             FontFamily="{materialDesign:MaterialDesignFont}" Height="140" Width="auto" Loaded="UserControl_Loaded">
     <Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
             <materialDesign:PackIcon Kind="MapMarker"  VerticalAlignment="Center" Margin="0,-10,0,0" Foreground="#FF0099FF"/>
-            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,-30,0,0"  x:Name="Message" Text="Address"  FontFamily="Microsoft YaHei" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,-30,0,0"  x:Name="Message" Text="Address"  FontFamily="Microsoft YaHei" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" KeyDown="Message_KeyDown" >
                 <materialDesign:HintAssist.Hint>
                     <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
                         <!--<materialDesign:PackIcon Kind="AccessPoint" />-->
@@ -25,6 +25,6 @@
                 </materialDesign:HintAssist.Hint>
             </TextBox>
         </StackPanel>
-        <Button IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Center" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Foreground="#FF008EFF" FontFamily="NSimSun" Height="33" Width="60" Content="确认" Margin="66,0,67,6" VerticalAlignment="Bottom" Click="Button_Click"/>
+        <Button x:Name="aceept"  IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Center" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Foreground="#FF008EFF" FontFamily="NSimSun" Height="33" Width="60" Content="确认" Margin="66,0,67,6" VerticalAlignment="Bottom" Click="Button_Click"/>
     </Grid>
 </UserControl>
