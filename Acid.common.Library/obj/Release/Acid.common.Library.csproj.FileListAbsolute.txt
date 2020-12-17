@@ -14,7 +14,6 @@ C:\Users\Administrator\Source\Repos\HSJC19092\Acid.common.Library\bin\Release\Ne
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.common.Library\bin\Release\RestSharp.dll
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.common.Library\bin\Release\Newtonsoft.Json.xml
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.common.Library\bin\Release\RestSharp.xml
-C:\Users\Administrator\Source\Repos\HSJC19092\Acid.common.Library\obj\Release\Acid.common.Library.csprojAssemblyReference.cache
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.common.Library\obj\Release\Acid.common.Library.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.common.Library\obj\Release\Acid.common.Library.csproj.CopyComplete
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.common.Library\obj\Release\Acid.common.Library.dll
