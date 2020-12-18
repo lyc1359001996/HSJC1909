@@ -12,7 +12,7 @@
              TextElement.FontSize="14"
              FontFamily="{materialDesign:MaterialDesignFont}"
              DataContext="{Binding Source={StaticResource Locator}, Path=V_ReadCard}"
-             mc:Ignorable="d" d:DesignHeight="758" d:DesignWidth="1200" Loaded="UserControl_Loaded">
+             mc:Ignorable="d" d:DesignHeight="758" d:DesignWidth="1200" Loaded="UserControl_Loaded" Unloaded="UserControl_Unloaded">
     <Grid Background="White">
         <Grid Margin="25,10" Background="White">
             <StackPanel Margin="35,38,0,0" Orientation="Horizontal" HorizontalAlignment="Left" Width="565" Height="55" VerticalAlignment="Top" >
@@ -31,50 +31,54 @@
                     <TextBlock Text="查询" />
                 </Button>
             </StackPanel>
-            <ScrollViewer Margin="0,108,0,0">
+            <ScrollViewer Margin="0,108,0,0" VerticalScrollBarVisibility="Auto">
                 <StackPanel>
-                    <DataGrid  x:Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit="FullRow" SelectionMode="Single" Margin="30,0,30,0" BorderBrush="#1F060000" BorderThickness="2" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" AreRowDetailsFrozen="True" Height="auto" FontFamily="NSimSun" FontWeight="Normal" FontSize="14" CanUserReorderColumns="False" >
+                    <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit="FullRow" SelectionMode="Single" Margin="30,0,30,0" BorderBrush="#1F060000" BorderThickness="2" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" AreRowDetailsFrozen="True" Height="auto" FontFamily="NSimSun" FontWeight="Normal" FontSize="14" CanUserReorderColumns="False" >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="序号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
+                            <materialDesign:DataGridTextColumn Header="序号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
                                 <DataGridTextColumn.Binding>
                                     <Binding Path="index"/>
                                 </DataGridTextColumn.Binding>
-                            </DataGridTextColumn>
-                            <DataGridTextColumn Header="编号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
+                            </materialDesign:DataGridTextColumn>
+                            <materialDesign:DataGridTextColumn Header="编号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
                                 <DataGridTextColumn.Binding>
                                     <Binding Path="acidNo"/>
                                 </DataGridTextColumn.Binding>
-                            </DataGridTextColumn>
-                            <DataGridTextColumn Header="姓名" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
+                            </materialDesign:DataGridTextColumn>
+                            <materialDesign:DataGridTextColumn Header="姓名" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
                                 <DataGridTextColumn.Binding>
                                     <Binding Path="userName"/>
                                 </DataGridTextColumn.Binding>
-                            </DataGridTextColumn>
-                            <DataGridTextColumn Header="身份证号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
+                            </materialDesign:DataGridTextColumn>
+                            <materialDesign:DataGridTextColumn Header="身份证号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
                                 <DataGridTextColumn.Binding>
                                     <Binding Path="cardNo"/>
                                 </DataGridTextColumn.Binding>
-                            </DataGridTextColumn>
-                            <DataGridTextColumn Header="性别" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
+                            </materialDesign:DataGridTextColumn>
+                            <materialDesign:DataGridTextColumn Header="性别" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
                                 <DataGridTextColumn.Binding>
                                     <Binding Path="sex"/>
                                 </DataGridTextColumn.Binding>
-                            </DataGridTextColumn>
-                            <DataGridTextColumn Header="身份证地址" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" MaxWidth="500" FontFamily="NSimSun">
+                            </materialDesign:DataGridTextColumn>
+                            <materialDesign:DataGridTextColumn Header="身份证地址" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" MaxWidth="500" FontFamily="NSimSun">
                                 <DataGridTextColumn.Binding>
                                     <Binding Path="address"/>
                                 </DataGridTextColumn.Binding>
-                            </DataGridTextColumn>
-                            <DataGridTextColumn Header="现居住地址" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" MaxWidth="400" FontFamily="NSimSun">
-                                <DataGridTextColumn.Binding>
-                                    <Binding Path="homeAddress"/>
-                                </DataGridTextColumn.Binding>
-                            </DataGridTextColumn>
-                            <DataGridTextColumn Header="工作单位" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" MaxWidth="400" FontFamily="NSimSun">
-                                <DataGridTextColumn.Binding>
-                                    <Binding Path="workUnit"/>
-                                </DataGridTextColumn.Binding>
-                            </DataGridTextColumn>
+                            </materialDesign:DataGridTextColumn>
+                            <DataGridTemplateColumn Header="现居住地址">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox TextWrapping="Wrap" MaxWidth="100" Text="{Binding Path=homeAddress,UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=Editor_homeAddress}" FontFamily="NSimSun" MaxLength="50"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="工作单位">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox TextWrapping="Wrap" MaxWidth="100" Text="{Binding Path=company,UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=Editor_company}" FontFamily="NSimSun" MaxLength="50"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                             <DataGridTextColumn Header="检测时间" IsReadOnly="True" FontFamily="NSimSun">
                                 <DataGridTextColumn.Binding>
                                     <Binding Path="createTime"/>
@@ -99,6 +103,11 @@
                     <WpfPaging:PagingControl x:Name="pageControl" Height="44" Margin="30,20,0,0" PageSize="10" DataTote="0" Width="890" HorizontalAlignment="Left"/>
                 </StackPanel>
             </ScrollViewer>
+            <StackPanel Orientation="Horizontal" Height="16" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="60" Margin="0,0,20,0">
+                <materialDesign:PackIcon x:Name="disconn" Kind="LanDisconnect" Visibility="Visible"  HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Stretch" Foreground="#DDEE4646" />
+                <materialDesign:PackIcon x:Name="conn" Kind="LanConnect" Visibility="Hidden" Margin="-16,0,0,0"  HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Stretch" Foreground="#DD52DE11" />
+                <TextBlock x:Name="connect_Text" Text="未连接" Margin="6,0,0,0" FontFamily="NSimSun" FontSize="12" VerticalAlignment="Center"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

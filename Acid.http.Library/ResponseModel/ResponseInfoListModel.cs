@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Acid.common.Library.config;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,8 @@ namespace Acid.http.Library.ResponseModel
             {
                 item.index = current;
                 item.updateText = "编辑";
-                item.Editor = false;
+                item.Editor_company = false;
+                item.Editor_homeAddress = false;
                 current++;
 
             }

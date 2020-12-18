@@ -14,7 +14,6 @@ namespace Acid.http.Library.RequestModel
         public long serialNumber { get; set; }    //编号
         public int sex { get; set; }  //性别
         public string address { get; set; }  //省份证地址
-        public int testingValue { get; set; } //核酸检测结果
         public string createTime { get; set; }
     }
 }

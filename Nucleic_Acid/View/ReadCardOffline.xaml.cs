@@ -292,7 +292,7 @@ namespace Nucleic_Acid.View
                 {
                     if (Items2[0].temp != dataModel.temp)
                     {
-                        TextTips(dataModel.home,Addressaction);
+                        //TextTips(dataModel.home,Addressaction);
                         Items2.Clear();
                         Items2.Add(dataModel);
                         datagrid.ItemsSource = null;
@@ -301,7 +301,7 @@ namespace Nucleic_Acid.View
                 }
                 else
                 {
-                    TextTips(dataModel.home, Addressaction);
+                    //TextTips(dataModel.home, Addressaction);
                     Items2.Add(dataModel);
                     datagrid.ItemsSource = null;
                     datagrid.ItemsSource = Items2;
@@ -450,7 +450,7 @@ namespace Nucleic_Acid.View
             MainWindow.indexoffline.CancelTips(message, action, e);
         }
 
-        public void TextTips(string message, Action<string> action, DialogClosingEventHandler e = null)
+        public void TextTips(InfoListModel message, Action<InfoListModel> action, DialogClosingEventHandler e = null)
         {
             MainWindow.indexoffline.TextTips(message, action, e);
         }
@@ -500,6 +500,18 @@ namespace Nucleic_Acid.View
 
 
 
+       
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            //停止定时器
+            autoRead_Timer.Stop();
+            autoScan_Timer.Stop();
+        }
+
+        private void saveAndPrintoffline(DataModel dataModel)
+        {
+            savedata(dataModel);
+        }
         private void savedata(DataModel dataModel1)
         {
             dataModel1.acidNo = new SnowConfig(1).nextId();
@@ -510,7 +522,6 @@ namespace Nucleic_Acid.View
                 address = dataModel1.home,
                 cardNo = dataModel1.temp,
                 createTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-                testingValue = 0,
                 sex = dataModel1.Sex == "男" ? "1" : "0",
                 userName = dataModel1.SName,
                 serialNumber = deviceSerialNumber,
@@ -523,17 +534,6 @@ namespace Nucleic_Acid.View
             json.Add(infoListModel);
             SettingJsonConfig.saveData(json);
             PrintHelper.print(dataModel1.temp);
-        }
-        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
-        {
-            //停止定时器
-            autoRead_Timer.Stop();
-            autoScan_Timer.Stop();
-        }
-
-        private void saveAndPrintoffline(DataModel dataModel)
-        {
-            savedata(dataModel);
         }
     }
 }

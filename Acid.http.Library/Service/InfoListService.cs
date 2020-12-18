@@ -62,7 +62,7 @@ namespace Acid.http.Library.Service
         /// </summary>
         /// <param name="requestNucleic"></param>
         /// <returns></returns>
-        public static ResultJson<string> updateNucleic(List<ResponseModel.InfoListModel> requestNucleic) 
+        public static ResultJson<string> updateNucleic(List<InfoListModel> requestNucleic) 
         {
             try
             {
@@ -84,7 +84,7 @@ namespace Acid.http.Library.Service
         /// </summary>
         /// <param name="requestNucleic"></param>
         /// <returns></returns>
-        public static ResultJson<string> addNucleic(List<ResponseModel.InfoListModel> requestNucleic)
+        public static ResultJson<string> addNucleic(List<InfoListModel> requestNucleic)
         {
             try
             {
@@ -106,7 +106,7 @@ namespace Acid.http.Library.Service
         /// </summary>
         /// <param name="requestNucleic"></param>
         /// <returns></returns>
-        public static ResultJson<string> deleteNucleic(ResponseModel.InfoListModel requestNucleic)
+        public static ResultJson<string> deleteNucleic(InfoListModel requestNucleic)
         {
             try
             {

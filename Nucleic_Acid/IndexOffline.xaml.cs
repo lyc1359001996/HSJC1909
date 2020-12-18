@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,28 +24,28 @@ namespace Nucleic_Acid
     /// </summary>
     public partial class IndexOffline : Window
     {
-        ReadCardOffline V_readCard;
+        //ReadCardOffline V_readCard;
         InfoListOffline V_infoList;
         public IndexOffline(string name)
         {
             InitializeComponent();
-            if (V_readCard == null)
+            if (V_infoList == null)
             {
-                V_readCard = new ReadCardOffline();
+                V_infoList = new InfoListOffline();
             }
-            DataContext = V_readCard;
-            Label_Name.Content = name+"-离线";
+            DataContext = V_infoList;
+            Label_Name.Content = name + "-离线";
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Init();
         }
-        private void Init() 
+        private void Init()
         {
-            SettingModel settingModel = SettingJsonConfig.readJson()??new SettingModel();
-            autoPrint.IsChecked = settingModel.AutoPrint;
-            UrlModel.autoPrint = settingModel.AutoPrint;
+            //SettingModel settingModel = SettingJsonConfig.readJson() ?? new SettingModel();
+            //autoPrint.IsChecked = settingModel.AutoPrint;
+            UrlModel.autoPrint = true;
         }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
@@ -63,11 +64,11 @@ namespace Nucleic_Acid
 
         private void RadioButton_Click(object sender, RoutedEventArgs e)
         {
-            if (V_readCard == null)
-            {
-                V_readCard = new ReadCardOffline();
-            }
-            DataContext = V_readCard;
+            //if (V_readCard == null)
+            //{
+            //    V_readCard = new ReadCardOffline();
+            //}
+            //DataContext = V_readCard;
         }
 
         private void RadioButton_Click_1(object sender, RoutedEventArgs e)
@@ -90,16 +91,31 @@ namespace Nucleic_Acid
             };
             await DialogHost.Show(sampleMessageDialog, "ReadDialog");
         }
-        public async void TextTips(string message, Action<string> action, DialogClosingEventHandler e = null)
+        public void ShowWarn(string name, string datetime)
+        {
+            SnackbarWarn.Message.Content = "提示：" + name + "已于" + datetime + "进行核酸检测";
+            Task.Factory.StartNew(showWarn);
+        }
+        private void showWarn()
+        {
+            this.Dispatcher.Invoke(() => { SnackbarWarn.IsActive = true; });
+            Thread.Sleep(10000);
+            this.Dispatcher.Invoke(() => { SnackbarWarn.IsActive = false; });
+        }
+        public async void TextTips(InfoListModel infoListModel, Action<InfoListModel> action, DialogClosingEventHandler e = null)
         {
             if (e == null)
                 e = closingEventHandler;
             var textDialog = new TextDialog()
             {
-                Message = { Text = message }
+                Text_CardAddress = { Text = infoListModel.address },
+                Text_Name = { Text = infoListModel.userName },
+                Text_Card = { Text = infoListModel.cardNo },
+                Text_Sex = { Text = infoListModel.sex },
+                Text_homeAddress = { Text = infoListModel.address }
             };
             await DialogHost.Show(textDialog, "ReadDialog");
-            action(textDialog.address);
+            action(textDialog.InfoListModel);
         }
         /// <summary>
         /// 确定取消弹窗
@@ -220,10 +236,10 @@ namespace Nucleic_Acid
 
         private void autoPrint_Checked(object sender, RoutedEventArgs e)
         {
-            SettingModel settingModel = SettingJsonConfig.readJson() ?? new SettingModel();
-            settingModel.AutoPrint = autoPrint.IsChecked??false;
-            UrlModel.autoPrint = settingModel.AutoPrint;
-            SettingJsonConfig.saveJson(settingModel);
+            //SettingModel settingModel = SettingJsonConfig.readJson() ?? new SettingModel();
+            //settingModel.AutoPrint = autoPrint.IsChecked ?? false;
+            //UrlModel.autoPrint = settingModel.AutoPrint;
+            //SettingJsonConfig.saveJson(settingModel);
         }
         /// <summary>
         /// 转到在线
