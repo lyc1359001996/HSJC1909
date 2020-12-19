@@ -18,3 +18,4 @@ C:\Users\Administrator\Source\Repos\HSJC19092\Acid.common.Library\obj\Release\Ac
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.common.Library\obj\Release\Acid.common.Library.csproj.CopyComplete
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.common.Library\obj\Release\Acid.common.Library.dll
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.common.Library\obj\Release\Acid.common.Library.pdb
+C:\Users\Administrator\Source\Repos\HSJC19092\Acid.common.Library\obj\Release\Acid.common.Library.csprojAssemblyReference.cache
