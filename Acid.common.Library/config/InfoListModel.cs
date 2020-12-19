@@ -24,7 +24,7 @@ namespace Acid.common.Library.config
         public string serialNumber { get; set; }
         public string sex { get; set; }
         public string address { get; set; }
-        public int testingValue { get; set; }
+        public int? testingValue { get; set; }
         public string acidNo { get; set; }
         public string updateText { get; set; }
 

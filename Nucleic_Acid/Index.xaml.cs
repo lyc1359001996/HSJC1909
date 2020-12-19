@@ -242,7 +242,6 @@ namespace Nucleic_Acid
             try
             {
                 List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
-
                 if (lists.Count > 0)
                 {
                     synchronousAdd(lists);//同步新增
@@ -318,12 +317,12 @@ namespace Nucleic_Acid
             //SettingModel settingModel = SettingJsonConfig.readJson() ?? new SettingModel();
             //autoPrint.IsChecked = settingModel.AutoPrint;
             UrlModel.autoPrint = true;
-            synchronization();
             if (V_infoList == null)
             {
                 V_infoList = new InfoList();
             }
             DataContext = V_infoList;
+            synchronization();
         }
 
         private void SnackbarMessage_ActionClick(object sender, RoutedEventArgs e)
