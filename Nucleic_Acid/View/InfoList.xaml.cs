@@ -71,7 +71,7 @@ namespace Nucleic_Acid.View
         {
             InitializeComponent();
             pageControl.OnPagesChanged += PageControl_OnPagesChanged;//初始化分页
-            InitDataGrid();//初始化表格
+            //InitDataGrid();//初始化表格
             ReadInit();//初始化读卡
         }
 
@@ -506,7 +506,7 @@ namespace Nucleic_Acid.View
         private void saveAndPrint(InfoListModel selectedItem)
         {
             Console.WriteLine("打印ing......................");
-            selectedItem.acidNo = new SnowConfig(1).nextId().ToString();
+            selectedItem.acidNo = UniqueData.Gener("");
             //同步线上
             Acid.http.Library.ResponseModel.ResultJson<string> resultJson = saveonline(selectedItem);
             if (resultJson.code == "20000")

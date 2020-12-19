@@ -514,7 +514,7 @@ namespace Nucleic_Acid.View
         }
         private void savedata(DataModel dataModel1)
         {
-            dataModel1.acidNo = new SnowConfig(1).nextId();
+            dataModel1.acidNo = long.Parse(UniqueData.Gener(""));
             List<InfoListModel> json = SettingJsonConfig.readData() ?? new List<InfoListModel>();
             InfoListModel infoListModel = new InfoListModel()
             {

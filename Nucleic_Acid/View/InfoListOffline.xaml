@@ -33,57 +33,71 @@
             </StackPanel>
             <ScrollViewer Margin="0,108,0,0" VerticalScrollBarVisibility="Auto">
                 <StackPanel>
-                    <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit="FullRow" SelectionMode="Single" Margin="30,0,30,0" BorderBrush="#1F060000" BorderThickness="2" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" AreRowDetailsFrozen="True" Height="auto" FontFamily="NSimSun" FontWeight="Normal" FontSize="14" CanUserReorderColumns="False" >
+                    <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="False" SelectionUnit="FullRow" SelectionMode="Single" Margin="30,0,30,0" BorderBrush="#1F060000" BorderThickness="2" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" AreRowDetailsFrozen="True" Height="auto" FontFamily="NSimSun" FontWeight="Normal" FontSize="14" CanUserReorderColumns="False" EnableColumnVirtualization="True" >
                         <DataGrid.Columns>
-                            <materialDesign:DataGridTextColumn Header="序号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
-                                <DataGridTextColumn.Binding>
-                                    <Binding Path="index"/>
-                                </DataGridTextColumn.Binding>
-                            </materialDesign:DataGridTextColumn>
-                            <materialDesign:DataGridTextColumn Header="编号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
-                                <DataGridTextColumn.Binding>
-                                    <Binding Path="acidNo"/>
-                                </DataGridTextColumn.Binding>
-                            </materialDesign:DataGridTextColumn>
-                            <materialDesign:DataGridTextColumn Header="姓名" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
-                                <DataGridTextColumn.Binding>
-                                    <Binding Path="userName"/>
-                                </DataGridTextColumn.Binding>
-                            </materialDesign:DataGridTextColumn>
-                            <materialDesign:DataGridTextColumn Header="身份证号" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
-                                <DataGridTextColumn.Binding>
-                                    <Binding Path="cardNo"/>
-                                </DataGridTextColumn.Binding>
-                            </materialDesign:DataGridTextColumn>
-                            <materialDesign:DataGridTextColumn Header="性别" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" FontFamily="NSimSun">
-                                <DataGridTextColumn.Binding>
-                                    <Binding Path="sex"/>
-                                </DataGridTextColumn.Binding>
-                            </materialDesign:DataGridTextColumn>
-                            <materialDesign:DataGridTextColumn Header="身份证地址" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" MaxWidth="500" FontFamily="NSimSun">
-                                <DataGridTextColumn.Binding>
-                                    <Binding Path="address"/>
-                                </DataGridTextColumn.Binding>
-                            </materialDesign:DataGridTextColumn>
+                            <DataGridTemplateColumn Header="序号">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox TextWrapping="Wrap" MaxWidth="250" Text="{Binding Path=index}" IsReadOnly="True" FontFamily="NSimSun" MaxLength="50" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" VerticalAlignment="Center"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="编号">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox TextWrapping="Wrap" MaxWidth="250" Text="{Binding Path=acidNo}" IsReadOnly="True" FontFamily="NSimSun" MaxLength="50" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" VerticalAlignment="Center"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="姓名">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox TextWrapping="Wrap" MaxWidth="250" Text="{Binding Path=userName}" IsReadOnly="True" FontFamily="NSimSun" MaxLength="50" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" VerticalAlignment="Center"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="身份证号">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox TextWrapping="Wrap" MaxWidth="250" Text="{Binding Path=cardNo}" IsReadOnly="True" FontFamily="NSimSun" MaxLength="50" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" VerticalAlignment="Center"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="性别">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox TextWrapping="Wrap" MaxWidth="250" Text="{Binding Path=sex}" IsReadOnly="True" FontFamily="NSimSun" MaxLength="50" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" VerticalAlignment="Center"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="身份证地址">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox TextWrapping="Wrap" MaxWidth="250" Text="{Binding Path=address}" IsReadOnly="True" FontFamily="NSimSun" MaxLength="50" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" VerticalAlignment="Center"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                             <DataGridTemplateColumn Header="现居住地址">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBox TextWrapping="Wrap" MaxWidth="100" Text="{Binding Path=homeAddress,UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=Editor_homeAddress}" FontFamily="NSimSun" MaxLength="50"/>
+                                        <TextBox TextWrapping="Wrap" MaxWidth="250" Text="{Binding Path=homeAddress,UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=Editor_homeAddress}" FontFamily="NSimSun" MaxLength="50" VerticalAlignment="Center"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                             <DataGridTemplateColumn Header="工作单位">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBox TextWrapping="Wrap" MaxWidth="100" Text="{Binding Path=company,UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=Editor_company}" FontFamily="NSimSun" MaxLength="50"/>
+                                        <TextBox TextWrapping="Wrap" MaxWidth="250" Text="{Binding Path=company,UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=Editor_company}" FontFamily="NSimSun" MaxLength="50" VerticalAlignment="Center"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTextColumn Header="检测时间" IsReadOnly="True" FontFamily="NSimSun">
-                                <DataGridTextColumn.Binding>
-                                    <Binding Path="createTime"/>
-                                </DataGridTextColumn.Binding>
-                            </DataGridTextColumn>
+                            <DataGridTemplateColumn Header="检测时间">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox TextWrapping="Wrap" MaxWidth="250" Text="{Binding Path=createTime}" IsReadOnly="True" FontFamily="NSimSun" MaxLength="50" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" VerticalAlignment="Center"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                             <DataGridTemplateColumn Header="操作">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>

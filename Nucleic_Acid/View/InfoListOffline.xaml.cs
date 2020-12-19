@@ -430,7 +430,7 @@ namespace Nucleic_Acid.View
         }
         private void savedata(InfoListModel dataModel1)
         {
-            dataModel1.acidNo = new SnowConfig(1).nextId().ToString();
+            dataModel1.acidNo = UniqueData.Gener("");
             List<InfoListModel> json = SettingJsonConfig.readData() ?? new List<InfoListModel>();
             InfoListModel infoListModel = new InfoListModel()
             {
@@ -463,7 +463,7 @@ namespace Nucleic_Acid.View
         {
             InitializeComponent();
             pageControl.OnPagesChanged += PageControl_OnPagesChanged;//初始化分页
-            InitDataGrid();//初始化表格
+            //InitDataGrid();//初始化表格
             ReadInit();//初始化读卡
         }
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -515,6 +515,7 @@ namespace Nucleic_Acid.View
                     List<InfoListModel> data = lists.Skip((requestInfoListModel.pageNo - 1) * requestInfoListModel.pageSize).Take(requestInfoListModel.pageSize).ToList();
                     //添加序号
                     int current = 1;
+                    //Thread.Sleep(1000);
                     foreach (var item in data)
                     {
                         item.index = current;
@@ -522,12 +523,15 @@ namespace Nucleic_Acid.View
                         item.Editor_homeAddress = false;
                         current++;
                     }
+                    List<InfoListModel> newlist = ToDataGrid(data);
                     this.Dispatcher.Invoke(() =>
                     {
+                        
                         pageControl.DataTote = lists.Count();
-                        pageControl.CurrentPage = requestInfoListModel.pageNo;
-                        dataGrid.ItemsSource = ToDataGrid(data);
+                        pageControl.CurrentPage =requestInfoListModel.pageNo;
+                        dataGrid.ItemsSource = newlist;
                         loding.Visibility = Visibility.Hidden;
+
 
                     });
                 }
@@ -535,7 +539,8 @@ namespace Nucleic_Acid.View
                 {
                     this.Dispatcher.Invoke(() =>
                     {
-                        dataGrid.ItemsSource = ToDataGrid(new List<InfoListModel>());
+                        dataGrid.ItemsSource = null;
+                        dataGrid.ItemsSource = new List<InfoListModel>();
                         loding.Visibility = Visibility.Hidden;
                     });
                 }

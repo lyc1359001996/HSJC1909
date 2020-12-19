@@ -512,7 +512,7 @@ namespace Nucleic_Acid.View
         private void saveAndPrint(DataModel selectedItem)
         {
             Console.WriteLine("打印ing......................");
-            selectedItem.acidNo = new SnowConfig(1).nextId();
+            selectedItem.acidNo = long.Parse(UniqueData.Gener(""));
             //同步线上
             Acid.http.Library.ResponseModel.ResultJson<string> resultJson = saveonline(selectedItem);
             if (resultJson.code == "20000")
