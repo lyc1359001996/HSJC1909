@@ -277,7 +277,11 @@ namespace Nucleic_Acid.View
                     if (Items2[0].cardNo != dataModel.cardNo)
                     {
                         autoRead_Timer.Stop();
-                        SelectManIsUse(dataModel.cardNo);
+                        string homeAddress = "";
+                        string company = "";
+                        SelectManIsUse(dataModel.cardNo, ref homeAddress, ref company);
+                        dataModel.homeAddress = homeAddress;
+                        dataModel.company = company;
                         TextTips(dataModel, Addressaction);
                         Items2.Clear();
                         Items2.Add(dataModel);
@@ -288,12 +292,16 @@ namespace Nucleic_Acid.View
                 else
                 {
                     autoRead_Timer.Stop();
-                    SelectManIsUse(dataModel.cardNo);
+                    string homeAddress = "";
+                    string company = "";
+                    SelectManIsUse(dataModel.cardNo, ref homeAddress, ref company);
+                    dataModel.homeAddress = homeAddress;
+                    dataModel.company = company;
                     TextTips(dataModel, Addressaction);
                     Items2.Add(dataModel);
                     //dataGrid.ItemsSource = Items2;
                 }
-                
+
             }));
         }
         private void Addressaction(InfoListModel obj)
@@ -306,6 +314,7 @@ namespace Nucleic_Acid.View
             else
             {
                 dataModel.homeAddress = obj.homeAddress;
+                dataModel.company = obj.company;
                 Items2.Clear();
                 Items2.Add(dataModel);
                 //打印......
@@ -322,22 +331,21 @@ namespace Nucleic_Acid.View
         /// 警告是否以前检测过
         /// </summary>
         /// <param name="CardId"></param>
-        private void SelectManIsUse(string CardId)
+        private void SelectManIsUse(string CardId, ref string homeAddress, ref string company)
         {
-            Task.Run(() =>
+            List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
+            List<InfoListModel> listsWhere = lists.Where(u => u.cardNo == CardId).ToList();
+            if (listsWhere.Count() > 0)
             {
-                List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
-                List<InfoListModel> listsWhere = lists.Where(u => u.cardNo == CardId).ToList();
-                if (listsWhere.Count() > 0)
-                {
-                    listsWhere.Reverse();
-                    this.Dispatcher.Invoke(() => { ShowWarn(listsWhere[0].userName, listsWhere[0].createTime); });
-                }
-                else
-                {
-                    return;
-                }
-            });
+                listsWhere.Reverse();
+                homeAddress = listsWhere[0].homeAddress;
+                company = listsWhere[0].company;
+                this.Dispatcher.Invoke(() => { ShowWarn(listsWhere[0].userName, listsWhere[0].createTime); });
+            }
+            else
+            {
+                return;
+            }
         }
         /// <summary>
         /// 姓名

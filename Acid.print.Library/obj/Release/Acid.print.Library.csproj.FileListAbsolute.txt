@@ -16,3 +16,4 @@ C:\Users\Administrator\Source\Repos\HSJC19092\Acid.print.Library\bin\Release\NLo
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.print.Library\bin\Release\NLog.dll
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.print.Library\bin\Release\NLog.xml
 C:\Users\Administrator\Source\Repos\HSJC19092\Acid.print.Library\obj\Release\Acid.print.Library.csproj.CopyComplete
+D:\HSJC\HSJC\Acid.print.Library\obj\Release\Acid.print.Library.csprojAssemblyReference.cache

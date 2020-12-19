@@ -112,7 +112,8 @@ namespace Nucleic_Acid
                 Text_Name = { Text = infoListModel.userName },
                 Text_Card = { Text = infoListModel.cardNo },
                 Text_Sex = { Text = infoListModel.sex },
-                Text_homeAddress = { Text = infoListModel.address }
+                Text_homeAddress = { Text = infoListModel.address },
+                Text_company = {  Text = infoListModel.company}
             };
             await DialogHost.Show(textDialog, "ReadDialog");
             action(textDialog.InfoListModel);

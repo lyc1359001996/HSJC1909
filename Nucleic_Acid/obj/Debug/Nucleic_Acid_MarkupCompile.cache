@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\HSJC\HSJC\Nucleic_Acid\App.xaml
-17-153867909
+26-827697014
 
-31-657157447
+48-303614150
 93527895020
-Controls\PagingControl.xaml;Index.xaml;IndexOffline.xaml;MainWindow.xaml;View\AboutUs.xaml;View\CanCancel.xaml;View\InfoList.xaml;View\InfoListOffline.xaml;View\LodingText.xaml;View\MessageDialog.xaml;View\PrintSet.xaml;View\ReadCard.xaml;View\ReadCardOffline.xaml;View\ReadDialog.xaml;View\SampleProgressDialog.xaml;View\TextDialog.xaml;Window2.xaml;
+Controls\Pages\Badge.xaml;Controls\Pages\ComboBox.xaml;Controls\Pages\Generic.xaml;Controls\Pages\Geometry.xaml;Controls\Pages\InputNumber.xaml;Controls\Pages\Loading.xaml;Controls\Pages\Pagination.xaml;Controls\Pages\TextBox.xaml;Controls\Pages\Theme.xaml;Controls\PagingControl.xaml;Index.xaml;IndexOffline.xaml;MainWindow.xaml;View\AboutUs.xaml;View\CanCancel.xaml;View\InfoList.xaml;View\InfoListOffline.xaml;View\LodingText.xaml;View\MessageDialog.xaml;View\PrintSet.xaml;View\ReadCard.xaml;View\ReadCardOffline.xaml;View\ReadDialog.xaml;View\SampleProgressDialog.xaml;View\TextDialog.xaml;Window2.xaml;
 
 False
 

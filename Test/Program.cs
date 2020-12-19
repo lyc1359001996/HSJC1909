@@ -14,22 +14,18 @@ namespace Test
             //var guid = Guid.NewGuid().ToString("N");
             //string v = string.Format("{0:D3}", guid);
             //Console.WriteLine(guid);
-            List<string> list = new List<string>();
-            Task.Run(() =>
+            List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
+            List<InfoListModel> listsWhere = lists.Where(u => u.cardNo == "330411199811190011").ToList();
+            if (listsWhere.Count() > 0)
             {
-                int len = 0;
-                for (int i = 0; i < 10000; i++)
-                {
-                    string v = UniqueData.Gener("");
-                    if (list.Contains(v))
-                    {
-                        len += 1;
-                    }
-                    list.Add(v);
-                    Console.WriteLine("一号："+v);
-                }
-                Console.WriteLine(len);
-            });
+                listsWhere.Reverse();
+                Console.WriteLine(listsWhere[0].homeAddress);
+                Console.WriteLine(listsWhere[0].company);
+            }
+            else
+            {
+                return;
+            }
             Console.ReadKey();
         }
 
