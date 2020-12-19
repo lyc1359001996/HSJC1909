@@ -16,6 +16,7 @@ namespace Acid.common.Library.config
         public string detectionName { get; set; }
         public object deleted { get; set; }
         public string homeAddress { get; set; }
+        public string company { get; set; }
         public long createBy { get; set; }
         public long? updateBy { get; set; }
         public string cardNo { get; set; }
@@ -25,9 +26,11 @@ namespace Acid.common.Library.config
         public string address { get; set; }
         public int testingValue { get; set; }
         public string acidNo { get; set; }
-
         public string updateText { get; set; }
-        public bool Editor { get; set; }
+
+        public bool iscancel { get; set; }
+        public bool Editor_company { get; set; }
+        public bool Editor_homeAddress { get; set; }
         /// <summary>
         /// 0未同步 1已同步
         /// </summary>

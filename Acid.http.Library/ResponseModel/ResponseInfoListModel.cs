@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Acid.common.Library.config;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,8 +20,9 @@ namespace Acid.http.Library.ResponseModel
             foreach (var item in data)
             {
                 item.index = current;
-                item.updateText = "修改";
-                item.Editor = false;
+                item.updateText = "编辑";
+                item.Editor_company = false;
+                item.Editor_homeAddress = false;
                 current++;
 
             }

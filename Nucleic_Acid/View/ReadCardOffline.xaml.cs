@@ -292,7 +292,7 @@ namespace Nucleic_Acid.View
                 {
                     if (Items2[0].temp != dataModel.temp)
                     {
-                        TextTips(dataModel.home,Addressaction);
+                        //TextTips(dataModel.home,Addressaction);
                         Items2.Clear();
                         Items2.Add(dataModel);
                         datagrid.ItemsSource = null;
@@ -301,7 +301,7 @@ namespace Nucleic_Acid.View
                 }
                 else
                 {
-                    TextTips(dataModel.home, Addressaction);
+                    //TextTips(dataModel.home, Addressaction);
                     Items2.Add(dataModel);
                     datagrid.ItemsSource = null;
                     datagrid.ItemsSource = Items2;
@@ -450,7 +450,7 @@ namespace Nucleic_Acid.View
             MainWindow.indexoffline.CancelTips(message, action, e);
         }
 
-        public void TextTips(string message, Action<string> action, DialogClosingEventHandler e = null)
+        public void TextTips(InfoListModel message, Action<InfoListModel> action, DialogClosingEventHandler e = null)
         {
             MainWindow.indexoffline.TextTips(message, action, e);
         }
@@ -500,30 +500,7 @@ namespace Nucleic_Acid.View
 
 
 
-        private void savedata(DataModel dataModel1)
-        {
-            dataModel1.acidNo = new SnowConfig(1).nextId();
-            List<InfoListModel> json = SettingJsonConfig.readData() ?? new List<InfoListModel>();
-            InfoListModel infoListModel = new InfoListModel()
-            {
-                versions = 0,
-                address = dataModel1.home,
-                cardNo = dataModel1.temp,
-                createTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-                testingValue = 0,
-                sex = dataModel1.Sex == "男" ? "1" : "0",
-                userName = dataModel1.SName,
-                serialNumber = deviceSerialNumber,
-                updateText = "修改",
-                acidNo = dataModel1.acidNo.ToString(),
-                detectionName = detectionName,
-                updateName = detectionName,
-                homeAddress = dataModel1.homeAddress
-            };
-            json.Add(infoListModel);
-            SettingJsonConfig.saveData(json);
-            PrintHelper.print(dataModel1.temp);
-        }
+       
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
             //停止定时器
@@ -534,6 +511,29 @@ namespace Nucleic_Acid.View
         private void saveAndPrintoffline(DataModel dataModel)
         {
             savedata(dataModel);
+        }
+        private void savedata(DataModel dataModel1)
+        {
+            dataModel1.acidNo = new SnowConfig(1).nextId();
+            List<InfoListModel> json = SettingJsonConfig.readData() ?? new List<InfoListModel>();
+            InfoListModel infoListModel = new InfoListModel()
+            {
+                versions = 0,
+                address = dataModel1.home,
+                cardNo = dataModel1.temp,
+                createTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                sex = dataModel1.Sex == "男" ? "1" : "0",
+                userName = dataModel1.SName,
+                serialNumber = deviceSerialNumber,
+                updateText = "编辑",
+                acidNo = dataModel1.acidNo.ToString(),
+                detectionName = detectionName,
+                updateName = detectionName,
+                homeAddress = dataModel1.homeAddress
+            };
+            json.Add(infoListModel);
+            SettingJsonConfig.saveData(json);
+            PrintHelper.print(dataModel1.temp);
         }
     }
 }

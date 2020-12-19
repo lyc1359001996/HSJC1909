@@ -1,4 +1,5 @@
 ﻿using Acid.common.Library.config;
+using Acid.http.Library.ResponseModel;
 using Acid.http.Library.Service;
 using MaterialDesignThemes.Wpf;
 using Newtonsoft.Json;
@@ -26,7 +27,7 @@ namespace Nucleic_Acid
     /// </summary>
     public partial class Index : Window
     {
-        ReadCard V_readCard;
+        //ReadCard V_readCard;
         InfoList V_infoList;
         public Index(string name)
         {
@@ -50,11 +51,11 @@ namespace Nucleic_Acid
 
         private void RadioButton_Click(object sender, RoutedEventArgs e)
         {
-            if (V_readCard == null)
-            {
-                V_readCard = new ReadCard();
-            }
-            DataContext = V_readCard;
+            //if (V_readCard == null)
+            //{
+            //    V_readCard = new ReadCard();
+            //}
+            //DataContext = V_readCard;
         }
 
         private void RadioButton_Click_1(object sender, RoutedEventArgs e)
@@ -77,16 +78,20 @@ namespace Nucleic_Acid
             };
             await DialogHost.Show(sampleMessageDialog, "ReadDialog");
         }
-        public async void TextTips(string message, Action<string> action, DialogClosingEventHandler e = null)
+        public async void TextTips(InfoListModel infoListModel, Action<InfoListModel> action, DialogClosingEventHandler e = null)
         {
             if (e == null)
                 e = closingEventHandler;
             var textDialog = new TextDialog()
             {
-                Message = { Text = message }
+                Text_CardAddress = { Text = infoListModel.address },
+                Text_Name = { Text = infoListModel.userName },
+                Text_Card = { Text = infoListModel.cardNo },
+                Text_Sex = { Text = infoListModel.sex },
+                Text_homeAddress = { Text = infoListModel.address }
             };
             await DialogHost.Show(textDialog, "ReadDialog");
-            action(textDialog.address);
+            action(textDialog.InfoListModel);
         }
         /// <summary>
         /// 确定取消弹窗
@@ -114,7 +119,17 @@ namespace Nucleic_Acid
             };
             await DialogHost.Show(sampleMessageDialog, "ReadDialog");
         }
-
+        public void ShowWarn(string name,string datetime)
+        {
+            SnackbarWarn.Message.Content = "提示："+ name + "已于"+ datetime + "进行核酸检测";
+            Task.Factory.StartNew(showWarn);
+        }
+        private void showWarn()
+        {
+            this.Dispatcher.Invoke(() => { SnackbarWarn.IsActive = true; });
+            Thread.Sleep(10000);
+            this.Dispatcher.Invoke(() => { SnackbarWarn.IsActive = false; });
+        }
         public async void Loding()
         {
             var sampleMessageDialog = new SampleProgressDialog();
@@ -160,12 +175,10 @@ namespace Nucleic_Acid
                  if (arg)
                  {
                      SettingModel json = SettingJsonConfig.readJson() ?? new SettingModel();
-                     json.isAuto = false;
                      SettingJsonConfig.saveJson(json);
                      MainWindow main = new MainWindow();
                      main.Show();
                      this.Close();
-
                  }
              }));
 
@@ -226,37 +239,44 @@ namespace Nucleic_Acid
         }
         private void synchronousData()
         {
-            List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
+            try
+            {
+                List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
 
-            if (lists.Count > 0)
-            {
-                synchronousAdd(lists);//同步新增
-                synchronousUpdate(lists);//同步修改的
+                if (lists.Count > 0)
+                {
+                    synchronousAdd(lists);//同步新增
+                    synchronousUpdate(lists);//同步修改的
+                }
+                this.Dispatcher.Invoke(() =>
+                {
+                    SnackbarOK.IsActive = true;
+                    SnackbarLoding.IsActive = false;
+                    lodingBar.Visibility = Visibility.Hidden;
+                });
+                Thread.Sleep(5000);//5秒后自动关闭
+                this.Dispatcher.Invoke(() =>
+                {
+                    SnackbarOK.IsActive = false;
+                });
             }
-            this.Dispatcher.Invoke(() =>
+            catch (Exception ex)
             {
-                SnackbarOK.IsActive = true;
-                SnackbarLoding.IsActive = false;
-                lodingBar.Visibility = Visibility.Hidden;
-            });
-            Thread.Sleep(5000);//5秒后自动关闭
-            this.Dispatcher.Invoke(() =>
-            {
-                SnackbarOK.IsActive = false;
-            });
+                Util.Logger.Default.Error(ex.Message);
+            }
         }
 
         private void synchronousAdd(List<InfoListModel> lists)
         {
             List<InfoListModel> newlist = lists.Where(u => u.versions == 0).ToList();
             string str = JsonConvert.SerializeObject(newlist);
-            List<Acid.http.Library.ResponseModel.InfoListModel> lists1 = JsonConvert.DeserializeObject<List<Acid.http.Library.ResponseModel.InfoListModel>>(str);
+            List<InfoListModel> lists1 = JsonConvert.DeserializeObject<List<InfoListModel>>(str);
             int count = lists1.Count();
             int page = count / 1000 + 1;
-            Acid.http.Library.ResponseModel.ResultJson<string> resultJson = new Acid.http.Library.ResponseModel.ResultJson<string>() { code = "1" };
+            ResultJson<string> resultJson = new ResultJson<string>() { code = "1" };
             for (int i = 1; i <= page; i++)
             {
-                List<Acid.http.Library.ResponseModel.InfoListModel> data = lists1.Skip((i - 1) * 1000).Take(1000).ToList();
+                List<InfoListModel> data = lists1.Skip((i - 1) * 1000).Take(1000).ToList();
                 resultJson = InfoListService.addNucleic(data);
             }
             if (resultJson.code == "20000")
@@ -273,13 +293,13 @@ namespace Nucleic_Acid
         {
             List<InfoListModel> newlist = lists.Where(u => u.versions == 3).ToList();
             string str = JsonConvert.SerializeObject(newlist);
-            List<Acid.http.Library.ResponseModel.InfoListModel> lists1 = JsonConvert.DeserializeObject<List<Acid.http.Library.ResponseModel.InfoListModel>>(str);
+            List<InfoListModel> lists1 = JsonConvert.DeserializeObject<List<InfoListModel>>(str);
             int count = lists1.Count();
             int page = count / 1000 + 1;
-            Acid.http.Library.ResponseModel.ResultJson<string> resultJson = new Acid.http.Library.ResponseModel.ResultJson<string>() { code = "1" };
+            ResultJson<string> resultJson = new ResultJson<string>() { code = "1" };
             for (int i = 1; i <= page; i++)
             {
-                List<Acid.http.Library.ResponseModel.InfoListModel> data = lists1.Skip((i - 1) * 1000).Take(1000).ToList();
+                List<InfoListModel> data = lists1.Skip((i - 1) * 1000).Take(1000).ToList();
                 resultJson = InfoListService.updateNucleic(lists1);
             }
             if (resultJson.code == "20000")
@@ -295,15 +315,15 @@ namespace Nucleic_Acid
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            SettingModel settingModel = SettingJsonConfig.readJson() ?? new SettingModel();
-            autoPrint.IsChecked = settingModel.AutoPrint;
-            UrlModel.autoPrint = settingModel.AutoPrint;
+            //SettingModel settingModel = SettingJsonConfig.readJson() ?? new SettingModel();
+            //autoPrint.IsChecked = settingModel.AutoPrint;
+            UrlModel.autoPrint = true;
             synchronization();
-            if (V_readCard == null)
+            if (V_infoList == null)
             {
-                V_readCard = new ReadCard();
+                V_infoList = new InfoList();
             }
-            DataContext = V_readCard;
+            DataContext = V_infoList;
         }
 
         private void SnackbarMessage_ActionClick(object sender, RoutedEventArgs e)
@@ -313,10 +333,10 @@ namespace Nucleic_Acid
 
         private void autoPrint_Checked(object sender, RoutedEventArgs e)
         {
-            SettingModel settingModel = SettingJsonConfig.readJson() ?? new SettingModel();
-            settingModel.AutoPrint = autoPrint.IsChecked ?? false;
-            UrlModel.autoPrint = settingModel.AutoPrint;
-            SettingJsonConfig.saveJson(settingModel);
+            //SettingModel settingModel = SettingJsonConfig.readJson() ?? new SettingModel();
+            //settingModel.AutoPrint = autoPrint.IsChecked ?? false;
+            //UrlModel.autoPrint = settingModel.AutoPrint;
+            //SettingJsonConfig.saveJson(settingModel);
         }
         /// <summary>
         /// 转到离线

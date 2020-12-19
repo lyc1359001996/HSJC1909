@@ -16,6 +16,6 @@ namespace Acid.common.Library.config
         public static readonly string nucleic_update = "/staff-nucleic/update";
         public static readonly string nucleic_delete = "/staff-nucleic/delete";
         public static string Token = "";
-        public static bool autoPrint = false;
+        public static bool autoPrint = true;
     }
 }

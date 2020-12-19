@@ -14,11 +14,11 @@
         Title="核酸检测-(在线模式)" Height="818" Width="1280" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="Window_Loaded" Icon="logo.ico">
     <materialDesign:DialogHost Identifier="ReadDialog">
         <materialDesign:DialogHost Identifier="ReadDialog_new">
-            <Grid x:Name="backGrid">
+            <Grid x:Name="backGrid" Background="#FFD3D1D1">
                 <Grid Background="#FF44B2F6" Height="60" VerticalAlignment="Top">
                     <StackPanel Orientation="Horizontal" Margin="191,4,569,4" HorizontalAlignment="Center">
-                        <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="True" Content="读卡" FontFamily="Microsoft YaHei" FontSize="18" FontWeight="Bold" Foreground="#DDFFFFFF" Click="RadioButton_Click" />
-                        <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="40,4,4,4" IsChecked="False" Content="用户信息" FontFamily="Microsoft YaHei" FontSize="18" FontWeight="Bold" Foreground="#DDFFFFFF" Click="RadioButton_Click_1" />
+                        <!--<RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="False" Content="读卡" FontFamily="Microsoft YaHei" FontSize="18" FontWeight="Bold" Foreground="#DDFFFFFF" Click="RadioButton_Click" />-->
+                        <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="40,4,4,4" IsChecked="True" Content="用户信息" FontFamily="Microsoft YaHei" FontSize="18" FontWeight="Bold" Foreground="#DDFFFFFF" Click="RadioButton_Click_1" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,4" HorizontalAlignment="Right" Width="130">
                         <materialDesign:PopupBox  DockPanel.Dock="Right"   PlacementMode="BottomAndAlignRightEdges" Foreground="#DDFFFFFF">
@@ -45,8 +45,8 @@
                         </Button>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,3,123,5" HorizontalAlignment="Right" Width="auto">
-                        <Label x:Name="Labelp" Content="自动打印" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#DDFFFFFF" FontFamily="Microsoft YaHei" FontSize="16" FontWeight="Bold"/>
-                        <ToggleButton x:Name="autoPrint" Style="{StaticResource MaterialDesignSwitchToggleButton}" VerticalAlignment="Center" ToolTip="自动打印" BorderBrush="White" Unchecked="autoPrint_Checked" Checked="autoPrint_Checked">
+                        <Label Visibility="Hidden" x:Name="Labelp" Content="自动打印" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#DDFFFFFF" FontFamily="Microsoft YaHei" FontSize="16" FontWeight="Bold"/>
+                        <ToggleButton Visibility="Hidden" x:Name="autoPrint" Style="{StaticResource MaterialDesignSwitchToggleButton}" VerticalAlignment="Center" ToolTip="自动打印" BorderBrush="White" Unchecked="autoPrint_Checked" Checked="autoPrint_Checked">
                             <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
                                 <SolidColorBrush Color="Green" />
                             </materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
@@ -62,14 +62,16 @@
                         <Label x:Name="Label_Name" Content="管理员-在线" HorizontalAlignment="Left" Foreground="#DDFFFFFF" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Microsoft YaHei" FontWeight="Bold"/>
                     </StackPanel>
                 </Grid>
-                <Grid  x:Name="pageGrid" Margin="0,60,0,0" />
-                <ContentControl Grid.Row="0" Content="{Binding}" Margin="0,60,0,0"/>
+                <ContentControl Grid.Row="0" Content="{Binding}" Margin="1,60,1,1"/>
                 <ProgressBar x:Name="lodingBar" IsIndeterminate="True" Margin="0,60,0,0" VerticalAlignment="Top" Background="#FF6EC6FF" />
                 <materialDesign:Snackbar Margin="498,60,494,0" IsActive="False" x:Name="SnackbarOK" VerticalAlignment="Top" HorizontalContentAlignment="Center">
                     <materialDesign:SnackbarMessage Content="数据同步完成" ActionContent="确认" ActionClick="SnackbarMessage_ActionClick" />
                 </materialDesign:Snackbar>
                 <materialDesign:Snackbar Margin="498,60,494,0" IsActive="True" x:Name="SnackbarLoding" VerticalAlignment="Top" HorizontalContentAlignment="Center">
                     <materialDesign:SnackbarMessage Content="数据正在同步..."  Width="237" HorizontalContentAlignment="Center" />
+                </materialDesign:Snackbar>
+                <materialDesign:Snackbar Margin="455,60,470,0" IsActive="False" x:Name="SnackbarWarn" VerticalAlignment="Top" HorizontalContentAlignment="Center">
+                    <materialDesign:SnackbarMessage Content="提示：王大大已于2020-10-25 12:00:00进行核酸检测" HorizontalContentAlignment="Center" />
                 </materialDesign:Snackbar>
             </Grid>
         </materialDesign:DialogHost>

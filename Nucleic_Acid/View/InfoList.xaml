@@ -12,20 +12,12 @@
              TextElement.FontSize="14"
              FontFamily="{materialDesign:MaterialDesignFont}"
              DataContext="{Binding Source={StaticResource Locator}, Path=V_ReadCard}"
-             mc:Ignorable="d" d:DesignHeight="758" d:DesignWidth="1200" Loaded="UserControl_Loaded">
+             mc:Ignorable="d" d:DesignHeight="758" d:DesignWidth="1200" Loaded="UserControl_Loaded" Unloaded="UserControl_Unloaded">
     <Grid Background="White">
         <Grid Margin="25,10" Background="White">
             <StackPanel Margin="35,38,0,0" Orientation="Horizontal" HorizontalAlignment="Left" Width="565" Height="55" VerticalAlignment="Top" >
                 <TextBox x:Name="TextBox_Name" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="请输入姓名" Margin="0,8" FontFamily="NSimSun" Height="38" FontSize="12" Width="170"/>
                 <TextBox x:Name="TextBox_CardNo" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="请输入身份证号码" Margin="30,8,0,8" Height="38" FontFamily="NSimSun" FontSize="12"  Width="170"/>
-                <ComboBox x:Name="ComboBox_TestValue" materialDesign:HintAssist.Hint="请选择状态" Margin="30,14,0,15" Width="80" FontFamily="NSimSun" FontSize="12">
-                    <ComboBoxItem FontFamily="NSimSun">
-                        阴性
-                    </ComboBoxItem>
-                    <ComboBoxItem FontFamily="NSimSun">
-                        阳性
-                    </ComboBoxItem>
-                </ComboBox>
                 <ProgressBar x:Name="loding" Visibility="Hidden" Width="24" Height="24" Margin="16"
                  Style="{DynamicResource MaterialDesignCircularProgressBar}"
                  IsIndeterminate="True"
@@ -73,41 +65,33 @@
                                     <Binding Path="address"/>
                                 </DataGridTextColumn.Binding>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Header="现居住地址" ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" IsReadOnly="True" MaxWidth="400" FontWeight="Bold" FontFamily="NSimSun">
-                                <DataGridTextColumn.Binding>
-                                    <Binding Path="homeAddress"/>
-                                </DataGridTextColumn.Binding>
-                            </DataGridTextColumn>
+                            <DataGridTemplateColumn Header="现居住地址">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding Path=homeAddress,UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=Editor_homeAddress}" MaxWidth="500" FontFamily="NSimSun" MaxLength="50"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="工作单位">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding Path=company,UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=Editor_company}" MaxWidth="500" FontFamily="NSimSun" MaxLength="50" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                             <DataGridTextColumn Header="检测时间" IsReadOnly="True" FontFamily="NSimSun">
                                 <DataGridTextColumn.Binding>
                                     <Binding Path="createTime"/>
                                 </DataGridTextColumn.Binding>
                             </DataGridTextColumn>
-                            <DataGridTemplateColumn Header="检测结果">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <ComboBox x:Name="dataResult" IsEnabled="{Binding Editor}" Height="24" FontFamily="Roboto" FontSize="12" SelectedIndex="{Binding testingValue}" SelectionChanged="dataResult_SelectionChanged">
-                                            <ComboBoxItem FontFamily="NSimSun">
-                                                阴性
-                                            </ComboBoxItem>
-                                            <ComboBoxItem FontFamily="NSimSun">
-                                                阳性
-                                            </ComboBoxItem>
-                                        </ComboBox>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
                             <DataGridTemplateColumn Header="操作">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <Button Style="{StaticResource MaterialDesignRaisedLightButton}" materialDesign:ButtonAssist.CornerRadius="5" ToolTip="删除" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="55" Height="22" Click="delete_click">
-                                                <TextBlock Text="删除" />
-                                            </Button>
                                             <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="打印" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="55" Margin="20,0,0,0" Height="22" Click="Print_click">
                                                 <TextBlock Text="打印" />
                                             </Button>
-                                            <Button x:Name="Button_update" Content="{Binding updateText}" Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="修改" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="55" Margin="20,0,0,0" Height="22" Click="Button_update_Click">
+                                            <Button x:Name="Button_update" Content="{Binding updateText}" Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="编辑" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="55" Margin="20,0,0,0" Height="22" Click="Button_update_Click">
                                                 <!--<TextBlock x:Name="TextBlock_update" Tag="update" Text="修改" />-->
                                             </Button>
                                         </StackPanel>
@@ -119,6 +103,11 @@
                     <WpfPaging:PagingControl x:Name="pageControl" Height="44" Margin="30,20,0,0" PageSize="10" DataTote="0" Width="890" HorizontalAlignment="Left"/>
                 </StackPanel>
             </ScrollViewer>
+            <StackPanel Orientation="Horizontal" Height="16" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="60" Margin="0,0,20,0" >
+                <materialDesign:PackIcon x:Name="disconn" Kind="LanDisconnect" Visibility="Visible"  HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Stretch" Foreground="#DDEE4646" />
+                <materialDesign:PackIcon x:Name="conn" Kind="LanConnect" Visibility="Hidden" Margin="-16,0,0,0"  HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Stretch" Foreground="#DD52DE11" />
+                <TextBlock x:Name="connect_Text" Text="未连接" Margin="6,0,0,0" FontFamily="NSimSun" FontSize="12" VerticalAlignment="Center"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

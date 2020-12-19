@@ -10,21 +10,41 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              TextElement.FontWeight="Medium"
              TextElement.FontSize="14"
-             FontFamily="{materialDesign:MaterialDesignFont}" Height="140" Width="auto" Loaded="UserControl_Loaded">
+             FontFamily="{materialDesign:MaterialDesignFont}" Height="460" Width="665" Loaded="UserControl_Loaded">
     <Grid>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
-            <materialDesign:PackIcon Kind="MapMarker"  VerticalAlignment="Center" Margin="0,-10,0,0" Foreground="#FF0099FF"/>
-            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5,-30,0,0"  x:Name="Message" Text="Address"  FontFamily="Microsoft YaHei" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" KeyDown="Message_KeyDown" >
-                <materialDesign:HintAssist.Hint>
-                    <StackPanel Orientation="Horizontal" Margin="-2 0 0 0">
-                        <!--<materialDesign:PackIcon Kind="AccessPoint" />-->
-                        <TextBlock FontWeight="Bold">
-                                    现居住地址
-                        </TextBlock>
-                    </StackPanel>
-                </materialDesign:HintAssist.Hint>
-            </TextBox>
+        <TextBlock FontFamily="NSimSun" Margin="30,20,-10,0" Height="20" VerticalAlignment="Top">用户信息</TextBlock>
+        <ProgressBar Value="0" materialDesign:TransitionAssist.DisableTransitions="True" Height="2" Background="#FFF1F1F1" BorderBrush="#FFF1F1F1" Margin="20,42,0,0" VerticalAlignment="Top"/>
+        <Rectangle Fill="#FF0099FF" HorizontalAlignment="Left" Height="12" Margin="20,23,0,0" Stroke="#FF0099FF" VerticalAlignment="Top" Width="3"/>
+        <StackPanel Margin="61,60,0,0" Orientation="Horizontal" Height="45" VerticalAlignment="Top">
+            <TextBlock FontFamily="Microsoft YaHei" VerticalAlignment="Center" Margin="0,14,0,15" Width="104" TextAlignment="Right" FontWeight="Bold">姓名：</TextBlock>
+            <TextBox x:Name="Text_Name" materialDesign:HintAssist.Hint="请输入姓名" Text=""  FontFamily="NSimSun" Width="405" VerticalContentAlignment="Center" BorderBrush="#89000000" IsEnabled="False"/>
         </StackPanel>
-        <Button x:Name="aceept"  IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Center" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Foreground="#FF008EFF" FontFamily="NSimSun" Height="33" Width="60" Content="确认" Margin="66,0,67,6" VerticalAlignment="Bottom" Click="Button_Click"/>
+        <StackPanel Margin="61,110,0,0" Orientation="Horizontal" Height="45" VerticalAlignment="Top">
+            <TextBlock FontFamily="Microsoft YaHei" VerticalAlignment="Center" Margin="0,14,0,15" Width="104" TextAlignment="Right" FontWeight="Bold">身份证号：</TextBlock>
+            <TextBox x:Name="Text_Card" materialDesign:HintAssist.Hint="请输入身份证号" Text=""  FontFamily="NSimSun" Width="405" VerticalContentAlignment="Center" IsEnabled="False"/>
+        </StackPanel>
+        <StackPanel Margin="61,160,0,0" Orientation="Horizontal" Height="45" VerticalAlignment="Top">
+            <TextBlock FontFamily="Microsoft YaHei" VerticalAlignment="Center" Margin="0,14,0,15" Width="104" TextAlignment="Right" FontWeight="Bold">性别：</TextBlock>
+            <TextBox x:Name="Text_Sex" Text="" materialDesign:HintAssist.Hint="请输入性别" FontFamily="NSimSun" Width="405" VerticalContentAlignment="Center" IsEnabled="False"/>
+        </StackPanel>
+        <StackPanel Margin="61,210,0,0" Orientation="Horizontal" Height="45" VerticalAlignment="Top">
+            <TextBlock FontFamily="Microsoft YaHei" VerticalAlignment="Center" Margin="0,14,0,15" Width="104" TextAlignment="Right" FontWeight="Bold">身份证地址：</TextBlock>
+            <TextBox x:Name="Text_CardAddress" Text="" materialDesign:HintAssist.Hint="请输入身份证地址" FontFamily="NSimSun" Width="405" VerticalContentAlignment="Center" IsEnabled="False"/>
+        </StackPanel>
+        <StackPanel Margin="61,260,0,0" Orientation="Horizontal" Height="45" VerticalAlignment="Top">
+            <TextBlock FontFamily="Microsoft YaHei" VerticalAlignment="Center" Margin="0,14,0,15" Width="104" TextAlignment="Right" FontWeight="Bold">现居住地址：</TextBlock>
+            <TextBox x:Name="Text_homeAddress" Text="" materialDesign:HintAssist.Hint="请输入现居住地址" FontFamily="NSimSun" Width="405" VerticalContentAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Margin="61,310,0,0" Orientation="Horizontal" Height="45" VerticalAlignment="Top">
+            <TextBlock FontFamily="Microsoft YaHei" VerticalAlignment="Center" Margin="0,14,0,15" Width="104" TextAlignment="Right" FontWeight="Bold">工作单位：</TextBlock>
+            <TextBox x:Name="Text_company" Text="" materialDesign:HintAssist.Hint="请输入工作单位" FontFamily="NSimSun" Width="405" VerticalContentAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="224,0,195,26" Width="246">
+            <Button x:Name="aceept" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="确认" materialDesign:ButtonProgressAssist.Value="-1" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"  Click="Button_Click" Content="确认" Margin="2,8,0,8" Foreground="White" HorizontalAlignment="Left" Width="102" FontFamily="NSimSun" FontSize="12" FontWeight="Bold" Background="#FF44B2F6"/>
+            <Button Margin="50,0,0,0" Style="{StaticResource MaterialDesignFlatButton}" ToolTip="取消" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"  Click="Cancel_Click">
+                取消
+            </Button>
+        </StackPanel>
+
     </Grid>
 </UserControl>

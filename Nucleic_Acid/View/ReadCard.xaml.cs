@@ -1,4 +1,5 @@
 ﻿using Acid.common.Library.config;
+using Acid.http.Library.ResponseModel;
 using Acid.http.Library.Service;
 using Acid.print.Library;
 using Acid.SDK.Library;
@@ -283,7 +284,7 @@ namespace Nucleic_Acid.View
                 {
                     if (Items2[0].temp != dataModel.temp)
                     {
-                        TextTips(dataModel.home, Addressaction);
+                        //TextTips(dataModel.home, Addressaction);
                         Items2.Clear();
                         Items2.Add(dataModel);
                         datagrid.ItemsSource = null;
@@ -292,7 +293,7 @@ namespace Nucleic_Acid.View
                 }
                 else
                 {
-                    TextTips(dataModel.home, Addressaction);
+                    //TextTips(dataModel.home, Addressaction);
                     Items2.Add(dataModel);
                     datagrid.ItemsSource = Items2;
                 }
@@ -434,7 +435,7 @@ namespace Nucleic_Acid.View
         /// <param name="message"></param>
         /// <param name="action"></param>
         /// <param name="e"></param>
-        public void TextTips(string message, Action<string> action, DialogClosingEventHandler e = null)
+        public void TextTips(InfoListModel message, Action<InfoListModel> action, DialogClosingEventHandler e = null)
         {
             MainWindow.index.TextTips(message, action, e);
         }
@@ -446,14 +447,13 @@ namespace Nucleic_Acid.View
         private void Print_Click(object sender, RoutedEventArgs e)
         {
             CancelTips("确定要打印吗？", new Action<bool>(isTrue =>
-             {
-                 if (isTrue)
-                 {
-                     DataModel selectedItem = (DataModel)datagrid.SelectedItem;
-                     saveAndPrint(selectedItem);
-                 }
-             }));
-
+            {
+                if (isTrue)
+                {
+                    DataModel selectedItem = (DataModel)datagrid.SelectedItem;
+                    saveAndPrint(selectedItem);
+                }
+            }));
         }
         /// <summary>
         /// 保存本地数据
@@ -469,11 +469,10 @@ namespace Nucleic_Acid.View
                 address = dataModel.home,
                 cardNo = dataModel.temp,
                 createTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-                testingValue = 0,
                 sex = dataModel.Sex == "男" ? "1" : "0",
                 userName = dataModel.SName,
                 serialNumber = deviceSerialNumber,
-                updateText = "修改",
+                updateText = "编辑",
                 acidNo = dataModel.acidNo.ToString(),
                 detectionName = detectionName,
                 updateName = detectionName,
@@ -488,28 +487,47 @@ namespace Nucleic_Acid.View
         /// <param name="dataModel"></param>
         /// <param name="snowID"></param>
         /// <returns></returns>
-        private Acid.http.Library.ResponseModel.ResultJson<string> saveonline(DataModel dataModel)
+        private ResultJson<string> saveonline(DataModel dataModel)
         {
-            List<Acid.http.Library.ResponseModel.InfoListModel> infoListModels = new List<Acid.http.Library.ResponseModel.InfoListModel>();
-            Acid.http.Library.ResponseModel.InfoListModel infoListModel = new Acid.http.Library.ResponseModel.InfoListModel()
+            List<InfoListModel> infoListModels = new List<InfoListModel>();
+            InfoListModel infoListModel = new InfoListModel()
             {
                 address = dataModel.home,
                 cardNo = dataModel.temp,
                 createTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-                testingValue = 0,
                 sex = dataModel.Sex == "男" ? "1" : "0",
                 userName = dataModel.SName,
                 serialNumber = deviceSerialNumber,
-                updateText = "修改",
+                updateText = "编辑",
                 acidNo = dataModel.acidNo.ToString(),
                 detectionName = detectionName,
                 updateName = detectionName,
-                 homeAddress = dataModel.homeAddress
+                homeAddress = dataModel.homeAddress
             };
             infoListModels.Add(infoListModel);
             Acid.http.Library.ResponseModel.ResultJson<string> resultJson = InfoListService.addNucleic(infoListModels);
             return resultJson;
         }
+
+        private void saveAndPrint(DataModel selectedItem)
+        {
+            Console.WriteLine("打印ing......................");
+            selectedItem.acidNo = new SnowConfig(1).nextId();
+            //同步线上
+            Acid.http.Library.ResponseModel.ResultJson<string> resultJson = saveonline(selectedItem);
+            if (resultJson.code == "20000")
+            {
+                //保存本地
+                savedata(selectedItem, 1);
+            }
+            else
+            {
+                //保存本地
+                savedata(selectedItem, 0);
+            }
+            PrintHelper.print(selectedItem.temp.Trim());
+        }
+
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             autoRead_Timer.Stop();//暂时停止读卡
@@ -526,7 +544,7 @@ namespace Nucleic_Acid.View
                     SettingJsonConfig.saveData(lists);//保存
                     #endregion
                     #region 服务器删除
-                    Acid.http.Library.ResponseModel.ResultJson<string> resultJson = InfoListService.deleteNucleic(new Acid.http.Library.ResponseModel.InfoListModel() { acidNo = obj.acidNo.ToString() });
+                    Acid.http.Library.ResponseModel.ResultJson<string> resultJson = InfoListService.deleteNucleic(new InfoListModel() { acidNo = obj.acidNo.ToString() });
                     datagrid.ItemsSource = null;
                     clearData = true;
                     Items2 = new List<DataModel>();
@@ -550,24 +568,7 @@ namespace Nucleic_Acid.View
             autoScan_Timer.Stop();
         }
 
-        private void saveAndPrint(DataModel selectedItem)
-        {
-            Console.WriteLine("打印ing......................");
-            selectedItem.acidNo = new SnowConfig(1).nextId();
-            //同步线上
-            Acid.http.Library.ResponseModel.ResultJson<string> resultJson = saveonline(selectedItem);
-            if (resultJson.code == "20000")
-            {
-                //保存本地
-                savedata(selectedItem, 1);
-            }
-            else
-            {
-                //保存本地
-                savedata(selectedItem, 0);
-            }
-            PrintHelper.print(selectedItem.temp.Trim());
-        }
+        
 
 
     }
