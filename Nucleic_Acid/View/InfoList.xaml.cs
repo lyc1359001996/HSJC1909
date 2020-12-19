@@ -301,7 +301,7 @@ namespace Nucleic_Acid.View
                     Items2.Add(dataModel);
                     //dataGrid.ItemsSource = Items2;
                 }
-                
+
             }));
         }
         private void Addressaction(InfoListModel obj)
@@ -335,20 +335,17 @@ namespace Nucleic_Acid.View
         {
             List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
             List<InfoListModel> listsWhere = lists.Where(u => u.cardNo == CardId).ToList();
-            homeAddress = listsWhere[0].homeAddress;
-            company = listsWhere[0].company;
-            Task.Run(() =>
+            if (listsWhere.Count() > 0)
             {
-                if (listsWhere.Count() > 0)
-                {
-                    listsWhere.Reverse();
-                    this.Dispatcher.Invoke(() => { ShowWarn(listsWhere[0].userName, listsWhere[0].createTime); });
-                }
-                else
-                {
-                    return;
-                }
-            });
+                listsWhere.Reverse();
+                homeAddress = listsWhere[0].homeAddress;
+                company = listsWhere[0].company;
+                this.Dispatcher.Invoke(() => { ShowWarn(listsWhere[0].userName, listsWhere[0].createTime); });
+            }
+            else
+            {
+                return;
+            }
         }
         /// <summary>
         /// 姓名

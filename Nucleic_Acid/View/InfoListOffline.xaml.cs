@@ -250,7 +250,7 @@ namespace Nucleic_Acid.View
                         autoRead_Timer.Stop();
                         string homeAddress = "";
                         string company = "";
-                        SelectManIsUse(dataModel.cardNo, ref homeAddress,ref company);
+                        SelectManIsUse(dataModel.cardNo, ref homeAddress, ref company);
                         dataModel.homeAddress = homeAddress;
                         dataModel.company = company;
                         TextTips(dataModel, Addressaction);
@@ -304,24 +304,21 @@ namespace Nucleic_Acid.View
         /// 警告是否以前检测过
         /// </summary>
         /// <param name="CardId"></param>
-        private void SelectManIsUse(string CardId,ref string homeAddress,ref string company) 
+        private void SelectManIsUse(string CardId, ref string homeAddress, ref string company)
         {
             List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
             List<InfoListModel> listsWhere = lists.Where(u => u.cardNo == CardId).ToList();
-            homeAddress = listsWhere[0].homeAddress;
-            company = listsWhere[0].company;
-            Task.Run(() =>
+            if (listsWhere.Count() > 0)
             {
-                if (listsWhere.Count()>0)
-                {
-                    listsWhere.Reverse();
-                    this.Dispatcher.Invoke(() => { ShowWarn(listsWhere[0].userName, listsWhere[0].createTime); });
-                }
-                else
-                {
-                    return;
-                }
-            });
+                listsWhere.Reverse();
+                homeAddress = listsWhere[0].homeAddress;
+                company = listsWhere[0].company;
+                this.Dispatcher.Invoke(() => { ShowWarn(listsWhere[0].userName, listsWhere[0].createTime); });
+            }
+            else
+            {
+                return;
+            }
         }
         /// <summary>
         /// 姓名
@@ -460,7 +457,7 @@ namespace Nucleic_Acid.View
             };
             json.Add(infoListModel);
             SettingJsonConfig.saveData(json);
-            Console.WriteLine("打印："+ dataModel1.cardNo);
+            Console.WriteLine("打印：" + dataModel1.cardNo);
             PrintHelper.print(dataModel1.cardNo);
         }
 
@@ -536,9 +533,9 @@ namespace Nucleic_Acid.View
                     List<InfoListModel> newlist = ToDataGrid(data);
                     this.Dispatcher.Invoke(() =>
                     {
-                        
+
                         pageControl.DataTote = lists.Count();
-                        pageControl.CurrentPage =requestInfoListModel.pageNo;
+                        pageControl.CurrentPage = requestInfoListModel.pageNo;
                         dataGrid.ItemsSource = newlist;
                         loding.Visibility = Visibility.Hidden;
 
