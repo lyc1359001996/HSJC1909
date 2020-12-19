@@ -192,3 +192,12 @@ D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\PrintSet.g.cs
 D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\TextDialog.g.cs
 D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\PrintSet.baml
 D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\TextDialog.baml
+D:\HSJC\HSJC\Nucleic_Acid\obj\Release\Controls\Pages\Theme.baml
+D:\HSJC\HSJC\Nucleic_Acid\obj\Release\Controls\Pages\Badge.baml
+D:\HSJC\HSJC\Nucleic_Acid\obj\Release\Controls\Pages\ComboBox.baml
+D:\HSJC\HSJC\Nucleic_Acid\obj\Release\Controls\Pages\Generic.baml
+D:\HSJC\HSJC\Nucleic_Acid\obj\Release\Controls\Pages\Geometry.baml
+D:\HSJC\HSJC\Nucleic_Acid\obj\Release\Controls\Pages\InputNumber.baml
+D:\HSJC\HSJC\Nucleic_Acid\obj\Release\Controls\Pages\Loading.baml
+D:\HSJC\HSJC\Nucleic_Acid\obj\Release\Controls\Pages\Pagination.baml
+D:\HSJC\HSJC\Nucleic_Acid\obj\Release\Controls\Pages\TextBox.baml

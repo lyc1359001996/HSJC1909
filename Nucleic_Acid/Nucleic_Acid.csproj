@@ -121,6 +121,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\Pages\Assists.cs" />
+    <Compile Include="Controls\Pages\BadgeAdorber.cs" />
+    <Compile Include="Controls\Pages\BaseAdorner.cs" />
+    <Compile Include="Controls\Pages\ComboBoxAssit.cs" />
+    <Compile Include="Controls\Pages\Controls\InputNumber.cs" />
+    <Compile Include="Controls\Pages\Controls\Pagination.cs" />
+    <Compile Include="Controls\Pages\EnumAlignment.cs" />
+    <Compile Include="Controls\Pages\EnumIcon.cs" />
+    <Compile Include="Controls\Pages\EnumPosition.cs" />
+    <Compile Include="Controls\Pages\FindResourceConverter.cs" />
+    <Compile Include="Controls\Pages\IconDataFactory.cs" />
+    <Compile Include="Controls\Pages\InputNumber.cs" />
+    <Compile Include="Controls\Pages\LoadingAdorner.cs" />
+    <Compile Include="Controls\Pages\LoadingAssists.cs" />
+    <Compile Include="Controls\Pages\PaginationButton.cs" />
+    <Compile Include="Controls\Pages\UIElementExtensions.cs" />
+    <Compile Include="Controls\Pages\UnableAdorner.cs" />
     <Compile Include="Controls\PagingControl.xaml.cs">
       <DependentUpon>PagingControl.xaml</DependentUpon>
     </Compile>
@@ -179,6 +196,42 @@
     <Compile Include="Window2.xaml.cs">
       <DependentUpon>Window2.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\Pages\Badge.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Pages\ComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Pages\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Pages\Geometry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Pages\InputNumber.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Pages\Loading.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Pages\Pagination.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Pages\TextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Pages\Theme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\PagingControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -326,6 +379,7 @@
   <ItemGroup>
     <Resource Include="image\read1.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
