@@ -1,0 +1,648 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="faceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="access_permission_group">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hik_permission_group_id" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="permission_group_name" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="account">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Decimal" Nullable="false" />
+    <Property Name="principal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="account1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="principal_mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="is_deleted" Type="Int32" />
+    <Property Name="create_time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="update_time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="level" Type="Int32" />
+    <Property Name="district_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="xzjd_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="cyd_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="jcd_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="serial_no" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="area">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="area1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_deleted" Type="Int32" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="create_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="update_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="attendance">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="morn_office_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="morn_closing_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="after_office_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="after_closing_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="advance_office_clock" Type="Int32" />
+    <Property Name="allow_late" Type="Int32" />
+    <Property Name="duty" Type="Int32" />
+    <Property Name="allow_advance_closing" Type="Int32" />
+    <Property Name="advance_closing" Type="Int32" />
+    <Property Name="leave_duty" Type="Int32" />
+    <Property Name="overtime" Type="Int32" />
+    <Property Name="overtime_mins" Type="Int32" />
+    <Property Name="is_deleted" Type="Int32" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="create_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="update_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="business">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="employee_id" Type="Int64" />
+    <Property Name="work_type" Type="Int32" />
+    <Property Name="business_type" Type="Int32" />
+    <Property Name="status" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="photo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="apply_day" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="amount" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="start_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="attendance_day" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="end_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_deleted" Type="Int32" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="create_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="update_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="addr" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="longitude" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="latitude" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="duplicaters" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_read" Type="Int32" />
+  </EntityType>
+  <EntityType Name="carbon">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="business_id" Type="Int64" />
+    <Property Name="employee_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_deleted" Type="Int32" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="create_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="update_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_read" Type="Int32" />
+  </EntityType>
+  <EntityType Name="clientdetails">
+    <Key>
+      <PropertyRef Name="appId" />
+    </Key>
+    <Property Name="appId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="resourceIds" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="appSecret" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="scope" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="grantTypes" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="redirectUrl" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="authorities" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="access_token_validity" Type="Int32" />
+    <Property Name="refresh_token_validity" Type="Int32" />
+    <Property Name="additionalInformation" Type="String" MaxLength="4096" FixedLength="false" Unicode="false" />
+    <Property Name="autoApproveScopes" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="code_info">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="employee_no" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="mffd" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="mzt" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="mlx" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="hmcmyy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="scffsj" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="scsqsj" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="zjgxsj" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="is_deleted" Type="Int32" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="create_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="update_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="cyd_tab">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="xzjd_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="xzjd_number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="cyd_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="unit" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="cyd_number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="jcd_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="district_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="create_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="update_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_deleted" Type="SByte" />
+  </EntityType>
+  <EntityType Name="department">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="department_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="department_no" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="create_time" Type="DateTime" />
+    <Property Name="state" Type="Int32" />
+    <Property Name="update_time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="is_deleted" Type="Int32" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="create_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="device">
+    <Key>
+      <PropertyRef Name="device_id" />
+    </Key>
+    <Property Name="device_id" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="device_serial" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="device_model" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="device_status" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="device_name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="validate_code" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="group_id" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="create_time" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="device_channel">
+    <Key>
+      <PropertyRef Name="channel_id" />
+    </Key>
+    <Property Name="channel_id" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="channel_name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="channel_type" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="channel_no" Type="Int32" />
+    <Property Name="channel_status" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="device_serial" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="device_permission_group_rel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="permission_group_id" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="device_serial" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="employee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="employee_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="employee_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="employee_card" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="employee_status" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="created" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="updated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="is_check" Type="Int32" />
+    <Property Name="department_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="department_id" Type="Int64" />
+    <Property Name="photo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="board_date" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="card_type_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="card_type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="card_no" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="start_day" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="end_day" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_deleted" Type="Int32" />
+    <Property Name="department_no" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="sex" Type="Int32" />
+    <Property Name="birthday" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="employee_attendance">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="employee_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="employee_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="department_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="department_id" Type="Int64" />
+    <Property Name="office_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="office_card" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="office_state" Type="Int32" />
+    <Property Name="closing_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="closing_card" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="closing_state" Type="Int32" />
+    <Property Name="leavetimes" Type="Int32" />
+    <Property Name="latetimes" Type="Int32" />
+    <Property Name="created" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="updated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="attendance_day" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="equipment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="equipment_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="equipment_no" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="area" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="protocol" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ip_address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="port" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="equipment_serial_no" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="account" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="district" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="network" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_deleted" Type="Int32" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="create_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="update_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="type" Type="SByte" />
+  </EntityType>
+  <EntityType Name="equipment_employee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="equipment_id" Type="Int64" />
+    <Property Name="equipment_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="equipment_no" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="employee_id" Type="Int64" />
+    <Property Name="employee_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="employee_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="employee_card" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="department_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="department_id" Type="Int64" />
+    <Property Name="photo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="board_date" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="card_type_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="card_type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="card_no" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_deleted" Type="Int32" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="create_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="update_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_check" Type="Int32" />
+    <Property Name="device_serial" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="expenseinfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="business_id" Type="Int64" />
+    <Property Name="work_type" Type="Int32" />
+    <Property Name="business_type" Type="Int32" />
+    <Property Name="photo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="apply_day" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="amount" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_deleted" Type="Int32" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="create_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="update_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="facility">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="facility_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="facility_no" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="facility_serial_no" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="account_id" Type="Int64" />
+    <Property Name="is_deleted" Type="Int32" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="create_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="update_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="flow">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="business_id" Type="Int64" />
+    <Property Name="prev_employee_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="curr_employee_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="state" Type="Int32" />
+    <Property Name="is_agree" Type="Int32" />
+    <Property Name="is_deleted" Type="Int32" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="create_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="update_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_curr" Type="Int32" />
+    <Property Name="business_state" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="is_read" Type="Int32" />
+  </EntityType>
+  <EntityType Name="group">
+    <Key>
+      <PropertyRef Name="group_id" />
+    </Key>
+    <Property Name="group_id" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="group_no" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="group_name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="parent_id" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="path" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="oauth_access_token">
+    <Key>
+      <PropertyRef Name="authentication_id" />
+    </Key>
+    <Property Name="token_id" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="token" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="authentication_id" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="client_id" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="authentication" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="refresh_token" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="oauth_client_details">
+    <Key>
+      <PropertyRef Name="client_id" />
+    </Key>
+    <Property Name="client_id" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="resource_ids" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="client_secret" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="scope" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="authorized_grant_types" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="web_server_redirect_uri" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="authorities" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="access_token_validity" Type="Int32" />
+    <Property Name="refresh_token_validity" Type="Int32" />
+    <Property Name="additional_information" Type="String" MaxLength="4096" FixedLength="false" Unicode="false" />
+    <Property Name="autoapprove" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="oauth_client_token">
+    <Key>
+      <PropertyRef Name="authentication_id" />
+    </Key>
+    <Property Name="token_id" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="token" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="authentication_id" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="client_id" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="permission">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="pid" Type="Int64" />
+    <Property Name="permission_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_deleted" Type="Int32" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="create_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="update_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="permission_code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="person">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="employee_no" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="face_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="person_card">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="person_id" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="employee_no" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="card_no" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="person_permission_group_rel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="permission_group_id" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="employee_no" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="problem">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="employee_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="employee_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="photo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="content" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_solve" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="is_deleted" Type="Int32" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="create_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="update_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="record">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="employee_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="employee_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="employee_card" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="department_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="department_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="record_day" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_deleted" Type="Int32" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="create_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="update_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="create_time" Type="DateTime" />
+    <Property Name="state" Type="Int32" />
+    <Property Name="sort" Type="Int32" />
+    <Property Name="update_time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="is_deleted" Type="Int32" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="create_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="staff">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="staff_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="staff_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="staff_card" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="photo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="is_deleted" Type="Int32" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="create_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="update_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="card_no" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="card_type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="sex" Type="Int32" />
+    <Property Name="birth" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="source" Type="Int32" />
+    <Property Name="staff_address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="real_photo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="staff_health_code">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="equipment_id" Type="Int64" />
+    <Property Name="staff_id" Type="Int64" />
+    <Property Name="health_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="is_deleted" Type="Int32" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="create_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="update_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="temperature" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="staff_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="staff_code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="equipment_no" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="staff_card" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="sex" Type="Int32" />
+    <Property Name="area" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="district" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="staff_nucleic_acid">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="acid_no" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="card_no" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="serial_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="company" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="user_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="sex" Type="SByte" />
+    <Property Name="home_address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="testing_value" Type="SByte" />
+    <Property Name="create_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="update_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="is_deleted" Type="SByte" />
+    <Property Name="position" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="detection_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="update_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="jcd_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Decimal" Nullable="false" />
+    <Property Name="real_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="user_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="role_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="role" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="user_status" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="is_deleted" Type="Int32" />
+    <Property Name="create_time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="update_time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="create_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="user_permission_relation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="role_id" Type="Int64" />
+    <Property Name="permission_id" Type="Int64" />
+    <Property Name="is_deleted" Type="Int32" />
+    <Property Name="create_by" Type="Int64" />
+    <Property Name="create_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="update_by" Type="Int64" />
+    <Property Name="update_time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="FaceContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="access_permission_group" EntityType="Self.access_permission_group" />
+    <EntitySet Name="account" EntityType="Self.account" />
+    <EntitySet Name="area" EntityType="Self.area" />
+    <EntitySet Name="attendance" EntityType="Self.attendance" />
+    <EntitySet Name="business" EntityType="Self.business" />
+    <EntitySet Name="carbon" EntityType="Self.carbon" />
+    <EntitySet Name="clientdetails" EntityType="Self.clientdetails" />
+    <EntitySet Name="code_info" EntityType="Self.code_info" />
+    <EntitySet Name="cyd_tab" EntityType="Self.cyd_tab" />
+    <EntitySet Name="department" EntityType="Self.department" />
+    <EntitySet Name="device" EntityType="Self.device" />
+    <EntitySet Name="device_channel" EntityType="Self.device_channel" />
+    <EntitySet Name="device_permission_group_rel" EntityType="Self.device_permission_group_rel" />
+    <EntitySet Name="employee" EntityType="Self.employee" />
+    <EntitySet Name="employee_attendance" EntityType="Self.employee_attendance" />
+    <EntitySet Name="equipment" EntityType="Self.equipment" />
+    <EntitySet Name="equipment_employee" EntityType="Self.equipment_employee" />
+    <EntitySet Name="expenseinfo" EntityType="Self.expenseinfo" />
+    <EntitySet Name="facility" EntityType="Self.facility" />
+    <EntitySet Name="flow" EntityType="Self.flow" />
+    <EntitySet Name="group" EntityType="Self.group" />
+    <EntitySet Name="oauth_access_token" EntityType="Self.oauth_access_token" />
+    <EntitySet Name="oauth_client_details" EntityType="Self.oauth_client_details" />
+    <EntitySet Name="oauth_client_token" EntityType="Self.oauth_client_token" />
+    <EntitySet Name="permission" EntityType="Self.permission" />
+    <EntitySet Name="person" EntityType="Self.person" />
+    <EntitySet Name="person_card" EntityType="Self.person_card" />
+    <EntitySet Name="person_permission_group_rel" EntityType="Self.person_permission_group_rel" />
+    <EntitySet Name="problem" EntityType="Self.problem" />
+    <EntitySet Name="record" EntityType="Self.record" />
+    <EntitySet Name="role" EntityType="Self.role" />
+    <EntitySet Name="staff" EntityType="Self.staff" />
+    <EntitySet Name="staff_health_code" EntityType="Self.staff_health_code" />
+    <EntitySet Name="staff_nucleic_acid" EntityType="Self.staff_nucleic_acid" />
+    <EntitySet Name="user" EntityType="Self.user" />
+    <EntitySet Name="user_permission_relation" EntityType="Self.user_permission_relation" />
+  </EntityContainer>
+</Schema>

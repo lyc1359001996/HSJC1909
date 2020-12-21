@@ -25,7 +25,7 @@
                         <ImageBrush ImageSource="image/组 15.png"/>
                     </Rectangle.Fill>
                 </Rectangle>
-                <Grid Margin="566,336,195,388">
+                <Grid Margin="566,354,195,370">
                     <materialDesign:PackIcon Kind="Account" Foreground="#FFAAAAAA" Margin="-30,26,0,0" Height="24" Width="24" />
                     <TextBox x:Name="userNameBox" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.PrefixText=" " materialDesign:TextFieldAssist.SuffixText=" " Foreground="#FFAAAAAA" FontSize="16" Margin="0,7,0,41">
                         <materialDesign:HintAssist.Hint>
@@ -38,7 +38,7 @@
                         </materialDesign:HintAssist.Hint>
                     </TextBox>
                 </Grid>
-                <Grid Margin="566,386,195,338">
+                <Grid Margin="566,410,195,314">
                     <materialDesign:PackIcon Kind="LockOutline" Foreground="#FFAAAAAA" Margin="-30,26,0,0" Height="24" Width="24" />
                     <PasswordBox x:Name="passWordBox" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" VerticalAlignment="Center" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.PrefixText=" " materialDesign:TextFieldAssist.SuffixText=" " Foreground="#FFAAAAAA" FontSize="16" Margin="0,10,0,44">
                         <materialDesign:HintAssist.Hint>
@@ -49,7 +49,7 @@
                         </materialDesign:HintAssist.Hint>
                     </PasswordBox>
                 </Grid>
-                <Grid Margin="566,430,195,294">
+                <Grid  Visibility="Hidden" Margin="566,430,195,294">
                     <materialDesign:PackIcon Kind="CreditCardScan" Foreground="#FFAAAAAA" Margin="-30,26,0,0" Height="24" Width="24"/>
                     <TextBox x:Name="nameBox" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.PrefixText=" " materialDesign:TextFieldAssist.SuffixText=" " Foreground="Black" FontSize="16" Margin="0,7,0,41" IsEnabled="False" FontFamily="Roboto" FontWeight="Bold">
                         <materialDesign:HintAssist.Hint>
@@ -70,7 +70,7 @@
                         </materialDesign:ToggleButtonAssist.OnContent>
                     </ToggleButton>-->
                 </Grid>
-                <Grid Margin="562,491,195,301">
+                <Grid Margin="562,471,195,321">
                     <CheckBox x:Name="CheckBox_isRember" IsChecked="True" Style="{StaticResource MaterialDesignLightCheckBox}" Content="记住密码"  FontFamily="Magneto" FontWeight="Normal" FontSize="12" Foreground="#DDCFC2C2" HorizontalAlignment="Left" Width="73" />
                 </Grid>
                 <Grid Margin="580,524,136,246" VerticalAlignment="Center" HorizontalAlignment="Center" Width="244">

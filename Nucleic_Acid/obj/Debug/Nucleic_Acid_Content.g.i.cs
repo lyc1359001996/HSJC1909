@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/read1.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("util/dbcontext.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("util/dbcontext.tt")]
 
 

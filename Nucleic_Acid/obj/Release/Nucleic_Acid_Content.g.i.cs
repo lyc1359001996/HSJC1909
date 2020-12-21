@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("logo.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("util/dbcontext.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("util/dbcontext.tt")]
 
 

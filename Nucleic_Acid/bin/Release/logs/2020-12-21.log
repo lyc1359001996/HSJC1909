@@ -1,0 +1,6 @@
+2020-12-21 09:14:26.9835 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-21 09:24:22.1172 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-21 09:24:28.6487 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-21 09:24:29.6370 INFO  {"code":20000,"message":"成功","data":{"name":"limit","jcdName":"99-r4","token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJlbXBsb3llZUlkIjoiMTM0MDUzMjczMjU2NjM1NTk3MCIsImZhaWx1cmVUaW1lIjoxNjEwMjQxODY3NTU2fQ.-jhFGuq-Qhp5J_pw2SXjp6sLOxke1s_OWhQSQbC2MAyKWiypcU5ySDSBJYs3qbbZ8VRisHTPkQJIEaQM5nzAZg"}}  <>c__DisplayClass18_0.<login>b__0 => LoginService.Login_Ex => LoginService.Login
+2020-12-21 09:24:29.8664 INFO  {"code":20000,"message":"成功","data":{"total":0,"pageSize":10,"currPage":1,"data":[]}}  Task.InnerInvoke => <>c__DisplayClass47_0.<SetInfoList>b__0 => InfoListService.getQuery
+2020-12-21 09:26:08.7917 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init

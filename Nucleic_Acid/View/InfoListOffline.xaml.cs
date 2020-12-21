@@ -450,10 +450,11 @@ namespace Nucleic_Acid.View
                 serialNumber = deviceSerialNumber,
                 updateText = "编辑",
                 acidNo = dataModel1.acidNo.ToString(),
-                detectionName = detectionName,
-                updateName = detectionName,
+                detectionName = "",
+                updateName = "",
                 homeAddress = dataModel1.homeAddress,
-                company = dataModel1.company
+                company = dataModel1.company,
+                 jcdName = jcdName
             };
             json.Add(infoListModel);
             SettingJsonConfig.saveData(json);
@@ -462,7 +463,7 @@ namespace Nucleic_Acid.View
         }
 
         #endregion
-        private string detectionName = CommonHelper.detectionName;
+        private string jcdName = CommonHelper.jcdName;
         private string staticName = "";
         private string staticCardNo = "";
         private bool ispage = false;
@@ -655,7 +656,7 @@ namespace Nucleic_Acid.View
                         InfoListModel infoListModel = lists.Where(u => u.acidNo == obj.acidNo).SingleOrDefault();
                         infoListModel.homeAddress = obj.homeAddress;
                         infoListModel.company = obj.company;
-                        infoListModel.updateName = detectionName;
+                        infoListModel.updateName = infoListModel.detectionName;
                         infoListModel.updateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                         infoListModel.versions = obj.versions == 0 ? 0 : 3;
                         SettingJsonConfig.saveData(lists);

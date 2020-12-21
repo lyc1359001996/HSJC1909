@@ -1,0 +1,6 @@
+2020-12-21 09:24:43.3803 INFO  ------------------------start------------------------------  MainWindow.backGrid_Loaded => MainWindow.Init => Logger.Info
+2020-12-21 09:24:48.9982 INFO  ------------------------start------------------------------  MainWindow.backGrid_Loaded => MainWindow.Init => Logger.Info
+2020-12-21 09:25:35.7362 INFO  ------------------------start------------------------------  MainWindow.backGrid_Loaded => MainWindow.Init => Logger.Info
+2020-12-21 09:25:40.5253 INFO  ------------------------start------------------------------  MainWindow.backGrid_Loaded => MainWindow.Init => Logger.Info
+2020-12-21 09:25:41.3611 INFO  {"code":20000,"message":"成功","data":{"name":"limit","jcdName":"99-r4","token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJlbXBsb3llZUlkIjoiMTM0MDUzMjczMjU2NjM1NTk3MCIsImZhaWx1cmVUaW1lIjoxNjEwMjQxOTM5MjkzfQ.jU4vzvgimAbtG253giIvNIW4efFD8huq9uuwvwsW_bRbK9sa-hQ9DHPMB21ZAiQ9FlqVFt6CiS_FtQAx00STrQ"}}  LoginService.Login_Ex => LoginService.Login => Logger.Info
+2020-12-21 09:25:41.6104 INFO  {"code":20000,"message":"成功","data":{"total":0,"pageSize":10,"currPage":1,"data":[]}}  <>c__DisplayClass47_0.<SetInfoList>b__0 => InfoListService.getQuery => Logger.Info

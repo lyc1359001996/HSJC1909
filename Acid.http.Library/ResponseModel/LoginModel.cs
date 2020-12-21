@@ -11,5 +11,6 @@ namespace Acid.http.Library.ResponseModel
         public string role { get; set; }
         public string name { get; set; }
         public string token { get; set; }
+        public string jcdName { get; set; }
     }
 }

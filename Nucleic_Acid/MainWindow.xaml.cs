@@ -53,7 +53,7 @@ namespace Nucleic_Acid
             passWordBox.Password = settingModel.passWord == null ? "" : settingModel.passWord;
             CheckBox_isRember.IsChecked = settingModel.isRember;
         }
-        public MainWindow(string username,string password,string name)
+        public MainWindow(string username, string password, string name)
         {
             InitializeComponent();
             bool res = CHCUsbSDK.USB_SDK_Init();//USB initialize
@@ -65,6 +65,9 @@ namespace Nucleic_Acid
             userNameBox.Text = username;
             passWordBox.Password = password;
             nameBox.Text = name;
+            SettingModel settingModel1 = SettingJsonConfig.readJson();
+            settingModel = settingModel1 == null ? new SettingModel() : settingModel1;
+            CheckBox_isRember.IsChecked = settingModel.isRember;
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -100,19 +103,34 @@ namespace Nucleic_Acid
 
         public void Login_Click(object sender, RoutedEventArgs e)
         {
-            if (nameBox.Text == null || nameBox.Text == "")
-            {
-                MessageTips("请先刷卡认证您的资料", sender, e);
-                return;
-            }
+            //if (nameBox.Text == null || nameBox.Text == "")
+            //{
+            //    MessageTips("请先刷卡认证您的资料", sender, e);
+            //    return;
+            //}
             CommonHelper.userName = userNameBox.Text.Trim() ?? "";
             CommonHelper.passWord = passWordBox.Password.Trim() ?? "";
             CommonHelper.detectionName = nameBox.Text.Trim() ?? "";
-            indexoffline = new IndexOffline(CommonHelper.detectionName);
+            indexoffline = new IndexOffline();
             indexoffline.Show();
+            SettingModel json = SettingJsonConfig.readJson() ?? new SettingModel();
+            if ((bool)CheckBox_isRember.IsChecked)//保存
+            {
+                json.userName = userNameBox.Text.Trim();
+                json.passWord = passWordBox.Password.Trim();
+                json.isRember = (bool)CheckBox_isRember.IsChecked;
+                SettingJsonConfig.saveJson(json);
+            }
+            else
+            {
+                json.userName = "";
+                json.passWord = "";
+                json.isRember = false;
+                SettingJsonConfig.saveJson(json);
+            }
             this.Close();
         }
-        public void login() 
+        public void login()
         {
             if (userNameBox.Text == null || userNameBox.Text == "")
             {
@@ -124,11 +142,11 @@ namespace Nucleic_Acid
                 MessageTips("请输入Password密码");
                 return;
             }
-            else if (nameBox.Text == null || nameBox.Text == "")
-            {
-                MessageTips("请先刷卡认证您的资料");
-                return;
-            }
+            //else if (nameBox.Text == null || nameBox.Text == "")
+            //{
+            //    MessageTips("请先刷卡认证您的资料");
+            //    return;
+            //}
             LogindTips();
             string username = userNameBox.Text;
             string password = passWordBox.Password;
@@ -144,7 +162,8 @@ namespace Nucleic_Acid
                     {
                         CommonHelper.userName = userNameBox.Text.Trim() ?? "";
                         CommonHelper.passWord = passWordBox.Password.Trim() ?? "";
-                        CommonHelper.detectionName = nameBox.Text.Trim() ?? "";
+                        CommonHelper.detectionName = dictionaries.data.name ?? "";
+                        CommonHelper.jcdName = dictionaries.data.jcdName ?? "";
                         index = new Index(CommonHelper.detectionName);
                         index.Show();
                         this.Close();

@@ -1,0 +1,648 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="faceModelStoreContainer" CdmEntityContainer="FaceContext">
+    <EntitySetMapping Name="access_permission_group">
+      <EntityTypeMapping TypeName="faceModel.access_permission_group">
+        <MappingFragment StoreEntitySet="access_permission_group">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="hik_permission_group_id" ColumnName="hik_permission_group_id" />
+          <ScalarProperty Name="permission_group_name" ColumnName="permission_group_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="account">
+      <EntityTypeMapping TypeName="faceModel.account">
+        <MappingFragment StoreEntitySet="account">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="principal" ColumnName="principal" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="account1" ColumnName="account" />
+          <ScalarProperty Name="principal_mobile" ColumnName="principal_mobile" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="district_name" ColumnName="district_name" />
+          <ScalarProperty Name="xzjd_name" ColumnName="xzjd_name" />
+          <ScalarProperty Name="cyd_name" ColumnName="cyd_name" />
+          <ScalarProperty Name="jcd_name" ColumnName="jcd_name" />
+          <ScalarProperty Name="serial_no" ColumnName="serial_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="area">
+      <EntityTypeMapping TypeName="faceModel.area">
+        <MappingFragment StoreEntitySet="area">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="area1" ColumnName="area" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="attendance">
+      <EntityTypeMapping TypeName="faceModel.attendance">
+        <MappingFragment StoreEntitySet="attendance">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="morn_office_time" ColumnName="morn_office_time" />
+          <ScalarProperty Name="morn_closing_time" ColumnName="morn_closing_time" />
+          <ScalarProperty Name="after_office_time" ColumnName="after_office_time" />
+          <ScalarProperty Name="after_closing_time" ColumnName="after_closing_time" />
+          <ScalarProperty Name="advance_office_clock" ColumnName="advance_office_clock" />
+          <ScalarProperty Name="allow_late" ColumnName="allow_late" />
+          <ScalarProperty Name="duty" ColumnName="duty" />
+          <ScalarProperty Name="allow_advance_closing" ColumnName="allow_advance_closing" />
+          <ScalarProperty Name="advance_closing" ColumnName="advance_closing" />
+          <ScalarProperty Name="leave_duty" ColumnName="leave_duty" />
+          <ScalarProperty Name="overtime" ColumnName="overtime" />
+          <ScalarProperty Name="overtime_mins" ColumnName="overtime_mins" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="business">
+      <EntityTypeMapping TypeName="faceModel.business">
+        <MappingFragment StoreEntitySet="business">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+          <ScalarProperty Name="work_type" ColumnName="work_type" />
+          <ScalarProperty Name="business_type" ColumnName="business_type" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="apply_day" ColumnName="apply_day" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="start_time" ColumnName="start_time" />
+          <ScalarProperty Name="attendance_day" ColumnName="attendance_day" />
+          <ScalarProperty Name="end_time" ColumnName="end_time" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="addr" ColumnName="addr" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="duplicaters" ColumnName="duplicaters" />
+          <ScalarProperty Name="is_read" ColumnName="is_read" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="carbon">
+      <EntityTypeMapping TypeName="faceModel.carbon">
+        <MappingFragment StoreEntitySet="carbon">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="business_id" ColumnName="business_id" />
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="is_read" ColumnName="is_read" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="clientdetails">
+      <EntityTypeMapping TypeName="faceModel.clientdetails">
+        <MappingFragment StoreEntitySet="clientdetails">
+          <ScalarProperty Name="appId" ColumnName="appId" />
+          <ScalarProperty Name="resourceIds" ColumnName="resourceIds" />
+          <ScalarProperty Name="appSecret" ColumnName="appSecret" />
+          <ScalarProperty Name="scope" ColumnName="scope" />
+          <ScalarProperty Name="grantTypes" ColumnName="grantTypes" />
+          <ScalarProperty Name="redirectUrl" ColumnName="redirectUrl" />
+          <ScalarProperty Name="authorities" ColumnName="authorities" />
+          <ScalarProperty Name="access_token_validity" ColumnName="access_token_validity" />
+          <ScalarProperty Name="refresh_token_validity" ColumnName="refresh_token_validity" />
+          <ScalarProperty Name="additionalInformation" ColumnName="additionalInformation" />
+          <ScalarProperty Name="autoApproveScopes" ColumnName="autoApproveScopes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="code_info">
+      <EntityTypeMapping TypeName="faceModel.code_info">
+        <MappingFragment StoreEntitySet="code_info">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="employee_no" ColumnName="employee_no" />
+          <ScalarProperty Name="mffd" ColumnName="mffd" />
+          <ScalarProperty Name="mzt" ColumnName="mzt" />
+          <ScalarProperty Name="mlx" ColumnName="mlx" />
+          <ScalarProperty Name="hmcmyy" ColumnName="hmcmyy" />
+          <ScalarProperty Name="scffsj" ColumnName="scffsj" />
+          <ScalarProperty Name="scsqsj" ColumnName="scsqsj" />
+          <ScalarProperty Name="zjgxsj" ColumnName="zjgxsj" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cyd_tab">
+      <EntityTypeMapping TypeName="faceModel.cyd_tab">
+        <MappingFragment StoreEntitySet="cyd_tab">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="xzjd_name" ColumnName="xzjd_name" />
+          <ScalarProperty Name="xzjd_number" ColumnName="xzjd_number" />
+          <ScalarProperty Name="cyd_name" ColumnName="cyd_name" />
+          <ScalarProperty Name="unit" ColumnName="unit" />
+          <ScalarProperty Name="cyd_number" ColumnName="cyd_number" />
+          <ScalarProperty Name="jcd_name" ColumnName="jcd_name" />
+          <ScalarProperty Name="district_name" ColumnName="district_name" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="department">
+      <EntityTypeMapping TypeName="faceModel.department">
+        <MappingFragment StoreEntitySet="department">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="department_name" ColumnName="department_name" />
+          <ScalarProperty Name="department_no" ColumnName="department_no" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="create_name" ColumnName="create_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="device">
+      <EntityTypeMapping TypeName="faceModel.device">
+        <MappingFragment StoreEntitySet="device">
+          <ScalarProperty Name="device_id" ColumnName="device_id" />
+          <ScalarProperty Name="device_serial" ColumnName="device_serial" />
+          <ScalarProperty Name="device_model" ColumnName="device_model" />
+          <ScalarProperty Name="device_status" ColumnName="device_status" />
+          <ScalarProperty Name="device_name" ColumnName="device_name" />
+          <ScalarProperty Name="validate_code" ColumnName="validate_code" />
+          <ScalarProperty Name="group_id" ColumnName="group_id" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="device_channel">
+      <EntityTypeMapping TypeName="faceModel.device_channel">
+        <MappingFragment StoreEntitySet="device_channel">
+          <ScalarProperty Name="channel_id" ColumnName="channel_id" />
+          <ScalarProperty Name="channel_name" ColumnName="channel_name" />
+          <ScalarProperty Name="channel_type" ColumnName="channel_type" />
+          <ScalarProperty Name="channel_no" ColumnName="channel_no" />
+          <ScalarProperty Name="channel_status" ColumnName="channel_status" />
+          <ScalarProperty Name="device_serial" ColumnName="device_serial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="device_permission_group_rel">
+      <EntityTypeMapping TypeName="faceModel.device_permission_group_rel">
+        <MappingFragment StoreEntitySet="device_permission_group_rel">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="permission_group_id" ColumnName="permission_group_id" />
+          <ScalarProperty Name="device_serial" ColumnName="device_serial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employee">
+      <EntityTypeMapping TypeName="faceModel.employee">
+        <MappingFragment StoreEntitySet="employee">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="employee_name" ColumnName="employee_name" />
+          <ScalarProperty Name="employee_code" ColumnName="employee_code" />
+          <ScalarProperty Name="employee_card" ColumnName="employee_card" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="employee_status" ColumnName="employee_status" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="updated" ColumnName="updated" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="is_check" ColumnName="is_check" />
+          <ScalarProperty Name="department_name" ColumnName="department_name" />
+          <ScalarProperty Name="department_id" ColumnName="department_id" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="board_date" ColumnName="board_date" />
+          <ScalarProperty Name="card_type_name" ColumnName="card_type_name" />
+          <ScalarProperty Name="card_type" ColumnName="card_type" />
+          <ScalarProperty Name="card_no" ColumnName="card_no" />
+          <ScalarProperty Name="start_day" ColumnName="start_day" />
+          <ScalarProperty Name="end_day" ColumnName="end_day" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="department_no" ColumnName="department_no" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employee_attendance">
+      <EntityTypeMapping TypeName="faceModel.employee_attendance">
+        <MappingFragment StoreEntitySet="employee_attendance">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="employee_name" ColumnName="employee_name" />
+          <ScalarProperty Name="employee_code" ColumnName="employee_code" />
+          <ScalarProperty Name="department_name" ColumnName="department_name" />
+          <ScalarProperty Name="department_id" ColumnName="department_id" />
+          <ScalarProperty Name="office_time" ColumnName="office_time" />
+          <ScalarProperty Name="office_card" ColumnName="office_card" />
+          <ScalarProperty Name="office_state" ColumnName="office_state" />
+          <ScalarProperty Name="closing_time" ColumnName="closing_time" />
+          <ScalarProperty Name="closing_card" ColumnName="closing_card" />
+          <ScalarProperty Name="closing_state" ColumnName="closing_state" />
+          <ScalarProperty Name="leavetimes" ColumnName="leavetimes" />
+          <ScalarProperty Name="latetimes" ColumnName="latetimes" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="updated" ColumnName="updated" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="attendance_day" ColumnName="attendance_day" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="equipment">
+      <EntityTypeMapping TypeName="faceModel.equipment">
+        <MappingFragment StoreEntitySet="equipment">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="equipment_name" ColumnName="equipment_name" />
+          <ScalarProperty Name="equipment_no" ColumnName="equipment_no" />
+          <ScalarProperty Name="area" ColumnName="area" />
+          <ScalarProperty Name="protocol" ColumnName="protocol" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="ip_address" ColumnName="ip_address" />
+          <ScalarProperty Name="port" ColumnName="port" />
+          <ScalarProperty Name="equipment_serial_no" ColumnName="equipment_serial_no" />
+          <ScalarProperty Name="account" ColumnName="account" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="district" ColumnName="district" />
+          <ScalarProperty Name="network" ColumnName="network" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="equipment_employee">
+      <EntityTypeMapping TypeName="faceModel.equipment_employee">
+        <MappingFragment StoreEntitySet="equipment_employee">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="equipment_id" ColumnName="equipment_id" />
+          <ScalarProperty Name="equipment_name" ColumnName="equipment_name" />
+          <ScalarProperty Name="equipment_no" ColumnName="equipment_no" />
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+          <ScalarProperty Name="employee_name" ColumnName="employee_name" />
+          <ScalarProperty Name="employee_code" ColumnName="employee_code" />
+          <ScalarProperty Name="employee_card" ColumnName="employee_card" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="department_name" ColumnName="department_name" />
+          <ScalarProperty Name="department_id" ColumnName="department_id" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="board_date" ColumnName="board_date" />
+          <ScalarProperty Name="card_type_name" ColumnName="card_type_name" />
+          <ScalarProperty Name="card_type" ColumnName="card_type" />
+          <ScalarProperty Name="card_no" ColumnName="card_no" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="is_check" ColumnName="is_check" />
+          <ScalarProperty Name="device_serial" ColumnName="device_serial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="expenseinfo">
+      <EntityTypeMapping TypeName="faceModel.expenseinfo">
+        <MappingFragment StoreEntitySet="expenseinfo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="business_id" ColumnName="business_id" />
+          <ScalarProperty Name="work_type" ColumnName="work_type" />
+          <ScalarProperty Name="business_type" ColumnName="business_type" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="apply_day" ColumnName="apply_day" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="facility">
+      <EntityTypeMapping TypeName="faceModel.facility">
+        <MappingFragment StoreEntitySet="facility">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="facility_name" ColumnName="facility_name" />
+          <ScalarProperty Name="facility_no" ColumnName="facility_no" />
+          <ScalarProperty Name="facility_serial_no" ColumnName="facility_serial_no" />
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="flow">
+      <EntityTypeMapping TypeName="faceModel.flow">
+        <MappingFragment StoreEntitySet="flow">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="business_id" ColumnName="business_id" />
+          <ScalarProperty Name="prev_employee_id" ColumnName="prev_employee_id" />
+          <ScalarProperty Name="curr_employee_id" ColumnName="curr_employee_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="is_agree" ColumnName="is_agree" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="is_curr" ColumnName="is_curr" />
+          <ScalarProperty Name="business_state" ColumnName="business_state" />
+          <ScalarProperty Name="is_read" ColumnName="is_read" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="group">
+      <EntityTypeMapping TypeName="faceModel.group">
+        <MappingFragment StoreEntitySet="group">
+          <ScalarProperty Name="group_id" ColumnName="group_id" />
+          <ScalarProperty Name="group_no" ColumnName="group_no" />
+          <ScalarProperty Name="group_name" ColumnName="group_name" />
+          <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+          <ScalarProperty Name="path" ColumnName="path" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oauth_access_token">
+      <EntityTypeMapping TypeName="faceModel.oauth_access_token">
+        <MappingFragment StoreEntitySet="oauth_access_token">
+          <ScalarProperty Name="token_id" ColumnName="token_id" />
+          <ScalarProperty Name="token" ColumnName="token" />
+          <ScalarProperty Name="authentication_id" ColumnName="authentication_id" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="client_id" ColumnName="client_id" />
+          <ScalarProperty Name="authentication" ColumnName="authentication" />
+          <ScalarProperty Name="refresh_token" ColumnName="refresh_token" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oauth_client_details">
+      <EntityTypeMapping TypeName="faceModel.oauth_client_details">
+        <MappingFragment StoreEntitySet="oauth_client_details">
+          <ScalarProperty Name="client_id" ColumnName="client_id" />
+          <ScalarProperty Name="resource_ids" ColumnName="resource_ids" />
+          <ScalarProperty Name="client_secret" ColumnName="client_secret" />
+          <ScalarProperty Name="scope" ColumnName="scope" />
+          <ScalarProperty Name="authorized_grant_types" ColumnName="authorized_grant_types" />
+          <ScalarProperty Name="web_server_redirect_uri" ColumnName="web_server_redirect_uri" />
+          <ScalarProperty Name="authorities" ColumnName="authorities" />
+          <ScalarProperty Name="access_token_validity" ColumnName="access_token_validity" />
+          <ScalarProperty Name="refresh_token_validity" ColumnName="refresh_token_validity" />
+          <ScalarProperty Name="additional_information" ColumnName="additional_information" />
+          <ScalarProperty Name="autoapprove" ColumnName="autoapprove" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oauth_client_token">
+      <EntityTypeMapping TypeName="faceModel.oauth_client_token">
+        <MappingFragment StoreEntitySet="oauth_client_token">
+          <ScalarProperty Name="token_id" ColumnName="token_id" />
+          <ScalarProperty Name="token" ColumnName="token" />
+          <ScalarProperty Name="authentication_id" ColumnName="authentication_id" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="client_id" ColumnName="client_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="permission">
+      <EntityTypeMapping TypeName="faceModel.permission">
+        <MappingFragment StoreEntitySet="permission">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="permission_name" ColumnName="permission_name" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="permission_code" ColumnName="permission_code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="person">
+      <EntityTypeMapping TypeName="faceModel.person">
+        <MappingFragment StoreEntitySet="person">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="employee_no" ColumnName="employee_no" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="face_url" ColumnName="face_url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="person_card">
+      <EntityTypeMapping TypeName="faceModel.person_card">
+        <MappingFragment StoreEntitySet="person_card">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="person_id" ColumnName="person_id" />
+          <ScalarProperty Name="employee_no" ColumnName="employee_no" />
+          <ScalarProperty Name="card_no" ColumnName="card_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="person_permission_group_rel">
+      <EntityTypeMapping TypeName="faceModel.person_permission_group_rel">
+        <MappingFragment StoreEntitySet="person_permission_group_rel">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="permission_group_id" ColumnName="permission_group_id" />
+          <ScalarProperty Name="employee_no" ColumnName="employee_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="problem">
+      <EntityTypeMapping TypeName="faceModel.problem">
+        <MappingFragment StoreEntitySet="problem">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+          <ScalarProperty Name="employee_name" ColumnName="employee_name" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="is_solve" ColumnName="is_solve" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="record">
+      <EntityTypeMapping TypeName="faceModel.record">
+        <MappingFragment StoreEntitySet="record">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="employee_code" ColumnName="employee_code" />
+          <ScalarProperty Name="employee_name" ColumnName="employee_name" />
+          <ScalarProperty Name="employee_card" ColumnName="employee_card" />
+          <ScalarProperty Name="department_name" ColumnName="department_name" />
+          <ScalarProperty Name="department_id" ColumnName="department_id" />
+          <ScalarProperty Name="record_day" ColumnName="record_day" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="role">
+      <EntityTypeMapping TypeName="faceModel.role">
+        <MappingFragment StoreEntitySet="role">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="create_name" ColumnName="create_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="staff">
+      <EntityTypeMapping TypeName="faceModel.staff">
+        <MappingFragment StoreEntitySet="staff">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="staff_name" ColumnName="staff_name" />
+          <ScalarProperty Name="staff_code" ColumnName="staff_code" />
+          <ScalarProperty Name="staff_card" ColumnName="staff_card" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="card_no" ColumnName="card_no" />
+          <ScalarProperty Name="card_type" ColumnName="card_type" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="birth" ColumnName="birth" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="source" ColumnName="source" />
+          <ScalarProperty Name="staff_address" ColumnName="staff_address" />
+          <ScalarProperty Name="real_photo" ColumnName="real_photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="staff_health_code">
+      <EntityTypeMapping TypeName="faceModel.staff_health_code">
+        <MappingFragment StoreEntitySet="staff_health_code">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="equipment_id" ColumnName="equipment_id" />
+          <ScalarProperty Name="staff_id" ColumnName="staff_id" />
+          <ScalarProperty Name="health_code" ColumnName="health_code" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="temperature" ColumnName="temperature" />
+          <ScalarProperty Name="staff_name" ColumnName="staff_name" />
+          <ScalarProperty Name="staff_code" ColumnName="staff_code" />
+          <ScalarProperty Name="equipment_no" ColumnName="equipment_no" />
+          <ScalarProperty Name="staff_card" ColumnName="staff_card" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="area" ColumnName="area" />
+          <ScalarProperty Name="district" ColumnName="district" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="staff_nucleic_acid">
+      <EntityTypeMapping TypeName="faceModel.staff_nucleic_acid">
+        <MappingFragment StoreEntitySet="staff_nucleic_acid">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="acid_no" ColumnName="acid_no" />
+          <ScalarProperty Name="card_no" ColumnName="card_no" />
+          <ScalarProperty Name="serial_number" ColumnName="serial_number" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="home_address" ColumnName="home_address" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="testing_value" ColumnName="testing_value" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="detection_name" ColumnName="detection_name" />
+          <ScalarProperty Name="update_name" ColumnName="update_name" />
+          <ScalarProperty Name="jcd_name" ColumnName="jcd_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user">
+      <EntityTypeMapping TypeName="faceModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="real_name" ColumnName="real_name" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="user_code" ColumnName="user_code" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="role_name" ColumnName="role_name" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="user_status" ColumnName="user_status" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="create_name" ColumnName="create_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_permission_relation">
+      <EntityTypeMapping TypeName="faceModel.user_permission_relation">
+        <MappingFragment StoreEntitySet="user_permission_relation">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="permission_id" ColumnName="permission_id" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="create_by" ColumnName="create_by" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="update_by" ColumnName="update_by" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -18,7 +18,7 @@ namespace Acid.http.Library.Service
         /// <param name="page"></param>
         /// <param name="size"></param>
         /// <returns></returns>
-        public static ResultJson<ResponseInfoListModel> getAll(int page,int size)
+        public static ResultJson<ResponseInfoListModel> getAll(int page, int size)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace Acid.http.Library.Service
             catch (Exception ex)
             {
                 Logger.Default.Error(ex.Message);
-                return new ResultJson<ResponseInfoListModel>() {  code="1",message="查无结果"};
+                return new ResultJson<ResponseInfoListModel>() { code = "1", message = "查无结果" };
             }
         }
         /// <summary>
@@ -62,7 +62,7 @@ namespace Acid.http.Library.Service
         /// </summary>
         /// <param name="requestNucleic"></param>
         /// <returns></returns>
-        public static ResultJson<string> updateNucleic(List<InfoListModel> requestNucleic) 
+        public static ResultJson<string> updateNucleic(List<InfoListModel> requestNucleic)
         {
             try
             {
@@ -75,7 +75,7 @@ namespace Acid.http.Library.Service
             catch (Exception ex)
             {
                 Logger.Default.Error(ex.Message);
-                return new ResultJson<string>() {  code="1",message="修改失败，请稍后重试"};
+                return new ResultJson<string>() { code = "1", message = "修改失败，请稍后重试" };
             }
         }
 

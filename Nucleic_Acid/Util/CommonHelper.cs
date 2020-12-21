@@ -13,6 +13,10 @@ namespace Nucleic_Acid.Util
         /// </summary>
         public static string detectionName = "";
         /// <summary>
+        /// 操作员姓名
+        /// </summary>
+        public static string jcdName = "";
+        /// <summary>
         /// 帐号
         /// </summary>
         public static string userName = "";

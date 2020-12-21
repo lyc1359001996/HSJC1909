@@ -273,11 +273,13 @@ namespace Nucleic_Acid
             List<InfoListModel> lists1 = JsonConvert.DeserializeObject<List<InfoListModel>>(str);
             int count = lists1.Count();
             int page = count / 1000 + 1;
-            ResultJson<string> resultJson = new ResultJson<string>() { code = "1" };
+            ResultJson<string> resultJson = new ResultJson<string>() { code = "20000" };
             for (int i = 1; i <= page; i++)
             {
                 List<InfoListModel> data = lists1.Skip((i - 1) * 1000).Take(1000).ToList();
-                resultJson = InfoListService.addNucleic(data);
+                //resultJson = InfoListService.addNucleic(data);
+                Task<int> task = MysqlHelper.InsertAsync(data);
+                Console.WriteLine("新增:" + task.Result+ "条数据");
             }
             if (resultJson.code == "20000")
             {
@@ -286,7 +288,6 @@ namespace Nucleic_Acid
                     item.versions = 1;
                 }
                 SettingJsonConfig.saveData(lists);
-                Console.WriteLine("新增:" + newlist.Count + "条数据");
             }
         }
         private void synchronousUpdate(List<InfoListModel> lists)
@@ -300,7 +301,11 @@ namespace Nucleic_Acid
             for (int i = 1; i <= page; i++)
             {
                 List<InfoListModel> data = lists1.Skip((i - 1) * 1000).Take(1000).ToList();
-                resultJson = InfoListService.updateNucleic(lists1);
+                foreach (var item in data)
+                {
+                    item.detectionName = CommonHelper.detectionName;
+                }
+                resultJson = InfoListService.updateNucleic(data);
             }
             if (resultJson.code == "20000")
             {
@@ -345,7 +350,7 @@ namespace Nucleic_Acid
         /// <param name="e"></param>
         private void turn_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            MainWindow.indexoffline = new IndexOffline(CommonHelper.detectionName);
+            MainWindow.indexoffline = new IndexOffline();
             MainWindow.indexoffline.Show();
             this.Close();
         }

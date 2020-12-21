@@ -6,3 +6,11 @@
 2020-12-19 13:53:27.3308 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
 2020-12-19 14:15:10.1485 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
 2020-12-19 14:39:22.5092 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-19 16:09:35.0698 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-19 17:35:32.3808 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-19 17:36:15.6651 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-19 17:36:17.5892 INFO  {"code":20000,"message":"成功","data":{"name":"limit","token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJlbXBsb3llZUlkIjoiMTM0MDE4MjI1ODQzOTQ1MDYyNSIsImZhaWx1cmVUaW1lIjoxNjEwMDk4NTczODk2fQ.kwuWn7cwII2l_avkMO4-iDvwZgcGBBTBDaqfssn7Aw77T12jzAt-iGDeGsCeGK7o5aXDKpJXojIJoYa9xebPQA"}}  <>c__DisplayClass18_0.<login>b__0 => LoginService.Login_Ex => LoginService.Login
+2020-12-19 17:36:17.8264 INFO  {"code":20000,"message":"新增成功","data":null}  Index.synchronousData => Index.synchronousAdd => InfoListService.addNucleic
+2020-12-19 17:36:17.8977 INFO  {"code":20000,"message":"修改成功","data":null}  Index.synchronousData => Index.synchronousUpdate => InfoListService.updateNucleic
+2020-12-19 17:36:18.2314 INFO  {"code":20000,"message":"成功","data":{"total":0,"pageSize":10,"currPage":1,"data":[]}}  Task.InnerInvoke => <>c__DisplayClass46_0.<SetInfoList>b__0 => InfoListService.getQuery
+2020-12-19 17:58:03.1119 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init

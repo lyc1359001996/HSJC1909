@@ -1,0 +1,675 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="faceModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="access_permission_group">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="hik_permission_group_id" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="permission_group_name" Type="varchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6006: 具有值“0”的方面“MaxLength”超出了方面说明所指定的范围 1-65535。已排除表“def.face.account”中的列“cyd_number”。-->
+  <EntityType Name="account">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="ubigint" Nullable="false" />
+    <Property Name="principal" Type="char" MaxLength="50" />
+    <Property Name="password" Type="char" MaxLength="100" />
+    <Property Name="account" Type="char" MaxLength="50" />
+    <Property Name="principal_mobile" Type="char" MaxLength="50" />
+    <Property Name="status" Type="char" MaxLength="2" />
+    <Property Name="is_deleted" Type="int" />
+    <Property Name="create_time" Type="char" MaxLength="50" />
+    <Property Name="update_time" Type="char" MaxLength="50" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="level" Type="int" />
+    <Property Name="district_name" Type="varchar" MaxLength="255" />
+    <Property Name="xzjd_name" Type="varchar" MaxLength="255" />
+    <Property Name="cyd_name" Type="varchar" MaxLength="255" />
+    <Property Name="jcd_name" Type="varchar" MaxLength="255" />
+    <Property Name="serial_no" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="area">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="area" Type="varchar" MaxLength="255" />
+    <Property Name="is_deleted" Type="int" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="create_time" Type="char" MaxLength="255" />
+    <Property Name="update_time" Type="char" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="attendance">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="morn_office_time" Type="char" MaxLength="255" />
+    <Property Name="morn_closing_time" Type="char" MaxLength="255" />
+    <Property Name="after_office_time" Type="char" MaxLength="255" />
+    <Property Name="after_closing_time" Type="char" MaxLength="255" />
+    <Property Name="advance_office_clock" Type="int" />
+    <Property Name="allow_late" Type="int" />
+    <Property Name="duty" Type="int" />
+    <Property Name="allow_advance_closing" Type="int" />
+    <Property Name="advance_closing" Type="int" />
+    <Property Name="leave_duty" Type="int" />
+    <Property Name="overtime" Type="int" />
+    <Property Name="overtime_mins" Type="int" />
+    <Property Name="is_deleted" Type="int" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="create_time" Type="char" MaxLength="255" />
+    <Property Name="update_time" Type="char" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="business">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="employee_id" Type="bigint" />
+    <Property Name="work_type" Type="int" />
+    <Property Name="business_type" Type="int" />
+    <Property Name="status" Type="char" MaxLength="2" />
+    <Property Name="photo" Type="varchar" MaxLength="255" />
+    <Property Name="apply_day" Type="varchar" MaxLength="255" />
+    <Property Name="amount" Type="varchar" MaxLength="255" />
+    <Property Name="description" Type="varchar" MaxLength="255" />
+    <Property Name="start_time" Type="varchar" MaxLength="255" />
+    <Property Name="attendance_day" Type="varchar" MaxLength="255" />
+    <Property Name="end_time" Type="varchar" MaxLength="255" />
+    <Property Name="is_deleted" Type="int" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="create_time" Type="char" MaxLength="255" />
+    <Property Name="update_time" Type="char" MaxLength="255" />
+    <Property Name="addr" Type="varchar" MaxLength="255" />
+    <Property Name="longitude" Type="varchar" MaxLength="255" />
+    <Property Name="latitude" Type="varchar" MaxLength="255" />
+    <Property Name="duplicaters" Type="varchar" MaxLength="255" />
+    <Property Name="is_read" Type="int" />
+  </EntityType>
+  <EntityType Name="carbon">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="business_id" Type="bigint" />
+    <Property Name="employee_id" Type="char" MaxLength="255" />
+    <Property Name="is_deleted" Type="int" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="create_time" Type="char" MaxLength="255" />
+    <Property Name="update_time" Type="char" MaxLength="255" />
+    <Property Name="is_read" Type="int" />
+  </EntityType>
+  <EntityType Name="clientdetails">
+    <Key>
+      <PropertyRef Name="appId" />
+    </Key>
+    <Property Name="appId" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="resourceIds" Type="varchar" MaxLength="256" />
+    <Property Name="appSecret" Type="varchar" MaxLength="256" />
+    <Property Name="scope" Type="varchar" MaxLength="256" />
+    <Property Name="grantTypes" Type="varchar" MaxLength="256" />
+    <Property Name="redirectUrl" Type="varchar" MaxLength="256" />
+    <Property Name="authorities" Type="varchar" MaxLength="256" />
+    <Property Name="access_token_validity" Type="int" />
+    <Property Name="refresh_token_validity" Type="int" />
+    <Property Name="additionalInformation" Type="varchar" MaxLength="4096" />
+    <Property Name="autoApproveScopes" Type="varchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="code_info">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="employee_no" Type="varchar" MaxLength="32" />
+    <Property Name="mffd" Type="varchar" MaxLength="32" />
+    <Property Name="mzt" Type="varchar" MaxLength="32" />
+    <Property Name="mlx" Type="varchar" MaxLength="255" />
+    <Property Name="hmcmyy" Type="varchar" MaxLength="255" />
+    <Property Name="scffsj" Type="varchar" MaxLength="32" />
+    <Property Name="scsqsj" Type="varchar" MaxLength="32" />
+    <Property Name="zjgxsj" Type="varchar" MaxLength="32" />
+    <Property Name="is_deleted" Type="int" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="create_time" Type="char" MaxLength="255" />
+    <Property Name="update_time" Type="char" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="cyd_tab">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="xzjd_name" Type="varchar" MaxLength="255" />
+    <Property Name="xzjd_number" Type="varchar" MaxLength="255" />
+    <Property Name="cyd_name" Type="varchar" MaxLength="255" />
+    <Property Name="unit" Type="varchar" MaxLength="255" />
+    <Property Name="cyd_number" Type="varchar" MaxLength="255" />
+    <Property Name="jcd_name" Type="varchar" MaxLength="255" />
+    <Property Name="district_name" Type="varchar" MaxLength="255" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="create_time" Type="varchar" MaxLength="255" />
+    <Property Name="update_time" Type="varchar" MaxLength="255" />
+    <Property Name="is_deleted" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="department">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="department_name" Type="varchar" MaxLength="100" />
+    <Property Name="department_no" Type="varchar" MaxLength="100" />
+    <Property Name="description" Type="varchar" MaxLength="500" />
+    <Property Name="create_time" Type="datetime" Precision="0" />
+    <Property Name="state" Type="int" />
+    <Property Name="update_time" Type="char" MaxLength="50" />
+    <Property Name="is_deleted" Type="int" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="create_name" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="device">
+    <Key>
+      <PropertyRef Name="device_id" />
+    </Key>
+    <Property Name="device_id" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="device_serial" Type="varchar" MaxLength="16" />
+    <Property Name="device_model" Type="varchar" MaxLength="64" />
+    <Property Name="device_status" Type="varchar" MaxLength="16" />
+    <Property Name="device_name" Type="varchar" MaxLength="64" />
+    <Property Name="validate_code" Type="varchar" MaxLength="32" />
+    <Property Name="group_id" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="create_time" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="device_channel">
+    <Key>
+      <PropertyRef Name="channel_id" />
+    </Key>
+    <Property Name="channel_id" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="channel_name" Type="varchar" MaxLength="128" />
+    <Property Name="channel_type" Type="varchar" MaxLength="16" />
+    <Property Name="channel_no" Type="int" />
+    <Property Name="channel_status" Type="varchar" MaxLength="16" />
+    <Property Name="device_serial" Type="varchar" MaxLength="32" />
+  </EntityType>
+  <EntityType Name="device_permission_group_rel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="permission_group_id" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="device_serial" Type="varchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="employee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="employee_name" Type="char" MaxLength="50" />
+    <Property Name="employee_code" Type="char" MaxLength="50" />
+    <Property Name="employee_card" Type="char" MaxLength="50" />
+    <Property Name="mobile" Type="char" MaxLength="50" />
+    <Property Name="employee_status" Type="char" MaxLength="2" />
+    <Property Name="created" Type="varchar" MaxLength="50" />
+    <Property Name="updated" Type="varchar" MaxLength="50" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="is_check" Type="int" />
+    <Property Name="department_name" Type="varchar" MaxLength="255" />
+    <Property Name="department_id" Type="bigint" />
+    <Property Name="photo" Type="varchar" MaxLength="255" />
+    <Property Name="board_date" Type="varchar" MaxLength="255" />
+    <Property Name="card_type_name" Type="varchar" MaxLength="255" />
+    <Property Name="card_type" Type="varchar" MaxLength="10" />
+    <Property Name="card_no" Type="varchar" MaxLength="255" />
+    <Property Name="start_day" Type="varchar" MaxLength="255" />
+    <Property Name="end_day" Type="varchar" MaxLength="255" />
+    <Property Name="is_deleted" Type="int" />
+    <Property Name="department_no" Type="varchar" MaxLength="255" />
+    <Property Name="password" Type="varchar" MaxLength="255" />
+    <Property Name="sex" Type="int" />
+    <Property Name="birthday" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6006: 具有值“0”的方面“MaxLength”超出了方面说明所指定的范围 1-65535。已排除表“def.face.employee_attendance”中的列“overtimes”。-->
+  <EntityType Name="employee_attendance">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="employee_name" Type="char" MaxLength="50" />
+    <Property Name="employee_code" Type="char" MaxLength="50" />
+    <Property Name="department_name" Type="varchar" MaxLength="255" />
+    <Property Name="department_id" Type="bigint" />
+    <Property Name="office_time" Type="char" MaxLength="255" />
+    <Property Name="office_card" Type="char" MaxLength="255" />
+    <Property Name="office_state" Type="int" />
+    <Property Name="closing_time" Type="char" MaxLength="255" />
+    <Property Name="closing_card" Type="char" MaxLength="255" />
+    <Property Name="closing_state" Type="int" />
+    <Property Name="leavetimes" Type="int" />
+    <Property Name="latetimes" Type="int" />
+    <Property Name="created" Type="varchar" MaxLength="50" />
+    <Property Name="updated" Type="varchar" MaxLength="50" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="attendance_day" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="equipment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="equipment_name" Type="varchar" MaxLength="255" />
+    <Property Name="equipment_no" Type="varchar" MaxLength="255" />
+    <Property Name="area" Type="varchar" MaxLength="255" />
+    <Property Name="protocol" Type="varchar" MaxLength="255" />
+    <Property Name="code" Type="varchar" MaxLength="255" />
+    <Property Name="ip_address" Type="varchar" MaxLength="255" />
+    <Property Name="port" Type="varchar" MaxLength="255" />
+    <Property Name="equipment_serial_no" Type="varchar" MaxLength="255" />
+    <Property Name="account" Type="varchar" MaxLength="255" />
+    <Property Name="password" Type="varchar" MaxLength="255" />
+    <Property Name="district" Type="varchar" MaxLength="255" />
+    <Property Name="network" Type="varchar" MaxLength="255" />
+    <Property Name="description" Type="varchar" MaxLength="255" />
+    <Property Name="is_deleted" Type="int" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="create_time" Type="char" MaxLength="255" />
+    <Property Name="update_time" Type="char" MaxLength="255" />
+    <Property Name="type" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="equipment_employee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="equipment_id" Type="bigint" />
+    <Property Name="equipment_name" Type="varchar" MaxLength="255" />
+    <Property Name="equipment_no" Type="varchar" MaxLength="255" />
+    <Property Name="employee_id" Type="bigint" />
+    <Property Name="employee_name" Type="char" MaxLength="50" />
+    <Property Name="employee_code" Type="char" MaxLength="50" />
+    <Property Name="employee_card" Type="char" MaxLength="50" />
+    <Property Name="mobile" Type="char" MaxLength="50" />
+    <Property Name="department_name" Type="varchar" MaxLength="255" />
+    <Property Name="department_id" Type="bigint" />
+    <Property Name="photo" Type="varchar" MaxLength="255" />
+    <Property Name="board_date" Type="varchar" MaxLength="255" />
+    <Property Name="card_type_name" Type="varchar" MaxLength="255" />
+    <Property Name="card_type" Type="varchar" MaxLength="10" />
+    <Property Name="card_no" Type="varchar" MaxLength="255" />
+    <Property Name="is_deleted" Type="int" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="create_time" Type="char" MaxLength="255" />
+    <Property Name="update_time" Type="char" MaxLength="255" />
+    <Property Name="is_check" Type="int" />
+    <Property Name="device_serial" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="expenseinfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="business_id" Type="bigint" />
+    <Property Name="work_type" Type="int" />
+    <Property Name="business_type" Type="int" />
+    <Property Name="photo" Type="varchar" MaxLength="255" />
+    <Property Name="apply_day" Type="varchar" MaxLength="255" />
+    <Property Name="amount" Type="varchar" MaxLength="255" />
+    <Property Name="description" Type="varchar" MaxLength="255" />
+    <Property Name="is_deleted" Type="int" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="create_time" Type="char" MaxLength="255" />
+    <Property Name="update_time" Type="char" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="facility">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="facility_name" Type="varchar" MaxLength="255" />
+    <Property Name="facility_no" Type="varchar" MaxLength="255" />
+    <Property Name="facility_serial_no" Type="varchar" MaxLength="255" />
+    <Property Name="account_id" Type="bigint" />
+    <Property Name="is_deleted" Type="int" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="create_time" Type="char" MaxLength="255" />
+    <Property Name="update_time" Type="char" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="flow">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="business_id" Type="bigint" />
+    <Property Name="prev_employee_id" Type="char" MaxLength="255" />
+    <Property Name="curr_employee_id" Type="char" MaxLength="255" />
+    <Property Name="description" Type="varchar" MaxLength="255" />
+    <Property Name="state" Type="int" />
+    <Property Name="is_agree" Type="int" />
+    <Property Name="is_deleted" Type="int" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="create_time" Type="char" MaxLength="255" />
+    <Property Name="update_time" Type="char" MaxLength="255" />
+    <Property Name="is_curr" Type="int" />
+    <Property Name="business_state" Type="char" MaxLength="2" />
+    <Property Name="is_read" Type="int" />
+  </EntityType>
+  <EntityType Name="group">
+    <Key>
+      <PropertyRef Name="group_id" />
+    </Key>
+    <Property Name="group_id" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="group_no" Type="varchar" MaxLength="32" />
+    <Property Name="group_name" Type="varchar" MaxLength="64" />
+    <Property Name="parent_id" Type="varchar" MaxLength="32" />
+    <Property Name="path" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="oauth_access_token">
+    <Key>
+      <PropertyRef Name="authentication_id" />
+    </Key>
+    <Property Name="token_id" Type="varchar" MaxLength="256" />
+    <Property Name="token" Type="blob" />
+    <Property Name="authentication_id" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="user_name" Type="varchar" MaxLength="256" />
+    <Property Name="client_id" Type="varchar" MaxLength="256" />
+    <Property Name="authentication" Type="blob" />
+    <Property Name="refresh_token" Type="varchar" MaxLength="256" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6013: 表/视图“def.face.oauth_approvals”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+        <EntityType Name="oauth_approvals">
+          <Property Name="userId" Type="varchar" MaxLength="256" />
+          <Property Name="clientId" Type="varchar" MaxLength="256" />
+          <Property Name="scope" Type="varchar" MaxLength="256" />
+          <Property Name="status" Type="varchar" MaxLength="10" />
+          <Property Name="expiresAt" Type="timestamp" Precision="0" />
+          <Property Name="lastModifiedAt" Type="timestamp" Precision="0" />
+        </EntityType>-->
+  <EntityType Name="oauth_client_details">
+    <Key>
+      <PropertyRef Name="client_id" />
+    </Key>
+    <Property Name="client_id" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="resource_ids" Type="varchar" MaxLength="256" />
+    <Property Name="client_secret" Type="varchar" MaxLength="256" />
+    <Property Name="scope" Type="varchar" MaxLength="256" />
+    <Property Name="authorized_grant_types" Type="varchar" MaxLength="256" />
+    <Property Name="web_server_redirect_uri" Type="varchar" MaxLength="256" />
+    <Property Name="authorities" Type="varchar" MaxLength="256" />
+    <Property Name="access_token_validity" Type="int" />
+    <Property Name="refresh_token_validity" Type="int" />
+    <Property Name="additional_information" Type="varchar" MaxLength="4096" />
+    <Property Name="autoapprove" Type="varchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="oauth_client_token">
+    <Key>
+      <PropertyRef Name="authentication_id" />
+    </Key>
+    <Property Name="token_id" Type="varchar" MaxLength="256" />
+    <Property Name="token" Type="blob" />
+    <Property Name="authentication_id" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="user_name" Type="varchar" MaxLength="256" />
+    <Property Name="client_id" Type="varchar" MaxLength="256" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6013: 表/视图“def.face.oauth_code”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+        <EntityType Name="oauth_code">
+          <Property Name="code" Type="varchar" MaxLength="256" />
+          <Property Name="authentication" Type="blob" />
+        </EntityType>-->
+  <!--生成过程中发现错误:
+警告 6013: 表/视图“def.face.oauth_refresh_token”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+        <EntityType Name="oauth_refresh_token">
+          <Property Name="token_id" Type="varchar" MaxLength="256" />
+          <Property Name="token" Type="blob" />
+          <Property Name="authentication" Type="blob" />
+        </EntityType>-->
+  <EntityType Name="permission">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="pid" Type="bigint" />
+    <Property Name="permission_name" Type="varchar" MaxLength="255" />
+    <Property Name="is_deleted" Type="int" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="create_time" Type="char" MaxLength="255" />
+    <Property Name="update_time" Type="char" MaxLength="255" />
+    <Property Name="url" Type="varchar" MaxLength="255" />
+    <Property Name="permission_code" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="person">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="employee_no" Type="varchar" MaxLength="32" />
+    <Property Name="name" Type="varchar" MaxLength="32" />
+    <Property Name="face_url" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="person_card">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="person_id" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="employee_no" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="card_no" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="person_permission_group_rel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="permission_group_id" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="employee_no" Type="varchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="problem">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="employee_id" Type="char" MaxLength="255" />
+    <Property Name="employee_name" Type="char" MaxLength="255" />
+    <Property Name="mobile" Type="char" MaxLength="50" />
+    <Property Name="photo" Type="varchar" MaxLength="255" />
+    <Property Name="content" Type="varchar" MaxLength="255" />
+    <Property Name="is_solve" Type="char" MaxLength="2" />
+    <Property Name="is_deleted" Type="int" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="create_time" Type="char" MaxLength="255" />
+    <Property Name="update_time" Type="char" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="record">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="employee_code" Type="varchar" MaxLength="50" />
+    <Property Name="employee_name" Type="varchar" MaxLength="50" />
+    <Property Name="employee_card" Type="varchar" MaxLength="50" />
+    <Property Name="department_name" Type="varchar" MaxLength="50" />
+    <Property Name="department_id" Type="varchar" MaxLength="50" />
+    <Property Name="record_day" Type="varchar" MaxLength="255" />
+    <Property Name="is_deleted" Type="int" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="create_time" Type="char" MaxLength="255" />
+    <Property Name="update_time" Type="char" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="description" Type="varchar" MaxLength="500" />
+    <Property Name="create_time" Type="datetime" Precision="0" />
+    <Property Name="state" Type="int" />
+    <Property Name="sort" Type="int" />
+    <Property Name="update_time" Type="char" MaxLength="50" />
+    <Property Name="is_deleted" Type="int" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="create_name" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="staff">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="staff_name" Type="char" MaxLength="50" />
+    <Property Name="staff_code" Type="char" MaxLength="50" />
+    <Property Name="staff_card" Type="char" MaxLength="50" />
+    <Property Name="photo" Type="varchar" MaxLength="255" />
+    <Property Name="is_deleted" Type="int" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="create_time" Type="char" MaxLength="255" />
+    <Property Name="update_time" Type="char" MaxLength="255" />
+    <Property Name="card_no" Type="varchar" MaxLength="255" />
+    <Property Name="card_type" Type="varchar" MaxLength="255" />
+    <Property Name="sex" Type="int" />
+    <Property Name="birth" Type="varchar" MaxLength="255" />
+    <Property Name="description" Type="varchar" MaxLength="255" />
+    <Property Name="source" Type="int" />
+    <Property Name="staff_address" Type="varchar" MaxLength="255" />
+    <Property Name="real_photo" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="staff_health_code">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="equipment_id" Type="bigint" />
+    <Property Name="staff_id" Type="bigint" />
+    <Property Name="health_code" Type="varchar" MaxLength="10" />
+    <Property Name="is_deleted" Type="int" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="create_time" Type="char" MaxLength="255" />
+    <Property Name="update_time" Type="char" MaxLength="255" />
+    <Property Name="temperature" Type="varchar" MaxLength="10" />
+    <Property Name="staff_name" Type="varchar" MaxLength="255" />
+    <Property Name="staff_code" Type="varchar" MaxLength="255" />
+    <Property Name="equipment_no" Type="varchar" MaxLength="255" />
+    <Property Name="staff_card" Type="varchar" MaxLength="255" />
+    <Property Name="sex" Type="int" />
+    <Property Name="area" Type="varchar" MaxLength="255" />
+    <Property Name="district" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="staff_nucleic_acid">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="acid_no" Type="varchar" MaxLength="255" />
+    <Property Name="card_no" Type="varchar" MaxLength="255" />
+    <Property Name="serial_number" Type="varchar" MaxLength="50" />
+    <Property Name="company" Type="varchar" MaxLength="255" />
+    <Property Name="user_name" Type="varchar" MaxLength="255" />
+    <Property Name="sex" Type="tinyint" />
+    <Property Name="home_address" Type="varchar" MaxLength="255" />
+    <Property Name="address" Type="varchar" MaxLength="255" />
+    <Property Name="testing_value" Type="tinyint" />
+    <Property Name="create_time" Type="varchar" MaxLength="255" />
+    <Property Name="update_time" Type="varchar" MaxLength="255" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="is_deleted" Type="tinyint" />
+    <Property Name="position" Type="varchar" MaxLength="255" />
+    <Property Name="detection_name" Type="varchar" MaxLength="255" />
+    <Property Name="update_name" Type="varchar" MaxLength="255" />
+    <Property Name="jcd_name" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="ubigint" Nullable="false" />
+    <Property Name="real_name" Type="varchar" MaxLength="255" />
+    <Property Name="user_name" Type="char" MaxLength="50" />
+    <Property Name="password" Type="char" MaxLength="100" />
+    <Property Name="user_code" Type="char" MaxLength="50" />
+    <Property Name="mobile" Type="char" MaxLength="50" />
+    <Property Name="role_name" Type="varchar" MaxLength="100" />
+    <Property Name="role" Type="char" MaxLength="255" />
+    <Property Name="user_status" Type="char" MaxLength="2" />
+    <Property Name="is_deleted" Type="int" />
+    <Property Name="create_time" Type="char" MaxLength="50" />
+    <Property Name="update_time" Type="char" MaxLength="50" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="create_name" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="user_permission_relation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="role_id" Type="bigint" />
+    <Property Name="permission_id" Type="bigint" />
+    <Property Name="is_deleted" Type="int" />
+    <Property Name="create_by" Type="bigint" />
+    <Property Name="create_time" Type="char" MaxLength="255" />
+    <Property Name="update_by" Type="bigint" />
+    <Property Name="update_time" Type="char" MaxLength="255" />
+  </EntityType>
+  <EntityContainer Name="faceModelStoreContainer">
+    <EntitySet Name="access_permission_group" EntityType="Self.access_permission_group" Schema="face" store:Type="Tables" />
+    <EntitySet Name="account" EntityType="Self.account" Schema="face" store:Type="Tables" />
+    <EntitySet Name="area" EntityType="Self.area" Schema="face" store:Type="Tables" />
+    <EntitySet Name="attendance" EntityType="Self.attendance" Schema="face" store:Type="Tables" />
+    <EntitySet Name="business" EntityType="Self.business" Schema="face" store:Type="Tables" />
+    <EntitySet Name="carbon" EntityType="Self.carbon" Schema="face" store:Type="Tables" />
+    <EntitySet Name="clientdetails" EntityType="Self.clientdetails" Schema="face" store:Type="Tables" />
+    <EntitySet Name="code_info" EntityType="Self.code_info" Schema="face" store:Type="Tables" />
+    <EntitySet Name="cyd_tab" EntityType="Self.cyd_tab" Schema="face" store:Type="Tables" />
+    <EntitySet Name="department" EntityType="Self.department" Schema="face" store:Type="Tables" />
+    <EntitySet Name="device" EntityType="Self.device" Schema="face" store:Type="Tables" />
+    <EntitySet Name="device_channel" EntityType="Self.device_channel" Schema="face" store:Type="Tables" />
+    <EntitySet Name="device_permission_group_rel" EntityType="Self.device_permission_group_rel" Schema="face" store:Type="Tables" />
+    <EntitySet Name="employee" EntityType="Self.employee" Schema="face" store:Type="Tables" />
+    <EntitySet Name="employee_attendance" EntityType="Self.employee_attendance" Schema="face" store:Type="Tables" />
+    <EntitySet Name="equipment" EntityType="Self.equipment" Schema="face" store:Type="Tables" />
+    <EntitySet Name="equipment_employee" EntityType="Self.equipment_employee" Schema="face" store:Type="Tables" />
+    <EntitySet Name="expenseinfo" EntityType="Self.expenseinfo" Schema="face" store:Type="Tables" />
+    <EntitySet Name="facility" EntityType="Self.facility" Schema="face" store:Type="Tables" />
+    <EntitySet Name="flow" EntityType="Self.flow" Schema="face" store:Type="Tables" />
+    <EntitySet Name="group" EntityType="Self.group" Schema="face" store:Type="Tables" />
+    <EntitySet Name="oauth_access_token" EntityType="Self.oauth_access_token" Schema="face" store:Type="Tables" />
+    <EntitySet Name="oauth_client_details" EntityType="Self.oauth_client_details" Schema="face" store:Type="Tables" />
+    <EntitySet Name="oauth_client_token" EntityType="Self.oauth_client_token" Schema="face" store:Type="Tables" />
+    <EntitySet Name="permission" EntityType="Self.permission" Schema="face" store:Type="Tables" />
+    <EntitySet Name="person" EntityType="Self.person" Schema="face" store:Type="Tables" />
+    <EntitySet Name="person_card" EntityType="Self.person_card" Schema="face" store:Type="Tables" />
+    <EntitySet Name="person_permission_group_rel" EntityType="Self.person_permission_group_rel" Schema="face" store:Type="Tables" />
+    <EntitySet Name="problem" EntityType="Self.problem" Schema="face" store:Type="Tables" />
+    <EntitySet Name="record" EntityType="Self.record" Schema="face" store:Type="Tables" />
+    <EntitySet Name="role" EntityType="Self.role" Schema="face" store:Type="Tables" />
+    <EntitySet Name="staff" EntityType="Self.staff" Schema="face" store:Type="Tables" />
+    <EntitySet Name="staff_health_code" EntityType="Self.staff_health_code" Schema="face" store:Type="Tables" />
+    <EntitySet Name="staff_nucleic_acid" EntityType="Self.staff_nucleic_acid" Schema="face" store:Type="Tables" />
+    <EntitySet Name="user" EntityType="Self.user" Schema="face" store:Type="Tables" />
+    <EntitySet Name="user_permission_relation" EntityType="Self.user_permission_relation" Schema="face" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

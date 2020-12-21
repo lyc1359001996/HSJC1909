@@ -26,7 +26,7 @@ namespace Nucleic_Acid
     {
         //ReadCardOffline V_readCard;
         InfoListOffline V_infoList;
-        public IndexOffline(string name)
+        public IndexOffline()
         {
             InitializeComponent();
             if (V_infoList == null)
@@ -34,7 +34,7 @@ namespace Nucleic_Acid
                 V_infoList = new InfoListOffline();
             }
             DataContext = V_infoList;
-            Label_Name.Content = name + "-离线";
+            Label_Name.Content ="离线";
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

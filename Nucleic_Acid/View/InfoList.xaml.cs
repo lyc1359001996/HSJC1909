@@ -64,6 +64,7 @@ namespace Nucleic_Acid.View
         #endregion
 
         private string detectionName = CommonHelper.detectionName;
+        private string jcdName = CommonHelper.jcdName;
         private string staticName = "";
         private string staticCardNo = "";
         private bool isfirt = false;
@@ -477,7 +478,8 @@ namespace Nucleic_Acid.View
                 detectionName = detectionName,
                 updateName = detectionName,
                 homeAddress = dataModel.homeAddress,
-                company = dataModel.company
+                company = dataModel.company,
+                jcdName = jcdName
             };
             json.Add(infoListModel);
             SettingJsonConfig.saveData(json);
@@ -504,7 +506,8 @@ namespace Nucleic_Acid.View
                 detectionName = detectionName,
                 updateName = detectionName,
                 homeAddress = dataModel.homeAddress,
-                company = dataModel.company
+                company = dataModel.company,
+                jcdName = jcdName
             };
             infoListModels.Add(infoListModel);
             Acid.http.Library.ResponseModel.ResultJson<string> resultJson = InfoListService.addNucleic(infoListModels);
@@ -545,21 +548,27 @@ namespace Nucleic_Acid.View
             Task.Run(() =>
             {
                 ResultJson<ResponseInfoListModel> resultJson = InfoListService.getQuery(requestInfoListModel);
-                this.Dispatcher.Invoke(() =>
+
+                if (resultJson.code == "20000")
                 {
-                    if (resultJson.code == "20000")
+                    List<InfoListModel> newList = ToDataGrid(resultJson.data.addIndex(resultJson.data.data) ?? new List<InfoListModel>());
+                    this.Dispatcher.Invoke(() =>
                     {
                         pageControl.DataTote = resultJson.data.total;
-                        dataGrid.ItemsSource = ToDataGrid(resultJson.data.addIndex(resultJson.data.data) ?? new List<InfoListModel>());
+                        dataGrid.ItemsSource = newList;
                         loding.Visibility = Visibility.Hidden;
-                    }
-                    else
+                    });
+                }
+                else
+                {
+                    this.Dispatcher.Invoke(() =>
                     {
                         MessageTips(resultJson.message);
                         dataGrid.ItemsSource = ToDataGrid(new List<InfoListModel>());
                         loding.Visibility = Visibility.Hidden;
-                    }
-                });
+                    });
+                }
+
             });
         }
 

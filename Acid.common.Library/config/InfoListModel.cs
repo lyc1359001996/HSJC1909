@@ -14,11 +14,11 @@ namespace Acid.common.Library.config
         public string updateTime { get; set; }
         public string updateName { get; set; }
         public string detectionName { get; set; }
-        public object deleted { get; set; }
+        public string deleted { get; set; }
         public string homeAddress { get; set; }
         public string company { get; set; }
-        public long createBy { get; set; }
-        public long? updateBy { get; set; }
+        public string createBy { get; set; }
+        public string updateBy { get; set; }
         public string cardNo { get; set; }
         public string userName { get; set; }
         public string serialNumber { get; set; }
@@ -26,6 +26,7 @@ namespace Acid.common.Library.config
         public string address { get; set; }
         public int? testingValue { get; set; }
         public string acidNo { get; set; }
+        public string jcdName { get; set; }
         public string updateText { get; set; }
 
         public bool iscancel { get; set; }
