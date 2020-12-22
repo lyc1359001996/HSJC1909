@@ -587,6 +587,9 @@
     <EntitySetMapping Name="staff_nucleic_acid">
       <EntityTypeMapping TypeName="faceModel.staff_nucleic_acid">
         <MappingFragment StoreEntitySet="staff_nucleic_acid">
+          <ScalarProperty Name="district_name" ColumnName="district_name" />
+          <ScalarProperty Name="cyd_name" ColumnName="cyd_name" />
+          <ScalarProperty Name="xzjd_name" ColumnName="xzjd_name" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="acid_no" ColumnName="acid_no" />
           <ScalarProperty Name="card_no" ColumnName="card_no" />

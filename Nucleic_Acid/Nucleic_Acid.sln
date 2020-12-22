@@ -19,6 +19,8 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setuphljc", "..\Setuphljc\S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acid_update", "..\Acid_update\Acid_update.csproj", "{04385A03-6074-4508-94FE-F619281D1B93}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acid.NPOI.Library", "..\Acid.NPOI.Library\Acid.NPOI.Library.csproj", "{1673137D-296A-41AA-A713-D14D9A9582CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{04385A03-6074-4508-94FE-F619281D1B93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04385A03-6074-4508-94FE-F619281D1B93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04385A03-6074-4508-94FE-F619281D1B93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1673137D-296A-41AA-A713-D14D9A9582CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1673137D-296A-41AA-A713-D14D9A9582CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1673137D-296A-41AA-A713-D14D9A9582CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1673137D-296A-41AA-A713-D14D9A9582CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -600,6 +600,9 @@
     <Property Name="detection_name" Type="varchar" MaxLength="255" />
     <Property Name="update_name" Type="varchar" MaxLength="255" />
     <Property Name="jcd_name" Type="varchar" MaxLength="255" />
+    <Property Name="xzjd_name" Type="varchar" MaxLength="255" />
+    <Property Name="cyd_name" Type="varchar" MaxLength="255" />
+    <Property Name="district_name" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="user">
     <Key>

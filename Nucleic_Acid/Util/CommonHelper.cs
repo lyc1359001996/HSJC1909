@@ -24,6 +24,15 @@ namespace Nucleic_Acid.Util
         /// 密码
         /// </summary>
         public static string passWord = "";
+
+        public static string xzjdName = "";
+        public static string cydName = "";
+        public static string districtName = "";
+        /// <summary>
+        /// 负责人名称
+        /// </summary>
+        public static string principal = "";
+        
         public static string ToSex(string sexs)
         {
             if (sexs!="0"&&sexs!="1")

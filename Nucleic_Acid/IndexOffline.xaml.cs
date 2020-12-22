@@ -85,11 +85,18 @@ namespace Nucleic_Acid
         /// <param name="message"></param>
         public async void MessageTips(string message)
         {
-            var sampleMessageDialog = new MessageDialog()
+            try
             {
-                Message = { Text = message }
-            };
-            await DialogHost.Show(sampleMessageDialog, "ReadDialog");
+                var sampleMessageDialog = new MessageDialog()
+                {
+                    Message = { Text = message }
+                };
+                await DialogHost.Show(sampleMessageDialog, "ReadDialog");
+            }
+            catch (Exception ex)
+            {
+                Logger.Default.Error(ex.Message);
+            }
         }
         public void ShowWarn(string name, string datetime)
         {
@@ -102,21 +109,66 @@ namespace Nucleic_Acid
             Thread.Sleep(10000);
             this.Dispatcher.Invoke(() => { SnackbarWarn.IsActive = false; });
         }
+        public void ShowExport()
+        {
+            SnackbarLoding.IsActive = true;
+            lodingBar.Visibility = Visibility.Visible;
+        }
+        public void CloseExport()
+        {
+            SnackbarLoding.IsActive = false;
+            lodingBar.Visibility = Visibility.Hidden;
+        }
+        public void ShowInfo(string message) 
+        {
+            Task.Factory.StartNew(ShowInfo);
+        }
+
+        private void ShowInfo()
+        {
+            this.Dispatcher.Invoke(() => { SnackbarOK.IsActive = true; });
+            Thread.Sleep(5000);
+            this.Dispatcher.Invoke(() => { SnackbarOK.IsActive = false; });
+        }
+
         public async void TextTips(InfoListModel infoListModel, Action<InfoListModel> action, DialogClosingEventHandler e = null)
         {
-            if (e == null)
-                e = closingEventHandler;
-            var textDialog = new TextDialog()
+            
+            try
             {
-                Text_CardAddress = { Text = infoListModel.address },
-                Text_Name = { Text = infoListModel.userName },
-                Text_Card = { Text = infoListModel.cardNo },
-                Text_Sex = { Text = infoListModel.sex },
-                Text_homeAddress = { Text = infoListModel.address },
-                Text_company = {  Text = infoListModel.company}
-            };
-            await DialogHost.Show(textDialog, "ReadDialog");
-            action(textDialog.InfoListModel);
+                if (e == null)
+                    e = closingEventHandler;
+                var textDialog = new TextDialog()
+                {
+                    Text_CardAddress = { Text = infoListModel.address },
+                    Text_Name = { Text = infoListModel.userName },
+                    Text_Card = { Text = infoListModel.cardNo },
+                    Text_Sex = { Text = infoListModel.sex },
+                    Text_homeAddress = { Text = infoListModel.address },
+                    Text_company = { Text = infoListModel.company }
+                };
+                await DialogHost.Show(textDialog, "ReadDialog");
+                action(textDialog.InfoListModel);
+            }
+            catch (Exception ex)
+            {
+                Logger.Default.Error(ex.Message);
+            }
+        }
+        public async void AddTips(Action<InfoListModel> action, DialogClosingEventHandler e = null)
+        {
+            try
+            {
+                if (e == null)
+                    e = closingEventHandler;
+                var textDialog = new AddDialog();
+                await DialogHost.Show(textDialog, "ReadDialog");
+                action(textDialog.InfoListModel); 
+            }
+            catch (Exception ex)
+            {
+                Logger.Default.Error(ex.Message);
+            }
         }
         /// <summary>
         /// 确定取消弹窗
@@ -125,15 +177,26 @@ namespace Nucleic_Acid
         /// <param name="action"></param>
         /// <param name="e"></param>
         public async void CancelTips(string message, Action<bool> action, DialogClosingEventHandler e = null)
-        {
-            if (e == null)
-                e = closingEventHandler;
-            var sampleMessageDialog = new CanCancel()
+        { 
+            try
             {
-                Message = { Text = message }
-            };
-            await DialogHost.Show(sampleMessageDialog, "ReadDialog", e);
-            action(sampleMessageDialog.IsTrue);
+                if (e == null)
+                    e = closingEventHandler;
+                var sampleMessageDialog = new CanCancel()
+                {
+                    Message = { Text = message }
+                };
+                await DialogHost.Show(sampleMessageDialog, "ReadDialog", e);
+                action(sampleMessageDialog.IsTrue);
+            }
+            catch (Exception ex)
+            {
+                Logger.Default.Error(ex.Message);
+            }
+        }
+        private void SnackbarMessage_ActionClick(object sender, RoutedEventArgs e)
+        {
+            SnackbarOK.IsActive = false;
         }
         private void closingEventHandler(object sender, DialogClosingEventArgs eventArgs)
         {
@@ -155,8 +218,15 @@ namespace Nucleic_Acid
 
         public async void Loding()
         {
-            var sampleMessageDialog = new SampleProgressDialog();
-            await DialogHost.Show(sampleMessageDialog, "ReadDialog");
+            try
+            {
+                var sampleMessageDialog = new SampleProgressDialog();
+                await DialogHost.Show(sampleMessageDialog, "ReadDialog");
+            }
+            catch (Exception ex)
+            {
+                Logger.Default.Error(ex.Message);
+            }
         }
         public void Loding_close()
         {
@@ -255,5 +325,7 @@ namespace Nucleic_Acid
             this.Close();
             //MainWindow.index = new Index(CommonHelper.detectionName);
         }
+
+
     }
 }

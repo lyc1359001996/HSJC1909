@@ -1,5 +1,6 @@
 ﻿using Acid.common.Library.config;
 using Acid.http.Library.RequestModel;
+using Acid.NPOI.Library;
 using Acid.print.Library;
 using Acid.SDK.Library;
 using MaterialDesignThemes.Wpf;
@@ -7,6 +8,7 @@ using Nucleic_Acid.Model;
 using Nucleic_Acid.Util;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -454,7 +456,7 @@ namespace Nucleic_Acid.View
                 updateName = "",
                 homeAddress = dataModel1.homeAddress,
                 company = dataModel1.company,
-                 jcdName = jcdName
+                jcdName = jcdName
             };
             json.Add(infoListModel);
             SettingJsonConfig.saveData(json);
@@ -705,6 +707,31 @@ namespace Nucleic_Acid.View
             }
             return infoListModels;
         }
+        /// <summary>
+        /// 自定义新增
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            autoRead_Timer.Stop();
+            AddTips(AddAction);
+        }
+
+        private void AddAction(InfoListModel obj)
+        {
+            if (!obj.iscancel)//不是取消
+            {
+                ////打印......
+                if (UrlModel.autoPrint)
+                {
+                    saveAndPrintoffline(obj);
+                    Button_Click(null, null);
+                }
+                Console.WriteLine(obj.userName);
+            }
+            autoRead_Timer.Start();
+        }
 
         //private void company_Changed(object sender, TextChangedEventArgs e)
         //{
@@ -752,8 +779,63 @@ namespace Nucleic_Acid.View
         {
             MainWindow.indexoffline.TextTips(message, action, e);
         }
+        public void AddTips(Action<InfoListModel> action, DialogClosingEventHandler e = null)
+        {
+            MainWindow.indexoffline.AddTips(action, e);
+        }
+        public void ShowExportLoding() 
+        {
+            MainWindow.indexoffline.ShowExport();
+        }
+        public void CloseExportLoding()
+        {
+            MainWindow.indexoffline.CloseExport();
+        }
+        public void ShowOK() 
+        {
+            MainWindow.indexoffline.ShowInfo("");
+        }
         #endregion
-
-
+        /// <summary>
+        /// 导出
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
+            ExportExcel(lists);
+        }
+        /// <summary>
+        /// 导出本地excel
+        /// </summary>
+        /// <param name="lists"></param>
+        public void ExportExcel(List<InfoListModel> lists)
+        {
+            try
+            {
+                autoRead_Timer.Stop();
+                string file = NPOIUtil.OpenSaveDialog();
+                if (file != null)
+                {
+                    ShowExportLoding();
+                    DataTable dt = new DataTable();
+                    Dictionary<string, string> header = NPOIUtil.InfoListModel2Head();
+                    dt = NPOIUtil.List2DataTable(lists, header);
+                    NPOIUtil.RenderDataTableToExcel(dt, file);
+                    CloseExportLoding();
+                    ShowOK();
+                }
+            }
+            catch (Exception ex)
+            {
+                CloseExportLoding();
+                MessageTips(ex.Message);
+            }
+            finally 
+            {
+                autoRead_Timer.Start();
+            }
+        }
     }
 }

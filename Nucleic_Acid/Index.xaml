@@ -16,9 +16,9 @@
         <materialDesign:DialogHost Identifier="ReadDialog_new">
             <Grid x:Name="backGrid" Background="#FFD3D1D1">
                 <Grid Background="#FF44B2F6" Height="60" VerticalAlignment="Top">
-                    <StackPanel Orientation="Horizontal" Margin="191,4,569,4" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Center">
                         <!--<RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="False" Content="读卡" FontFamily="Microsoft YaHei" FontSize="18" FontWeight="Bold" Foreground="#DDFFFFFF" Click="RadioButton_Click" />-->
-                        <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="40,4,4,4" IsChecked="True" Content="用户信息" FontFamily="Microsoft YaHei" FontSize="18" FontWeight="Bold" Foreground="#DDFFFFFF" Click="RadioButton_Click_1" />
+                        <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="0" IsChecked="True" Content="用户信息" FontFamily="Microsoft YaHei" FontSize="18" FontWeight="Bold" Foreground="#DDFFFFFF" Click="RadioButton_Click_1" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,4" HorizontalAlignment="Right" Width="130">
                         <materialDesign:PopupBox  DockPanel.Dock="Right"   PlacementMode="BottomAndAlignRightEdges" Foreground="#DDFFFFFF">

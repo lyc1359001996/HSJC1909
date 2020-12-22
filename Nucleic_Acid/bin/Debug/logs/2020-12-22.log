@@ -1,0 +1,17 @@
+2020-12-22 11:39:11.6060 INFO  ------------------------start------------------------------  MainWindow.backGrid_Loaded => MainWindow.Init => Logger.Info
+2020-12-22 11:39:26.6289 INFO  ------------------------start------------------------------  MainWindow.backGrid_Loaded => MainWindow.Init => Logger.Info
+2020-12-22 11:39:29.2753 INFO  ------------------------start------------------------------  MainWindow.backGrid_Loaded => MainWindow.Init => Logger.Info
+2020-12-22 11:39:30.2587 INFO  {"code":20000,"message":"成功","data":{"cydName":"荷东","principal":"wwww","districtName":"普陀区","name":"limit","xzjdName":"沈家门街道","jcdName":"1-1","token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJlbXBsb3llZUlkIjoiMTM0MDUzMjczMjU2NjM1NTk3MCIsImZhaWx1cmVUaW1lIjoxNjEwMzM2MzY1NDkxfQ.WEUbZEhiYAJImffzxvb_8kZHg1kv6PuSgX6pUWM7a6HWjspxmbpHEk0m_p7wtR2UQ8KmY1nDkjXyULLKNVLrQg"}}  LoginService.Login_Ex => LoginService.Login => Logger.Info
+2020-12-22 11:39:30.5476 INFO  {"code":20000,"message":"成功","data":{"total":0,"pageSize":10,"currPage":1,"data":[]}}  <>c__DisplayClass46_0.<SetInfoList>b__0 => InfoListService.getQuery => Logger.Info
+2020-12-22 14:41:57.1595 INFO  ------------------------start------------------------------  MainWindow.backGrid_Loaded => MainWindow.Init => Logger.Info
+2020-12-22 14:43:31.5244 INFO  ------------------------start------------------------------  MainWindow.backGrid_Loaded => MainWindow.Init => Logger.Info
+2020-12-22 14:53:48.8020 INFO  ------------------------start------------------------------  MainWindow.backGrid_Loaded => MainWindow.Init => Logger.Info
+2020-12-22 14:57:37.9590 INFO  ------------------------start------------------------------  MainWindow.backGrid_Loaded => MainWindow.Init => Logger.Info
+2020-12-22 15:13:02.9631 INFO  ------------------------start------------------------------  MainWindow.backGrid_Loaded => MainWindow.Init => Logger.Info
+2020-12-22 15:25:55.5552 INFO  ------------------------start------------------------------  MainWindow.backGrid_Loaded => MainWindow.Init => Logger.Info
+2020-12-22 15:26:30.6239 INFO  ------------------------start------------------------------  MainWindow.backGrid_Loaded => MainWindow.Init => Logger.Info
+2020-12-22 15:28:00.0413 INFO  ------------------------start------------------------------  MainWindow.backGrid_Loaded => MainWindow.Init => Logger.Info
+2020-12-22 15:29:28.0661 INFO  ------------------------start------------------------------  MainWindow.backGrid_Loaded => MainWindow.Init => Logger.Info
+2020-12-22 15:30:16.9879 INFO  ------------------------start------------------------------  MainWindow.backGrid_Loaded => MainWindow.Init => Logger.Info
+2020-12-22 15:30:47.3913 INFO  ------------------------start------------------------------  MainWindow.backGrid_Loaded => MainWindow.Init => Logger.Info
+2020-12-22 15:32:04.6587 INFO  ------------------------start------------------------------  MainWindow.backGrid_Loaded => MainWindow.Init => Logger.Info

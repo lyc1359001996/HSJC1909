@@ -162,8 +162,11 @@ namespace Nucleic_Acid
                     {
                         CommonHelper.userName = userNameBox.Text.Trim() ?? "";
                         CommonHelper.passWord = passWordBox.Password.Trim() ?? "";
-                        CommonHelper.detectionName = dictionaries.data.name ?? "";
+                        CommonHelper.detectionName = dictionaries.data.principal ?? "";
                         CommonHelper.jcdName = dictionaries.data.jcdName ?? "";
+                        CommonHelper.districtName = dictionaries.data.districtName ?? "";
+                        CommonHelper.xzjdName = dictionaries.data.xzjdName ?? "";
+                        CommonHelper.cydName = dictionaries.data.cydName ?? "";
                         index = new Index(CommonHelper.detectionName);
                         index.Show();
                         this.Close();

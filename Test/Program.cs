@@ -1,9 +1,11 @@
 ﻿using Acid.common.Library.config;
 using Acid.http.Library.ResponseModel;
 using Acid.http.Library.Service;
+using Acid.NPOI.Library;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +16,12 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            mock();
+            DataTable dt = new DataTable();
+            Dictionary<string, string> header = NPOIUtil.InfoListModel2Head();
+
+            List<InfoListModel> lists = SettingJsonConfig.readData();
+            dt = NPOIUtil.List2DataTable(lists, header);
+            NPOIUtil.RenderDataTableToExcel(dt, "C://1.xls");
             Console.ReadKey();
         }
 

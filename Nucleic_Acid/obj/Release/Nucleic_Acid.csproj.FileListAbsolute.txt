@@ -230,3 +230,5 @@ D:\HSJC\HSJC\Nucleic_Acid\bin\Release\MySql.Data.xml
 D:\HSJC\HSJC\Nucleic_Acid\bin\Release\MySql.Data.EntityFramework.xml
 D:\HSJC\HSJC\Nucleic_Acid\bin\Release\zh-Hans\EntityFramework.resources.dll
 D:\HSJC\HSJC\Nucleic_Acid\obj\Release\Nucleic_Acid_Content.g.cs
+D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\AddDialog.g.cs
+D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\AddDialog.baml

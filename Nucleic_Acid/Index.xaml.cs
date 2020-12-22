@@ -94,6 +94,21 @@ namespace Nucleic_Acid
             await DialogHost.Show(textDialog, "ReadDialog");
             action(textDialog.InfoListModel);
         }
+        public async void AddTips(Action<InfoListModel> action, DialogClosingEventHandler e = null)
+        {
+            try
+            {
+                if (e == null)
+                    e = closingEventHandler;
+                var textDialog = new AddDialog();
+                await DialogHost.Show(textDialog, "ReadDialog");
+                action(textDialog.InfoListModel);
+            }
+            catch (Exception ex)
+            {
+                Logger.Default.Error(ex.Message);
+            }
+        }
         /// <summary>
         /// 确定取消弹窗
         /// </summary>

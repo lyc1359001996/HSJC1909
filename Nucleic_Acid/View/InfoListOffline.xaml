@@ -23,11 +23,20 @@
                  IsIndeterminate="True"
                  Value="33" HorizontalAlignment="Center"/>
             </StackPanel>
-            <StackPanel Margin="0,40,30,0" Orientation="Horizontal" HorizontalAlignment="Right" Width="145" Height="50" VerticalAlignment="Top">
-                <Button Style="{StaticResource MaterialDesignRaisedLightButton}" materialDesign:ButtonAssist.CornerRadius="5" ToolTip="重置查询" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Click="Button_Click">
+            <StackPanel Margin="0,40,30,0" Orientation="Horizontal" HorizontalAlignment="Right" Width="auto" Height="50" VerticalAlignment="Top">
+                <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="导出本地数据" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Margin="0,0,0,0" Click="Button_Click_2">
+                    <TextBlock Text="导出" />
+                </Button>
+                <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="导入数据" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Margin="10,0,0,0">
+                    <TextBlock Text="导入" />
+                </Button>
+                <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="新增数据" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Margin="10,0,0,0" Click="Add_Click">
+                    <TextBlock Text="新增" />
+                </Button>
+                <Button Style="{StaticResource MaterialDesignRaisedLightButton}" materialDesign:ButtonAssist.CornerRadius="5" ToolTip="重置查询" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Margin="10,0,0,0" Click="Button_Click">
                     <TextBlock Text="重置" />
                 </Button>
-                <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="查询" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Margin="20,0,0,0" Click="Button_Click_1">
+                <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="查询" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Margin="10,0,0,0" Click="Button_Click_1">
                     <TextBlock Text="查询" />
                 </Button>
             </StackPanel>

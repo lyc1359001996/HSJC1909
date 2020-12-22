@@ -334,6 +334,9 @@
     <Compile Include="View\AboutUs.xaml.cs">
       <DependentUpon>AboutUs.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AddDialog.xaml.cs">
+      <DependentUpon>AddDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CanCancel.xaml.cs">
       <DependentUpon>CanCancel.xaml</DependentUpon>
     </Compile>
@@ -434,6 +437,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AddDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CanCancel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -528,6 +535,10 @@
     <ProjectReference Include="..\Acid.http.Library\Acid.http.Library.csproj">
       <Project>{a9c7be85-261d-4962-9187-2a36243d4779}</Project>
       <Name>Acid.http.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Acid.NPOI.Library\Acid.NPOI.Library.csproj">
+      <Project>{1673137D-296A-41AA-A713-D14D9A9582CB}</Project>
+      <Name>Acid.NPOI.Library</Name>
     </ProjectReference>
     <ProjectReference Include="..\Acid.print.Library\Acid.print.Library.csproj">
       <Project>{D2DA941F-0EB9-4766-859D-C106AFF13243}</Project>

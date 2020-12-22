@@ -49,6 +49,7 @@
     <Reference Include="System.Management" />
     <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -66,12 +67,16 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Acid.common.Library\Acid.common.Library.csproj">
-      <Project>{fa8a2714-dd6a-4590-a45c-5276660c9990}</Project>
+      <Project>{FA8A2714-DD6A-4590-A45C-5276660C9990}</Project>
       <Name>Acid.common.Library</Name>
     </ProjectReference>
     <ProjectReference Include="..\Acid.http.Library\Acid.http.Library.csproj">
-      <Project>{a9c7be85-261d-4962-9187-2a36243d4779}</Project>
+      <Project>{A9C7BE85-261D-4962-9187-2A36243D4779}</Project>
       <Name>Acid.http.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Acid.NPOI.Library\Acid.NPOI.Library.csproj">
+      <Project>{1673137D-296A-41AA-A713-D14D9A9582CB}</Project>
+      <Name>Acid.NPOI.Library</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -12,5 +12,9 @@ namespace Acid.http.Library.ResponseModel
         public string name { get; set; }
         public string token { get; set; }
         public string jcdName { get; set; }
+        public string xzjdName { get; set; }
+        public string cydName { get; set; }
+        public string principal { get; set; }
+        public string districtName { get; set; }
     }
 }

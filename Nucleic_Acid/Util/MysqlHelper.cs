@@ -31,7 +31,10 @@ namespace Nucleic_Acid.Util
                             serial_number = item.serialNumber,
                             sex = SByte.Parse(item.sex),
                             user_name = item.userName,
-                            update_name = item.updateName
+                            update_name = item.updateName,
+                            xzjd_name = CommonHelper.xzjdName,
+                            cyd_name = CommonHelper.cydName,
+                            district_name = CommonHelper.districtName
                         };
                         list.Add(ac);
                     }

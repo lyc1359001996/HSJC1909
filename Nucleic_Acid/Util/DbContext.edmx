@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="faceModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="faceModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="access_permission_group">
           <Key>
             <PropertyRef Name="id" />
@@ -605,6 +605,9 @@
           <Property Name="detection_name" Type="varchar" MaxLength="255" />
           <Property Name="update_name" Type="varchar" MaxLength="255" />
           <Property Name="jcd_name" Type="varchar" MaxLength="255" />
+          <Property Name="xzjd_name" Type="varchar" MaxLength="255" />
+          <Property Name="cyd_name" Type="varchar" MaxLength="255" />
+          <Property Name="district_name" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -677,8 +680,7 @@
           <EntitySet Name="user" EntityType="Self.user" Schema="face" store:Type="Tables" />
           <EntitySet Name="user_permission_relation" EntityType="Self.user_permission_relation" Schema="face" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="faceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1255,6 +1257,9 @@
           <Property Name="detection_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="update_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="jcd_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="xzjd_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="cyd_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="district_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -1919,6 +1924,9 @@
           <EntitySetMapping Name="staff_nucleic_acid">
             <EntityTypeMapping TypeName="faceModel.staff_nucleic_acid">
               <MappingFragment StoreEntitySet="staff_nucleic_acid">
+                <ScalarProperty Name="district_name" ColumnName="district_name" />
+                <ScalarProperty Name="cyd_name" ColumnName="cyd_name" />
+                <ScalarProperty Name="xzjd_name" ColumnName="xzjd_name" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="acid_no" ColumnName="acid_no" />
                 <ScalarProperty Name="card_no" ColumnName="card_no" />

@@ -40,3 +40,4 @@ D:\HSJC\HSJC\Acid.SDK.Library\obj\Debug\Acid.SDK.Library.csproj.CoreCompileInput
 D:\HSJC\HSJC\Acid.SDK.Library\obj\Debug\Acid.SDK.Library.csproj.CopyComplete
 D:\HSJC\HSJC\Acid.SDK.Library\obj\Debug\Acid.SDK.Library.dll
 D:\HSJC\HSJC\Acid.SDK.Library\obj\Debug\Acid.SDK.Library.pdb
+D:\HSJC\HSJC\Acid.SDK.Library\obj\Debug\Acid.SDK.Library.csprojAssemblyReference.cache

@@ -15,9 +15,9 @@
     <materialDesign:DialogHost Identifier="ReadDialog">
         <Grid x:Name="backGrid" Background="#FFD3D1D1">
             <Grid Background="#FF44B2F6" Height="60" VerticalAlignment="Top">
-                <StackPanel Orientation="Horizontal" Margin="191,4,569,4" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Center">
                     <!--<RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="4" IsChecked="True" Content="读卡" FontFamily="Microsoft YaHei" FontSize="18" FontWeight="Bold" Foreground="#DDFFFFFF" Click="RadioButton_Click" />-->
-                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="40,4,4,4" IsChecked="True" Content="用户信息" FontFamily="Microsoft YaHei" FontSize="18" FontWeight="Bold" Foreground="#DDFFFFFF" Click="RadioButton_Click_1" />
+                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="0" IsChecked="True" Content="用户信息" FontFamily="Microsoft YaHei" FontSize="18" FontWeight="Bold" Foreground="#DDFFFFFF" Click="RadioButton_Click_1" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,4" HorizontalAlignment="Right" Width="130">
                     <materialDesign:PopupBox  DockPanel.Dock="Right"   PlacementMode="BottomAndAlignRightEdges" Foreground="#DDFFFFFF">
@@ -62,8 +62,15 @@
                 </StackPanel>
             </Grid>
             <ContentControl Grid.Row="0" Content="{Binding}" Margin="1,60,1,1"/>
+            <ProgressBar x:Name="lodingBar" IsIndeterminate="True" Margin="0,60,0,0" VerticalAlignment="Top" Background="#FF6EC6FF"  Visibility="Hidden"/>
+            <materialDesign:Snackbar Margin="498,60,494,0" IsActive="False" x:Name="SnackbarOK" VerticalAlignment="Top" HorizontalContentAlignment="Center">
+                <materialDesign:SnackbarMessage Content="数据导出完成" ActionContent="确认" ActionClick="SnackbarMessage_ActionClick" />
+            </materialDesign:Snackbar>
+            <materialDesign:Snackbar Margin="498,60,494,0" IsActive="False" x:Name="SnackbarLoding" VerticalAlignment="Top" HorizontalContentAlignment="Center">
+                <materialDesign:SnackbarMessage Content="数据正在导出...请勿关闭电源"  Width="237" HorizontalContentAlignment="Center" />
+            </materialDesign:Snackbar>
             <materialDesign:Snackbar Margin="455,60,470,0" IsActive="False" x:Name="SnackbarWarn" VerticalAlignment="Top" HorizontalContentAlignment="Center">
-                <materialDesign:SnackbarMessage Content="提示：王大大已于2020-10-25 12:00:00进行核酸检测" HorizontalContentAlignment="Center" />
+                <materialDesign:SnackbarMessage Content="警告：" HorizontalContentAlignment="Center" />
             </materialDesign:Snackbar>
         </Grid>
     </materialDesign:DialogHost>

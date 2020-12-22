@@ -64,7 +64,6 @@ namespace Nucleic_Acid.View
         #endregion
 
         private string detectionName = CommonHelper.detectionName;
-        private string jcdName = CommonHelper.jcdName;
         private string staticName = "";
         private string staticCardNo = "";
         private bool isfirt = false;
@@ -479,7 +478,7 @@ namespace Nucleic_Acid.View
                 updateName = detectionName,
                 homeAddress = dataModel.homeAddress,
                 company = dataModel.company,
-                jcdName = jcdName
+                jcdName = CommonHelper.jcdName
             };
             json.Add(infoListModel);
             SettingJsonConfig.saveData(json);
@@ -507,7 +506,10 @@ namespace Nucleic_Acid.View
                 updateName = detectionName,
                 homeAddress = dataModel.homeAddress,
                 company = dataModel.company,
-                jcdName = jcdName
+                jcdName = CommonHelper.jcdName,
+                xzjdName = CommonHelper.xzjdName,
+                cydName = CommonHelper.cydName,
+                districtName = CommonHelper.districtName
             };
             infoListModels.Add(infoListModel);
             Acid.http.Library.ResponseModel.ResultJson<string> resultJson = InfoListService.addNucleic(infoListModels);
@@ -737,6 +739,27 @@ namespace Nucleic_Acid.View
                 }
             }));
         }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            autoRead_Timer.Stop();
+            AddTips(AddAction);
+        }
+
+        private void AddAction(InfoListModel obj)
+        {
+            if (!obj.iscancel)//不是取消
+            {
+                ////打印......
+                if (UrlModel.autoPrint)
+                {
+                    saveAndPrint(obj);
+                    Button_Click(null, null);
+                }
+                Console.WriteLine(obj.userName);
+            }
+            autoRead_Timer.Start();
+        }
         /// <summary>
         /// 删除
         /// </summary>
@@ -816,6 +839,13 @@ namespace Nucleic_Acid.View
         {
             MainWindow.index.Loding_close();
         }
+
+        public void AddTips(Action<InfoListModel> action, DialogClosingEventHandler e = null)
+        {
+            MainWindow.index.AddTips(action, e);
+        }
         #endregion
+
+        
     }
 }

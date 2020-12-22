@@ -33,5 +33,8 @@ namespace Nucleic_Acid.Util
         public string detection_name { get; set; }
         public string update_name { get; set; }
         public string jcd_name { get; set; }
+        public string xzjd_name { get; set; }
+        public string cyd_name { get; set; }
+        public string district_name { get; set; }
     }
 }
