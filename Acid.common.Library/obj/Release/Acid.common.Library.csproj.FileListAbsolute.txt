@@ -18,4 +18,8 @@ D:\HSJC\HSJC\Acid.common.Library\obj\Release\Acid.common.Library.csproj.CoreComp
 D:\HSJC\HSJC\Acid.common.Library\obj\Release\Acid.common.Library.csproj.CopyComplete
 D:\HSJC\HSJC\Acid.common.Library\obj\Release\Acid.common.Library.dll
 D:\HSJC\HSJC\Acid.common.Library\obj\Release\Acid.common.Library.pdb
-D:\HSJC\HSJC\Acid.common.Library\obj\Release\Acid.common.Library.csprojAssemblyReference.cache
+D:\HSJC\HSJC\Acid.common.Library\bin\Release\BouncyCastle.Crypto.dll
+D:\HSJC\HSJC\Acid.common.Library\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\HSJC\HSJC\Acid.common.Library\bin\Release\BouncyCastle.Crypto.xml
+D:\HSJC\HSJC\Acid.common.Library\bin\Release\ICSharpCode.SharpZipLib.pdb
+D:\HSJC\HSJC\Acid.common.Library\bin\Release\ICSharpCode.SharpZipLib.xml

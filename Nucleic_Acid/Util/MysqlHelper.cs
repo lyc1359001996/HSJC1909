@@ -24,7 +24,7 @@ namespace Nucleic_Acid.Util
                             address = item.address,
                             card_no = item.cardNo,
                             company = item.company,
-                            create_time = item.createTime,
+                            create_time = item.createTime.ToString(),
                             detection_name = CommonHelper.detectionName,
                             home_address = item.homeAddress,
                             jcd_name = CommonHelper.jcdName,

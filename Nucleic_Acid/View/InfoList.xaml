@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Nucleic_Acid.View"
+             xmlns:hc="https://handyorg.github.io/handycontrol" 
              xmlns:WpfPaging="clr-namespace:WpfPaging" x:Class="Nucleic_Acid.View.InfoList"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              Background="{DynamicResource MaterialDesignPaper}"
@@ -15,22 +16,21 @@
              mc:Ignorable="d" d:DesignHeight="758" d:DesignWidth="1200" Loaded="UserControl_Loaded" Unloaded="UserControl_Unloaded">
     <Grid Background="White">
         <Grid Margin="25,10" Background="White">
-            <StackPanel Margin="35,38,0,0" Orientation="Horizontal" HorizontalAlignment="Left" Width="565" Height="55" VerticalAlignment="Top" >
-                <TextBox x:Name="TextBox_Name" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="请输入姓名" Margin="0,8" FontFamily="NSimSun" Height="38" FontSize="12" Width="170"/>
-                <TextBox x:Name="TextBox_CardNo" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="请输入身份证号码" Margin="30,8,0,8" Height="38" FontFamily="NSimSun" FontSize="12"  Width="170"/>
-                <ProgressBar x:Name="loding" Visibility="Hidden" Width="24" Height="24" Margin="16"
-                 Style="{DynamicResource MaterialDesignCircularProgressBar}"
-                 IsIndeterminate="True"
-                 Value="33" HorizontalAlignment="Center"/>
+            <StackPanel Margin="35,38,0,0" Orientation="Horizontal" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" >
+                <hc:TextBox x:Name="TextBox_Name" hc:InfoElement.Placeholder="请输入姓名" Margin="4,0,0,0" FontFamily="NSimSun" Height="38" FontSize="12" Width="170" ToolTip="请输入姓名"/>
+                <hc:TextBox x:Name="TextBox_CardNo"  hc:InfoElement.Placeholder="请输入身份证号码" Margin="10,8,0,8" Height="38" FontFamily="NSimSun" FontSize="12"  Width="170" ToolTip="请输入身份证号码"/>
+                <hc:DateTimePicker x:Name="dateTimeStart" hc:InfoElement.Placeholder="开始时间" Margin="10,8,0,9" HorizontalContentAlignment="Stretch" VerticalAlignment="Center" Width="195" SelectionBrush="#FF2196F3" Height="38" ToolTip="开始日期" />
+                <hc:DateTimePicker x:Name="dateTimeEnd" hc:InfoElement.Placeholder="结束时间" Margin="10,8,0,9" HorizontalContentAlignment="Stretch" VerticalAlignment="Center" Width="195" SelectionBrush="#FF2196F3" Height="38" ToolTip="结束日期" />
+                <hc:LoadingCircle x:Name="loding" Visibility="Hidden"/>
             </StackPanel>
             <StackPanel Margin="0,40,44,0" Orientation="Horizontal" HorizontalAlignment="Right" Width="auto" Height="50" VerticalAlignment="Top">
-                <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="查询" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Margin="0,0,0,0">
+                <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="按条件导出本地数据,如要导出所有数据请选择重置后导出" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Margin="0,0,0,0" Click="Button_Click_2">
                     <TextBlock Text="导出" />
                 </Button>
-                <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="查询" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Margin="10,0,0,0">
-                    <TextBlock Text="导入" />
+                <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="数据回传到本地" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Margin="10,0,0,0" Click="Button_Click_3">
+                    <TextBlock Text="回传" />
                 </Button>
-                <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="查询" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Margin="10,0,0,0" Click="Add_Click">
+                <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="新增" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Margin="10,0,0,0" Click="Add_Click">
                     <TextBlock Text="新增" />
                 </Button>
                 <Button Style="{StaticResource MaterialDesignRaisedLightButton}" materialDesign:ButtonAssist.CornerRadius="5" ToolTip="重置查询" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Margin="10,0,0,0" Click="Button_Click">
@@ -79,6 +79,13 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="工作单位">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox TextWrapping="Wrap" MaxWidth="250" Text="{Binding Path=company,UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=Editor_company}" FontFamily="NSimSun" MaxLength="50" VerticalAlignment="Center"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                             <DataGridTemplateColumn Header="身份证地址">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -93,14 +100,8 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="工作单位">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBox TextWrapping="Wrap" MaxWidth="250" Text="{Binding Path=company,UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding Path=Editor_company}" FontFamily="NSimSun" MaxLength="50" VerticalAlignment="Center"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="检测时间">
+
+                            <DataGridTemplateColumn Header="采样登记时间">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBox TextWrapping="Wrap" MaxWidth="250" Text="{Binding Path=createTime}" IsReadOnly="True" FontFamily="NSimSun" MaxLength="50" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" VerticalAlignment="Center"/>

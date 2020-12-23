@@ -568,7 +568,7 @@ namespace Nucleic_Acid.View
             autoScan_Timer.Stop();
         }
 
-        
+
 
 
     }

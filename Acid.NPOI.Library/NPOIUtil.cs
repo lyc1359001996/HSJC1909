@@ -453,7 +453,7 @@ namespace Acid.NPOI.Library
             saveFileDialog.FilterIndex = 1;
             saveFileDialog.RestoreDirectory = true;
             saveFileDialog.DefaultExt = "xls";
-            saveFileDialog.FileName = DateTime.Now.ToString("yyyy-MM-dd") + "核算检测.xls";
+            saveFileDialog.FileName = DateTime.Now.ToString("yyyy-MM-dd") + "采样数据.xls";
             System.Windows.Forms.DialogResult result = saveFileDialog.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.Cancel)
             {
@@ -580,7 +580,7 @@ namespace Acid.NPOI.Library
             header.Add("cardNo", "身份证号");
             header.Add("address", "身份证地址");//list转datatable
             header.Add("sex", "性别（0：女 1：男）");
-            header.Add("createTime", "核算检测时间");
+            header.Add("createTime", "采样登记时间");
             header.Add("company", "工作单位");
             header.Add("homeAddress", "现居住地址");
             //header.Add("note", "备注");

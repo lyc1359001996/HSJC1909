@@ -37,7 +37,6 @@ namespace Test
                     address = "松花江",
                     cardNo = new Random().Next(1000000, 99999999).ToString(),
                     company = "松花江江山",
-                    createTime = new DateTime().ToString("yyyy-MM-dd HH:mm:ss"),
                     detectionName = "阿坝",
                     homeAddress = "松花江",
                     serialNumber = "",

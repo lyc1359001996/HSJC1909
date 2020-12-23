@@ -13,7 +13,7 @@ D:\HSJC\HSJC\Acid.NPOI.Library\bin\Debug\ICSharpCode.SharpZipLib.xml
 D:\HSJC\HSJC\Acid.NPOI.Library\bin\Debug\NPOI.xml
 D:\HSJC\HSJC\Acid.NPOI.Library\bin\Debug\NPOI.OOXML.xml
 D:\HSJC\HSJC\Acid.NPOI.Library\bin\Debug\NPOI.OpenXml4Net.xml
-D:\HSJC\HSJC\Acid.NPOI.Library\obj\Debug\Acid.NPOI.Library.csprojAssemblyReference.cache
 D:\HSJC\HSJC\Acid.NPOI.Library\obj\Debug\Acid.NPOI.Library.csproj.CopyComplete
 D:\HSJC\HSJC\Acid.NPOI.Library\obj\Debug\Acid.NPOI.Library.dll
 D:\HSJC\HSJC\Acid.NPOI.Library\obj\Debug\Acid.NPOI.Library.pdb
+D:\HSJC\HSJC\Acid.NPOI.Library\obj\Debug\Acid.NPOI.Library.csprojAssemblyReference.cache

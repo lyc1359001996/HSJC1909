@@ -378,3 +378,13 @@ D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\NPOI.OOXML.xml
 D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\ICSharpCode.SharpZipLib.pdb
 D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\ICSharpCode.SharpZipLib.xml
 D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\NPOI.OpenXml4Net.xml
+D:\HSJC\HSJC\Nucleic_Acid\obj\Debug\View\DateTimeControl.g.cs
+D:\HSJC\HSJC\Nucleic_Acid\obj\Debug\View\DateTimeControl.baml
+D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\HandyControl.dll
+D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\HandyControl.xml
+D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\en\HandyControl.resources.dll
+D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\fa\HandyControl.resources.dll
+D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\fr\HandyControl.resources.dll
+D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\ko-KR\HandyControl.resources.dll
+D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\ru\HandyControl.resources.dll
+D:\HSJC\HSJC\Nucleic_Acid\bin\Debug\tr\HandyControl.resources.dll

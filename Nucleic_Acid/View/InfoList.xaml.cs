@@ -2,6 +2,7 @@
 using Acid.http.Library.RequestModel;
 using Acid.http.Library.ResponseModel;
 using Acid.http.Library.Service;
+using Acid.NPOI.Library;
 using Acid.print.Library;
 using Acid.SDK.Library;
 using MaterialDesignThemes.Wpf;
@@ -9,6 +10,7 @@ using Nucleic_Acid.Model;
 using Nucleic_Acid.Util;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -66,6 +68,8 @@ namespace Nucleic_Acid.View
         private string detectionName = CommonHelper.detectionName;
         private string staticName = "";
         private string staticCardNo = "";
+        private string staticStartTime = "";
+        private string staticEndTime = "";
         private bool isfirt = false;
         public InfoList()
         {
@@ -340,7 +344,7 @@ namespace Nucleic_Acid.View
                 listsWhere.Reverse();
                 homeAddress = listsWhere[0].homeAddress;
                 company = listsWhere[0].company;
-                this.Dispatcher.Invoke(() => { ShowWarn(listsWhere[0].userName, listsWhere[0].createTime); });
+                this.Dispatcher.Invoke(() => { ShowWarn(listsWhere[0].userName, listsWhere[0].createTime.ToString()); });
             }
             else
             {
@@ -542,6 +546,10 @@ namespace Nucleic_Acid.View
 
         private void Init()
         {
+            dateTimeStart.Text = DateTime.Now.ToString("yyyy-MM-dd 00:00:00");
+            dateTimeEnd.Text = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd 00:00:00");
+            dateTimeStart.Text = "";
+            dateTimeEnd.Text = "";
             QuerySelect_page(pageControl.CurrentPage);
         }
         private void SetInfoList(RequestInfoListModel requestInfoListModel)
@@ -586,7 +594,9 @@ namespace Nucleic_Acid.View
                 pageNo = page,
                 pageSize = pageControl.PageSize,
                 cardNo = staticCardNo == "" ? null : staticCardNo,
-                name = staticName == "" ? null : staticName
+                name = staticName == "" ? null : staticName,
+                startTime = staticStartTime == "" ? null : staticStartTime,
+                endTime = staticEndTime == "" ? null : staticEndTime
             };
             SetInfoList(requestInfoListModel);
         }
@@ -603,11 +613,15 @@ namespace Nucleic_Acid.View
                 pageSize = pageControl.PageSize,
                 cardNo = TextBox_CardNo.Text == "" ? null : TextBox_CardNo.Text,
                 name = TextBox_Name.Text == "" ? null : TextBox_Name.Text,
+                startTime = dateTimeStart.Text == "" ? null : dateTimeStart.Text,
+                endTime = dateTimeEnd.Text == "" ? null : dateTimeStart.Text
             };
             SetInfoList(requestInfoListModel);
             //绑定静态值
             staticName = TextBox_Name.Text;
             staticCardNo = TextBox_CardNo.Text;
+            staticStartTime = dateTimeStart.Text;
+            staticEndTime = dateTimeEnd.Text;
         }
 
 
@@ -621,6 +635,10 @@ namespace Nucleic_Acid.View
         {
             staticName = "";
             staticCardNo = "";
+            staticStartTime = "";
+            staticEndTime = "";
+            dateTimeStart.Text = "";
+            dateTimeEnd.Text = "";
             TextBox_CardNo.Clear();
             TextBox_Name.Clear();
             pageControl.CurrentPage = 1;
@@ -844,8 +862,166 @@ namespace Nucleic_Acid.View
         {
             MainWindow.index.AddTips(action, e);
         }
+        public void ShowExportLoding(string message)
+        {
+            MainWindow.index.ShowExport(message);
+        }
+        public void CloseExportLoding()
+        {
+            MainWindow.index.CloseExport();
+        }
+        public void ShowOK(string message)
+        {
+            MainWindow.index.ShowInfo(message);
+        }
         #endregion
 
-        
+        #region 导出
+        /// <summary>
+        /// 导出
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
+            if (TextBox_Name.Text != "")
+            {
+                lists = lists.Where(u => u.userName.ToString() == TextBox_Name.Text).ToList();
+            }
+            if (TextBox_CardNo.Text != "")
+            {
+                lists = lists.Where(u => u.cardNo.ToString() == TextBox_CardNo.Text).ToList();
+            }
+            if (dateTimeStart.Text != "")
+            {
+                lists = lists.Where(u => DateTime.Parse(u.createTime) >= DateTime.Parse(dateTimeStart.Text)).ToList();
+            }
+            if (dateTimeEnd.Text != "")
+            {
+                lists = lists.Where(u => DateTime.Parse(u.createTime) <= DateTime.Parse(dateTimeEnd.Text)).ToList();
+            }
+            ExportExcel(lists);
+        }
+        /// <summary>
+        /// 导出本地excel
+        /// </summary>
+        /// <param name="lists"></param>
+        public void ExportExcel(List<InfoListModel> lists)
+        {
+            try
+            {
+                autoRead_Timer.Stop();
+                string file = NPOIUtil.OpenSaveDialog();
+                if (file != null)
+                {
+                    ShowExportLoding("数据正在导出...请勿关闭电源");
+                    DataTable dt = new DataTable();
+                    Dictionary<string, string> header = NPOIUtil.InfoListModel2Head();
+                    dt = NPOIUtil.List2DataTable(lists, header);
+                    NPOIUtil.RenderDataTableToExcel(dt, file);
+                    ShowOK("数据导出完成");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageTips(ex.Message);
+            }
+            finally
+            {
+                CloseExportLoding();
+                autoRead_Timer.Start();
+            }
+        }
+        #endregion
+
+        #region 回传
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            CancelTips("确认要回传数据到本地,请确认本地数据已同步成功,防止数据丢失", new Action<bool>(arg =>
+            {
+                if (arg)
+                {
+                    PassBack();
+                }
+            }));
+        }
+
+        public void PassBack()
+        {
+            try
+            {
+                ShowExportLoding("数据正在回传到本地...请勿关闭电源");
+                BackList();
+            }
+            catch (Exception ex)
+            {
+                MessageTips(ex.Message);
+            }
+            finally
+            {
+                CloseExportLoding();
+            }
+        }
+        /// <summary>
+        /// 回传专用
+        /// </summary>
+        private void BackList()
+        {
+            Task.Run(() =>
+            {
+                try
+                {
+                    List<InfoListModel> allList = new List<InfoListModel>();
+                    RequestInfoListModel requestInfoListModel = new RequestInfoListModel() { pageNo = 1, pageSize = 1 };
+                    ResultJson<ResponseInfoListModel> resultJson = InfoListService.getQuery(requestInfoListModel);
+                    if (resultJson.code == "20000")
+                    {
+                        int times = resultJson.data.total / 1000 + 1;
+                        requestInfoListModel.pageSize = 1000;
+                        for (int i = 1; i <= times; i++)
+                        {
+                            requestInfoListModel.pageNo = i;
+                            resultJson = InfoListService.getQuery(requestInfoListModel);
+                            List<InfoListModel> newList = ToBack(resultJson.data.data ?? new List<InfoListModel>());
+                            allList.AddRange(newList);
+                        }
+                        allList.Reverse();
+                        SettingJsonConfig.saveData(allList);
+                        this.Dispatcher.Invoke(() => { ShowOK("数据回传完成"); });
+                        return;
+                    }
+                    else
+                    {
+                        this.Dispatcher.Invoke(() => { ShowOK("数据回传失败,请稍后重试"); });
+                        return;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    this.Dispatcher.Invoke(() => { ShowOK(ex.Message); });
+                    return;
+                }
+
+            });
+        }
+        private List<InfoListModel> ToBack(List<InfoListModel> infoListModels)
+        {
+            if (infoListModels == null)
+            {
+                return null;
+            }
+            foreach (var item in infoListModels)
+            {
+                item.updateText = "编辑";
+                item.iscancel = false;
+                item.Editor_company = false;
+                item.Editor_homeAddress = false;
+                item.versions = 1;
+            }
+            return infoListModels;
+        }
+        #endregion
     }
 }

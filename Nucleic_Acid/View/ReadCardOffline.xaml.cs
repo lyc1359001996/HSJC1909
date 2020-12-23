@@ -305,7 +305,7 @@ namespace Nucleic_Acid.View
                     Items2.Add(dataModel);
                     datagrid.ItemsSource = null;
                     datagrid.ItemsSource = Items2;
-                    
+
                 }
                 Console.WriteLine(Items2[0].SName);
             }));
@@ -500,7 +500,7 @@ namespace Nucleic_Acid.View
 
 
 
-       
+
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
             //停止定时器

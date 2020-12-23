@@ -315,7 +315,7 @@ namespace Nucleic_Acid.View
                 listsWhere.Reverse();
                 homeAddress = listsWhere[0].homeAddress;
                 company = listsWhere[0].company;
-                this.Dispatcher.Invoke(() => { ShowWarn(listsWhere[0].userName, listsWhere[0].createTime); });
+                this.Dispatcher.Invoke(() => { ShowWarn(listsWhere[0].userName, listsWhere[0].createTime.ToString()); });
             }
             else
             {
@@ -468,6 +468,8 @@ namespace Nucleic_Acid.View
         private string jcdName = CommonHelper.jcdName;
         private string staticName = "";
         private string staticCardNo = "";
+        private string staticStartTime = "";
+        private string staticEndTime = "";
         private bool ispage = false;
         public InfoListOffline()
         {
@@ -502,6 +504,10 @@ namespace Nucleic_Acid.View
 
         private void Init()
         {
+            dateTimeStart.Text = DateTime.Now.ToString("yyyy-MM-dd 00:00:00");
+            dateTimeEnd.Text = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd 00:00:00");
+            dateTimeStart.Text = "";
+            dateTimeEnd.Text = "";
             QuerySelect_page(pageControl.CurrentPage);
         }
 
@@ -521,11 +527,19 @@ namespace Nucleic_Acid.View
                     {
                         lists = lists.Where(u => u.cardNo.ToString() == requestInfoListModel.cardNo).ToList();
                     }
+                    if (requestInfoListModel.startTime !=null)
+                    {
+                        lists = lists.Where(u => DateTime.Parse(u.createTime) >= DateTime.Parse(requestInfoListModel.startTime)).ToList();
+                    }
+                    if (requestInfoListModel.endTime != null)
+                    {
+                        lists = lists.Where(u => DateTime.Parse(u.createTime) <= DateTime.Parse(requestInfoListModel.endTime)).ToList();
+                    }
                     lists.Reverse();
                     List<InfoListModel> data = lists.Skip((requestInfoListModel.pageNo - 1) * requestInfoListModel.pageSize).Take(requestInfoListModel.pageSize).ToList();
                     //添加序号
                     int current = 1;
-                    //Thread.Sleep(1000);
+                    Thread.Sleep(250);
                     foreach (var item in data)
                     {
                         item.index = current;
@@ -536,13 +550,10 @@ namespace Nucleic_Acid.View
                     List<InfoListModel> newlist = ToDataGrid(data);
                     this.Dispatcher.Invoke(() =>
                     {
-
                         pageControl.DataTote = lists.Count();
                         pageControl.CurrentPage = requestInfoListModel.pageNo;
                         dataGrid.ItemsSource = newlist;
                         loding.Visibility = Visibility.Hidden;
-
-
                     });
                 }
                 else
@@ -571,7 +582,9 @@ namespace Nucleic_Acid.View
                 pageNo = page,
                 pageSize = pageControl.PageSize,
                 cardNo = staticCardNo == "" ? null : staticCardNo,
-                name = staticName == "" ? null : staticName
+                name = staticName == "" ? null : staticName,
+                startTime = staticStartTime == "" ? null : staticStartTime,
+                endTime = staticEndTime == "" ? null : staticEndTime
             };
             SetInfoList(requestInfoListModel);
         }
@@ -586,12 +599,16 @@ namespace Nucleic_Acid.View
                 pageNo = page,
                 pageSize = pageControl.PageSize,
                 cardNo = TextBox_CardNo.Text == "" ? null : TextBox_CardNo.Text,
-                name = TextBox_Name.Text == "" ? null : TextBox_Name.Text
+                name = TextBox_Name.Text == "" ? null : TextBox_Name.Text,
+                startTime = dateTimeStart.Text == "" ? null : dateTimeStart.Text,
+                endTime = dateTimeEnd.Text == "" ? null : dateTimeEnd.Text
             };
             SetInfoList(requestInfoListModel);
             //绑定静态值
             staticName = TextBox_Name.Text;
             staticCardNo = TextBox_CardNo.Text;
+            staticStartTime = dateTimeStart.Text;
+            staticEndTime = dateTimeEnd.Text;
         }
 
         /// <summary>
@@ -603,6 +620,10 @@ namespace Nucleic_Acid.View
         {
             staticName = "";
             staticCardNo = "";
+            staticStartTime = "";
+            staticEndTime = "";
+            dateTimeStart.Text = "";
+            dateTimeEnd.Text = "";
             TextBox_CardNo.Clear();
             TextBox_Name.Clear();
             pageControl.CurrentPage = 1;
@@ -615,6 +636,8 @@ namespace Nucleic_Acid.View
         /// <param name="e"></param>
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            staticStartTime = dateTimeStart.Text;
+            staticEndTime = dateTimeEnd.Text;
             pageControl.CurrentPage = 1;
             QuerySelect_click(1);
         }
@@ -783,7 +806,7 @@ namespace Nucleic_Acid.View
         {
             MainWindow.indexoffline.AddTips(action, e);
         }
-        public void ShowExportLoding() 
+        public void ShowExportLoding()
         {
             MainWindow.indexoffline.ShowExport();
         }
@@ -791,7 +814,7 @@ namespace Nucleic_Acid.View
         {
             MainWindow.indexoffline.CloseExport();
         }
-        public void ShowOK() 
+        public void ShowOK()
         {
             MainWindow.indexoffline.ShowInfo("");
         }
@@ -804,6 +827,22 @@ namespace Nucleic_Acid.View
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
+            if (TextBox_Name.Text!="")
+            {
+                lists = lists.Where(u => u.userName.ToString() == TextBox_Name.Text).ToList();
+            }
+            if (TextBox_CardNo.Text != "")
+            {
+                lists = lists.Where(u => u.cardNo.ToString() == TextBox_CardNo.Text).ToList();
+            }
+            if (dateTimeStart.Text != "")
+            {
+                lists = lists.Where(u => DateTime.Parse(u.createTime) >= DateTime.Parse(dateTimeStart.Text)).ToList();
+            }
+            if (dateTimeEnd.Text != "")
+            {
+                lists = lists.Where(u => DateTime.Parse(u.createTime) <= DateTime.Parse(dateTimeEnd.Text)).ToList();
+            }
             ExportExcel(lists);
         }
         /// <summary>
@@ -832,7 +871,7 @@ namespace Nucleic_Acid.View
                 CloseExportLoding();
                 MessageTips(ex.Message);
             }
-            finally 
+            finally
             {
                 autoRead_Timer.Start();
             }

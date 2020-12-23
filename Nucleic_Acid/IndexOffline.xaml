@@ -20,7 +20,7 @@
                     <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}" Margin="0" IsChecked="True" Content="用户信息" FontFamily="Microsoft YaHei" FontSize="18" FontWeight="Bold" Foreground="#DDFFFFFF" Click="RadioButton_Click_1" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,4" HorizontalAlignment="Right" Width="130">
-                    <materialDesign:PopupBox  DockPanel.Dock="Right"   PlacementMode="BottomAndAlignRightEdges" Foreground="#DDFFFFFF">
+                    <materialDesign:PopupBox HorizontalAlignment="Right" Margin="10,10,0,0" Foreground="#DDFFFFFF">
                         <ListBox>
                             <ListBoxItem FontFamily="Microsoft YaHei" FontSize="12" FontWeight="Bold" MouseUp="turn_MouseUp">
                                 转到在线

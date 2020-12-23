@@ -109,6 +109,30 @@ namespace Nucleic_Acid
                 Logger.Default.Error(ex.Message);
             }
         }
+
+        public void ShowExport(string message)
+        {
+            SnackbarLoding.Message.Content = message;
+            SnackbarLoding.IsActive = true;
+            lodingBar.Visibility = Visibility.Visible;
+        }
+        public void CloseExport()
+        {
+            SnackbarLoding.IsActive = false;
+            lodingBar.Visibility = Visibility.Hidden;
+        }
+        public void ShowInfo(string message)
+        {
+            SnackbarOK.Message.Content = message;
+            Task.Factory.StartNew(ShowInfo);
+        }
+
+        private void ShowInfo()
+        {
+            this.Dispatcher.Invoke(() => { SnackbarOK.IsActive = true; });
+            Thread.Sleep(5000);
+            this.Dispatcher.Invoke(() => { SnackbarOK.IsActive = false; });
+        }
         /// <summary>
         /// 确定取消弹窗
         /// </summary>
