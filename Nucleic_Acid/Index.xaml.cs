@@ -150,7 +150,27 @@ namespace Nucleic_Acid
             await DialogHost.Show(sampleMessageDialog, "ReadDialog", e);
             action(sampleMessageDialog.IsTrue);
         }
-
+        /// <summary>
+        /// 选择确定取消弹窗
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="action"></param>
+        /// <param name="e"></param>
+        public async void ChooseTips(Action<bool, int> action, DialogClosingEventHandler e = null)
+        {
+            try
+            {
+                if (e == null)
+                    e = closingEventHandler;
+                var sampleMessageDialog = new ChooseDialog();
+                await DialogHost.Show(sampleMessageDialog, "ReadDialog", e);
+                action(sampleMessageDialog.isCancel, sampleMessageDialog.ChooseIndex);
+            }
+            catch (Exception ex)
+            {
+                Logger.Default.Error(ex.Message);
+            }
+        }
         public async void LoadingTips(string message)
         {
             var sampleMessageDialog = new LodingText()

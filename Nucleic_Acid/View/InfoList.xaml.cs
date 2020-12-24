@@ -849,6 +849,10 @@ namespace Nucleic_Acid.View
         {
             MainWindow.index.CancelTips(message, action, e);
         }
+        public void ChooseTips(Action<bool, int> action)
+        {
+            MainWindow.index.ChooseTips(action, null);
+        }
         public void lodings()
         {
             MainWindow.index.Loding();
@@ -876,7 +880,7 @@ namespace Nucleic_Acid.View
         }
         #endregion
 
-        #region 导出
+        #region 导入导出
         /// <summary>
         /// 导出
         /// </summary>
@@ -884,25 +888,47 @@ namespace Nucleic_Acid.View
         /// <param name="e"></param>
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
-            if (TextBox_Name.Text != "")
-            {
-                lists = lists.Where(u => u.userName.ToString() == TextBox_Name.Text).ToList();
-            }
-            if (TextBox_CardNo.Text != "")
-            {
-                lists = lists.Where(u => u.cardNo.ToString() == TextBox_CardNo.Text).ToList();
-            }
-            if (dateTimeStart.Text != "")
-            {
-                lists = lists.Where(u => DateTime.Parse(u.createTime) >= DateTime.Parse(dateTimeStart.Text)).ToList();
-            }
-            if (dateTimeEnd.Text != "")
-            {
-                lists = lists.Where(u => DateTime.Parse(u.createTime) <= DateTime.Parse(dateTimeEnd.Text)).ToList();
-            }
-            ExportExcel(lists);
+            autoRead_Timer.Stop();
+            ChooseTips(ExportAction);
         }
+
+        private void ExportAction(bool iscancel, int index)
+        {
+            if (iscancel)
+            {
+                autoRead_Timer.Start();
+                return;
+            }
+            else
+            {
+                List<InfoListModel> lists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
+                if (TextBox_Name.Text != "")
+                {
+                    lists = lists.Where(u => u.userName.ToString() == TextBox_Name.Text).ToList();
+                }
+                if (TextBox_CardNo.Text != "")
+                {
+                    lists = lists.Where(u => u.cardNo.ToString() == TextBox_CardNo.Text).ToList();
+                }
+                if (dateTimeStart.Text != "")
+                {
+                    lists = lists.Where(u => DateTime.Parse(u.createTime) >= DateTime.Parse(dateTimeStart.Text)).ToList();
+                }
+                if (dateTimeEnd.Text != "")
+                {
+                    lists = lists.Where(u => DateTime.Parse(u.createTime) <= DateTime.Parse(dateTimeEnd.Text)).ToList();
+                }
+                if (index == 1)//选择导出Excel
+                {
+                    ExportExcel(lists);
+                }
+                else//导出json
+                {
+                    ExportJson(lists);
+                }
+            }
+        }
+
         /// <summary>
         /// 导出本地excel
         /// </summary>
@@ -911,26 +937,114 @@ namespace Nucleic_Acid.View
         {
             try
             {
-                autoRead_Timer.Stop();
-                string file = NPOIUtil.OpenSaveDialog();
+                string file = NPOIUtil.OpenSaveExcelDialog();
                 if (file != null)
                 {
-                    ShowExportLoding("数据正在导出...请勿关闭电源");
-                    DataTable dt = new DataTable();
-                    Dictionary<string, string> header = NPOIUtil.InfoListModel2Head();
-                    dt = NPOIUtil.List2DataTable(lists, header);
-                    NPOIUtil.RenderDataTableToExcel(dt, file);
-                    ShowOK("数据导出完成");
+                    Task.Run(() =>
+                    {
+                        this.Dispatcher.Invoke(() => { ShowExportLoding("数据正在导出...请勿关闭电源或录入信息"); });
+                        DataTable dt = new DataTable();
+                        Dictionary<string, string> header = NPOIUtil.InfoListModel2Head();
+                        dt = NPOIUtil.List2DataTable(lists, header);
+                        NPOIUtil.RenderDataTableToExcel(dt, file);
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            CloseExportLoding();
+                            ShowOK("数据导出完成");
+                        });
+                    });
                 }
             }
             catch (Exception ex)
             {
-
+                CloseExportLoding();
                 MessageTips(ex.Message);
             }
             finally
             {
+                autoRead_Timer.Start();
+            }
+        }
+        public void ExportJson(List<InfoListModel> lists)
+        {
+            try
+            {
+                string file = NPOIUtil.OpenSaveJsonDialog();
+                if (file != null)
+                {
+                    Task.Run(() =>
+                    {
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            ShowExportLoding("数据正在导出...请勿关闭电源或录入信息");
+                        });
+                        foreach (var item in lists)
+                        {
+                            item.versions = 1;
+                        }
+                        SettingJsonConfig.saveJson(lists, file);
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            CloseExportLoding();
+                            ShowOK("数据导出完成");
+                        });
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
                 CloseExportLoding();
+                MessageTips(ex.Message);
+            }
+            finally
+            {
+                autoRead_Timer.Start();
+            }
+        }
+        /// <summary>
+        /// 导入
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void InData_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                autoRead_Timer.Stop();
+                string file = NPOIUtil.OpenJsonDialog();
+                if (file != null)
+                {
+                    Task.Run(() =>
+                    {
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            ShowExportLoding("数据正在导入...请勿关闭电源或录入信息");
+                        });
+                        List<InfoListModel> newlists = SettingJsonConfig.readData(file) ?? new List<InfoListModel>();
+                        List<InfoListModel> oldlists = SettingJsonConfig.readData() ?? new List<InfoListModel>();
+                        foreach (var item in newlists)
+                        {
+                            if (!oldlists.Any(u => u.acidNo == item.acidNo))
+                            {
+                                oldlists.Add(item);
+                            }
+                        }
+                        SettingJsonConfig.saveData(oldlists);
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            CloseExportLoding();
+                            ShowOK("数据导入完成");
+                        });
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageTips(ex.Message);
+            }
+
+            finally
+            {
                 autoRead_Timer.Start();
             }
         }
@@ -939,7 +1053,7 @@ namespace Nucleic_Acid.View
         #region 回传
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            CancelTips("确认要回传数据到本地,请确认本地数据已同步成功,防止数据丢失", new Action<bool>(arg =>
+            CancelTips("回传数据将覆盖本地数据,请确认本地数据已同步成功,防止数据丢失", new Action<bool>(arg =>
             {
                 if (arg)
                 {

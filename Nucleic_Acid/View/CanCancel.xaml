@@ -12,7 +12,7 @@
              TextElement.FontSize="14"
              FontFamily="{materialDesign:MaterialDesignFont}"
              d:DesignWidth="300" MaxWidth="400" Height="166">
-    <Grid Margin="16">
+    <Grid Margin="50,16,50,16">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />

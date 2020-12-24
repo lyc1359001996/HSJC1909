@@ -255,3 +255,5 @@ D:\HSJC\HSJC\Nucleic_Acid\bin\Release\ru\HandyControl.resources.dll
 D:\HSJC\HSJC\Nucleic_Acid\bin\Release\tr\HandyControl.resources.dll
 D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\DateTimeControl.g.cs
 D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\DateTimeControl.baml
+D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\ChooseDialog.g.cs
+D:\HSJC\HSJC\Nucleic_Acid\obj\Release\View\ChooseDialog.baml

@@ -16,3 +16,4 @@ D:\HSJC\HSJC\Acid.print.Library\obj\Release\Acid.print.Library.csproj.CoreCompil
 D:\HSJC\HSJC\Acid.print.Library\obj\Release\Acid.print.Library.csproj.CopyComplete
 D:\HSJC\HSJC\Acid.print.Library\obj\Release\Acid.print.Library.dll
 D:\HSJC\HSJC\Acid.print.Library\obj\Release\Acid.print.Library.pdb
+D:\HSJC\HSJC\Acid.print.Library\obj\Release\Acid.print.Library.csprojAssemblyReference.cache

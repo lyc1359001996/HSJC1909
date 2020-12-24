@@ -444,7 +444,7 @@ namespace Acid.NPOI.Library
         /// 打开保存
         /// </summary>
         /// <returns></returns>
-        public static string OpenSaveDialog() 
+        public static string OpenSaveExcelDialog() 
         {
             System.Windows.Forms.SaveFileDialog saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             saveFileDialog.Title = "保存文件";
@@ -460,6 +460,45 @@ namespace Acid.NPOI.Library
                 return null;
             }
             return saveFileDialog.FileName;
+        }
+        /// <summary>
+        /// 打开保存json
+        /// </summary>
+        /// <returns></returns>
+        public static string OpenSaveJsonDialog()
+        {
+            System.Windows.Forms.SaveFileDialog saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            saveFileDialog.Title = "保存文件";
+            saveFileDialog.Filter = "json文件|*.json";
+            saveFileDialog.FileName = string.Empty;
+            saveFileDialog.FilterIndex = 1;
+            saveFileDialog.RestoreDirectory = true;
+            saveFileDialog.DefaultExt = "json";
+            saveFileDialog.FileName = DateTime.Now.ToString("yyyy-MM-dd") + "采样数据.json";
+            System.Windows.Forms.DialogResult result = saveFileDialog.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.Cancel)
+            {
+                return null;
+            }
+            return saveFileDialog.FileName;
+        }
+
+        public static string OpenJsonDialog()
+        {
+            System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            openFileDialog.Title = "选择文件";
+            openFileDialog.Filter = "json文件|*.json";
+            openFileDialog.FileName = string.Empty;
+            openFileDialog.FilterIndex = 1;
+            openFileDialog.RestoreDirectory = true;
+            openFileDialog.DefaultExt = "json";
+            //saveFileDialog.FileName = DateTime.Now.ToString("yyyy-MM-dd") + "采样数据.json";
+            System.Windows.Forms.DialogResult result = openFileDialog.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.Cancel)
+            {
+                return null;
+            }
+            return openFileDialog.FileName;
         }
         #endregion
 

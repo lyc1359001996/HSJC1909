@@ -16,3 +16,4 @@ D:\HSJC\HSJC\Acid.NPOI.Library\obj\Release\Acid.NPOI.Library.csproj.CoreCompileI
 D:\HSJC\HSJC\Acid.NPOI.Library\obj\Release\Acid.NPOI.Library.csproj.CopyComplete
 D:\HSJC\HSJC\Acid.NPOI.Library\obj\Release\Acid.NPOI.Library.dll
 D:\HSJC\HSJC\Acid.NPOI.Library\obj\Release\Acid.NPOI.Library.pdb
+D:\HSJC\HSJC\Acid.NPOI.Library\obj\Release\Acid.NPOI.Library.csprojAssemblyReference.cache

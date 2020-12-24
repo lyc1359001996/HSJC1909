@@ -16,15 +16,18 @@
              mc:Ignorable="d" d:DesignHeight="758" d:DesignWidth="1200" Loaded="UserControl_Loaded" Unloaded="UserControl_Unloaded">
     <Grid Background="White">
         <Grid Margin="25,10" Background="White">
-            <StackPanel Margin="35,38,0,0" Orientation="Horizontal" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" >
-                <hc:TextBox x:Name="TextBox_Name" hc:InfoElement.Placeholder="请输入姓名" Margin="4,0,0,0" FontFamily="NSimSun" Height="38" FontSize="12" Width="170" ToolTip="请输入姓名"/>
+            <StackPanel Margin="30,38,0,0" Orientation="Horizontal" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" >
+                <hc:TextBox x:Name="TextBox_Name" hc:InfoElement.Placeholder="请输入姓名" Margin="4,0,0,0" FontFamily="NSimSun" Height="38" FontSize="12" Width="100" ToolTip="请输入姓名"/>
                 <hc:TextBox x:Name="TextBox_CardNo"  hc:InfoElement.Placeholder="请输入身份证号码" Margin="10,8,0,8" Height="38" FontFamily="NSimSun" FontSize="12"  Width="170" ToolTip="请输入身份证号码"/>
                 <hc:DateTimePicker x:Name="dateTimeStart" hc:InfoElement.Placeholder="开始时间" Margin="10,8,0,9" HorizontalContentAlignment="Stretch" VerticalAlignment="Center" Width="195" SelectionBrush="#FF2196F3" Height="38" ToolTip="开始日期" />
                 <hc:DateTimePicker x:Name="dateTimeEnd" hc:InfoElement.Placeholder="结束时间" Margin="10,8,0,9" HorizontalContentAlignment="Stretch" VerticalAlignment="Center" Width="195" SelectionBrush="#FF2196F3" Height="38" ToolTip="结束日期" />
                 <hc:LoadingCircle x:Name="loding" Visibility="Hidden"/>
             </StackPanel>
             <StackPanel Margin="0,40,44,0" Orientation="Horizontal" HorizontalAlignment="Right" Width="auto" Height="50" VerticalAlignment="Top">
-                <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="按条件导出本地数据,如要导出所有数据请选择重置后导出" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Margin="0,0,0,0" Click="Button_Click_2">
+                <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="导入数据并合并数据至本地,导入文件为导出的json文件" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Margin="0,0,0,0" Click="InData_Click">
+                    <TextBlock Text="导入" />
+                </Button>
+                <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="按条件导出本地数据,如要导出所有数据请选择重置后导出" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Margin="10,0,0,0" Click="Button_Click_2">
                     <TextBlock Text="导出" />
                 </Button>
                 <Button Style="{StaticResource MaterialDesignRaisedLightButton}"  materialDesign:ButtonAssist.CornerRadius="5" ToolTip="数据回传到本地" VerticalAlignment="Center" Background="#FF44B2F6" Foreground="White" FontFamily="NSimSun" FontSize="12" Width="60" Margin="10,0,0,0" Click="Button_Click_3">

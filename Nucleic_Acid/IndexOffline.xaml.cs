@@ -109,8 +109,9 @@ namespace Nucleic_Acid
             Thread.Sleep(10000);
             this.Dispatcher.Invoke(() => { SnackbarWarn.IsActive = false; });
         }
-        public void ShowExport()
+        public void ShowExport(string message)
         {
+            SnackbarLoding.Message.Content = message;
             SnackbarLoding.IsActive = true;
             lodingBar.Visibility = Visibility.Visible;
         }
@@ -121,6 +122,7 @@ namespace Nucleic_Acid
         }
         public void ShowInfo(string message) 
         {
+            SnackbarOK.Message.Content = message;
             Task.Factory.StartNew(ShowInfo);
         }
 
@@ -188,6 +190,28 @@ namespace Nucleic_Acid
                 };
                 await DialogHost.Show(sampleMessageDialog, "ReadDialog", e);
                 action(sampleMessageDialog.IsTrue);
+            }
+            catch (Exception ex)
+            {
+                Logger.Default.Error(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 选择确定取消弹窗
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="action"></param>
+        /// <param name="e"></param>
+        public async void ChooseTips(Action<bool,int> action, DialogClosingEventHandler e = null)
+        {
+            try
+            {
+                if (e == null)
+                    e = closingEventHandler;
+                var sampleMessageDialog = new ChooseDialog();
+                await DialogHost.Show(sampleMessageDialog, "ReadDialog", e);
+                action(sampleMessageDialog.isCancel, sampleMessageDialog.ChooseIndex);
             }
             catch (Exception ex)
             {

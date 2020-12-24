@@ -13,12 +13,12 @@ namespace Acid.common.Library.config
         public string userName { get; set; }
         public string cardNo { get; set; }
         public string sex { get; set; }
+        public string company { get; set; }
         public string updateTime { get; set; }
         public string updateName { get; set; }
         public string detectionName { get; set; }
         public string deleted { get; set; }
         public string homeAddress { get; set; }
-        public string company { get; set; }
         public string createBy { get; set; }
         public string updateBy { get; set; }
         public string serialNumber { get; set; }

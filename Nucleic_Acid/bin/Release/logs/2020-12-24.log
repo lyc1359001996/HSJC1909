@@ -1,0 +1,9 @@
+2020-12-24 13:34:16.3822 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-24 13:34:35.9741 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-24 13:34:36.9493 INFO  {"code":20000,"message":"成功","data":{"cydName":"荷东","principal":"wwww","districtName":"普陀区","name":"limit","xzjdName":"沈家门街道","jcdName":"1-1","token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJlbXBsb3llZUlkIjoiMTM0MDUzMjczMjU2NjM1NTk3MCIsImZhaWx1cmVUaW1lIjoxNjEwNTE2MDYyMjExfQ.FDUqrj2klXeBdKT1gPDrolgw2em2lqagMye7_jubj0HtayO1iGK-xUx86PENM7PoznPxX-NbGgILMksJTc1xZA"}}  <>c__DisplayClass18_0.<login>b__0 => LoginService.Login_Ex => LoginService.Login
+2020-12-24 13:34:37.4239 INFO  {"code":20000,"message":"成功","data":{"total":0,"pageSize":10,"currPage":1,"data":[]}}  Task.InnerInvoke => <>c__DisplayClass48_0.<SetInfoList>b__0 => InfoListService.getQuery
+2020-12-24 14:23:36.6761 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-24 14:23:49.3554 ERROR  打印：2  Task.Execute => Task.InnerInvoke => <>c__DisplayClass1_0.<print>b__0
+2020-12-24 14:26:00.6764 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-24 14:36:37.9756 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init
+2020-12-24 15:09:31.6914 INFO  ------------------------start------------------------------  RoutedEventHandlerInfo.InvokeHandler => MainWindow.backGrid_Loaded => MainWindow.Init

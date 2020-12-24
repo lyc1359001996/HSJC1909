@@ -18,3 +18,4 @@ D:\HSJC\HSJC\Acid.SDK.Library\obj\Release\Acid.SDK.Library.csproj.CoreCompileInp
 D:\HSJC\HSJC\Acid.SDK.Library\obj\Release\Acid.SDK.Library.csproj.CopyComplete
 D:\HSJC\HSJC\Acid.SDK.Library\obj\Release\Acid.SDK.Library.dll
 D:\HSJC\HSJC\Acid.SDK.Library\obj\Release\Acid.SDK.Library.pdb
+D:\HSJC\HSJC\Acid.SDK.Library\obj\Release\Acid.SDK.Library.csprojAssemblyReference.cache

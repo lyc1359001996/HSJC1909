@@ -343,6 +343,9 @@
     <Compile Include="View\CanCancel.xaml.cs">
       <DependentUpon>CanCancel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ChooseDialog.xaml.cs">
+      <DependentUpon>ChooseDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DateTimeControl.xaml.cs">
       <DependentUpon>DateTimeControl.xaml</DependentUpon>
     </Compile>
@@ -448,6 +451,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CanCancel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChooseDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
