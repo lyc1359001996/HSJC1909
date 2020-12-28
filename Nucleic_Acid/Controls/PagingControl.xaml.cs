@@ -173,7 +173,7 @@ namespace WpfPaging
         public event EventHandler<PagesChangedArgs> OnPagesChanged;
         #endregion
 
-        #region 方法
+        #region 方法        
 
         #region 私有
         /// <summary>
@@ -688,9 +688,7 @@ namespace WpfPaging
                 case 1: this.PageSize = 20; break;
                 case 2: this.PageSize = 30; break;
                 case 3: this.PageSize = 50; break;
-                default:
-                    this.PageSize = 10; 
-                    break;
+                default:this.PageSize = 10; break;
             }
         }
     }

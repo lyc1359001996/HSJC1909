@@ -17,8 +17,8 @@
     <Grid Background="White">
         <Grid Margin="25,10" Background="White">
 
-            <StackPanel Margin="30,38,0,0" Orientation="Horizontal" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="739" >
-                <hc:TextBox x:Name="TextBox_Name" hc:InfoElement.Placeholder="请输入姓名" Margin="4,0,0,0" FontFamily="NSimSun" Height="38" FontSize="12" Width="100" ToolTip="请输入姓名"/>
+            <StackPanel Margin="35,38,0,0" Orientation="Horizontal" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" >
+                <hc:TextBox x:Name="TextBox_Name" hc:InfoElement.Placeholder="请输入姓名" Margin="4,0,0,0" FontFamily="NSimSun" Height="38" FontSize="12" Width="170" ToolTip="请输入姓名"/>
                 <hc:TextBox x:Name="TextBox_CardNo"  hc:InfoElement.Placeholder="请输入身份证号码" Margin="10,8,0,8" Height="38" FontFamily="NSimSun" FontSize="12"  Width="170" ToolTip="请输入身份证号码"/>
                 <hc:DateTimePicker x:Name="dateTimeStart" hc:InfoElement.Placeholder="开始时间" Margin="10,8,0,9" HorizontalContentAlignment="Stretch" VerticalAlignment="Center" Width="195" SelectionBrush="#FF2196F3" Height="38" ToolTip="开始日期" />
                 <hc:DateTimePicker x:Name="dateTimeEnd" hc:InfoElement.Placeholder="结束时间" Margin="10,8,0,9" HorizontalContentAlignment="Stretch" VerticalAlignment="Center" Width="195" SelectionBrush="#FF2196F3" Height="38" ToolTip="结束日期" />

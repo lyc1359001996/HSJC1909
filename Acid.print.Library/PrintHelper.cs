@@ -22,11 +22,16 @@ namespace Acid.print.Library
                     PrintSDK.barcode("20", "0", "128", "30", "1", "0", "2", "2", code);
                     PrintSDK.printlabel("1", "1");                                                //Print labels
                     PrintSDK.closeport();
+                    //PrintSDK.setup("40", "10", "4", "8", "0", "0", "0");                             //Setup the media size and sensor type info        
+                    //PrintSDK.clearbuffer();
+                    //PrintSDK.barcode("20", "0", "128M", "30", "1", "0", "2", "2", code);
+                    //PrintSDK.printlabel("1", "1");                                                //Print labels
+                    //PrintSDK.closeport();
                     Logger.Default.Error("打印："+code);
                 }
                 catch (Exception ex)
                 {
-                    Logger.Default.Error(ex.Message);
+                    Logger.Default.Error(ex.Message); 
                 }
             });
         }

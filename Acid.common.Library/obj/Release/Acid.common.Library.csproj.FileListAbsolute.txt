@@ -23,3 +23,4 @@ D:\HSJC\HSJC\Acid.common.Library\bin\Release\ICSharpCode.SharpZipLib.dll
 D:\HSJC\HSJC\Acid.common.Library\bin\Release\BouncyCastle.Crypto.xml
 D:\HSJC\HSJC\Acid.common.Library\bin\Release\ICSharpCode.SharpZipLib.pdb
 D:\HSJC\HSJC\Acid.common.Library\bin\Release\ICSharpCode.SharpZipLib.xml
+D:\HSJC\HSJC\Acid.common.Library\obj\Release\Acid.common.Library.csprojAssemblyReference.cache
