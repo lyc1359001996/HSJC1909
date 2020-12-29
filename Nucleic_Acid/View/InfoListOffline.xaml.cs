@@ -39,7 +39,7 @@ namespace Nucleic_Acid.View
         DispatcherTimer autoRead_Timer = new DispatcherTimer();//自动读卡
         PrintDialog dialog = new PrintDialog();//打印对象
         private const int INITIALIZED_INDEX = 1;
-        private uint m_VersionNum = 0;
+        private uint m_VersionNum;
         //private string szLogPath = "C:/UsbSDKLog/";
         private int g_nEnumDevIndex = INITIALIZED_INDEX;
         private CHCUsbSDK.USB_SDK_DEVICE_INFO[] m_aHidDevInfo;//这个存储着遍历到的设备，列表索引1开始，所以添加
@@ -57,7 +57,7 @@ namespace Nucleic_Acid.View
             bool res = CHCUsbSDK.USB_SDK_Init();//USB initialize
             m_VersionNum = CHCUsbSDK.USB_SDK_GetSDKVersion();
             TraverseDevice();//遍历设备
-            login_device();//登录设备
+            Login_device();//登录设备
             autoRead_Timer.Tick += AutoRead_Timer_Tick;
             autoRead_Timer.Interval = TimeSpan.FromMilliseconds(1000);
         }
@@ -114,7 +114,7 @@ namespace Nucleic_Acid.View
         #endregion
 
         #region 登录设备
-        private void login_device()
+        private void Login_device()
         {
             if (!JudgeValidOfLoginInfo())
             {
@@ -194,8 +194,10 @@ namespace Nucleic_Acid.View
                 CHCUsbSDK.USB_SDK_CERTIFICATE_INFO struCertificateInfo = new CHCUsbSDK.USB_SDK_CERTIFICATE_INFO();
                 struCertificateInfo.dwSize = (uint)Marshal.SizeOf(struCertificateInfo);
 
-                CHCUsbSDK.USB_CONFIG_OUTPUT_INFO struConfigOutputInfo = new CHCUsbSDK.USB_CONFIG_OUTPUT_INFO();
-                struConfigOutputInfo.dwOutBufferSize = struCertificateInfo.dwSize;
+                CHCUsbSDK.USB_CONFIG_OUTPUT_INFO struConfigOutputInfo = new CHCUsbSDK.USB_CONFIG_OUTPUT_INFO
+                {
+                    dwOutBufferSize = struCertificateInfo.dwSize
+                };
                 IntPtr ptrstruCertificateInfo = Marshal.AllocHGlobal((int)struCertificateInfo.dwSize);
                 Marshal.StructureToPtr(struCertificateInfo, ptrstruCertificateInfo, false);
                 struConfigOutputInfo.lpOutBuffer = ptrstruCertificateInfo;
@@ -295,7 +297,7 @@ namespace Nucleic_Acid.View
                 ////打印......
                 if (UrlModel.autoPrint)
                 {
-                    saveAndPrintoffline(dataModel);
+                    SaveAndPrintoffline(dataModel);
                     Button_Click(null, null);
                 }
                 Console.WriteLine(Items2[0].userName);
@@ -414,7 +416,7 @@ namespace Nucleic_Acid.View
             else
             {
                 TraverseDevice();//遍历设备
-                login_device();//登录设备
+                Login_device();//登录设备
             }
 
         }
@@ -433,11 +435,11 @@ namespace Nucleic_Acid.View
         }
         #endregion
 
-        private void saveAndPrintoffline(InfoListModel dataModel)
+        private void SaveAndPrintoffline(InfoListModel dataModel)
         {
-            savedata(dataModel);
+            Savedata(dataModel);
         }
-        private void savedata(InfoListModel dataModel1)
+        private void Savedata(InfoListModel dataModel1)
         {
             dataModel1.acidNo = UniqueData.Gener("");
             List<InfoListModel> json = SettingJsonConfig.readData() ?? new List<InfoListModel>();
@@ -461,7 +463,7 @@ namespace Nucleic_Acid.View
             json.Add(infoListModel);
             SettingJsonConfig.saveData(json);
             Console.WriteLine("打印：" + dataModel1.cardNo);
-            PrintHelper.print(dataModel1.cardNo);
+            PrintHelper.Print(dataModel1.cardNo);
         }
 
         #endregion
@@ -716,7 +718,7 @@ namespace Nucleic_Acid.View
                 {
                     InfoListModel obj = (InfoListModel)dataGrid.SelectedItem;
                     string cardid = obj.cardNo;//身份证号
-                    PrintHelper.print(cardid);//打印
+                    PrintHelper.Print(cardid);//打印
                     Console.WriteLine("打印：" + cardid);
                 }
             }));
@@ -748,12 +750,38 @@ namespace Nucleic_Acid.View
                 ////打印......
                 if (UrlModel.autoPrint)
                 {
-                    saveAndPrintoffline(obj);
+                    SaveAndPrintoffline(obj);
                     Button_Click(null, null);
                 }
                 Console.WriteLine(obj.userName);
             }
             autoRead_Timer.Start();
+        }
+        private void delete_click(object sender, RoutedEventArgs e)
+        {
+            CancelDelete();
+        }
+        private void CancelDelete()
+        {
+            CancelTips("确认要删除?", new Action<bool>(arg =>
+            {
+                if (arg)
+                {
+                    #region 本地删除
+                    InfoListModel obj = (InfoListModel)dataGrid.SelectedItem;
+                    List<Acid.common.Library.config.InfoListModel> lists = SettingJsonConfig.readData() ?? new List<Acid.common.Library.config.InfoListModel>();
+                    List<Acid.common.Library.config.InfoListModel> infoListModel = lists.Where(u => u.acidNo == obj.acidNo).ToList();
+                    foreach (var item in infoListModel)
+                    {
+                        lists.Remove(item);//移除
+                    }
+                    SettingJsonConfig.saveData(lists);//保存
+                    #endregion
+                    QuerySelect_page(pageControl.CurrentPage);
+                    //删除
+                    Console.WriteLine("删除：" + obj.acidNo);
+                }
+            }));
         }
 
         //private void company_Changed(object sender, TextChangedEventArgs e)
@@ -794,11 +822,11 @@ namespace Nucleic_Acid.View
         {
             MainWindow.indexoffline.ChooseTips(action, null);
         }
-        public void lodings()
+        public void Lodings()
         {
             MainWindow.indexoffline.Loding();
         }
-        public void lodings_close()
+        public void Lodings_close()
         {
             MainWindow.indexoffline.Loding_close();
         }
@@ -992,5 +1020,7 @@ namespace Nucleic_Acid.View
             }
         }
         #endregion
+
+      
     }
 }

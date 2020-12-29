@@ -134,12 +134,14 @@ namespace Nucleic_Acid.Util
         {
             try
             {
-                System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-                startInfo.UseShellExecute = true;
-                //startInfo.WorkingDirectory = $@"{AppDomain.CurrentDomain.BaseDirectory}";
-                startInfo.FileName = $@"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}\{Process.GetCurrentProcess().ProcessName}.exe";
-                //设置启动动作,确保以管理员身份运行
-                startInfo.Verb = "runas";
+                System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
+                {
+                    UseShellExecute = true,
+                    //startInfo.WorkingDirectory = $@"{AppDomain.CurrentDomain.BaseDirectory}";
+                    FileName = $@"{System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase}\{Process.GetCurrentProcess().ProcessName}.exe",
+                    //设置启动动作,确保以管理员身份运行
+                    Verb = "runas"
+                };
                 System.Diagnostics.Process.Start(startInfo);
             }
             catch

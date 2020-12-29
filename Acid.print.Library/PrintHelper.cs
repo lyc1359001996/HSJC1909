@@ -9,7 +9,7 @@ namespace Acid.print.Library
     public class PrintHelper
     {
         private static string printName = "Gprinter GP-3120TU";
-        public static void print(string code)
+        public static void Print(string code)
         {
 
             Task.Run(() =>

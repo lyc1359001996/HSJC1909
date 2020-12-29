@@ -533,7 +533,7 @@ namespace Nucleic_Acid.View
             };
             json.Add(infoListModel);
             SettingJsonConfig.saveData(json);
-            PrintHelper.print(dataModel1.temp);
+            PrintHelper.Print(dataModel1.temp);
         }
     }
 }

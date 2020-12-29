@@ -36,3 +36,17 @@ D:\HSJC\HSJC\Test\obj\Release\Test.csproj.CoreCompileInputs.cache
 D:\HSJC\HSJC\Test\obj\Release\Test.csproj.CopyComplete
 D:\HSJC\HSJC\Test\obj\Release\Test.exe
 D:\HSJC\HSJC\Test\obj\Release\Test.pdb
+D:\HSJC\HSJC\Test\bin\Release\Acid.NPOI.Library.dll
+D:\HSJC\HSJC\Test\bin\Release\NPOI.dll
+D:\HSJC\HSJC\Test\bin\Release\NPOI.OOXML.dll
+D:\HSJC\HSJC\Test\bin\Release\BouncyCastle.Crypto.dll
+D:\HSJC\HSJC\Test\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\HSJC\HSJC\Test\bin\Release\NPOI.OpenXmlFormats.dll
+D:\HSJC\HSJC\Test\bin\Release\NPOI.OpenXml4Net.dll
+D:\HSJC\HSJC\Test\bin\Release\Acid.NPOI.Library.pdb
+D:\HSJC\HSJC\Test\bin\Release\NPOI.xml
+D:\HSJC\HSJC\Test\bin\Release\NPOI.OOXML.xml
+D:\HSJC\HSJC\Test\bin\Release\BouncyCastle.Crypto.xml
+D:\HSJC\HSJC\Test\bin\Release\ICSharpCode.SharpZipLib.pdb
+D:\HSJC\HSJC\Test\bin\Release\ICSharpCode.SharpZipLib.xml
+D:\HSJC\HSJC\Test\bin\Release\NPOI.OpenXml4Net.xml

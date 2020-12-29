@@ -24,7 +24,7 @@ namespace WpfPaging
         /// <summary>
         /// 滑动计时器
         /// </summary>
-        private DispatcherTimer _scrollTimer;
+        private readonly DispatcherTimer _scrollTimer;
         /// <summary>
         /// 滑动方向（True：右；False：左）
         /// </summary>
@@ -40,11 +40,11 @@ namespace WpfPaging
         /// <summary>
         /// 页码按钮尺寸
         /// </summary>
-        private int _buttonSize = 40;
+        private readonly int _buttonSize = 40;
         /// <summary>
         /// 计时器间隔（毫秒）
         /// </summary>
-        private int _timerInterval = 40;
+        private readonly int _timerInterval = 40;
         /// <summary>
         /// 是否可以触发当前页依赖属性的回调
         /// </summary>
@@ -71,10 +71,10 @@ namespace WpfPaging
                 {
                     try
                     {
-                        if (obj is PagingControl)
+                        if (obj is PagingControl control)
                         {
                             //计算总页数
-                            ((PagingControl)obj).CalculatePageTote();
+                            control.CalculatePageTote();
                         }
                     }
                     catch (Exception ex)
@@ -102,10 +102,10 @@ namespace WpfPaging
                 {
                     try
                     {
-                        if (obj is PagingControl)
+                        if (obj is PagingControl control)
                         {
                             //计算总页数
-                            ((PagingControl)obj).CalculatePageTote();
+                            control.CalculatePageTote();
                         }
                     }
                     catch (Exception ex)
@@ -133,13 +133,13 @@ namespace WpfPaging
                 {
                     try
                     {
-                        if (obj is PagingControl && args.NewValue is int)
+                        if (obj is PagingControl control && args.NewValue is int)
                         {
                             //判断是否可以执行以下代码
-                            if (((PagingControl)obj)._isCanTriggerCurrentPageDependencyCellback == true)
+                            if (control._isCanTriggerCurrentPageDependencyCellback == true)
                             {
                                 //设置当前页码
-                                ((PagingControl)obj).SetCurrentPage(Convert.ToInt32(args.NewValue));
+                                control.SetCurrentPage(Convert.ToInt32(args.NewValue));
                             }
                         }
                     }
@@ -190,7 +190,7 @@ namespace WpfPaging
                 this._pageTote = this.DataTote / this.PageSize;
                 if (remainder > 0)
                 {
-                    this._pageTote = this._pageTote + 1;
+                    this._pageTote += 1;
                 }
 
                 //初始化分页控件
@@ -438,7 +438,7 @@ namespace WpfPaging
                 Height = this._buttonSize,
                 Width = this._buttonSize,
                 Margin = new Thickness(5, 0, 0, 0),
-                Padding = new Thickness(-5 * (setPadding(pageIndex) - 1), 0, 0, 0)
+                Padding = new Thickness(-5 * (SetPadding(pageIndex) - 1), 0, 0, 0)
             };
             pageButton.Click += PageButton_Click;
             //将页码按钮显示到界面上
@@ -454,7 +454,7 @@ namespace WpfPaging
                 this.pagePanel.Children.Add(pageButton);
             }
         }
-        private int setPadding(int sum)
+        private int SetPadding(int sum)
         {
             int b = sum.ToString().Length;
             return b;
@@ -540,7 +540,7 @@ namespace WpfPaging
             if (this._scrollCount < 3)
             {
                 //计算滚动条移动后的位置
-                double horizontalOffset = 0;
+                double horizontalOffset;
                 if (this._scrollRight == true)
                 {
                     //向右滚动
@@ -606,9 +606,9 @@ namespace WpfPaging
                 {
                     thispage = 1;
                 }
-                int startpage = 1;
                 //初始化各个分页按钮的状态（最大可选的只有10个页码）
                 int showPageButtonCount = this._pageTote > 10 ? 10 : this._pageTote;
+                int startpage;
                 if (thispage <= 1)
                 {
                     startpage = 1;
@@ -641,7 +641,7 @@ namespace WpfPaging
                             {
                                 current++;
                             }
-                            current = current - 1;
+                            current -= 1;
                             startpage = _pageTote - 9 + current;
                             showPageButtonCount = _pageTote;
                         }

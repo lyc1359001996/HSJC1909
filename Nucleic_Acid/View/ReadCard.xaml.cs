@@ -525,7 +525,7 @@ namespace Nucleic_Acid.View
                 //保存本地
                 savedata(selectedItem, 0);
             }
-            PrintHelper.print(selectedItem.temp.Trim());
+            PrintHelper.Print(selectedItem.temp.Trim());
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)

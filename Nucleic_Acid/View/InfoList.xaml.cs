@@ -41,7 +41,7 @@ namespace Nucleic_Acid.View
         DispatcherTimer autoRead_Timer = new DispatcherTimer();//自动读卡
         PrintDialog dialog = new PrintDialog();//打印对象
         private const int INITIALIZED_INDEX = 1;
-        private uint m_VersionNum = 0;
+        private uint m_VersionNum;
         //private string szLogPath = "C:/UsbSDKLog/";
         private int g_nEnumDevIndex = INITIALIZED_INDEX;
         private CHCUsbSDK.USB_SDK_DEVICE_INFO[] m_aHidDevInfo;//这个存储着遍历到的设备，列表索引1开始，所以添加
@@ -59,7 +59,7 @@ namespace Nucleic_Acid.View
             bool res = CHCUsbSDK.USB_SDK_Init();//USB initialize
             m_VersionNum = CHCUsbSDK.USB_SDK_GetSDKVersion();
             TraverseDevice();//遍历设备
-            login_device();//登录设备
+            Login_device();//登录设备
             autoRead_Timer.Tick += AutoRead_Timer_Tick;
             autoRead_Timer.Interval = TimeSpan.FromMilliseconds(1000);
         }
@@ -147,7 +147,7 @@ namespace Nucleic_Acid.View
         #endregion
 
         #region 登录设备
-        private void login_device()
+        private void Login_device()
         {
             if (!JudgeValidOfLoginInfo())
             {
@@ -168,19 +168,19 @@ namespace Nucleic_Acid.View
             if (CHCUsbSDK.UserID == CHCUsbSDK.INVALID_USER_ID)
             {
                 CHCUsbSDK.UserID = UserIDTemp;
-                changeConn(CHCUsbSDK.UserID != -1);
+                ChangeConn(CHCUsbSDK.UserID != -1);
                 Console.WriteLine(CHCUsbSDK.UserID);
                 //为了解决重复登录时的问题，但是这次只考虑了只能登录一个设备，两个设备同时能登录的话，ID会覆盖得继续解决ID的问题
             }
             else
             {
-                changeConn(true);
+                ChangeConn(true);
                 string SuccesfulLoginInfo = "The device whose serial number is " + StruCurUsbLoginInfo.szSerialNumber + "login in successfully";
                 Console.WriteLine(SuccesfulLoginInfo);
             }
         }
 
-        private void changeConn(bool TF)
+        private void ChangeConn(bool TF)
         {
             if (TF)
             {
@@ -227,8 +227,10 @@ namespace Nucleic_Acid.View
                 CHCUsbSDK.USB_SDK_CERTIFICATE_INFO struCertificateInfo = new CHCUsbSDK.USB_SDK_CERTIFICATE_INFO();
                 struCertificateInfo.dwSize = (uint)Marshal.SizeOf(struCertificateInfo);
 
-                CHCUsbSDK.USB_CONFIG_OUTPUT_INFO struConfigOutputInfo = new CHCUsbSDK.USB_CONFIG_OUTPUT_INFO();
-                struConfigOutputInfo.dwOutBufferSize = struCertificateInfo.dwSize;
+                CHCUsbSDK.USB_CONFIG_OUTPUT_INFO struConfigOutputInfo = new CHCUsbSDK.USB_CONFIG_OUTPUT_INFO
+                {
+                    dwOutBufferSize = struCertificateInfo.dwSize
+                };
                 IntPtr ptrstruCertificateInfo = Marshal.AllocHGlobal((int)struCertificateInfo.dwSize);
                 Marshal.StructureToPtr(struCertificateInfo, ptrstruCertificateInfo, false);
                 struConfigOutputInfo.lpOutBuffer = ptrstruCertificateInfo;
@@ -324,7 +326,7 @@ namespace Nucleic_Acid.View
                 //打印......
                 if (UrlModel.autoPrint)
                 {
-                    saveAndPrint(dataModel);
+                    SaveAndPrint(dataModel);
                     Button_Click(null, null);
                 }
                 Console.WriteLine(Items2[0].userName);
@@ -401,13 +403,13 @@ namespace Nucleic_Acid.View
         //    StandardFormalOfBrithDate(ref BirthDate);
         //    dataModel.Sbirthdate = BirthDate;
         //}
-        private void StandardFormalOfBrithDate(ref string BirthDate)
-        {
-            string yyyy = BirthDate.Substring(0, 4);
-            string mm = BirthDate.Substring(4, 2);
-            string dd = BirthDate.Substring(6, 2);
-            BirthDate = yyyy + "-" + mm + "-" + dd;
-        }
+        //private void StandardFormalOfBrithDate(ref string BirthDate)
+        //{
+        //    string yyyy = BirthDate.Substring(0, 4);
+        //    string mm = BirthDate.Substring(4, 2);
+        //    string dd = BirthDate.Substring(6, 2);
+        //    BirthDate = yyyy + "-" + mm + "-" + dd;
+        //}
         /// <summary>
         /// 家庭住址
         /// </summary>
@@ -442,7 +444,7 @@ namespace Nucleic_Acid.View
             else
             {
                 TraverseDevice();//遍历设备
-                login_device();//登录设备
+                Login_device();//登录设备
             }
         }
         /// <summary>
@@ -464,7 +466,7 @@ namespace Nucleic_Acid.View
         /// </summary>
         /// <param name="dataModel"></param>
         /// <param name="snowID"></param>
-        private void savedata(InfoListModel dataModel, int versions)
+        private void Savedata(InfoListModel dataModel, int versions)
         {
             List<InfoListModel> json = SettingJsonConfig.readData() ?? new List<InfoListModel>();
             InfoListModel infoListModel = new InfoListModel()
@@ -493,7 +495,7 @@ namespace Nucleic_Acid.View
         /// <param name="dataModel"></param>
         /// <param name="snowID"></param>
         /// <returns></returns>
-        private ResultJson<string> saveonline(InfoListModel dataModel)
+        private ResultJson<string> Saveonline(InfoListModel dataModel)
         {
             List<InfoListModel> infoListModels = new List<InfoListModel>();
             InfoListModel infoListModel = new InfoListModel()
@@ -520,24 +522,24 @@ namespace Nucleic_Acid.View
             return resultJson;
         }
 
-        private void saveAndPrint(InfoListModel selectedItem)
+        private void SaveAndPrint(InfoListModel selectedItem)
         {
             Console.WriteLine("打印ing......................");
             selectedItem.acidNo = UniqueData.Gener("");
             //同步线上
-            Acid.http.Library.ResponseModel.ResultJson<string> resultJson = saveonline(selectedItem);
+            Acid.http.Library.ResponseModel.ResultJson<string> resultJson = Saveonline(selectedItem);
             if (resultJson.code == "20000")
             {
                 //保存本地
-                savedata(selectedItem, 1);
+                Savedata(selectedItem, 1);
             }
             else
             {
                 //保存本地
-                savedata(selectedItem, 0);
+                Savedata(selectedItem, 0);
             }
             Console.WriteLine("打印：" + selectedItem.cardNo);
-            PrintHelper.print(selectedItem.cardNo.Trim());
+            PrintHelper.Print(selectedItem.cardNo.Trim());
         }
 
         #endregion
@@ -752,7 +754,7 @@ namespace Nucleic_Acid.View
                 {
                     InfoListModel obj = (InfoListModel)dataGrid.SelectedItem;
                     string cardid = obj.cardNo;//身份证号
-                    PrintHelper.print(cardid);//打印
+                    PrintHelper.Print(cardid);//打印
                     Console.WriteLine("打印：" + cardid);
                 }
             }));
@@ -771,7 +773,7 @@ namespace Nucleic_Acid.View
                 ////打印......
                 if (UrlModel.autoPrint)
                 {
-                    saveAndPrint(obj);
+                    SaveAndPrint(obj);
                     Button_Click(null, null);
                 }
                 Console.WriteLine(obj.userName);
@@ -783,35 +785,35 @@ namespace Nucleic_Acid.View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        //private void delete_click(object sender, RoutedEventArgs e)
-        //{
-        //    CancelDelete();
-        //}
-        //private void CancelDelete()
-        //{
-        //    CancelTips("确认要删除?", new Action<bool>(arg =>
-        //    {
-        //        if (arg)
-        //        {
-        //            #region 本地删除
-        //            Acid.http.Library.ResponseModel.InfoListModel obj = (Acid.http.Library.ResponseModel.InfoListModel)dataGrid.SelectedItem;
-        //            List<Acid.common.Library.config.InfoListModel> lists = SettingJsonConfig.readData() ?? new List<Acid.common.Library.config.InfoListModel>();
-        //            List<Acid.common.Library.config.InfoListModel> infoListModel = lists.Where(u => u.acidNo == obj.acidNo).ToList();
-        //            foreach (var item in infoListModel)
-        //            {
-        //                lists.Remove(item);//移除
-        //            }
-        //            SettingJsonConfig.saveData(lists);//保存
-        //            #endregion
-        //            #region 服务器删除
-        //            ResultJson<string> resultJson = InfoListService.deleteNucleic(new Acid.http.Library.ResponseModel.InfoListModel() { acidNo = obj.acidNo });
-        //            #endregion
-        //            QuerySelect_page(pageControl.CurrentPage);
-        //            //删除
-        //            Console.WriteLine("删除：" + obj.acidNo);
-        //        }
-        //    }));
-        //}
+        private void delete_click(object sender, RoutedEventArgs e)
+        {
+            CancelDelete();
+        }
+        private void CancelDelete()
+        {
+            CancelTips("确认要删除?", new Action<bool>(arg =>
+            {
+                if (arg)
+                {
+                    #region 本地删除
+                    InfoListModel obj = (InfoListModel)dataGrid.SelectedItem;
+                    List<Acid.common.Library.config.InfoListModel> lists = SettingJsonConfig.readData() ?? new List<Acid.common.Library.config.InfoListModel>();
+                    List<Acid.common.Library.config.InfoListModel> infoListModel = lists.Where(u => u.acidNo == obj.acidNo).ToList();
+                    foreach (var item in infoListModel)
+                    {
+                        lists.Remove(item);//移除
+                    }
+                    SettingJsonConfig.saveData(lists);//保存
+                    #endregion
+                    #region 服务器删除
+                    ResultJson<string> resultJson = InfoListService.deleteNucleic(new InfoListModel() { acidNo = obj.acidNo });
+                    #endregion
+                    QuerySelect_page(pageControl.CurrentPage);
+                    //删除
+                    Console.WriteLine("删除：" + obj.acidNo);
+                }
+            }));
+        }
 
         private List<InfoListModel> ToDataGrid(List<InfoListModel> infoListModels)
         {
@@ -853,11 +855,11 @@ namespace Nucleic_Acid.View
         {
             MainWindow.index.ChooseTips(action, null);
         }
-        public void lodings()
+        public void Lodings()
         {
             MainWindow.index.Loding();
         }
-        public void lodings_close()
+        public void Lodings_close()
         {
             MainWindow.index.Loding_close();
         }
